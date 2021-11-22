@@ -5,4 +5,4 @@ FIRST SPRINT BACKLOG:
 https://docs.google.com/document/d/1f65cFL_omQj1dMBya-uP5RCPgWeEUs5bYaguGgP8oLY/edit?usp=sharing
 
 DESIGN OF ARCHITECTURE:
-https://docs.google.com/document/d/1wtyr1W_bV3bIwWcOrLIXlpwPvOD8BuMDLU8iHSgwa24/edit
+https://docs.google.com/document/d/1wtyr1W_bV3bIwWcOrLIXlpwPvOD8BuMDLU8iHSgwa24/edit?usp=sharing
