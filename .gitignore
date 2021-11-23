@@ -1,13 +1,13 @@
 # Compiled class file
 *.class
 # NetBeans specific #
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
+ProjectGruppo12IZ/nbproject/private/
+ProjectGruppo12IZ/build/
+ProjectGruppo12IZ/nbbuild/
+ProjectGruppo12IZ/dist/
+ProjectGruppo12IZ/nbdist/
+ProjectGruppo12IZ/nbactions.xml
+ProjectGruppo12IZ/nb-configuration.xml
 
 # Log file
 *.log
@@ -29,3 +29,4 @@ nb-configuration.xml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/PatternTest/nbproject/private/
