@@ -6,35 +6,14 @@
 package modelClassPackage;
 
 import java.math.BigDecimal;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author nando
+ * @author Gruppo 12 IZ
  */
 public class ComplexNumberTest {
-
-     @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
-
-   @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
 
     /**
      * Test of create method, of class ComplexNumber.
@@ -47,8 +26,6 @@ public class ComplexNumberTest {
         ComplexNumber result = ComplexNumber.create(complexNumber);
         assertEquals(expResult, result);
     }
-
-   
 
     /**
      * Test of create method with Cartesian Notation +x-j
@@ -241,11 +218,5 @@ public class ComplexNumberTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
-
-    
-    
-    
-    
-    
 
 }
