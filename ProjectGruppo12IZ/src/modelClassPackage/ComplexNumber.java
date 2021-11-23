@@ -6,12 +6,11 @@
 package modelClassPackage;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
  *
- * @author nando
+ * @author Gruppo 12 IZ
  *
  */
 public class ComplexNumber {
@@ -31,11 +30,14 @@ public class ComplexNumber {
         this.real = real;
         this.imaginary = imaginary;
     }
-    public ComplexNumber(float real, float imaginary) {
-        this.real = new BigDecimal(Float.toString(real));
-        this.imaginary = new BigDecimal(Float.toString(imaginary));
-    }
 
+    /**
+     * Initialies a new istance of the ComplexNumber class.
+     *
+     * @param real this string contains the real part of the complex number
+     * @param imaginary this string contains the imaginary part of the complex
+     * number (without j)
+     */
     public ComplexNumber(String real, String imaginary) {
         this.real = new BigDecimal(real);
         this.imaginary = new BigDecimal(imaginary);
@@ -52,7 +54,6 @@ public class ComplexNumber {
     public static ComplexNumber create(String complexNumber) {
 
         Pattern complexNumberPattern;
-        Boolean flag = false;
         if (complexNumber == null) {
             System.out.println("The string is empty");
             return null;
@@ -62,11 +63,11 @@ public class ComplexNumber {
             System.out.println("The last elements is not a j or a number");
             return null;
         }
-
+        //Check the first value on the 
         if (complexNumber.charAt(0) == '+' || complexNumber.charAt(0) == '-') {
-            // it contains  -
+            // it contains  +/-
             if (complexNumber.charAt(complexNumber.length() - 1) == 'j') {
-                // its contains - j 
+                // its contains j 
                 if (complexNumber.substring(1).contains("+") || complexNumber.substring(1).contains("-")) {
                     // it contains - x - j
                     complexNumberPattern = Pattern.compile("{1,}[+-][0-9]{1,}[+-][0-9]{1,}j");
@@ -75,19 +76,21 @@ public class ComplexNumber {
                         return new ComplexNumber(realStr, complexNumber.substring(realStr.length(), complexNumber.length() - 1));
                     }
                 } else {
-                    //it contains - j
+                    //it contains +- j
                     complexNumberPattern = Pattern.compile("{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
                         return new ComplexNumber("0", complexNumber.substring(0, complexNumber.length() - 1));
                     }
                 }
             } else {
+                //contains +- x
                 complexNumberPattern = Pattern.compile("{1,}[+-][0-9]");
                 if (complexNumberPattern.matcher(complexNumber).matches()) {
                     return new ComplexNumber(complexNumber, "0");
                 }
             }
         } else {
+            //its dont start with +/-
             if (complexNumber.charAt(complexNumber.length() - 1) == 'j') {
                 // its contains j 
                 if (complexNumber.substring(1).contains("+") || complexNumber.substring(1).contains("-")) {
@@ -95,20 +98,23 @@ public class ComplexNumber {
                     complexNumberPattern = Pattern.compile("[0-9]{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
                         return new ComplexNumber(complexNumber.substring(0).split("[+-]")[0], complexNumber.substring(0, complexNumber.length() - 1).split("[+-]")[1]);
-
                     }
+
                 } else {
                     //it contains j
                     complexNumberPattern = Pattern.compile("[0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
                         return new ComplexNumber("0", complexNumber.substring(0, complexNumber.length() - 1));
                     }
+
                 }
             } else {
+                //it contains x
                 complexNumberPattern = Pattern.compile("{1,}[0-9]");
                 if (complexNumberPattern.matcher(complexNumber).matches()) {
                     return new ComplexNumber(complexNumber, "0");
                 }
+
             }
         }
         return null;
@@ -148,10 +154,9 @@ public class ComplexNumber {
             return false;
         }
         final ComplexNumber other = (ComplexNumber) obj;
-        
+
         return this.real.compareTo(other.getReal()) == 0 && this.imaginary.compareTo(other.getImaginary()) == 0;
     }
-
 
     @Override
     public String toString() {
