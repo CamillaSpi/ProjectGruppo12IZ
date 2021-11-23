@@ -63,5 +63,23 @@ public class Calculator {
         return null;
     }
     
+    
+      /**
+     *
+     * calculate and return the conjugated of a Complex Numbers, if these is not null, otherwise return null.
+     *<p> <!-- -->
+     * @param a its contains the input complex number
+     * 
+     * @return return the conjugated ComplexNumber or null
+     * @see ComplexNumber
+     * 
+     */
+    static ComplexNumber conjugated(ComplexNumber a) {
+         if(a != null)
+            return new ComplexNumber(a.getReal(), a.getImaginary().negate());
+        else
+            System.out.println("Operation not possible: the input number is incorrect");
+        return null;
+    }
 
 }

@@ -258,5 +258,28 @@ public class CalculatorTest {
         ComplexNumber result = Calculator.invertSign(a);
         assertEquals(a, result);
     }
+     /**
+     * Test of Conjugate method, of class Calculator. positive imaginary to negative
+     */
+    @Test
+    public void testConjugatedPos() {
+        System.out.println("Conjugate positive imaginary to negative ");
+        ComplexNumber a = new ComplexNumber("5", "+7");
+        ComplexNumber b = new ComplexNumber("5", "-7");
+        ComplexNumber result = Calculator.conjugated(b);
+        assertEquals(a, result);
+    }
+     /**
+     * Test of Conjugate method, of class Calculator. Negative imaginary to positive 
+     */
+    @Test
+    public void testConjugatedNeg() {
+        System.out.println("Conjugate negative imaginary to positive ");
+        ComplexNumber a = new ComplexNumber("5", "-7");
+        ComplexNumber b = new ComplexNumber("5", "7");
+        ComplexNumber result = Calculator.conjugated(b);
+        assertEquals(a, result);
+    }
+    
     
 }
