@@ -54,12 +54,10 @@ public class ComplexNumberTest {
     @Test
     public void testGetReal() {
         System.out.println("getReal");
-        ComplexNumber instance = null;
-        float expResult = 0.0F;
+        ComplexNumber instance = new ComplexNumber(5,1);
+        float expResult = 5.0F;
         float result = instance.getReal();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -68,12 +66,10 @@ public class ComplexNumberTest {
     @Test
     public void testGetImaginary() {
         System.out.println("getImaginary");
-        ComplexNumber instance = null;
-        float expResult = 0.0F;
+        ComplexNumber instance = new ComplexNumber(5,1);
+        float expResult = 1.0F;
         float result = instance.getImaginary();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
