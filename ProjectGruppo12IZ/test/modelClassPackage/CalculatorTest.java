@@ -251,4 +251,12 @@ public class CalculatorTest {
         assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
     }
     
+    @Test
+    public void testInvertSignNull() {
+        System.out.println("invertSign");
+        ComplexNumber a = null;
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(a, result);
+    }
+    
 }
