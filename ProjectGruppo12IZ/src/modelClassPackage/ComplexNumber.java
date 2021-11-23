@@ -7,7 +7,6 @@ package modelClassPackage;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -149,13 +148,8 @@ public class ComplexNumber {
             return false;
         }
         final ComplexNumber other = (ComplexNumber) obj;
-        if (!Objects.equals(this.real, other.real)) {
-            return false;
-        }
-        if (!Objects.equals(this.imaginary, other.imaginary)) {
-            return false;
-        }
-        return true;
+        
+        return this.real.compareTo(other.getReal()) == 0 && this.imaginary.compareTo(other.getImaginary()) == 0;
     }
 
 

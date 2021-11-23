@@ -5,6 +5,7 @@
  */
 package modelClassPackage;
 
+import java.math.BigDecimal;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -190,6 +191,60 @@ public class ComplexNumberTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of getReal method, of class ComplexNumber.
+     */
+    @Test
+    public void testGetReal() {
+        System.out.println("getReal");
+        ComplexNumber instance = new ComplexNumber("7","8");
+        BigDecimal expResult = new BigDecimal("7");
+        BigDecimal result = instance.getReal();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getImaginary method, of class ComplexNumber.
+     */
+    @Test
+    public void testGetImaginary() {
+        System.out.println("getImaginary");
+        ComplexNumber instance = new ComplexNumber("7","8");
+        BigDecimal expResult = new BigDecimal("8");
+        BigDecimal result = instance.getImaginary();
+        assertEquals(expResult, result);
+    }
+
+    
+
+    /**
+     * Test of equals method, of class ComplexNumber.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Object obj = null;
+        ComplexNumber instance = new ComplexNumber("5","8");
+        boolean expResult = true;
+        boolean result = instance.equals(new ComplexNumber("5.0","8.00"));
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of toString method, of class ComplexNumber.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        ComplexNumber instance = new ComplexNumber("5","8");
+        String expResult = "ComplexNumber{real=5, imaginary=8}";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+    }
+
+    
+    
+    
     
     
 
