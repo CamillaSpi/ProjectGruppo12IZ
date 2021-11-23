@@ -91,7 +91,7 @@ public class CalculatorTest {
     }
     
     /**
-     * Test of addiction method, of class Calculator, having only imaginary part.
+     * Test of addiction method, of class Calculator, having one operand with only imaginary part.
      */
     @Test
     public void testAddictionNoReal() {
@@ -104,7 +104,7 @@ public class CalculatorTest {
     }
     
     /**
-     * Test of addiction method, of class Calculator, having only real part.
+     * Test of addiction method, of class Calculator, having one operand with only real part.
      */
     @Test
     public void testAddictionNoImag() {
@@ -123,12 +123,12 @@ public class CalculatorTest {
     @Test
     public void testAddictionNull() {
         System.out.println("addiction with one operand null");
-        ComplexNumber b = new ComplexNumber("3.5", "0");
+        ComplexNumber b = new ComplexNumber("3.5", "-4.2");
         ComplexNumber result = Calculator.addiction(null, b);
         assertEquals(null, result);
     }
     
-        /**
+    /**
      * Test of addiction method, of class Calculator, having both operands null.
      */
     @Test
@@ -184,6 +184,121 @@ public class CalculatorTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
+        /**
+     * Test of division method, of class Calculator, having concordant operands both positive.
+     */
+    @Test
+    public void testDivisionConcordantPositive() {
+        System.out.println("division with concordant positive operands");
+        ComplexNumber a = new ComplexNumber("8.2","7.4");
+        ComplexNumber b = new ComplexNumber("6.85","8.51");
+        ComplexNumber expResult = new ComplexNumber("0.99833", "0.15997");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of division method, of class Calculator, having concordant operands both negative.
+     */
+    @Test
+    public void testDivisionConcordantNegative() {
+        System.out.println("division with concordant negative operands");
+        ComplexNumber a = new ComplexNumber("-9.30","-4.50");
+        ComplexNumber b = new ComplexNumber("-6.5", "-18.9");
+        ComplexNumber expResult = new ComplexNumber("0.3642", "-0.3668");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of division method, of class Calculator, having discordant real part.
+     */
+    @Test
+    public void testDivisionDiscordantReal() {
+        System.out.println("division with discordant real part");
+        ComplexNumber a = new ComplexNumber("-12.45","-4.15");
+        ComplexNumber b = new ComplexNumber("6.76", "-11.7");
+        ComplexNumber expResult = new ComplexNumber("-0.195", "0.951");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of division method, of class Calculator, having discordant imaginary part.
+     */
+    @Test
+    public void testDivisionDiscordantImag() {
+        System.out.println("division with discordant imaginary part");
+        ComplexNumber a = new ComplexNumber("2.76", "-8.95");
+        ComplexNumber b = new ComplexNumber("8.47", "1.98");
+        ComplexNumber expResult = new ComplexNumber("0.0748", "-1.0741");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    
+    
+    /**
+     * Test of division method, of class Calculator, with imaginary operands.
+     */
+    @Test
+    public void testDivisionNoReal() {
+        System.out.println("division with imaginary operands");
+        ComplexNumber a = new ComplexNumber("0", "4.95");
+        ComplexNumber b = new ComplexNumber("0", "15.85");
+        ComplexNumber expResult = new ComplexNumber("0", "0.31");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of addiction method, of class Calculator, with real operands.
+     */
+    @Test
+    public void testDivisionNoImag() {
+        System.out.println("division with imaginary real operands");
+        ComplexNumber a = new ComplexNumber("-1.65", "0");
+        ComplexNumber b = new ComplexNumber("5.53", "0");
+        ComplexNumber expResult = new ComplexNumber("-0,29", "0");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of division method, of class Calculator, having divisor equal to zero.
+     */
+    @Test
+    public void testDivisionNoDivisor() {
+        System.out.println("division with the divisor equal to zero");
+        ComplexNumber a = new ComplexNumber("4.5", "-3.2");
+        ComplexNumber b = new ComplexNumber("0", "0");
+        ComplexNumber result = Calculator.division(a, b);
+        assertEquals(null, result);
+    }
+    
+    
+    /**
+     * Test of division method, of class Calculator, having one operand null.
+     */
+    @Test
+    public void testDivisionNull() {
+        System.out.println("division with one operand null");
+        ComplexNumber b = new ComplexNumber("4.5", "-3.2");
+        ComplexNumber result = Calculator.division(null, b);
+        assertEquals(null, result);
+    }
+    
+    /**
+     * Test of division method, of class Calculator, having both operands null.
+     */
+    @Test
+    public void testDivisionBothNull() {
+        System.out.println("division with both operands null");
+        ComplexNumber result = Calculator.division(null, null);
+        assertEquals(null, result);
+    }
+    
 
     /**
      * Test of squareRoot method, of class Calculator.
