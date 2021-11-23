@@ -203,14 +203,52 @@ public class CalculatorTest {
      * Test of invertSign method, of class Calculator.
      */
     @Test
-    public void testInvertSign() {
+    public void testInvertSignPosPos() {
         System.out.println("invertSign");
-        ComplexNumber a = null;
-        ComplexNumber expResult = null;
+        ComplexNumber a = new ComplexNumber("3", "5");
         ComplexNumber result = Calculator.invertSign(a);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignNegPos() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("-3", "5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignPosNeg() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("3", "-5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignNegNeg() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("-3", "-5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    @Test
+    public void testInvertSignZero() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("0", "0");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
     }
     
 }
