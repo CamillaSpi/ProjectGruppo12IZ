@@ -69,7 +69,7 @@ public class OperandCollectionTest {
     public void testRemoveNotEmptyCollection() {
         System.out.println("remove a complex Number from a not empty collection");
         OperandCollection instance = new OperandCollection();
-        instance.insert(new ComplexNumber(5, 5));
+        instance.insert(new ComplexNumber("5", "5"));
         ComplexNumber result = instance.remove();
         assertNotNull(result);
     }
@@ -94,7 +94,7 @@ public class OperandCollectionTest {
     public void testLastNotEmptyCollection() {
         System.out.println("return last complex Number from a not empty collection");
         OperandCollection instance = new OperandCollection();
-        instance.insert(new ComplexNumber(5, 5));
+        instance.insert(new ComplexNumber("5", "-5"));
         ComplexNumber result = instance.last();
         assertNotNull(result);
     }
