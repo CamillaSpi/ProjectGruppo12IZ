@@ -135,7 +135,7 @@ public class ComplexNumber {
     public BigDecimal getImaginary() {
         return imaginary;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
