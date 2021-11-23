@@ -43,7 +43,7 @@ public class OperandCollectionTest {
     @Test
     public void testInsertCorrectNumber() {
         System.out.println("insert a complex Number correctly created");
-        ComplexNumber a = new ComplexNumber(1000, 1000);
+        ComplexNumber a = new ComplexNumber("1000", "1000");
         OperandCollection instance = new OperandCollection();
         instance.insert(a);
         assertEquals(1, instance.collectionLength());
