@@ -5,35 +5,61 @@
  */
 package modelClassPackage;
 
+import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author nando
- * @time Nov 22, 2021 4:44:07 PM
+ *
  */
 public class ComplexNumber {
 
-    private final double real;
-    private final double imaginary;
+    private final BigDecimal real;
+    private final BigDecimal imaginary;
 
-    public ComplexNumber(double real, double imaginary) {
+    /**
+     *
+     * Initialies a new istance of the ComplexNumber class.
+     *
+     * @param real its contains the real part of the complex number
+     * @param imaginary its contains the imaginary part of the complex number
+     * (without j)
+     */
+    public ComplexNumber(BigDecimal real, BigDecimal imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
+    public ComplexNumber(float real, float imaginary) {
+        this.real = new BigDecimal(Float.toString(real));
+        this.imaginary = new BigDecimal(Float.toString(imaginary));
+    }
 
+    public ComplexNumber(String real, String imaginary) {
+        this.real = new BigDecimal(real);
+        this.imaginary = new BigDecimal(imaginary);
+    }
+
+    /**
+     *
+     * This is a static class that analyze the string and if the strings is in
+     * Cartesian form return an ComplexNumber object
+     *
+     * @param complexNumber the string to analyze
+     * @return a ComplexNumber if the string is in Cartesian form otherwise null
+     */
     public static ComplexNumber create(String complexNumber) {
 
         Pattern complexNumberPattern;
-        double real = 0;
-        double imaginary = 0;
         Boolean flag = false;
-        if (complexNumber == null){
+        if (complexNumber == null) {
             System.out.println("The string is empty");
             return null;
         }
-        if (complexNumber.charAt(complexNumber.length()-1) != 'j' && (complexNumber.charAt(complexNumber.length()-1) < '0' && complexNumber.charAt(complexNumber.length()-1) > '9')) {
+        //check if the last elements is a j or a number otherwise there is a problem
+        if (complexNumber.charAt(complexNumber.length() - 1) != 'j' && (complexNumber.charAt(complexNumber.length() - 1) < '0' && complexNumber.charAt(complexNumber.length() - 1) > '9')) {
             System.out.println("The last elements is not a j or a number");
             return null;
         }
@@ -46,25 +72,20 @@ public class ComplexNumber {
                     // it contains - x - j
                     complexNumberPattern = Pattern.compile("{1,}[+-][0-9]{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
-                        String realSTr = complexNumber.charAt(0) + complexNumber.substring(1).split("[+-]")[0];
-                        real = Double.parseDouble(realSTr);
-                        imaginary = Double.parseDouble(complexNumber.substring(realSTr.length(), complexNumber.length() - 1));
-                    
-                        flag = true;
+                        String realStr = complexNumber.charAt(0) + complexNumber.substring(1).split("[+-]")[0];
+                        return new ComplexNumber(realStr, complexNumber.substring(realStr.length(), complexNumber.length() - 1));
                     }
                 } else {
                     //it contains - j
                     complexNumberPattern = Pattern.compile("{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
-                        imaginary = Double.parseDouble(complexNumber.substring(0, complexNumber.length() - 1));
-                        flag = true;
+                        return new ComplexNumber("0", complexNumber.substring(0, complexNumber.length() - 1));
                     }
                 }
             } else {
                 complexNumberPattern = Pattern.compile("{1,}[+-][0-9]");
                 if (complexNumberPattern.matcher(complexNumber).matches()) {
-                    real = Double.parseDouble(complexNumber);
-                    flag = true;
+                    return new ComplexNumber(complexNumber, "0");
                 }
             }
         } else {
@@ -74,39 +95,39 @@ public class ComplexNumber {
                     // it contains x - j
                     complexNumberPattern = Pattern.compile("[0-9]{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
-                        real = Double.parseDouble(complexNumber.substring(0).split("[+-]")[0]);
-                        imaginary = Double.parseDouble(complexNumber.substring(0, complexNumber.length() - 1).split("[+-]")[1]);
-                        flag = true;
+                        return new ComplexNumber(complexNumber.substring(0).split("[+-]")[0], complexNumber.substring(0, complexNumber.length() - 1).split("[+-]")[1]);
+
                     }
                 } else {
                     //it contains j
                     complexNumberPattern = Pattern.compile("[0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
-                        imaginary = Double.parseDouble(complexNumber.substring(0, complexNumber.length() - 1));
-                        flag = true;
+                        return new ComplexNumber("0", complexNumber.substring(0, complexNumber.length() - 1));
                     }
                 }
             } else {
                 complexNumberPattern = Pattern.compile("{1,}[0-9]");
                 if (complexNumberPattern.matcher(complexNumber).matches()) {
-                    real = Double.parseDouble(complexNumber);
-                    flag = true;
+                    return new ComplexNumber(complexNumber, "0");
                 }
             }
         }
-        if (flag) {
-            return new ComplexNumber(real, imaginary);
-        } else {
-            System.out.println("Not in Cartesian form");
-            return null;
-        }
+        return null;
     }
 
-    public double getReal() {
+    /**
+     *
+     * @return the real part of the complex number
+     */
+    public BigDecimal getReal() {
         return real;
     }
 
-    public double getImaginary() {
+    /**
+     *
+     * @return the real part of the complex number
+     */
+    public BigDecimal getImaginary() {
         return imaginary;
     }
 
@@ -128,12 +149,14 @@ public class ComplexNumber {
             return false;
         }
         final ComplexNumber other = (ComplexNumber) obj;
-        if (Double.doubleToLongBits(this.real) != Double.doubleToLongBits(other.real)) {
+        if (!Objects.equals(this.real, other.real)) {
             return false;
         }
-        return Double.doubleToLongBits(this.imaginary) == Double.doubleToLongBits(other.imaginary);
+        if (!Objects.equals(this.imaginary, other.imaginary)) {
+            return false;
+        }
+        return true;
     }
-
 
 
     @Override
