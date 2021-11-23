@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import modelClassPackage.ComplexNumber;
+import modelClassPackage.MyOperandCollection;
 
 /**
  *
@@ -19,6 +21,7 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
     
+    MyOperandCollection collector = new MyOperandCollection();
     @FXML
     private Label label;
     @FXML
@@ -30,9 +33,15 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Hello World! test 5");
     }
     
+    public boolean pushIntoStack(ComplexNumber num){
+        int length = collector.collectionLength();
+        collector.insert(num) ;
+        return length < collector.collectionLength();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
     
