@@ -7,6 +7,7 @@
 package modelClassPackage;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  *
@@ -102,11 +103,12 @@ public class Calculator {
             System.out.println("Division cannot be performed with divisor equal to 0");
             return null;
         }
+        
         ComplexNumber coniugDivisor = Calculator.conjugated(b);
         ComplexNumber num = Calculator.multiplication(a, coniugDivisor);
         ComplexNumber div = Calculator.multiplication(b, coniugDivisor);
-        BigDecimal realRes = num.getReal().divide(div.getReal());
-        BigDecimal imagRes = num.getImaginary().divide(div.getReal());
+        BigDecimal realRes = num.getReal().divide(div.getReal(),new MathContext(10));
+        BigDecimal imagRes = num.getImaginary().divide(div.getReal(),new MathContext(10));
         ComplexNumber res = new ComplexNumber(realRes, imagRes);
         return res;
     }

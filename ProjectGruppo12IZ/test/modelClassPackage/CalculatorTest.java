@@ -335,31 +335,18 @@ public class CalculatorTest {
         assertEquals(null, result);
     }
     
-    /**
-     * Test of division method, of class Calculator.
-     */
-    @Test
-    public void testDivision() {
-        System.out.println("division");
-        ComplexNumber a = null;
-        ComplexNumber b = null;
-        ComplexNumber expResult = null;
-        ComplexNumber result = Calculator.division(a, b);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
-        /**
+    /**
      * Test of division method, of class Calculator, having concordant operands both positive.
      */
     @Test
     public void testDivisionConcordantPositive() {
         System.out.println("division with concordant positive operands");
-        ComplexNumber a = new ComplexNumber("8.2","7.4");
-        ComplexNumber b = new ComplexNumber("6.85","8.51");
-        ComplexNumber expResult = new ComplexNumber("0.99833", "0.15997");
+        ComplexNumber a = new ComplexNumber("8.2","7.8");
+        ComplexNumber b = new ComplexNumber("6.47","8.1167");
+        ComplexNumber expResult = new ComplexNumber("1.080029734", "-0.1493473481");
         ComplexNumber result = Calculator.division(a, b);
+        
         assertEquals(expResult, result);
     }
     
@@ -371,7 +358,7 @@ public class CalculatorTest {
         System.out.println("division with concordant negative operands");
         ComplexNumber a = new ComplexNumber("-9.30","-4.50");
         ComplexNumber b = new ComplexNumber("-6.5", "-18.9");
-        ComplexNumber expResult = new ComplexNumber("0.3642", "-0.3668");
+        ComplexNumber expResult = new ComplexNumber("0.3642417263", "-0.3667951735");
         ComplexNumber result = Calculator.division(a, b);
         assertEquals(expResult, result);
     }
@@ -384,7 +371,7 @@ public class CalculatorTest {
         System.out.println("division with discordant real part");
         ComplexNumber a = new ComplexNumber("-12.45","-4.15");
         ComplexNumber b = new ComplexNumber("6.76", "-11.7");
-        ComplexNumber expResult = new ComplexNumber("-0.195", "0.951");
+        ComplexNumber expResult = new ComplexNumber("-0.1950132430", "-0.9514282459");
         ComplexNumber result = Calculator.division(a, b);
         assertEquals(expResult, result);
     }
@@ -397,7 +384,7 @@ public class CalculatorTest {
         System.out.println("division with discordant imaginary part");
         ComplexNumber a = new ComplexNumber("2.76", "-8.95");
         ComplexNumber b = new ComplexNumber("8.47", "1.98");
-        ComplexNumber expResult = new ComplexNumber("0.0748", "-1.0741");
+        ComplexNumber expResult = new ComplexNumber("0.07475684399", "-1.074146228");
         ComplexNumber result = Calculator.division(a, b);
         assertEquals(expResult, result);
     }
@@ -412,7 +399,7 @@ public class CalculatorTest {
         System.out.println("division with imaginary operands");
         ComplexNumber a = new ComplexNumber("0", "4.95");
         ComplexNumber b = new ComplexNumber("0", "15.85");
-        ComplexNumber expResult = new ComplexNumber("0", "0.31");
+        ComplexNumber expResult = new ComplexNumber("0.3123028391", "0");
         ComplexNumber result = Calculator.division(a, b);
         assertEquals(expResult, result);
     }
@@ -425,7 +412,7 @@ public class CalculatorTest {
         System.out.println("division with imaginary real operands");
         ComplexNumber a = new ComplexNumber("-1.65", "0");
         ComplexNumber b = new ComplexNumber("5.53", "0");
-        ComplexNumber expResult = new ComplexNumber("-0,29", "0");
+        ComplexNumber expResult = new ComplexNumber("-0.2983725136", "0");
         ComplexNumber result = Calculator.division(a, b);
         assertEquals(expResult, result);
     }
