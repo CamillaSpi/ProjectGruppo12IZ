@@ -9,7 +9,6 @@ package modelClassPackage;
 /**
  *
  * @author nando
- * @time Nov 22, 2021 4:49:32 PM
  */
 public class MyOperandCollection extends OperandCollection {
     

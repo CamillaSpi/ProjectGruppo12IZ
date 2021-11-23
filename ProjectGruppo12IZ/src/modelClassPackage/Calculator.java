@@ -9,7 +9,6 @@ package modelClassPackage;
 /**
  *
  * @author nando
- * @time Nov 22, 2021 4:45:56 PM
  */
 public class Calculator {
     
