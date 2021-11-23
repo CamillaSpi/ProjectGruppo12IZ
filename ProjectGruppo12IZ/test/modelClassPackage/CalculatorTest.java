@@ -116,7 +116,6 @@ public class CalculatorTest {
         assertEquals(expResult, result);
     }
     
-        
     /**
      * Test of addiction method, of class Calculator, having one operand null.
      */
@@ -138,38 +137,204 @@ public class CalculatorTest {
         assertEquals(null, result);
     }
     
-    
-    
     /**
-     * Test of subtraction method, of class Calculator.
+     * Test of subtraction method, of class Calculator, having concordant minuend and subtrahend both positive.
      */
     @Test
-    public void testSubtraction() {
-        System.out.println("subtraction");
-        ComplexNumber a = null;
-        ComplexNumber b = null;
-        ComplexNumber expResult = null;
+    public void testSubtractionConcordantPositive() {
+        System.out.println("subtraction with concordant positive minuend and subtrahend");
+        ComplexNumber a = new ComplexNumber("3.4","2.43");
+        ComplexNumber b = new ComplexNumber("10.1","6.1");
+        ComplexNumber expResult = new ComplexNumber("-6.7","-3.67");
         ComplexNumber result = Calculator.subtraction(a, b);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
+    
     /**
-     * Test of multiplication method, of class Calculator.
+     * Test of subtraction method, of class Calculator, having concordant minuend and subtrahend both negative.
      */
     @Test
-    public void testMultiplication() {
-        System.out.println("multiplication");
-        ComplexNumber a = null;
-        ComplexNumber b = null;
-        ComplexNumber expResult = null;
+    public void testSubtractionConcordantNegative() {
+        System.out.println("subtraction with concordant negative minuend and subtrahend");
+        ComplexNumber a = new ComplexNumber("-6.4","-7.63");
+        ComplexNumber b = new ComplexNumber("-11.2","-8.1");
+        ComplexNumber expResult = new ComplexNumber("4.8","0.47");
+        ComplexNumber result = Calculator.subtraction(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having discordant real part.
+     */
+    @Test
+    public void testSubtractionDiscordantReal() {
+        System.out.println("subtraction with discordant real part");
+        ComplexNumber a = new ComplexNumber("-1.45","-14.55");
+        ComplexNumber b = new ComplexNumber("2.88", "-1.98");
+        ComplexNumber expResult = new ComplexNumber("-4.33", "-12.57");
+        ComplexNumber result = Calculator.subtraction(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having discordant imaginary part.
+     */
+    @Test
+    public void testSubtractionDiscordantImag() {
+        System.out.println("subtraction with discordant imaginary part");
+        ComplexNumber a = new ComplexNumber("2.47", "-14.55");
+        ComplexNumber b = new ComplexNumber("8.53", "13.98");
+        ComplexNumber expResult = new ComplexNumber("-6.06", "-28.53");
+        ComplexNumber result = Calculator.subtraction(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having only imaginary part.
+     */
+    @Test
+    public void testSubtractionNoReal() {
+        System.out.println("subtraction with real part equal to 0");
+        ComplexNumber a = new ComplexNumber("0", "3.08");
+        ComplexNumber b = new ComplexNumber("0", "1.11");
+        ComplexNumber expResult = new ComplexNumber("0", "1.97");
+        ComplexNumber result = Calculator.subtraction(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having only real part.
+     */
+    @Test
+    public void testSubtractionNoImag() {
+        System.out.println("subtraction with imaginary part equal to 0");
+        ComplexNumber a = new ComplexNumber("23.2", "0");
+        ComplexNumber b = new ComplexNumber("-7.6", "0");
+        ComplexNumber expResult = new ComplexNumber("30.8", "0");
+        ComplexNumber result = Calculator.subtraction(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having one operand null.
+     */
+    @Test
+    public void testSubtractionNull() {
+        System.out.println("subtraction with one operand null");
+        ComplexNumber a = new ComplexNumber("1.2", "0");
+        ComplexNumber result = Calculator.subtraction(a, null);
+        assertEquals(null, result);
+    }
+    
+    /**
+     * Test of subtraction method, of class Calculator, having both operands null.
+     */
+    @Test
+    public void testSubtractionBothNull() {
+        System.out.println("subtraction with both operands null");
+        ComplexNumber result = Calculator.addiction(null, null);
+        assertEquals(null, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having factors both positive.
+     */
+    @Test
+    public void testMultiplicationConcordantPositive() {
+        System.out.println("multiplication with both factors concordant positive");
+        ComplexNumber a = new ComplexNumber("1.23","12.2");
+        ComplexNumber b = new ComplexNumber("2.34","1.11");
+        ComplexNumber expResult = new ComplexNumber("-10.6638","29.9133");
         ComplexNumber result = Calculator.multiplication(a, b);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
+    
+    /**
+     * Test of multiplication method, of class Calculator, having factors both negative.
+     */
+    @Test
+    public void testMultiplicationConcordantNegative() {
+        System.out.println("multiplication with both factors concordant negative");
+        ComplexNumber a = new ComplexNumber("-2.4","-3.03");
+        ComplexNumber b = new ComplexNumber("-1.2","-3.1");
+        ComplexNumber expResult = new ComplexNumber("-6.513","11.076");
+        ComplexNumber result = Calculator.multiplication(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having discordant real part.
+     */
+    @Test
+    public void testMultiplicationDiscordantReal() {
+        System.out.println("multiplication with discordant real part");
+        ComplexNumber a = new ComplexNumber("-1.55","2.65");
+        ComplexNumber b = new ComplexNumber("1.48", "3.98");
+        ComplexNumber expResult = new ComplexNumber("-12.841", "-2.247");
+        ComplexNumber result = Calculator.multiplication(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having discordant imaginary part.
+     */
+    @Test
+    public void testMultiplicationDiscordantImag() {
+        System.out.println("multiplication with discordant imaginary part");
+        ComplexNumber a = new ComplexNumber("-6.67", "1.45");
+        ComplexNumber b = new ComplexNumber("-8.83", "-3.89");
+        ComplexNumber expResult = new ComplexNumber("64.5366", "13.1428");
+        ComplexNumber result = Calculator.multiplication(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having only imaginary part.
+     */
+    @Test
+    public void testMultiplicationNoReal() {
+        System.out.println("multiplication with real part equal to 0");
+        ComplexNumber a = new ComplexNumber("0", "-6.08");
+        ComplexNumber b = new ComplexNumber("0", "-1.21");
+        ComplexNumber expResult = new ComplexNumber("-7.3568", "0");
+        ComplexNumber result = Calculator.multiplication(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having only real part.
+     */
+    @Test
+    public void testMultiplicationNoImag() {
+        System.out.println("multiplication with imaginary part equal to 0");
+        ComplexNumber a = new ComplexNumber("13.02", "0");
+        ComplexNumber b = new ComplexNumber("6", "0");
+        ComplexNumber expResult = new ComplexNumber("78.12", "0");
+        ComplexNumber result = Calculator.multiplication(a, b);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having one factor null.
+     */
+    @Test
+    public void testMultiplicationNull() {
+        System.out.println("multiplication with one operand null");
+        ComplexNumber a = new ComplexNumber("1.2", "1");
+        ComplexNumber result = Calculator.multiplication(a, null);
+        assertEquals(null, result);
+    }
+    
+    /**
+     * Test of multiplication method, of class Calculator, having both factors null.
+     */
+    @Test
+    public void testMultiplicationBothNull() {
+        System.out.println("multiplication with both operands null");
+        ComplexNumber result = Calculator.multiplication(null, null);
+        assertEquals(null, result);
+    }
+    
     /**
      * Test of division method, of class Calculator.
      */
@@ -318,14 +483,83 @@ public class CalculatorTest {
      * Test of invertSign method, of class Calculator.
      */
     @Test
-    public void testInvertSign() {
+    public void testInvertSignPosPos() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("3", "5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignNegPos() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("-3", "5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignPosNeg() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("3", "-5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    /**
+     * Test of invertSign method, of class Calculator.
+     */
+    @Test
+    public void testInvertSignNegNeg() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("-3", "-5");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    @Test
+    public void testInvertSignZero() {
+        System.out.println("invertSign");
+        ComplexNumber a = new ComplexNumber("0", "0");
+        ComplexNumber result = Calculator.invertSign(a);
+        assertEquals(new BigDecimal("0"), result.getReal().add(a.getReal()).add(result.getImaginary().add(a.getImaginary())));
+    }
+    
+    @Test
+    public void testInvertSignNull() {
         System.out.println("invertSign");
         ComplexNumber a = null;
-        ComplexNumber expResult = null;
         ComplexNumber result = Calculator.invertSign(a);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(a, result);
     }
+     /**
+     * Test of Conjugate method, of class Calculator. positive imaginary to negative
+     */
+    @Test
+    public void testConjugatedPos() {
+        System.out.println("Conjugate positive imaginary to negative ");
+        ComplexNumber a = new ComplexNumber("5", "+7");
+        ComplexNumber b = new ComplexNumber("5", "-7");
+        ComplexNumber result = Calculator.conjugated(b);
+        assertEquals(a, result);
+    }
+     /**
+     * Test of Conjugate method, of class Calculator. Negative imaginary to positive 
+     */
+    @Test
+    public void testConjugatedNeg() {
+        System.out.println("Conjugate negative imaginary to positive ");
+        ComplexNumber a = new ComplexNumber("5", "-7");
+        ComplexNumber b = new ComplexNumber("5", "7");
+        ComplexNumber result = Calculator.conjugated(b);
+        assertEquals(a, result);
+    }
+    
     
 }
