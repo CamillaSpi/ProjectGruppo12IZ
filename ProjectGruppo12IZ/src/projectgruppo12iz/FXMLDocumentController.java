@@ -116,7 +116,6 @@ public class FXMLDocumentController implements Initializable {
                 confirmAlert.setHeaderText("Subtraction done succesfully!");
                 confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
             }
-                
         }
     }
 
