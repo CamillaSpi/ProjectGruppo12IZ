@@ -78,5 +78,17 @@ public class FXMLDocumentControllerTest {
         boolean expResult = false;
         assertEquals(expResult, instance.pushIntoStack(num));
     }
+    
+    /**
+     * Test of sub method, of class FXMLDocumentController.
+     */
+    @Test
+    public void testSub() {
+        System.out.println("push into stack an incorrect ComplexNumber");
+        ComplexNumber num = null;
+        FXMLDocumentController instance = new FXMLDocumentController();
+        boolean expResult = false;
+        assertEquals(expResult, instance.pushIntoStack(num));
+    }
 
 }

@@ -101,20 +101,22 @@ public class FXMLDocumentController implements Initializable {
             errorAlert.showAndWait();
         }
         else{
-            ComplexNumber b = collector.pop();
-            ComplexNumber a = collector.pop();
+            ComplexNumber b = collector.remove();
+            ComplexNumber a = collector.remove();
             ComplexNumber result = Calculator.subtraction(a, b);
+            System.out.println(result);
             boolean tmp = pushIntoStack(result);
+            System.out.println(collector.last());
             if(tmp == false){
                 Alert errorAlert = new Alert(AlertType.ERROR);
-                errorAlert.setHeaderText("Subtraction Operation can't be performed!");
-                errorAlert.setContentText("You didn't insert at least two operands");
+                errorAlert.setHeaderText("Error during subtraction");
                 errorAlert.showAndWait();
             }
             else{
                 Alert confirmAlert = new Alert(AlertType.INFORMATION);
                 confirmAlert.setHeaderText("Subtraction done succesfully!");
                 confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+                confirmAlert.showAndWait();
             }
         }
     }
