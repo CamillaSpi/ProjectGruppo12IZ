@@ -54,6 +54,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
+        ComplexNumber checkNum = ComplexNumber.create(textArea.getText());
+        if(checkNum != null){
+            if(this.pushIntoStack(checkNum)){
+                System.out.println("number entered correctly");
+                textArea.clear();
+            }
+            else
+                System.out.println("the number to be entered is not stored correctly");
+        }else
+            System.out.println("the number to be entered was not written correctly");
     }
 
     
