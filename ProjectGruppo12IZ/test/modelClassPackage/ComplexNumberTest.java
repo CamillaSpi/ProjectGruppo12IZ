@@ -38,6 +38,28 @@ public class ComplexNumberTest {
         ComplexNumber result = ComplexNumber.create(complexNumber);
         assertEquals(expResult, result);
     }
+     /**
+     * Test of create method with Cartesian Notation +x-j
+     */
+    @Test
+    public void testCreateCartNoSignMinus() {
+        System.out.println("Cartesian Notation (x-j)");
+        String complexNumber = "5-7j";
+        ComplexNumber expResult = new ComplexNumber("5", "-7");
+        ComplexNumber result = ComplexNumber.create(complexNumber);
+        assertEquals(expResult, result);
+    }
+      /**
+     * Test of create method with Cartesian Notation +x-j
+     */
+    @Test
+    public void testCreateCartNoSignPlus() {
+        System.out.println("Cartesian Notation (x+j)");
+        String complexNumber = "5+7j";
+        ComplexNumber expResult = new ComplexNumber("5", "+7");
+        ComplexNumber result = ComplexNumber.create(complexNumber);
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of create method with Cartesian Notation -x-j
