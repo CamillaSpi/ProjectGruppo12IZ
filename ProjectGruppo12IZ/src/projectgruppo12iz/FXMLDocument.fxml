@@ -19,6 +19,20 @@
                         <Button mnemonicParsing="false" onAction="#handleEnterAction" text="Enter" />
                      </children>
                   </HBox>
+                  <HBox layoutX="14.0" layoutY="143.0" prefHeight="100.0" prefWidth="362.0">
+                     <children>
+                        <Button fx:id="sumButton" mnemonicParsing="false" onAction="#add" text="SUM" />
+                        <Button fx:id="subButton" mnemonicParsing="false" onAction="#sub" text="SUB" />
+                        <Button fx:id="molButton" mnemonicParsing="false" onAction="#multiply" text="MOL" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="14.0" layoutY="236.0" prefHeight="100.0" prefWidth="362.0">
+                     <children>
+                        <Button fx:id="divButton" mnemonicParsing="false" onAction="#division" text="DIV" />
+                        <Button fx:id="sqrtButton" mnemonicParsing="false" onAction="#sqrt" text="SQRT" />
+                        <Button fx:id="invertSignButton" mnemonicParsing="false" onAction="#invertSign" text="+/-" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
