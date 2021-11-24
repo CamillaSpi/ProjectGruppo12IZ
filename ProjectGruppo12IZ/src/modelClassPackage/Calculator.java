@@ -28,7 +28,7 @@ public class Calculator {
      * @param b the second complex number to add
      * @return
      */
-    static ComplexNumber addiction(ComplexNumber a, ComplexNumber b) {
+    public static ComplexNumber addiction(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
             System.out.println("Addiction cannot be performed");
             return null;
@@ -51,7 +51,7 @@ public class Calculator {
      *
      *
      */
-    static ComplexNumber subtraction(ComplexNumber a, ComplexNumber b) {
+    public static ComplexNumber subtraction(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
             System.out.println("Subtraction cannot be performed");
             return null;
@@ -78,7 +78,7 @@ public class Calculator {
      * @see ComplexNumber
      *
      */
-    static ComplexNumber multiplication(ComplexNumber first, ComplexNumber second) {
+    public static ComplexNumber multiplication(ComplexNumber first, ComplexNumber second) {
         if (first == null || second == null) {
             System.out.println("Multiplication cannot be performed");
             return null;
@@ -106,7 +106,7 @@ public class Calculator {
      * zero or one of the input parameters is null
      * @see ComplexNumber
      */
-    static ComplexNumber division(ComplexNumber a, ComplexNumber b) {
+    public static ComplexNumber division(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
             System.out.println("Division cannot be performed");
             return null;
@@ -137,7 +137,7 @@ public class Calculator {
      *
      */
 
-    static ComplexNumber squareRoot(ComplexNumber a) {
+    public static ComplexNumber squareRoot(ComplexNumber a) {
         if (a == null) {
             System.out.println("square Root cannot be performed");
             return null;
@@ -198,7 +198,7 @@ public class Calculator {
      * @see ComplexNumber
      *
      */
-    static ComplexNumber invertSign(ComplexNumber a) {
+    public static ComplexNumber invertSign(ComplexNumber a) {
         if (a != null) {
             return new ComplexNumber(a.getReal().negate(), a.getImaginary().negate());
         } else {
@@ -218,7 +218,7 @@ public class Calculator {
      * @see ComplexNumber
      *
      */
-    static ComplexNumber conjugated(ComplexNumber a) {
+    public static ComplexNumber conjugated(ComplexNumber a) {
         if (a != null) {
             return new ComplexNumber(a.getReal(), a.getImaginary().negate());
         } else {

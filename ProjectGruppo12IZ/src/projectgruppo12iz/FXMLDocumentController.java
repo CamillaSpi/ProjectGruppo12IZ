@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 
@@ -61,7 +62,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) {
+        if (collector.collectionLength() < 2){
+            System.out.println("You didn't insert 2 elements!");
+        }
+         System.out.println("NOT IMPLEMENTED!");
         return ;
+        
     }
 
     
