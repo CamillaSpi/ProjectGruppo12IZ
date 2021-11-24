@@ -21,7 +21,7 @@
                   </HBox>
                   <HBox layoutX="14.0" layoutY="143.0" prefHeight="100.0" prefWidth="362.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="sumButton" mnemonicParsing="false" onAction="#add" text="SUM" />
                         <Button mnemonicParsing="false" text="Button" />
                         <Button mnemonicParsing="false" text="Button" />
                      </children>

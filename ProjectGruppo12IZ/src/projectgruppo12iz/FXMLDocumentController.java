@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,6 +35,8 @@ public class FXMLDocumentController implements Initializable {
     private TableView<ComplexNumber> OperandsTable;
     @FXML
     private TableColumn<ComplexNumber, String> OperandsClm;
+    @FXML
+    private Button sumButton;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -54,6 +57,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void add(ActionEvent event) {
+        return ;
     }
 
     
