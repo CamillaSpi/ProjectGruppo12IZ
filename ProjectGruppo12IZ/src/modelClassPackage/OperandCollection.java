@@ -6,6 +6,7 @@
 
 package modelClassPackage;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -66,4 +67,36 @@ public class OperandCollection extends Stack<ComplexNumber>{
         return super.elementCount;
     }
 
+    public void stamp(){
+        //get an iterator for the stack 
+        System.out.println("Stack elements:"); 
+        //traverse the stack using iterator in a loop and print each element 
+        Iterator iterator = this.iterator(); 
+        while(iterator.hasNext()){ 
+            System.out.println(iterator.next() + " "); 
+        } 
+    } 
+    
+    /*@Override
+    public Iterator<OperandCollection> iterator() {
+        Iterator<OperandCollection> it = new Iterator<OperandCollection>() {
+
+            private int currentIndex = 0;
+            @Override
+            public boolean hasNext() {
+                return currentIndex < collectionLength() && this[currentIndex] != null;
+            }
+
+            @Override
+            public Type next() {
+                return arrayList[currentIndex++];
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
+    }*/
 }
