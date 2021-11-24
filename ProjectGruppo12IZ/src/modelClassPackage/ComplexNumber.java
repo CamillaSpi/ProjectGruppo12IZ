@@ -97,7 +97,8 @@ public class ComplexNumber {
                     // it contains x - j
                     complexNumberPattern = Pattern.compile("[0-9]{1,}[+-][0-9]{1,}j");
                     if (complexNumberPattern.matcher(complexNumber).matches()) {
-                        return new ComplexNumber(complexNumber.substring(0).split("[+-]")[0], complexNumber.substring(0, complexNumber.length() - 1).split("[+-]")[1]);
+                        String realPart =complexNumber.substring(0).split("[+-]")[0];
+                        return new ComplexNumber(realPart, complexNumber.substring(realPart.length(), complexNumber.length() - 1));
                     }
 
                 } else {

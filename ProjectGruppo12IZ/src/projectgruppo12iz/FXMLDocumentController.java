@@ -66,10 +66,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
-        ComplexNumber a = new ComplexNumber("-11.30", "-4.50");
-        ComplexNumber b = new ComplexNumber("-4.86", "-15.79");
-        pushIntoStack(a);
-        pushIntoStack(b);
+       
     }
 
     @FXML
