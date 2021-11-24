@@ -74,9 +74,16 @@ public class FXMLDocumentController implements Initializable {
     private void add(ActionEvent event) {
         if (collector.collectionLength() < 2){
             System.out.println("You didn't insert 2 elements!");
+            return;
         }
-         System.out.println("NOT IMPLEMENTED!");
-        return ;
+        ComplexNumber result = Calculator.addiction(collector.remove(), collector.remove());
+        if (result != null){
+            pushIntoStack(result);
+        }
+        else{
+            System.out.println("There were some problems");
+        }
+        
         
     }
 
