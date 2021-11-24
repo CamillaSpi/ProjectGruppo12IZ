@@ -123,4 +123,17 @@ public class OperandCollectionTest {
         assertEquals(expResult, result);
     }
     
+    @Test
+    public void testCollection() {
+        System.out.println("return the lenght of the collection");
+        OperandCollection instance = new OperandCollection();
+        instance.insert(new ComplexNumber("5", "5"));
+        instance.insert(new ComplexNumber("7", "5"));
+        instance.insert(new ComplexNumber("-3", "5"));
+        ComplexNumber expResult = new ComplexNumber("-3", "5");
+        ComplexNumber result = instance.remove();
+        System.out.println(result);
+        assertEquals(expResult, result);
+    }
+    
 }

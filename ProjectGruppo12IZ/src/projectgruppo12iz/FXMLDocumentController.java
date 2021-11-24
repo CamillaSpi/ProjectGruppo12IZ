@@ -27,7 +27,6 @@ import modelClassPackage.MyOperandCollection;
 public class FXMLDocumentController implements Initializable {
     
     MyOperandCollection collector = new MyOperandCollection();
-    @FXML
     private Label label;
     @FXML
     private TextArea textArea;
@@ -52,6 +51,10 @@ public class FXMLDocumentController implements Initializable {
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
     }    
+
+    @FXML
+    private void handleEnterAction(ActionEvent event) {
+    }
 
     
     
