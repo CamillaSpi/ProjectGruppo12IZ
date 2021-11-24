@@ -13,6 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -82,6 +84,30 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void sub(ActionEvent event) {
+        if(collector.size() < 2){
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Subtraction Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
+        else{
+            ComplexNumber b = collector.pop();
+            ComplexNumber a = collector.pop();
+            ComplexNumber result = Calculator.subtraction(a, b);
+            boolean tmp = pushIntoStack(result);
+            if(tmp == false){
+                Alert errorAlert = new Alert(AlertType.ERROR);
+                errorAlert.setHeaderText("Subtraction Operation can't be performed!");
+                errorAlert.setContentText("You didn't insert at least two operands");
+                errorAlert.showAndWait();
+            }
+            else{
+                Alert confirmAlert = new Alert(AlertType.INFORMATION);
+                confirmAlert.setHeaderText("Subtraction done succesfully!");
+                confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            }
+                
+        }
     }
 
     @FXML
