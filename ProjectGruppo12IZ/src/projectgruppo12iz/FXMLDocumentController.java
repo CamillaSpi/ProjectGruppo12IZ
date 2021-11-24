@@ -38,6 +38,16 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<ComplexNumber, String> OperandsClm;
     @FXML
     private Button sumButton;
+    @FXML
+    private Button subButton;
+    @FXML
+    private Button molButton;
+    @FXML
+    private Button divButton;
+    @FXML
+    private Button sqrtButton;
+    @FXML
+    private Button invertSignButton;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -68,6 +78,26 @@ public class FXMLDocumentController implements Initializable {
          System.out.println("NOT IMPLEMENTED!");
         return ;
         
+    }
+
+    @FXML
+    private void sub(ActionEvent event) {
+    }
+
+    @FXML
+    private void multiply(ActionEvent event) {
+    }
+
+    @FXML
+    private void division(ActionEvent event) {
+    }
+
+    @FXML
+    private void sqrt(ActionEvent event) {
+    }
+
+    @FXML
+    private void invertSign(ActionEvent event) {
     }
 
     
