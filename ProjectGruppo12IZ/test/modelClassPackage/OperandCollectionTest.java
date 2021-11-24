@@ -135,5 +135,75 @@ public class OperandCollectionTest {
         System.out.println(result);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of insert method, of class OperandCollection.
+     */
+    @Test
+    public void testInsert() {
+        System.out.println("insert");
+        ComplexNumber a = null;
+        OperandCollection instance = new OperandCollection();
+        instance.insert(a);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of remove method, of class OperandCollection.
+     */
+    @Test
+    public void testRemove() {
+        System.out.println("remove");
+        OperandCollection instance = new OperandCollection();
+        ComplexNumber expResult = null;
+        ComplexNumber result = instance.remove();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of last method, of class OperandCollection.
+     */
+    @Test
+    public void testLast() {
+        System.out.println("last");
+        OperandCollection instance = new OperandCollection();
+        ComplexNumber expResult = null;
+        ComplexNumber result = instance.last();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of stamp method, of class OperandCollection.
+     */
+    @Test
+    public void testStamp() {
+        System.out.println("stamp");
+        OperandCollection instance = new OperandCollection();
+        instance.insert(new ComplexNumber("5", "5"));
+        instance.insert(new ComplexNumber("7", "5"));
+        instance.insert(new ComplexNumber("-3", "5"));
+        instance.insert(new ComplexNumber("345", "5"));
+        instance.insert(new ComplexNumber("745", "565"));
+        instance.insert(new ComplexNumber("-398", "775"));
+        instance.stamp();
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println(instance.last());
+        System.out.println(instance.remove());
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        instance.stamp();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
