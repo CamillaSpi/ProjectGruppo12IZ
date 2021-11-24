@@ -7,10 +7,15 @@ package projectgruppo12iz;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
@@ -26,6 +31,10 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     @FXML
     private TextArea textArea;
+    @FXML
+    private TableView<ComplexNumber> OperandsTable;
+    @FXML
+    private TableColumn<ComplexNumber, String> OperandsClm;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -40,7 +49,8 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
+        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
     }    
 
     
