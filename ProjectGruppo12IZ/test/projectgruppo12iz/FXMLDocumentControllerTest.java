@@ -56,42 +56,4 @@ public class FXMLDocumentControllerTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
-
-    /**
-     * Test of pushIntoStack method, of class FXMLDocumentController.
-     */
-    @Test
-    public void testPushIntoStackCorrectNum() {
-        System.out.println("push into stack a correct ComplexNumber");
-        ComplexNumber num = new ComplexNumber("5", "10");
-        FXMLDocumentController instance = new FXMLDocumentController();
-        boolean expResult = true;
-        assertEquals(expResult, instance.pushIntoStack(num));
-    }
-    
-    /**
-     * Test of pushIntoStack method, of class FXMLDocumentController.
-     */
-    @Test
-    public void testPushIntoStackIncorrectIncorrectNum() {
-        System.out.println("push into stack an incorrect ComplexNumber");
-        ComplexNumber num = null;
-        FXMLDocumentController instance = new FXMLDocumentController();
-        boolean expResult = false;
-        assertEquals(expResult, instance.pushIntoStack(num));
-    }
-    
-    /**
-     * Test of sub method, of class FXMLDocumentController.
-     */
-    @Test
-    public void testSub() {
-        System.out.println("push into stack an incorrect ComplexNumber");
-        ComplexNumber num = null;
-        FXMLDocumentController instance = new FXMLDocumentController();
-        boolean expResult = false;
-        assertEquals(expResult, instance.pushIntoStack(num));
-    }
-
 }
