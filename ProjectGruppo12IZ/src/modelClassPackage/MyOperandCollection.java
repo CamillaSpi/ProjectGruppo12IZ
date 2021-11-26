@@ -22,9 +22,25 @@ public class MyOperandCollection extends OperandCollection {
     public void dup(){
         
     }
-    public void swap(){
-        
+    
+    /**
+    * It swap (if there are more than two elements in the collection) the last two element inserted 
+    * <p> <!-- -->
+    * @return a boolean true if the operation is executed correctly, false otherwise
+    * @see OperandCollection
+    */
+    public boolean swap(){
+        if(this.collectionLength() >= 2){
+            ComplexNumber last = this.remove();
+            ComplexNumber seclast = this.remove();
+            this.insert(last);
+            this.insert(seclast);
+            return true;
+        }
+        else
+            return false;   
     }
+    
     public void over(){
         
     }
