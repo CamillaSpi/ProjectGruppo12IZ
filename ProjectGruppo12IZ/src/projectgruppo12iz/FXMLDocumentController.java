@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
@@ -51,6 +52,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button invertSignButton;
 
+    private ObservableList<ComplexNumber> latestOperands;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World! test 5");
@@ -59,14 +62,21 @@ public class FXMLDocumentController implements Initializable {
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
+        OperandsTable.refresh();
         return length < collector.collectionLength();
+        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        latestOperands = FXCollections.observableList(collector);
+        OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
+        setOpView(latestOperands);
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
-        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
-
+        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));  
+    }
+    public void setOpView(ObservableList<ComplexNumber> latestOperands){
+        OperandsTable.setItems(latestOperands);
     }
 
     @FXML
