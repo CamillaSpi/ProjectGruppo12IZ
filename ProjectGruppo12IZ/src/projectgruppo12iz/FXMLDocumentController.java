@@ -8,6 +8,8 @@ package projectgruppo12iz;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
@@ -50,6 +53,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label errorLabel;
 
+    private ObservableList<ComplexNumber> latestOperands;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World! test 5");
@@ -65,14 +70,21 @@ public class FXMLDocumentController implements Initializable {
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
+        OperandsTable.refresh();
         return length < collector.collectionLength();
+        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        latestOperands = FXCollections.observableList(collector);
+        OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
+        setOpView(latestOperands);
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
-        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
-        
+        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));  
+    }
+    public void setOpView(ObservableList<ComplexNumber> latestOperands){
+        OperandsTable.setItems(latestOperands);
     }
 
     @FXML
@@ -178,6 +190,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void invertSign(ActionEvent event) {
+        if (collector.collectionLength() < 1) {
+             showAlert("Invert sign Operation can't be performed!\nYou didn't insert at least one operands ");
+            return;
+        }
+        ComplexNumber result = Calculator.invertSign(collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+             showAlert("Invert sign done succesfully!\nIts result has been saved \nand the operand have been cancelled ");
+           
+        } else {
+             showAlert("Error during Square Root!");
+        }
     }
 
 }

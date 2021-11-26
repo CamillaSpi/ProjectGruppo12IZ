@@ -7,6 +7,8 @@ package modelClassPackage;
 
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -159,6 +161,19 @@ public class ComplexNumber {
         return this.real.compareTo(other.getReal()) == 0 && this.imaginary.compareTo(other.getImaginary()) == 0;
     }
 
+    /**
+     *
+     * @return the StringProperty of the Complex Number
+     */
+    public StringProperty complexStringProperty(){
+        StringProperty sp = new SimpleStringProperty();
+        if( imaginary.compareTo(new BigDecimal("0")) < 0)
+            sp.setValue(real + "" + imaginary + "j");
+        else
+            sp.setValue(real + "+" + imaginary + "j");
+        return sp;
+    }
+    
     @Override
     public String toString() {
         return "ComplexNumber{" + "real=" + real + ", imaginary=" + imaginary + '}';

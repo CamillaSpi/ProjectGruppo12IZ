@@ -7,6 +7,8 @@ package projectgruppo12iz;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import org.junit.After;
@@ -54,6 +56,7 @@ public class FXMLDocumentControllerTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
 
     /**
      * Test of pushIntoStack method, of class FXMLDocumentController.
