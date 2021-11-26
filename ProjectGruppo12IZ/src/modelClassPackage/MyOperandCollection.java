@@ -22,9 +22,8 @@ public class MyOperandCollection extends OperandCollection {
     * @return true if the element was remove, otherwise false
     */
     public boolean drop() {
-        //io remove last elements!
-        int size = super.collectionLength();
-        if (super.collectionLength() == 0)
+        int size = this.collectionLength();
+        if (size == 0)
             return false;
         super.remove();
         return size - 1 == super.collectionLength();
@@ -39,8 +38,16 @@ public class MyOperandCollection extends OperandCollection {
 
     }
 
-    public void over() {
-
+    public boolean over() {
+    //push a copy of the seconds last elements
+    int size = this.collectionLength();
+        if (size == 0 || size < 2)
+            return false;
+        ComplexNumber last = this.remove();
+        ComplexNumber toCopy = this.last();
+        this.insert(last);
+        this.insert(toCopy);
+        return size + 1 == super.collectionLength();
     }
 
 }

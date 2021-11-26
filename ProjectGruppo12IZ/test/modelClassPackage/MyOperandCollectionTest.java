@@ -34,7 +34,7 @@ public class MyOperandCollectionTest {
      */
     @Test
     public void testDropWithTwoNumber() {
-        System.out.println("drop");
+        System.out.println("drop with Two number");
         MyOperandCollection instance = new MyOperandCollection();
         instance.insert(new ComplexNumber("1","1"));
         instance.insert(new ComplexNumber("2","1"));
@@ -48,7 +48,7 @@ public class MyOperandCollectionTest {
      */
     @Test
     public void testDropWithOneNumber() {
-        System.out.println("drop");
+        System.out.println("drop with one number");
         MyOperandCollection instance = new MyOperandCollection();
         instance.insert(new ComplexNumber("1","1"));
         boolean expResult = true;
@@ -61,7 +61,7 @@ public class MyOperandCollectionTest {
      */
     @Test
     public void testDropWithZeroNumber() {
-        System.out.println("drop");
+        System.out.println("drop with zero number");
         MyOperandCollection instance = new MyOperandCollection();
         boolean expResult = false;
         boolean result = instance.drop();
@@ -92,17 +92,60 @@ public class MyOperandCollectionTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
     /**
-     * Test of over method, of class MyOperandCollection.
+     * Test of drop method, of class MyOperandCollection.
      */
     @Test
-    public void testOver() {
-        System.out.println("over");
+    public void testOverWithThreeNumber() {
+        System.out.println("drop with Three number ");
         MyOperandCollection instance = new MyOperandCollection();
-        instance.over();
+        instance.insert(new ComplexNumber("1","1"));
+        instance.insert(new ComplexNumber("2","1"));
+        instance.insert(new ComplexNumber("3","1"));
+        System.out.println("after");
+        boolean expResult = true;
+        boolean result = instance.over();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result);
     }
-    
+
+    /**
+     * Test of drop method, of class MyOperandCollection.
+     */
+    @Test
+    public void testOverWithTwoNumber() {
+        System.out.println("drop with Two number ");
+        MyOperandCollection instance = new MyOperandCollection();
+        instance.insert(new ComplexNumber("1","1"));
+        instance.insert(new ComplexNumber("2","1"));
+        boolean expResult = true;
+        boolean result = instance.over();
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of drop method, of class MyOperandCollection.
+     */
+    @Test
+    public void testOverWithOneNumber() {
+        System.out.println("drop with one number ");
+        MyOperandCollection instance = new MyOperandCollection();
+        instance.insert(new ComplexNumber("1","1"));
+        boolean expResult = false;
+        boolean result = instance.over();
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of drop method, of class MyOperandCollection.
+     */
+    @Test
+    public void testOverWithZeroNumber() {
+        System.out.println("drop with zero number ");
+        MyOperandCollection instance = new MyOperandCollection();
+        boolean expResult = false;
+        boolean result = instance.over();
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(expResult, result);
+    }    
 }
