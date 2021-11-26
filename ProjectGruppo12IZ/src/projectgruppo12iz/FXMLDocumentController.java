@@ -66,7 +66,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
-       
+
     }
 
     @FXML
@@ -116,8 +116,7 @@ public class FXMLDocumentController implements Initializable {
             errorAlert.setHeaderText("Subtraction Operation can't be performed!");
             errorAlert.setContentText("You didn't insert at least two operands");
             errorAlert.showAndWait();
-        }
-        else{
+        } else {
             ComplexNumber b = collector.remove();
             ComplexNumber a = collector.remove();
             ComplexNumber result = Calculator.subtraction(a, b);
@@ -137,6 +136,27 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void multiply(ActionEvent event) {
+        if (collector.collectionLength() < 2) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Multiply Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.multiplication(collector.remove(), collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Multiply done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Multiply Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
@@ -166,6 +186,27 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void sqrt(ActionEvent event) {
+        if (collector.collectionLength() < 1) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Square Root Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.squareRoot(collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Square Root done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Square Root Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
