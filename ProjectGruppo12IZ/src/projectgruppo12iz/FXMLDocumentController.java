@@ -31,6 +31,7 @@ import modelClassPackage.MyOperandCollection;
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection();
+    PauseTransition  pause = new PauseTransition(Duration.seconds(5));;
     private Label label;
     @FXML
     private TextArea textArea;
@@ -62,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
 
     private void showAlert(String error) {
         errorLabel.setText(error);
-        PauseTransition pause = new PauseTransition(Duration.seconds(5));
+        pause.stop();
         pause.setOnFinished(e -> errorLabel.setText(null));
         pause.play();
     }
