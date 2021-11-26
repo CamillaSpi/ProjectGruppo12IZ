@@ -7,9 +7,7 @@ package projectgruppo12iz;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.util.Duration;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
@@ -50,10 +49,19 @@ public class FXMLDocumentController implements Initializable {
     private Button sqrtButton;
     @FXML
     private Button invertSignButton;
+    @FXML
+    private Label errorLabel;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World! test 5");
+    }
+
+    private void showAlert(String error) {
+        errorLabel.setText(error);
+        PauseTransition pause = new PauseTransition(Duration.seconds(5));
+        pause.setOnFinished(e -> errorLabel.setText(null));
+        pause.play();
     }
 
     public boolean pushIntoStack(ComplexNumber num) {
@@ -66,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));
-
+        
     }
 
     @FXML
@@ -75,36 +83,30 @@ public class FXMLDocumentController implements Initializable {
         if (checkNum != null) {
             if (this.pushIntoStack(checkNum)) {
                 System.out.println("number entered correctly");
+                showAlert("Number entered correctl");
                 textArea.clear();
             } else {
+                showAlert("the number to be entered is not stored correctly");
                 System.out.println("the number to be entered is not stored correctly");
             }
         } else {
-            System.out.println("the number to be entered was not written correctly");
+            showAlert("the number to be entered was not written correctly");
         }
     }
 
     @FXML
-    private void add(ActionEvent event) {
+    private void add(ActionEvent event) throws InterruptedException {
         if (collector.collectionLength() < 2) {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Addiction Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Addiction Operation can't be performed!\nYou didn't insert at least two operands ");
             return;
         }
         ComplexNumber result = Calculator.addiction(collector.remove(), collector.remove());
         if (result != null) {
             pushIntoStack(result);
-            Alert confirmAlert = new Alert(AlertType.INFORMATION);
-            confirmAlert.setHeaderText("Addiction done succesfully!");
-            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
-            confirmAlert.showAndWait();
+            showAlert("Addiction done succesfully!\nIts result has been saved \nand the operands have been cancelled ");
+
         } else {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Addiction Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Error during Addiction!");
         }
 
     }
@@ -112,24 +114,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void sub(ActionEvent event) {
         if (collector.size() < 2) {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Subtraction Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Subtraction Operation can't be performed!\nYou didn't insert at least two operands ");
         } else {
             ComplexNumber b = collector.remove();
             ComplexNumber a = collector.remove();
             ComplexNumber result = Calculator.subtraction(a, b);
             boolean tmp = pushIntoStack(result);
             if (tmp == false) {
-                Alert errorAlert = new Alert(AlertType.ERROR);
-                errorAlert.setHeaderText("Error during subtraction");
-                errorAlert.showAndWait();
+                showAlert("Error during subtraction!");
             } else {
-                Alert confirmAlert = new Alert(AlertType.INFORMATION);
-                confirmAlert.setHeaderText("Subtraction done succesfully!");
-                confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
-                confirmAlert.showAndWait();
+                showAlert("Subtraction done succesfully!\nIts result has been saved \nand the operands have been cancelled ");
+
             }
         }
     }
@@ -137,75 +132,49 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void multiply(ActionEvent event) {
         if (collector.collectionLength() < 2) {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Multiply Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Multiply Operation can't be performed!\nYou didn't insert at least two operands ");
             return;
         }
         ComplexNumber result = Calculator.multiplication(collector.remove(), collector.remove());
         if (result != null) {
             pushIntoStack(result);
-            Alert confirmAlert = new Alert(AlertType.INFORMATION);
-            confirmAlert.setHeaderText("Multiply done succesfully!");
-            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
-            confirmAlert.showAndWait();
+            showAlert("Multiplication done succesfully!\nIts result has been saved \nand the operands have been cancelled ");
 
         } else {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Multiply Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Error during Multiplication!");
         }
     }
 
     @FXML
     private void division(ActionEvent event) {
         if (collector.collectionLength() < 2) {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Division Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Division Operation can't be performed!\nYou didn't insert at least two operands ");
             return;
         }
         ComplexNumber divisor = collector.remove();
         ComplexNumber result = Calculator.division(collector.remove(), divisor);
         if (result != null) {
             pushIntoStack(result);
-            Alert confirmAlert = new Alert(AlertType.INFORMATION);
-            confirmAlert.setHeaderText("Division done succesfully!");
-            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
-            confirmAlert.showAndWait();
+            showAlert("Division done succesfully!\nIts result has been saved \nand the operands have been cancelled ");
+
         } else {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Division Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Error during Division!");
         }
     }
 
     @FXML
     private void sqrt(ActionEvent event) {
         if (collector.collectionLength() < 1) {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Square Root Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Square Root Operation can't be performed!\nYou didn't insert at least one operands ");
             return;
         }
         ComplexNumber result = Calculator.squareRoot(collector.remove());
         if (result != null) {
             pushIntoStack(result);
-            Alert confirmAlert = new Alert(AlertType.INFORMATION);
-            confirmAlert.setHeaderText("Square Root done succesfully!");
-            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
-            confirmAlert.showAndWait();
+            showAlert("Square Root done succesfully!\nIts result has been saved \nand the operand have been cancelled ");
 
         } else {
-            Alert errorAlert = new Alert(AlertType.ERROR);
-            errorAlert.setHeaderText("Square Root Operation can't be performed!");
-            errorAlert.setContentText("You didn't insert at least two operands");
-            errorAlert.showAndWait();
+            showAlert("Error during Square Root!");
         }
     }
 
