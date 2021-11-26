@@ -21,14 +21,43 @@ public class MyOperandCollectionTest {
      * Test of clear method, of class MyOperandCollection.
      */
     @Test
-    public void testClear() {
-        System.out.println("clear");
+    public void testClearWithOneNumber() {
+        System.out.println("clear with one number");
         MyOperandCollection instance = new MyOperandCollection(12);
-        instance.clear();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(new ComplexNumber("1","1"));
+        boolean expresult = true;
+        boolean result = instance.clear();
+        assertEquals(expresult,result);
     }
-
+    
+    /**
+     * Test of clear method, of class MyOperandCollection.
+     */
+    @Test
+    public void testClearWithMoreThanOneNumber() {
+        System.out.println("clear with more than one number");
+        MyOperandCollection instance = new MyOperandCollection(3);
+        instance.insert(new ComplexNumber("1","1"));
+        instance.insert(new ComplexNumber("1","1"));
+        instance.insert(new ComplexNumber("1","1"));
+        instance.insert(new ComplexNumber("1","1"));
+        boolean expresult = true;
+        boolean result = instance.clear();
+        assertEquals(expresult,result);
+    }
+    
+    /**
+     * Test of clear method, of class MyOperandCollection.
+     */
+    @Test
+    public void testClearWithZeroNumbers() {
+        System.out.println("clear with zero numbers");
+        MyOperandCollection instance = new MyOperandCollection(2);
+        boolean expresult = false;
+        boolean result = instance.clear();
+        assertEquals(expresult,result);
+    }
+    
     /**
      * Test of drop method, of class MyOperandCollection.
      */

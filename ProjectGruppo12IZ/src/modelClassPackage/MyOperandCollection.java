@@ -13,13 +13,7 @@ public class MyOperandCollection extends OperandCollection {
 
     public MyOperandCollection(int k) {
         super(k);
-    }
-
-    public void clear(){
-        
-    }
-   
-   
+    }   
     
     /**
     * It swap (if there are more than two elements in the collection) the last two element inserted 
@@ -54,6 +48,11 @@ public class MyOperandCollection extends OperandCollection {
 
     }
 
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @return true if the element was add, otherwise false
+    */
     public boolean dup() {
         int size = this.collectionLength();
         if(size > 0)
@@ -75,4 +74,14 @@ public class MyOperandCollection extends OperandCollection {
         return size + 1 == this.collectionLength();
     }
 
+    public boolean clear(){
+        int size = this.collectionLength();
+        if(size==0)
+            return false;
+        for(int i = 0; i<size; i++){
+            this.remove();
+        }
+        return this.collectionLength()==0;
+    }
+    
 }
