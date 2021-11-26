@@ -70,15 +70,43 @@ public class MyOperandCollectionTest {
     }
 
     /**
-     * Test of dup method, of class MyOperandCollection.
+     * Test of drop method, of class MyOperandCollection.
      */
     @Test
-    public void testDup() {
-        System.out.println("dup");
+    public void testDupWithTwoNumber() {
+        System.out.println("dup with two number");
         MyOperandCollection instance = new MyOperandCollection();
-        instance.dup();
+        instance.insert(new ComplexNumber("178","881"));
+        instance.insert(new ComplexNumber("2567","-561"));
+        boolean expResult = true;
+        boolean result = instance.dup();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of drop method, of class MyOperandCollection.
+     */
+    @Test
+    public void testDupWithOneNumber() {
+        System.out.println("dup with one number");
+        MyOperandCollection instance = new MyOperandCollection();
+        instance.insert(new ComplexNumber("-89","0"));
+        boolean expResult = true;
+        boolean result = instance.dup();
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of drop method, of class MyOperandCollection.
+     */
+    @Test
+    public void testDupWithZeroNumber() {
+        System.out.println("dup with zero number");
+        MyOperandCollection instance = new MyOperandCollection();
+        boolean expResult = false;
+        boolean result = instance.dup();
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(expResult, result);
     }
 
     /**
