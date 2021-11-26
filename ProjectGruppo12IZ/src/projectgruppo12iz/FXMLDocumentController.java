@@ -170,6 +170,26 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void invertSign(ActionEvent event) {
+        if (collector.collectionLength() < 1) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Invert sign Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least one operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.invertSign(collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Invert sign done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Invert sign Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least one operands");
+            errorAlert.showAndWait();
+        }
     }
 
 }
