@@ -126,8 +126,7 @@ public class FXMLDocumentController implements Initializable {
             errorAlert.setHeaderText("Subtraction Operation can't be performed!");
             errorAlert.setContentText("You didn't insert at least two operands");
             errorAlert.showAndWait();
-        }
-        else{
+        } else {
             ComplexNumber b = collector.remove();
             ComplexNumber a = collector.remove();
             ComplexNumber result = Calculator.subtraction(a, b);
@@ -147,18 +146,101 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void multiply(ActionEvent event) {
+        if (collector.collectionLength() < 2) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Multiply Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.multiplication(collector.remove(), collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Multiply done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Multiply Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
     private void division(ActionEvent event) {
+        if (collector.collectionLength() < 2) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Division Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber divisor = collector.remove();
+        ComplexNumber result = Calculator.division(collector.remove(), divisor);
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Division done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Division Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
     private void sqrt(ActionEvent event) {
+        if (collector.collectionLength() < 1) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Square Root Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.squareRoot(collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Square Root done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Square Root Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
     private void invertSign(ActionEvent event) {
+        if (collector.collectionLength() < 1) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Invert sign Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least one operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber result = Calculator.invertSign(collector.remove());
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Invert sign done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operand has been cancelled");
+            confirmAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Invert sign Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least one operands");
+            errorAlert.showAndWait();
+        }
     }
 
 }
