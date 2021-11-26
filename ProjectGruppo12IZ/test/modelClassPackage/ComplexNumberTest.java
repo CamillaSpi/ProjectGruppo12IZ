@@ -153,8 +153,8 @@ public class ComplexNumberTest {
     @Test
     public void testCreateCartNoneZero() {
         System.out.println("Cartesian Notation (x)");
-        String complexNumber = "5";
-        ComplexNumber expResult = new ComplexNumber("5", "0");
+        String complexNumber = "15";
+        ComplexNumber expResult = new ComplexNumber("15", "0");
         ComplexNumber result = ComplexNumber.create(complexNumber);
         assertEquals(expResult, result);
     }

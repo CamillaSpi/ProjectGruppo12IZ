@@ -113,7 +113,7 @@ public class ComplexNumber {
                 }
             } else {
                 //it contains x
-                complexNumberPattern = Pattern.compile("{1,}[0-9]");
+                complexNumberPattern = Pattern.compile("[0-9]+");
                 if (complexNumberPattern.matcher(complexNumber).matches()) {
                     return new ComplexNumber(complexNumber, "0");
                 }
