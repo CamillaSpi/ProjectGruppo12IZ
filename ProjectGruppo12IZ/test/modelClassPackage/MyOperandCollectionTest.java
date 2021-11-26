@@ -23,7 +23,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testClear() {
         System.out.println("clear");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(12);
         instance.clear();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -35,7 +35,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDropWithTwoNumber() {
         System.out.println("drop with Two number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(14);
         instance.insert(new ComplexNumber("1","1"));
         instance.insert(new ComplexNumber("2","1"));
         boolean expResult = true;
@@ -49,7 +49,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDropWithOneNumber() {
         System.out.println("drop with one number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(15);
         instance.insert(new ComplexNumber("1","1"));
         boolean expResult = true;
         boolean result = instance.drop();
@@ -62,7 +62,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDropWithZeroNumber() {
         System.out.println("drop with zero number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(55);
         boolean expResult = false;
         boolean result = instance.drop();
         // TODO review the generated test code and remove the default call to fail.
@@ -75,7 +75,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDupWithTwoNumber() {
         System.out.println("dup with two number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(12);
         instance.insert(new ComplexNumber("178","881"));
         instance.insert(new ComplexNumber("2567","-561"));
         boolean expResult = true;
@@ -89,7 +89,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDupWithOneNumber() {
         System.out.println("dup with one number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(13);
         instance.insert(new ComplexNumber("-89","0"));
         boolean expResult = true;
         boolean result = instance.dup();
@@ -102,7 +102,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testDupWithZeroNumber() {
         System.out.println("dup with zero number");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(14);
         boolean expResult = false;
         boolean result = instance.dup();
         // TODO review the generated test code and remove the default call to fail.
@@ -115,7 +115,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testSwapNotEnough() {
         System.out.println("swap without not enough element inserted");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(15);
         instance.insert(new ComplexNumber("-2", "5"));
         boolean ret = instance.swap();
         assertEquals(ret, false);
@@ -127,7 +127,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testSwapcontrolLength() {
         System.out.println("swap without not enough element inserted");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(22);
         instance.insert(new ComplexNumber("-2", "5"));
         instance.insert(new ComplexNumber("2.78", "4.98"));
         instance.insert(new ComplexNumber("-17.56", "-4.99"));
@@ -142,7 +142,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testSwapcontrolElem() {
         System.out.println("swap without not enough element inserted");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(23);
         ComplexNumber first = new ComplexNumber("-4.6", "9");
         ComplexNumber secondLast = new ComplexNumber("7.55", "9.8");
         ComplexNumber last = new ComplexNumber("-8", "-5.67");
@@ -161,7 +161,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testOverWithThreeNumber() {
         System.out.println("drop with Three number ");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(32);
         instance.insert(new ComplexNumber("1","1"));
         instance.insert(new ComplexNumber("2","1"));
         instance.insert(new ComplexNumber("3","1"));
@@ -178,7 +178,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testOverWithTwoNumber() {
         System.out.println("drop with Two number ");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(12);
         instance.insert(new ComplexNumber("1","1"));
         instance.insert(new ComplexNumber("2","1"));
         boolean expResult = true;
@@ -192,7 +192,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testOverWithOneNumber() {
         System.out.println("drop with one number ");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(0);
         instance.insert(new ComplexNumber("1","1"));
         boolean expResult = false;
         boolean result = instance.over();
@@ -205,7 +205,7 @@ public class MyOperandCollectionTest {
     @Test
     public void testOverWithZeroNumber() {
         System.out.println("drop with zero number ");
-        MyOperandCollection instance = new MyOperandCollection();
+        MyOperandCollection instance = new MyOperandCollection(1);
         boolean expResult = false;
         boolean result = instance.over();
         // TODO review the generated test code and remove the default call to fail.

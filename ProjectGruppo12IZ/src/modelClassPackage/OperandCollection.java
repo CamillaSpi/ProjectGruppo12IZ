@@ -20,10 +20,12 @@ import java.util.List;
 public class OperandCollection{
     private final List<ComplexNumber> l;
     private final List<ComplexNumber> l1;
+    private final int k;
 
-    public OperandCollection() {
+    public OperandCollection(int k) {
         this.l = new LinkedList();
         this.l1 = new LinkedList();
+        this.k = k;
     }
 
     public List<ComplexNumber> getL() {
@@ -40,8 +42,8 @@ public class OperandCollection{
     public void insert(ComplexNumber a){
         if(a != null){
             l.add(0, a);
-            if(l.size()>12)
-                l1.add(0, l.remove(12));                
+            if(l.size()>this.k)
+                l1.add(0, l.remove(this.k));                
         }
         else
             System.out.println("I can't insert the complex number.");
@@ -55,8 +57,8 @@ public class OperandCollection{
     public ComplexNumber remove(){
         if(!l.isEmpty()){
             ComplexNumber tmp = l.remove(0);
-            if(l.size() < 12 && l1.size() > 0)
-                l.add(11, l1.remove(0));
+            if(l.size() < this.k && l1.size() > 0)
+                l.add(this.k-1, l1.remove(0));
             return tmp;
             
         }

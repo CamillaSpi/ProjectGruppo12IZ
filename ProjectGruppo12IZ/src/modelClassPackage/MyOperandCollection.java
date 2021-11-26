@@ -11,6 +11,10 @@ package modelClassPackage;
  */
 public class MyOperandCollection extends OperandCollection {
 
+    public MyOperandCollection(int k) {
+        super(k);
+    }
+
     public void clear(){
         
     }
