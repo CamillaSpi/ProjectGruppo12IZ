@@ -25,7 +25,7 @@ public class MyOperandCollection extends OperandCollection {
         int size = this.collectionLength();
         if (size == 0)
             return false;
-        super.remove();
+        this.remove();
         return size - 1 == this.collectionLength();
 
     }
