@@ -72,7 +72,7 @@ public class FXMLDocumentController implements Initializable {
         int length = collector.collectionLength();
         collector.insert(num);
         OperandsTable.refresh();
-        return length < collector.collectionLength();
+        return true;
         
     }
 

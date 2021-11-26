@@ -19,9 +19,11 @@ import java.util.List;
  */
 public class OperandCollection{
     private final List<ComplexNumber> l;
+    private final List<ComplexNumber> l1;
 
     public OperandCollection() {
         this.l = new LinkedList();
+        this.l1 = new LinkedList();
     }
 
     public List<ComplexNumber> getL() {
@@ -36,8 +38,11 @@ public class OperandCollection{
     * @see ComplexNumber
     */
     public void insert(ComplexNumber a){
-        if(a != null)
+        if(a != null){
             l.add(0, a);
+            if(l.size()>12)
+                l1.add(0, l.remove(12));                
+        }
         else
             System.out.println("I can't insert the complex number.");
     }
@@ -48,8 +53,13 @@ public class OperandCollection{
     * @see ComplexNumber
     */
     public ComplexNumber remove(){
-        if(!l.isEmpty())
-            return l.remove(0);
+        if(!l.isEmpty()){
+            ComplexNumber tmp = l.remove(0);
+            if(l.size() < 12 && l1.size() > 0)
+                l.add(11, l1.remove(0));
+            return tmp;
+            
+        }
         else
             System.out.println("The OperandCollection was just empty.");
         return null;
