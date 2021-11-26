@@ -161,6 +161,27 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void division(ActionEvent event) {
+        if (collector.collectionLength() < 2) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Division Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+            return;
+        }
+        ComplexNumber divisor = collector.remove();
+        ComplexNumber result = Calculator.division(collector.remove(), divisor);
+        if (result != null) {
+            pushIntoStack(result);
+            Alert confirmAlert = new Alert(AlertType.INFORMATION);
+            confirmAlert.setHeaderText("Division done succesfully!");
+            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Division Operation can't be performed!");
+            errorAlert.setContentText("You didn't insert at least two operands");
+            errorAlert.showAndWait();
+        }
     }
 
     @FXML
