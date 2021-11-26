@@ -50,7 +50,7 @@ public class MyOperandCollection extends OperandCollection {
         ComplexNumber toCopy = this.last();
         this.insert(last);
         this.insert(toCopy);
-        return size + 1 == super.collectionLength();
+        return size + 1 == this.collectionLength();
     }
 
 }
