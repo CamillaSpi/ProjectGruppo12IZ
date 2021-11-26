@@ -85,6 +85,7 @@ public class FXMLDocumentController implements Initializable {
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));  
     }
     public void setOpView(ObservableList<ComplexNumber> latestOperands){
+        
         OperandsTable.setItems(latestOperands);
         
     }
