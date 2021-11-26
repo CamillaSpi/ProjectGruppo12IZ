@@ -223,7 +223,7 @@ public class FXMLDocumentController implements Initializable {
             pushIntoStack(result);
             Alert confirmAlert = new Alert(AlertType.INFORMATION);
             confirmAlert.setHeaderText("Invert sign done succesfully!");
-            confirmAlert.setContentText("Its result has been saved and the operands have been cancelled");
+            confirmAlert.setContentText("Its result has been saved and the operand has been cancelled");
             confirmAlert.showAndWait();
         } else {
             Alert errorAlert = new Alert(AlertType.ERROR);
