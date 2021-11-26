@@ -18,7 +18,7 @@ public class MyOperandCollectionTest {
     }
 
     /**
-     * Test of clear method, of class MyOperandCollection.
+     * Test of clear method, of class MyOperandCollection, with only one number in the operands stack.
      */
     @Test
     public void testClearWithOneNumber() {
@@ -31,7 +31,7 @@ public class MyOperandCollectionTest {
     }
     
     /**
-     * Test of clear method, of class MyOperandCollection.
+     * Test of clear method, of class MyOperandCollection, with more than one elements in the operands stack.
      */
     @Test
     public void testClearWithMoreThanOneNumber() {
@@ -47,7 +47,7 @@ public class MyOperandCollectionTest {
     }
     
     /**
-     * Test of clear method, of class MyOperandCollection.
+     * Test of clear method, of class MyOperandCollection, with zero elements in the operands stack.
      */
     @Test
     public void testClearWithZeroNumbers() {
