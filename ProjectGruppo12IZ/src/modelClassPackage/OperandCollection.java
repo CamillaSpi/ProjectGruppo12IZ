@@ -7,7 +7,8 @@
 package modelClassPackage;
 
 import java.util.Iterator;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This is defined as an extension of the java Stack class adapted for acalculator use
@@ -16,7 +17,16 @@ import java.util.Stack;
  * @author Gruppo 12 IZ
  * 
  */
-public class OperandCollection extends Stack<ComplexNumber>{
+public class OperandCollection{
+    private final List<ComplexNumber> l;
+
+    public OperandCollection() {
+        this.l = new LinkedList();
+    }
+
+    public List<ComplexNumber> getL() {
+        return l;
+    }
     
     /**
     * It inserts (if the param is not null) at the top of the collection a complexNumber object passed as 
@@ -27,7 +37,7 @@ public class OperandCollection extends Stack<ComplexNumber>{
     */
     public void insert(ComplexNumber a){
         if(a != null)
-            super.push(a);
+            l.add(0, a);
         else
             System.out.println("I can't insert the complex number.");
     }
@@ -38,8 +48,8 @@ public class OperandCollection extends Stack<ComplexNumber>{
     * @see ComplexNumber
     */
     public ComplexNumber remove(){
-        if(!super.empty())
-            return super.pop();
+        if(!l.isEmpty())
+            return l.remove(0);
         else
             System.out.println("The OperandCollection was just empty.");
         return null;
@@ -51,8 +61,8 @@ public class OperandCollection extends Stack<ComplexNumber>{
     * @see ComplexNumber
     */
     public ComplexNumber last(){
-        if(!super.empty())
-            return super.peek();
+        if(!l.isEmpty())
+            return l.get(0);
         else{
             System.out.println("There are no element inside the OperandCollection.");
         }
@@ -64,14 +74,14 @@ public class OperandCollection extends Stack<ComplexNumber>{
     * @return the int length
     */
     public int collectionLength(){
-        return super.elementCount;
+        return l.size();
     }
 
     public void stamp(){
         //get an iterator for the stack 
         System.out.println("Stack elements:"); 
         //traverse the stack using iterator in a loop and print each element 
-        Iterator iterator = this.iterator(); 
+        Iterator iterator = l.iterator(); 
         while(iterator.hasNext()){ 
             System.out.println(iterator.next() + " "); 
         } 

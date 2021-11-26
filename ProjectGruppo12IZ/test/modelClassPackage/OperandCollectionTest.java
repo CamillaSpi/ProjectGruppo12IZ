@@ -118,7 +118,7 @@ public class OperandCollectionTest {
     public void testCollectionLength() {
         System.out.println("return the lenght of the collection");
         OperandCollection instance = new OperandCollection();
-        int expResult = instance.size();
+        int expResult = instance.collectionLength();
         int result = instance.collectionLength();
         assertEquals(expResult, result);
     }

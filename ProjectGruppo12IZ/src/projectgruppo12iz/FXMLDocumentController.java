@@ -78,7 +78,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        latestOperands = FXCollections.observableList(collector);
+        latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
@@ -127,7 +127,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void sub(ActionEvent event) {
-        if (collector.size() < 2) {
+        if (collector.collectionLength()< 2) {
             showAlert("Subtraction Operation can't be performed!\nYou didn't insert at least two operands ");
         } else {
             ComplexNumber b = collector.remove();

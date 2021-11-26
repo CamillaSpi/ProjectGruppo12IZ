@@ -11,7 +11,7 @@ package modelClassPackage;
  */
 public class MyOperandCollection extends OperandCollection {
 
-    @Override
+    
     public void clear() {
 
     }
