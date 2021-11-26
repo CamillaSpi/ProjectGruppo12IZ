@@ -32,9 +32,9 @@ public class MyOperandCollection extends OperandCollection {
 
     public boolean dup() {
         int size = this.collectionLength();
-        if(size>0)
+        if(size > 0)
             this.insert(this.last());
-        return size+1 == this.collectionLength();
+        return size + 1 == this.collectionLength();
     }
 
     public void swap() {
