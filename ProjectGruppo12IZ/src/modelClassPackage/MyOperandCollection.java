@@ -11,6 +11,9 @@ package modelClassPackage;
  */
 public class MyOperandCollection extends OperandCollection {
 
+    public MyOperandCollection(int k) {
+        super(k);
+    }   
     
     /**
     * It swap (if there are more than two elements in the collection) the last two element inserted 
@@ -45,6 +48,11 @@ public class MyOperandCollection extends OperandCollection {
 
     }
 
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @return true if the element was add, otherwise false
+    */
     public boolean dup() {
         int size = this.collectionLength();
         if(size > 0)

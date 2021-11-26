@@ -44,7 +44,7 @@ public class OperandCollectionTest {
     public void testInsertCorrectNumber() {
         System.out.println("insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(10);
         instance.insert(a);
         assertEquals(1, instance.collectionLength());
     }
@@ -57,7 +57,7 @@ public class OperandCollectionTest {
     public void testInsertNullNumber() {
         System.out.println("insert a complex Number equal to null");
         ComplexNumber a = null;
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(10);
         instance.insert(a);
         assertEquals(0, instance.collectionLength());
     }
@@ -68,7 +68,7 @@ public class OperandCollectionTest {
     @Test
     public void testRemoveNotEmptyCollection() {
         System.out.println("remove a complex Number from a not empty collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(14);
         instance.insert(new ComplexNumber("5", "5"));
         ComplexNumber result = instance.remove();
         assertNotNull(result);
@@ -80,7 +80,7 @@ public class OperandCollectionTest {
     @Test
     public void testRemoveEmptyCollection() {
         System.out.println("remove a complex Number from an empty collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(15);
         ComplexNumber expResult = null;
         ComplexNumber result = instance.remove();
         assertEquals(expResult, result);
@@ -93,7 +93,7 @@ public class OperandCollectionTest {
     @Test
     public void testLastNotEmptyCollection() {
         System.out.println("return last complex Number from a not empty collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(11);
         instance.insert(new ComplexNumber("5", "-5"));
         ComplexNumber result = instance.last();
         assertNotNull(result);
@@ -105,7 +105,7 @@ public class OperandCollectionTest {
     @Test
     public void testLastEmptyCollection() {
         System.out.println("return last complex Number from an empty collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(3);
         ComplexNumber expResult = null;
         ComplexNumber result = instance.last();
         assertEquals(expResult, result);
@@ -117,7 +117,7 @@ public class OperandCollectionTest {
     @Test
     public void testCollectionLength() {
         System.out.println("return the lenght of the collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(2);
         int expResult = instance.collectionLength();
         int result = instance.collectionLength();
         assertEquals(expResult, result);
@@ -126,7 +126,7 @@ public class OperandCollectionTest {
     @Test
     public void testSimpleRemove() {
         System.out.println("return the lenght of the collection");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(4);
         instance.insert(new ComplexNumber("5", "5"));
         instance.insert(new ComplexNumber("7", "5"));
         instance.insert(new ComplexNumber("-3", "5"));
@@ -141,7 +141,7 @@ public class OperandCollectionTest {
     @Test
     public void testStamp() {
         System.out.println("stamp");
-        OperandCollection instance = new OperandCollection();
+        OperandCollection instance = new OperandCollection(5);
         instance.insert(new ComplexNumber("5", "5"));
         instance.insert(new ComplexNumber("7", "5"));
         instance.insert(new ComplexNumber("-3", "5"));

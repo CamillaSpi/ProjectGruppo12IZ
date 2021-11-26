@@ -30,7 +30,7 @@ import modelClassPackage.MyOperandCollection;
  */
 public class FXMLDocumentController implements Initializable {
 
-    MyOperandCollection collector = new MyOperandCollection();
+    MyOperandCollection collector = new MyOperandCollection(12);
     PauseTransition  pause = new PauseTransition(Duration.seconds(5));;
     private Label label;
     @FXML
@@ -72,7 +72,7 @@ public class FXMLDocumentController implements Initializable {
         int length = collector.collectionLength();
         collector.insert(num);
         OperandsTable.refresh();
-        return length < collector.collectionLength();
+        return true;
         
     }
 
