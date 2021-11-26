@@ -90,18 +90,21 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
-        ComplexNumber checkNum = ComplexNumber.create(textArea.getText());
-        if (checkNum != null) {
-            if (this.pushIntoStack(checkNum)) {
-                System.out.println("number entered correctly");
-                showAlert("Number entered correctl");
-                textArea.clear();
+        String text = textArea.getText();
+        if("".equals(text)){
+            showAlert("Write a complex number before press enter!");
+        }else{
+            ComplexNumber checkNum = ComplexNumber.create(text);
+            if (checkNum != null) {
+                if (this.pushIntoStack(checkNum)) {
+                    showAlert("Number entered correctl");
+                    textArea.clear();
+                } else {
+                    showAlert("the number to be entered is not stored correctly");
+                }
             } else {
-                showAlert("the number to be entered is not stored correctly");
-                System.out.println("the number to be entered is not stored correctly");
+                showAlert("the number to be entered was not written correctly");
             }
-        } else {
-            showAlert("the number to be entered was not written correctly");
         }
     }
 
