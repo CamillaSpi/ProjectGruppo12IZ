@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -36,10 +37,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea textArea;
     @FXML
-    private TableView<ComplexNumber> OperandsTable;
-    @FXML
-    private TableColumn<ComplexNumber, String> OperandsClm;
-    @FXML
     private Button sumButton;
     @FXML
     private Button subButton;
@@ -55,6 +52,8 @@ public class FXMLDocumentController implements Initializable {
     private Label errorLabel;
 
     private ObservableList<ComplexNumber> latestOperands;
+    @FXML
+    private ListView<ComplexNumber> myListView;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -71,7 +70,7 @@ public class FXMLDocumentController implements Initializable {
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
-        OperandsTable.refresh();
+        myListView.refresh();
         return length < collector.collectionLength();
         
     }
@@ -79,14 +78,13 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         latestOperands = FXCollections.observableList(collector.getL());
-        OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
-        setOpView(latestOperands);
+        latestOperands.add(new ComplexNumber("0","0"));
+        myListView.setItems(latestOperands);
+        myListView.setMinHeight(360);
+        myListView.setMaxHeight(360);
+        
         //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
         //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));  
-    }
-    public void setOpView(ObservableList<ComplexNumber> latestOperands){
-        OperandsTable.setItems(latestOperands);
-        
     }
 
     @FXML
