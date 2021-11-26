@@ -6,6 +6,8 @@
 package modelClassPackage;
 
 import java.math.BigDecimal;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -228,7 +230,33 @@ public class ComplexNumberTest {
         boolean result = instance.equals(new ComplexNumber("5.0","8.00"));
         assertEquals(expResult, result);
     }
-
+    /**
+     * Test of complexStringProperty method, of class ComplexNumber, having a positive imaginary part.
+     */
+    @Test
+    public void testComplexStringPropertyImPos(){
+        System.out.println("complexStringProperty of ComplexNumber with positive imaginary part");
+        ComplexNumber cn = new ComplexNumber("2.3","6.46");
+        StringProperty expSp = new SimpleStringProperty();
+        expSp.setValue("2.3+6.46j");
+        StringProperty resSp = cn.complexStringProperty();
+        assertEquals(expSp.getValue(), resSp.getValue());
+    }
+    
+     /**
+     * Test of complexStringProperty method, of class ComplexNumber, having a negative imaginary part.
+     */
+    @Test
+    public void testComplexStringPropertyImNeg(){
+        System.out.println("complexStringProperty of ComplexNumber with negative imaginary part");
+        ComplexNumber cn = new ComplexNumber("5.88","-5.45");
+        StringProperty expSp = new SimpleStringProperty();
+        expSp.setValue("5.88-5.45j");
+        StringProperty resSp = cn.complexStringProperty();
+        assertEquals(expSp.getValue(), resSp.getValue());
+    }
+    
+    
     /**
      * Test of toString method, of class ComplexNumber.
      */
