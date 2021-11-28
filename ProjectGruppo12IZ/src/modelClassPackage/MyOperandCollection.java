@@ -74,6 +74,11 @@ public class MyOperandCollection extends OperandCollection {
         return size + 1 == this.collectionLength();
     }
 
+    /**
+    * It returns a boolean.
+    * <p> <!-- -->
+    * @return true if all the elements in the stack have been deleted, false if the stack was already empty.
+    */
     public boolean clear(){
         int size = this.collectionLength();
         if(size==0)
