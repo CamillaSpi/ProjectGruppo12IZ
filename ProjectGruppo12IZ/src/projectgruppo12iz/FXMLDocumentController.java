@@ -419,11 +419,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void showOperation(ActionEvent event) {
+    private void pushIntoStack(ActionEvent event) {
     }
 
-    @FXML
-    private void UserToggleButton(ActionEvent event) {
-}
 
 }
