@@ -81,6 +81,22 @@ public class Variables {
     }
     
     /**
+    * The method checks if the key is written in the correct form and returns the complexnumber associated if it exists.
+    * <p> <!-- -->
+    * 
+    * @param key it contains the name of the variable written in the UI.
+    * @return The complexNumber if the value associated with the key exists, otherwise null, also if the key is not correct.
+    * 
+    */
+    public ComplexNumber saveFromVariable(String key){
+        ComplexNumber val = this.getValue(key);
+        if(checkRange(key) && val != null){
+            return val;
+        }
+        return null;
+    }
+    
+    /**
     * It returns the attribute myVariables
     * <p> <!-- -->
     * @return a string definition for the current object

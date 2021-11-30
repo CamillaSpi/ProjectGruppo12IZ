@@ -419,9 +419,30 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void saveToVariable(ActionEvent event) {
     }
-
+    
+    /**
+    * This function is associated with the button for saving from a variable of the user interface
+    * It takes the text from the variable's text area and checks if it's not null, after it calls the saveFromVariable method of class variables
+    * passing it the text (the variable written). If the variable is written correctly and the associated value exists, it is pushed into the stack
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save from a variable.
+    * @see OperandCollection
+    */
     @FXML
-    private void pushIntoStack(ActionEvent event) {
+    private void pushFromVariable(ActionEvent event) {
+        String text = varTextArea.getText();
+        if ("".equals(text)) {
+            showAlert("Write a variable before press this button!");
+        } else {
+            ComplexNumber topush = vars.saveFromVariable(text);
+            if(topush == null)
+                showAlert("This variable can't be used, it is not correct or initialized!");
+            else{
+                pushIntoStack(topush);
+                showAlert("Value from variable inserted correctly");
+            }                
+        }
     }
 
 
