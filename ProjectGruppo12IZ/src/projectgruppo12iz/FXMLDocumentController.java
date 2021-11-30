@@ -324,9 +324,6 @@ public class FXMLDocumentController implements Initializable {
     private void pushIntoStack(ActionEvent event) {
     }
 
-    @FXML
-    private void putIntoStack(ActionEvent event) {
-    }
 
     @FXML
     private void subtractionFromStack(ActionEvent event) {
@@ -412,7 +409,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void variableToggleButton(ActionEvent event) {
+    private void saveToVariable(ActionEvent event) {
     }
 
     @FXML
@@ -421,6 +418,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void UserToggleButton(ActionEvent event) {
-    }
+}
 
 }
