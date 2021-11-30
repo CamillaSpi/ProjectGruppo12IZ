@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * This is a class containing a Map as attribute, in order to contain variables 
  * as keys and associated complex Number as values.
- * @author Cami
+ * @author Gruppo 12 IZ
  */
 public class Variables {
     private final Map<String,ComplexNumber> myVariables;
@@ -25,7 +25,31 @@ public class Variables {
     public Variables(){
         this.myVariables = new HashMap<>();
     }
-
+    
+    /**
+    * It checks if the string passed has only one character included in the range from "a" to "z"
+    * <p> <!-- -->
+    * @param s the string to be analized
+    * @return True if the String has only one character in the range from "a" to "z", false otherwise.
+    */ 
+    public boolean checkRange(String s){
+        return s!=null && s.length()== 1 && s.charAt(0) >= 'a' && s.charAt(0) <= 'z';
+    }
+    
+    
+    /**
+    * It returns the value associated with the key passed if exists one, otherwise null.
+    * <p> <!-- -->
+    * @param key the key of which returns the associated value
+    * @return the value associated with the key passed if it exists else return null.
+    * @see ComplexNumber
+    */ 
+    public ComplexNumber getValue(String key){
+        return myVariables.get(key);  
+    }
+    
+    
+    
     /**
     * It returns the attribute myVariables
     * <p> <!-- -->
@@ -36,29 +60,24 @@ public class Variables {
         return myVariables;
     }
     
+    
     /**
-    * It returns the attribute myVariables
+    * It associates the ComplexNumber passed as value with the String passed as key 
+    * and put this couple as item in the myVariable map. 
+    * If already exists a value associated with the specified key, this value will be replaced by the new one.
     * <p> <!-- -->
     * 
     * @param key its contains the real part of the complex number
     * @param value its contains the imaginary part of the complex number
-    * @return a bollean value that represent if the number is correct save or not.
+    * @return a bolean value that represent if the number is correctly saved or not.
     * 
     */
-    public boolean saveToVariable(Character key, ComplexNumber value){
-        if(key != null && value != null)
-            if (key >= 'a' && key <= 'z'){
-                this.myVariables.put(key.toString(), value); 
-                return true;
-            }
+    public boolean saveToVariable(String key, ComplexNumber value){
+        if(checkRange(key) && value != null){
+            this.myVariables.put(key.toString(), value); 
+            return true;
+        }
         return false;
-    }
-    
-    public boolean saveFromVariable(Character key, ComplexNumber value){
-        ComplexNumber val = this.myVariables.get(key);
-        if((key >= 'a' && key <= 'z') && value != null && val != null){
-            
-        }    
     }
     
     /**
@@ -69,7 +88,11 @@ public class Variables {
     */ 
     @Override
     public String toString() {
-        return "Variables{" + "myVariables=" + myVariables + '}';
+        String s = "";
+        for(Map.Entry<String,ComplexNumber> entry : myVariables.entrySet())
+            s += "(" + entry.getKey()+ ", " + entry.getValue() + "), ";
+        return s.substring(0, s.length()-2);
     }
-
+    
+    
 }
