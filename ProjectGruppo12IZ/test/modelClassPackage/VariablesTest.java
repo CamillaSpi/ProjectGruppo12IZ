@@ -181,22 +181,6 @@ public class VariablesTest {
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
     }
-
-    
-
-    /**
-     * Test of getMyVariables method, of class Variables.
-     */
-    @Test
-    public void testGetMyVariables() {
-        System.out.println("getMyVariables");
-        Variables instance = new Variables();
-        Map<String, ComplexNumber> expResult = null;
-        Map<String, ComplexNumber> result = instance.getMyVariables();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
   
     /**
      * Test of insert method, of class OperandCollection.
@@ -226,7 +210,6 @@ public class VariablesTest {
     /**
      * Test of insert method, of class OperandCollection.
      */
-    
     @Test
     public void testSaveToVariablesWrongKey() {
         System.out.println("insert a complex Number correctly created");
@@ -234,6 +217,22 @@ public class VariablesTest {
         Variables instance = new Variables();
         instance.saveToVariable("8", a);
         assertEquals(null, instance.getMyVariables().get("8"));
+    }
+    
+    /**
+     * Test of setValue method, of class Variables, analyzing the case in which the key has already a value associated.
+     */
+    @Test
+    public void testSetValueReplace() {
+        System.out.println("setValue with the replacement of the value");
+        String key = "b";
+        ComplexNumber newValue = new ComplexNumber("-3.4", "0.9");
+        ComplexNumber oldValue = new ComplexNumber("4.3", "-6.5");
+        Variables instance = new Variables();
+        instance.saveToVariable(key, oldValue);
+        instance.saveToVariable(key, newValue);
+        ComplexNumber retValue = instance.getMyVariables().get(key);
+        assertEquals(retValue, newValue);   
     }
     
 
