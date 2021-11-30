@@ -320,13 +320,38 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clear(ActionEvent event) {
     }
-
+    
+    /**
+    * It call the MyOperandCollection's over function, 
+    * if the function return false
+    * an error message was shown.
+    * @param event An Event representing some type of action.
+    * <p> <!-- -->
+    */
     @FXML
     private void over(ActionEvent event) {
+         if (!collector.over()) {
+            showAlert("There aren't least elements for over operation!\n");
+        } else {
+            showAlert("Over operation execute!");
+             OperandsTable.refresh();
+        }
     }
-
+    /**
+    * It call the MyOperandCollection's drop function, 
+    * if the function return false
+    * an error message was shown.
+    * @param event An Event representing some type of action.
+    * <p> <!-- -->
+    */
     @FXML
     private void drop(ActionEvent event) {
+         if (!collector.drop()) {
+            showAlert("There aren't at least element for drop operation!\n");
+        } else {
+            showAlert("Dropped last item!");
+             OperandsTable.refresh();
+        }
     }
 
     @FXML
