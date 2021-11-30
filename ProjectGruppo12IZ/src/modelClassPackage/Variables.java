@@ -45,13 +45,20 @@ public class Variables {
     * @return a bollean value that represent if the number is correct save or not.
     * 
     */
-    public boolean saveToVariables(Character key, ComplexNumber value){
+    public boolean saveToVariable(Character key, ComplexNumber value){
         if(key != null && value != null)
             if (key >= 'a' && key <= 'z'){
                 this.myVariables.put(key.toString(), value); 
                 return true;
             }
         return false;
+    }
+    
+    public boolean saveFromVariable(Character key, ComplexNumber value){
+        ComplexNumber val = this.myVariables.get(key);
+        if((key >= 'a' && key <= 'z') && value != null && val != null){
+            
+        }    
     }
     
     /**
@@ -64,6 +71,5 @@ public class Variables {
     public String toString() {
         return "Variables{" + "myVariables=" + myVariables + '}';
     }
-    
-    
+
 }
