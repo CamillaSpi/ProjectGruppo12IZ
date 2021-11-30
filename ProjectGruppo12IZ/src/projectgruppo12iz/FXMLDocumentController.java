@@ -368,7 +368,7 @@ public class FXMLDocumentController implements Initializable {
          if (!collector.drop()) {
             showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("Dropped operation executed succesfully!");
+            showAlert("Drop operation executed succesfully!");
              OperandsTable.refresh();
         }
     }
@@ -383,9 +383,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void dup(ActionEvent event) {
         if (!collector.dup()) {
-            showAlert("There isn't an element for dup operation!\n");
+            showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("dubbed last item!");
+            showAlert("Dup operation executed succesfully!");
             OperandsTable.refresh();
         }
     }
