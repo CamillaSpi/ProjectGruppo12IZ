@@ -177,6 +177,7 @@ public class ComplexNumber {
     @Override
     public String toString() {
         return "ComplexNumber{" + "real=" + real + ", imaginary=" + imaginary + '}';
+        
     }
 
 }
