@@ -320,7 +320,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clear(ActionEvent event) {
     }
-
+    
+    /**
+    * It call the MyOperandCollection's over function, 
+    * if the function return false
+    * an error message was shown.
+    * @param event An Event representing some type of action.
+    * <p> <!-- -->
+    */
     @FXML
     private void over(ActionEvent event) {
          if (!collector.over()) {
@@ -330,7 +337,13 @@ public class FXMLDocumentController implements Initializable {
              OperandsTable.refresh();
         }
     }
-
+    /**
+    * It call the MyOperandCollection's drop function, 
+    * if the function return false
+    * an error message was shown.
+    * @param event An Event representing some type of action.
+    * <p> <!-- -->
+    */
     @FXML
     private void drop(ActionEvent event) {
          if (!collector.drop()) {
