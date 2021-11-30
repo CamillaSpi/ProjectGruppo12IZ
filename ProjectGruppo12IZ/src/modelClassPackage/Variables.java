@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * This is a class containing a Map as attribute, in order to contain variables 
  * as keys and associated complex Number as values.
- * @author Cami
+ * @author Gruppo 12 IZ
  */
 public class Variables {
     private final Map<String,ComplexNumber> myVariables;
@@ -25,7 +25,45 @@ public class Variables {
     public Variables(){
         this.myVariables = new HashMap<>();
     }
-
+    
+    /**
+    * It checks if the string passed has only one character included in the range from "a" to "z"
+    * <p> <!-- -->
+    * @param s the string to be analized
+    * @return True if the String has only one character in the range from "a" to "z", false otherwise.
+    */ 
+    public boolean checkRange(String s){
+        return s.length()== 1 && s.charAt(0) >= 'a' && s.charAt(0) <= 'z';
+    }
+    
+    
+    /**
+    * It returns the value associated with the key passed if exists one, otherwise null.
+    * <p> <!-- -->
+    * @param key the key of which returns the associated value
+    * @return the value associated with the key passed if it exists else return null.
+    * @see ComplexNumber
+    */ 
+    public ComplexNumber getValue(String key){
+        if(myVariables.containsKey(key))
+            return myVariables.get(key);
+        return null;
+    }
+    
+    /**
+    * It associates the ComplexNumber passed as value with the String passed as key 
+    * and put this couple as item in the myVariable map. 
+    * If already exists a value associated with the specified key, this value will be replaced by the new one.
+    * <p> <!-- -->
+    * @param key the key to which associate the specified value.
+    * @param value the value to associate with the specified key.
+    * @see ComplexNumber
+    */ 
+    public void setValue(String key, ComplexNumber value){
+        myVariables.put(key, value);
+    }
+    
+    
     /**
     * It returns the attribute myVariables
     * <p> <!-- -->
@@ -36,6 +74,7 @@ public class Variables {
         return myVariables;
     }
     
+    
     /**
     * It returns the attribute myVariables
     * <p> <!-- -->
@@ -44,7 +83,10 @@ public class Variables {
     */ 
     @Override
     public String toString() {
-        return "Variables{" + "myVariables=" + myVariables + '}';
+        String s = "";
+        for(Map.Entry<String,ComplexNumber> entry : myVariables.entrySet())
+            s += "(" + entry.getKey()+ ", " + entry.getValue() + "), ";
+        return s.substring(0, s.length()-2);
     }
     
     
