@@ -26,6 +26,7 @@ import javafx.util.Duration;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
+import modelClassPackage.Variables;
 
 /**
  *
@@ -35,6 +36,7 @@ public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
+    Variables vars= new Variables();  
     int last = 0;
     private Label label;
     @FXML
