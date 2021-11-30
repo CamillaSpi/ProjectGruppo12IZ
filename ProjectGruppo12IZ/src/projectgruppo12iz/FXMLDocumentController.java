@@ -95,7 +95,14 @@ public class FXMLDocumentController implements Initializable {
         pause.setOnFinished(e -> errorLabel.setText(null));
         pause.play();
     }
-
+    
+    /**
+    * It insert the element passed as param in the collection.
+    * <p> <!-- -->
+    * @param num it's the ComplexNumber to insert in the collection
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
@@ -283,7 +290,13 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Error during Square Root!");
         }
     }
-
+    
+    /**
+    * It allow the calls to the Invert sign opation of the class Calculator pushing the result into the stack.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @see MyOperandCollection
+    */
     @FXML
     private void invertSign(ActionEvent event) {
         if (collector.collectionLength() < 1) {
@@ -300,14 +313,17 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     @FXML
     private void pushIntoStack(ActionEvent event) {
     }
 
-    @FXML
-    private void putIntoStack(ActionEvent event) {
-    }
 
     @FXML
     private void subtractionFromStack(ActionEvent event) {
@@ -331,9 +347,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void over(ActionEvent event) {
          if (!collector.over()) {
-            showAlert("There aren't least elements for over operation!\n");
+            showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("Over operation execute!");
+            showAlert("Over operation executed succesfully!");
              OperandsTable.refresh();
         }
     }
@@ -347,23 +363,53 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void drop(ActionEvent event) {
          if (!collector.drop()) {
-            showAlert("There aren't at least element for drop operation!\n");
+            showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("Dropped last item!");
+            showAlert("Drop operation executed succesfully!");
              OperandsTable.refresh();
         }
     }
-
+    
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     @FXML
     private void dup(ActionEvent event) {
+        if (!collector.dup()) {
+            showAlert("Not enough inserted operands!\n");
+        } else {
+            showAlert("Dup operation executed succesfully!");
+            OperandsTable.refresh();
+        }
     }
-
+    
+    /**
+    * It calls the swap operation of MyOperandCollection and check the boolean returned.
+    * If the value returned from the called function is true, it means the operation has been perfrormed correctly and so a message will be shown to user.
+    * If the value returned from the called function is false, it means the operation has not been performed and so an error message will be shown to user. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button swap.
+    * @see OperandCollection
+    */
     @FXML
     private void swap(ActionEvent event) {
+        if (!collector.swap()){
+            showAlert("Not enough inserted operands!");
+            return;
+        }
+        else {
+            showAlert("Swap operation completed successfully!");
+            OperandsTable.refresh();
+        }
+        
     }
 
     @FXML
-    private void variableToggleButton(ActionEvent event) {
+    private void saveToVariable(ActionEvent event) {
     }
 
     @FXML
@@ -372,6 +418,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void UserToggleButton(ActionEvent event) {
-    }
+}
 
 }

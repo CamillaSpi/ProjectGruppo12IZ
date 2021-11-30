@@ -38,6 +38,7 @@ public class MyOperandCollection extends OperandCollection {
     * It returns the last number inserted inside the collection.
     * <p> <!-- -->
     * @return true if the element was remove, otherwise false
+    * @see OperandCollection
     */
     public boolean drop() {
         int size = this.collectionLength();
