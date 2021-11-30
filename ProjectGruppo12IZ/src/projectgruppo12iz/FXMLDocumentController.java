@@ -327,6 +327,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void drop(ActionEvent event) {
+         if (!collector.drop()) {
+            showAlert("There aren't elements for drop operation!\n");
+        } else {
+            showAlert("Dropped last item!");
+             OperandsTable.refresh();
+        }
     }
 
     @FXML
