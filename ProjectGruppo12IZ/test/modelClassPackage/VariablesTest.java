@@ -250,6 +250,90 @@ public class VariablesTest {
         assertEquals(retValue, newValue);   
     }
     
+    
+    /**
+     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     */
+    @Test
+    public void testSubtractToVariableOutCondition() {
+        System.out.println("subtractToVariable outOfRange key and a null subtracting");
+        String key = "0";
+        ComplexNumber subtracting = null;
+        Variables instance = new Variables();
+        boolean ret = instance.subtractToVariable(key, subtracting);
+        boolean expRet = false;
+        assertEquals(ret, expRet); 
+    }
+    
+    /**
+     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     */
+    @Test
+    public void testSubtractToVariableOutRage() {
+        System.out.println("subtractToVariable outOfRange key");
+        String key = "9";
+        ComplexNumber subtracting = null;
+        Variables instance = new Variables();
+        boolean ret = instance.subtractToVariable(key, subtracting);
+        boolean expRet = false;
+        assertEquals(ret, expRet); 
+    }
+    /**
+     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     */
+    @Test
+    public void testSubtractToVariableInvalidSubtracting() {
+        System.out.println("subtractToVariable null subtracting");
+        String key = "a";
+        ComplexNumber subtracting = null;
+        ComplexNumber value = new ComplexNumber("-3.4", "0.9");
+        Variables instance = new Variables();
+        instance.saveToVariable(key, value);
+        boolean ret = instance.subtractToVariable(key, subtracting);
+        boolean expRet = false;
+        assertEquals(ret, expRet); 
+    }
+    
+    /**
+     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key has not an already associated value.
+     */
+    @Test
+    public void testSubtractToVariableNoSavedValue() {
+        System.out.println("subtractToVariable no associated value to the key");
+        String keyA = "a";
+        String keyB = "b";
+        ComplexNumber valueA = new ComplexNumber("-3.4", "0.9");
+        ComplexNumber valueB = new ComplexNumber("4.3", "-6.5");
+        Variables instance = new Variables();
+        instance.saveToVariable(keyA, valueA);
+        instance.saveToVariable(keyB, valueB);
+        ComplexNumber subtracting = new ComplexNumber("-4", "9");
+        boolean ret = instance.subtractToVariable("c", subtracting);
+        boolean expRet = false;
+        assertEquals(ret, expRet); 
+    }
+    
+    /**
+     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key as an already value associated and the subtracting is not null.
+     */
+    @Test
+    public void testSubtractToVariableCorrectCase() {
+        System.out.println("subtractToVariable already associated value to key and correct subtracting");
+        String keyA = "a";
+        String keyB = "b";
+        ComplexNumber valueA = new ComplexNumber("-3.4", "0.9");
+        ComplexNumber valueB = new ComplexNumber("4.3", "-6.5");
+        Variables instance = new Variables();
+        instance.saveToVariable(keyA, valueA);
+        instance.saveToVariable(keyB, valueB);
+        ComplexNumber subtracting = new ComplexNumber("-4", "9");
+        boolean ret = instance.subtractToVariable("b", subtracting);
+        boolean expRet = true;
+        assertEquals(ret, expRet); 
+    }
+    
+
+    
 
   
 }
