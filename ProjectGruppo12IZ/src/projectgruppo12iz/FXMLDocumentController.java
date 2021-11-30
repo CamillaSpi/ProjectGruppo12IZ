@@ -323,12 +323,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void over(ActionEvent event) {
+         if (!collector.over()) {
+            showAlert("There aren't least elements for over operation!\n");
+        } else {
+            showAlert("Over operation execute!");
+             OperandsTable.refresh();
+        }
     }
 
     @FXML
     private void drop(ActionEvent event) {
          if (!collector.drop()) {
-            showAlert("There aren't elements for drop operation!\n");
+            showAlert("There aren't at least element for drop operation!\n");
         } else {
             showAlert("Dropped last item!");
              OperandsTable.refresh();
