@@ -33,7 +33,7 @@ public class Variables {
     * @return True if the String has only one character in the range from "a" to "z", false otherwise.
     */ 
     public boolean checkRange(String s){
-        return s.length()== 1 && s.charAt(0) >= 'a' && s.charAt(0) <= 'z';
+        return s!=null && s.length()== 1 && s.charAt(0) >= 'a' && s.charAt(0) <= 'z';
     }
     
     
@@ -48,18 +48,6 @@ public class Variables {
         return myVariables.get(key);  
     }
     
-    /**
-    * It associates the ComplexNumber passed as value with the String passed as key 
-    * and put this couple as item in the myVariable map. 
-    * If already exists a value associated with the specified key, this value will be replaced by the new one.
-    * <p> <!-- -->
-    * @param key the key to which associate the specified value.
-    * @param value the value to associate with the specified key.
-    * @see ComplexNumber
-    */ 
-    public void setValue(String key, ComplexNumber value){
-        myVariables.put(key, value);
-    }
     
     
     /**
@@ -74,20 +62,21 @@ public class Variables {
     
     
     /**
-    * It returns the attribute myVariables
+    * It associates the ComplexNumber passed as value with the String passed as key 
+    * and put this couple as item in the myVariable map. 
+    * If already exists a value associated with the specified key, this value will be replaced by the new one.
     * <p> <!-- -->
     * 
     * @param key its contains the real part of the complex number
     * @param value its contains the imaginary part of the complex number
-    * @return a bollean value that represent if the number is correct save or not.
+    * @return a bolean value that represent if the number is correctly saved or not.
     * 
     */
-    public boolean saveToVariables(Character key, ComplexNumber value){
-        if(key != null && value != null)
-            if (key >= 'a' && key <= 'z'){
-                this.myVariables.put(key.toString(), value); 
-                return true;
-            }
+    public boolean saveToVariable(String key, ComplexNumber value){
+        if(checkRange(key) && value != null){
+            this.myVariables.put(key.toString(), value); 
+            return true;
+        }
         return false;
     }
     

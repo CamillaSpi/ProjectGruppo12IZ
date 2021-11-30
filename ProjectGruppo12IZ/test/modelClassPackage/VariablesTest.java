@@ -145,8 +145,8 @@ public class VariablesTest {
         Variables instance = new Variables();
         ComplexNumber a = new ComplexNumber("-3.5", "8.9");
         ComplexNumber b = new ComplexNumber("5.3", "-9.8");
-        instance.setValue("a", a);
-        instance.setValue("b", b);
+        instance.saveToVariable("a", a);
+        instance.saveToVariable("b", b);
         String expResult = "(a, " + a.toString() + "), (b, " + b.toString() + ")" ;
         String result = instance.toString();
         assertEquals(expResult, result);
@@ -183,37 +183,6 @@ public class VariablesTest {
     }
 
     
-    /**
-     * Test of setValue method, of class Variables, analyzing the case in which the key has already a value associated.
-     */
-    @Test
-    public void testSetValueReplace() {
-        System.out.println("setValue with the replacement of the value");
-        String key = "b";
-        ComplexNumber newValue = new ComplexNumber("-3.4", "0.9");
-        ComplexNumber oldValue = new ComplexNumber("4.3", "-6.5");
-        Variables instance = new Variables();
-        instance.getMyVariables().put(key, oldValue);
-        instance.setValue(key, newValue);
-        ComplexNumber retValue = instance.getMyVariables().get(key);
-        assertEquals(retValue, newValue);   
-    }
-    
-    
-    /**
-     * Test of setValue method, of class Variables, analyzing the case in which the key has not an already value associated.
-     */
-    @Test
-    public void testSetValueNewKey() {
-        System.out.println("setValue with a key not having an already existing value associated");
-        String key = "b";
-        ComplexNumber value = new ComplexNumber("3.4", "5.5");
-        Variables instance = new Variables();
-        instance.getMyVariables().put(key, value);
-        instance.setValue(key, value);
-        ComplexNumber retValue = instance.getMyVariables().get(key);
-        assertEquals(retValue, value);   
-    }
 
     /**
      * Test of getMyVariables method, of class Variables.
@@ -237,7 +206,7 @@ public class VariablesTest {
         System.out.println("insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
-        instance.saveToVariables('a', a);
+        instance.saveToVariable("a", a);
         System.out.println(instance.toString());
         assertEquals(a, instance.getMyVariables().get("a"));
     }
@@ -250,7 +219,7 @@ public class VariablesTest {
         System.out.println("insert a complex Number equal to null");
         ComplexNumber a = null;
         Variables instance = new Variables();
-        instance.saveToVariables('a', a);
+        instance.saveToVariable("a", a);
         assertEquals(null, instance.getMyVariables().get("a"));
     }
     
@@ -263,7 +232,7 @@ public class VariablesTest {
         System.out.println("insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
-        instance.saveToVariables('8', a);
+        instance.saveToVariable("8", a);
         assertEquals(null, instance.getMyVariables().get("8"));
     }
     
