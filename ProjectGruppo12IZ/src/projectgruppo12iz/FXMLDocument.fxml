@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,61 +11,117 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectgruppo12iz.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="baseAnchorPane" prefHeight="488.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectgruppo12iz.FXMLDocumentController">
     <children>
-      <SplitPane dividerPositions="0.7112676056338029" layoutX="14.0" prefHeight="400.0" prefWidth="428.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.7556390977443609" layoutX="14.0" prefHeight="400.0" prefWidth="428.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextArea fx:id="textArea" layoutX="14.0" layoutY="14.0" minHeight="-Infinity" prefHeight="42.0" prefWidth="362.0" />
-                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="56.0" prefHeight="84.0" prefWidth="362.0">
+                  <AnchorPane fx:id="varAnchorPane" layoutY="-1.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="errorLabel" prefHeight="73.0" prefWidth="271.0" />
-                        <Separator orientation="VERTICAL" prefHeight="84.0" prefWidth="37.0" />
-                        <Button mnemonicParsing="false" onAction="#handleEnterAction" text="Enter" />
+                        <TextArea fx:id="varTextArea" layoutX="11.0" layoutY="48.0" prefHeight="36.0" prefWidth="142.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="48.0" />
+                        <Label layoutX="10.0" layoutY="22.0" text="Variable" />
+                        <ToggleButton fx:id="VariableToggleButton" layoutX="203.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="346.0" prefWidth="21.0" selected="true" style="-fx-background-radius: 0;" text="V&#10;a&#10;r&#10;i&#10;a&#10;b&#10;l&#10;e&#10;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </ToggleButton>
+                        <Button layoutX="17.0" layoutY="148.0" mnemonicParsing="false" onAction="#pushIntoStack" text="&lt;x" />
+                        <Button layoutX="121.0" layoutY="148.0" mnemonicParsing="false" onAction="#putIntoStack" text="&gt;x" />
+                        <Button layoutX="17.0" layoutY="195.0" mnemonicParsing="false" onAction="#subtractionFromStack" text="-x" />
+                        <Button layoutX="121.0" layoutY="195.0" mnemonicParsing="false" onAction="#addFromStack" text="+x" />
                      </children>
-                  </HBox>
-                  <HBox layoutX="14.0" layoutY="143.0" prefHeight="42.0" prefWidth="126.0" spacing="120.0">
+                  </AnchorPane>
+                  <TextArea fx:id="textArea" layoutX="235.0" layoutY="15.0" minHeight="-Infinity" prefHeight="42.0" prefWidth="284.0" />
+                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="99.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0" AnchorPane.leftAnchor="241.0">
                      <children>
                         <Button fx:id="sumButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#add" text="SUM" />
                      </children>
                   </HBox>
-                  <HBox layoutX="14.0" layoutY="185.0" prefHeight="42.0" prefWidth="126.0" spacing="120.0">
+                  <HBox alignment="TOP_CENTER" layoutX="240.0" layoutY="141.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
                      <children>
                         <Button fx:id="divButton" mnemonicParsing="false" onAction="#division" text="DIV" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="140.0" layoutY="143.0" prefHeight="42.0" prefWidth="126.0" spacing="120.0">
+                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="99.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
                      <children>
                         <Button fx:id="subButton" mnemonicParsing="false" onAction="#sub" text="SUB" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_RIGHT" layoutX="272.0" layoutY="143.0" prefHeight="42.0" prefWidth="104.0" spacing="120.0">
+                  <HBox alignment="TOP_CENTER" layoutX="448.0" layoutY="100.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
                      <children>
                         <Button fx:id="molButton" mnemonicParsing="false" onAction="#multiply" text="MOL" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="140.0" layoutY="185.0" prefHeight="42.0" prefWidth="126.0" spacing="120.0">
+                  <HBox alignment="TOP_CENTER" layoutX="343.0" layoutY="140.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
                      <children>
                         <Button fx:id="sqrtButton" mnemonicParsing="false" onAction="#sqrt" text="SQRT" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_RIGHT" layoutX="265.0" layoutY="185.0" prefHeight="42.0" prefWidth="110.0" spacing="120.0">
+                  <HBox alignment="TOP_CENTER" layoutX="449.0" layoutY="141.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
                      <children>
                         <Button fx:id="invertSignButton" mnemonicParsing="false" onAction="#invertSign" prefHeight="25.0" prefWidth="40.0" text="+/-" />
+                     </children>
+                  </HBox>
+                  <AnchorPane fx:id="operationAnchorPane" layoutY="345.0" prefHeight="141.0" prefWidth="564.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <TextArea fx:id="nameOperationTextArea" layoutX="90.0" layoutY="38.0" prefHeight="17.0" prefWidth="176.0" />
+                        <TextArea fx:id="operationTextArea" layoutX="90.0" layoutY="86.0" prefHeight="17.0" prefWidth="252.0" />
+                        <Label layoutX="14.0" layoutY="38.0" text="Name" />
+                        <Label layoutX="17.0" layoutY="86.0" text="Operations" />
+                        <Button fx:id="EnterOperation" layoutX="357.0" layoutY="80.0" mnemonicParsing="false" text="Enter" />
+                        <Button fx:id="executeTextArea" layoutX="333.0" layoutY="37.0" mnemonicParsing="false" text="Execute" />
+                        <Button fx:id="deleteOperation" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" text="Delete" />
+                        <Button layoutX="425.0" layoutY="80.0" mnemonicParsing="false" text="Show" />
+                        <ToggleButton fx:id="operationToggleButton" layoutX="477.0" layoutY="37.0" mnemonicParsing="false" selected="true" text="Operation" />
+                        <ToggleButton fx:id="UserToggleButton" layoutX="260.0" layoutY="6.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="564.0" selected="true" style="-fx-background-radius: ;" text="User Operations" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </ToggleButton>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="539.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEnterAction" text="Enter" />
+                  <Label fx:id="errorLabel" layoutX="244.0" layoutY="63.0" prefHeight="27.0" prefWidth="339.0" text="Welcome!" />
+                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="250.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#clear" text="CLEAR" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="448.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#over" text="OVER" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#drop" text="DROP" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="250.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#dup" text="DUP" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                     <children>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#swap" text="SWAP" />
                      </children>
                   </HBox>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="OperandsTable" prefHeight="486.0" prefWidth="157.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="OperandsTable" editable="true" prefHeight="486.0" prefWidth="157.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <placeholder>
                         <Label text="No Operands inserted" />
                     </placeholder>
                     <columns>
-                      <TableColumn fx:id="OperandsClm" editable="false" prefWidth="156.0" text="Operands" />
+                      <TableColumn fx:id="OperandsClm" editable="false" prefWidth="190.00006103515625" text="Operands" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
