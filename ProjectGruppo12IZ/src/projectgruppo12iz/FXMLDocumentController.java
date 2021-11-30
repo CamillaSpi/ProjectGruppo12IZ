@@ -223,7 +223,13 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+    
+    /**
+    * It allows the calls to the subtraction operation of the class Calculator pushing the result into the stack.
+    * <p> <!-- -->
+    * @param event it registers the event
+    * @see MyOperandCollection
+    */
     @FXML
     private void sub(ActionEvent event) {
         if (collector.collectionLength() < 2) {
@@ -292,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     /**
-    * It allow the calls to the Invert sign opation of the class Calculator pushing the result into the stack.
+    * It allows the calls to the Invert sign operation of the class Calculator pushing the result into the stack.
     * <p> <!-- -->
     * @param event its register the event
     * @see MyOperandCollection
@@ -336,14 +342,27 @@ public class FXMLDocumentController implements Initializable {
     private void addFromStack(ActionEvent event) {
     }
   
+    /**
+    * It call the MyOperandCollection's clear function, 
+    * if the function returns false the collection is already empty and
+    * an error message is shown, otherwise, if it is not empty, a confirmation message is shown.
+    * @param event An Event representing some type of action.
+    * <p> <!-- -->
+    */
     @FXML
     private void clear(ActionEvent event) {
+        if(!collector.clear()) {
+            showAlert("Collection already empty!\n");
+        } else {
+            showAlert("Clear operation executed succesfully!");
+            OperandsTable.refresh();
+        }
     }
     
     /**
     * It call the MyOperandCollection's over function, 
-    * if the function return false
-    * an error message was shown.
+    * if the function returns 
+    * an error message is shown.
     * @param event An Event representing some type of action.
     * <p> <!-- -->
     */
@@ -358,8 +377,8 @@ public class FXMLDocumentController implements Initializable {
     }
     /**
     * It call the MyOperandCollection's drop function, 
-    * if the function return false
-    * an error message was shown.
+    * if the function returns false
+    * an error message is shown.
     * @param event An Event representing some type of action.
     * <p> <!-- -->
     */
@@ -411,16 +430,5 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
-    @FXML
-    private void variableToggleButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void showOperation(ActionEvent event) {
-    }
-
-    @FXML
-    private void UserToggleButton(ActionEvent event) {
-    }
 
 }
