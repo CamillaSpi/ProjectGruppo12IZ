@@ -321,24 +321,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-   @FXML
-    private void subtractToVariable(ActionEvent event) {
-        ComplexNumber subtracting = collector.last();
-        if(subtracting != null){
-            String v = varTextArea.getText();
-            if(!("".equals(v))){
-                if(!vars.subtractToVariable(v, subtracting))
-                    showAlert("the operation is failed");
-                else{
-                    showAlert("the result will be saved in the variable" + v);
-                    this.collector.remove();
-                    OperandsTable.refresh();
-                }
-            }else
-                showAlert("Specify a variable before click this button");
-        }else
-            showAlert("Insert at least an operand to execute this opration");
-    }
 
     @FXML
     private void addFromStack(ActionEvent event) {
@@ -431,12 +413,90 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
+    /**
+    * This function is associated with the button for saving the last operand in a variable writed in the user interface
+    * It check: if there is an operand in the stack and takes the text from the variable's text area and checks if it's not null, after it calls the saveToVariable 
+    * method of class variables passing it the text (the variable written). If the variable is written correctly and
+    * the associated value exists, it is pushed into the variable
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save from a variable.
+    * @see OperandCollection
+    */
     @FXML
     private void saveToVariable(ActionEvent event) {
+        ComplexNumber tmp = this.collector.last();
+        if(tmp != null){
+            String variable = varTextArea.getText();
+            if(!("".equals(variable))){
+                if(!this.vars.saveToVariable(variable, tmp))
+                    showAlert("the operation is failed!\n");
+                else{
+                    showAlert("the last operand is saved in the writed variable!\n");
+                    this.collector.remove();
+                    OperandsTable.refresh();
+                }
+            }else
+                showAlert("write the variable where save the values!\n");
+        }else
+            showAlert("insert at least an operand before execute this operation!\n");
+            
     }
-
+    
+    /**
+    * This function is associated with the button for saving from a variable of the user interface
+    * It takes the text from the variable's text area and checks if it's not null, after it calls the saveFromVariable method of class variables
+    * passing it the text (the variable written). If the variable is written correctly and the associated value exists, it is pushed into the stack
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save from a variable.
+    * @see OperandCollection
+    */
     @FXML
-    private void pushIntoStack(ActionEvent event) {
+    private void saveFromVariable(ActionEvent event) {
+        String text = varTextArea.getText();
+        if ("".equals(text)) {
+            showAlert("Write a variable before press this button!");
+        } else {
+            ComplexNumber topush = vars.saveFromVariable(text);
+            if(topush == null)
+                showAlert("This variable can't be used, it is not correct or initialized!");
+            else{
+                pushIntoStack(topush);
+                showAlert("Value from variable inserted correctly");
+            }                
+        }
+    }
+    
+    
+    /**
+    * This function is associated with the button to subtract from a variable 
+    * written in the text area of the user interface the value of the last inserted operand
+    * if there is at least one, and if the specified variable has a value already associated
+    * It takes the text from the variable's text area and checks if it's not null, after it calls the subtractToVariable method of class Variables
+    * passing it. If the operation could be performed, the last operand is removed from the stack,
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to subtract to a variable the value of the last inserted operand.
+    * @see OperandCollection, CompelxNumber
+    */
+    @FXML
+    private void subtractToVariable(ActionEvent event) {
+        ComplexNumber subtracting = collector.last();
+        if(subtracting != null){
+            String v = varTextArea.getText();
+            if(!("".equals(v))){
+                if(!vars.subtractToVariable(v, subtracting))
+                    showAlert("the operation is failed");
+                else{
+                    showAlert("the result will be saved in the variable" + v);
+                    this.collector.remove();
+                    OperandsTable.refresh();
+                }
+            }else
+                showAlert("Specify a variable before click this button");
+        }else
+            showAlert("Insert at least an operand to execute this opration");
     }
 
 

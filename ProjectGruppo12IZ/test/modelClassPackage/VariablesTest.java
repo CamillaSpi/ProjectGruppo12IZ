@@ -79,19 +79,6 @@ public class VariablesTest {
         assertEquals(expResult, result);
     }
     
-        /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
-     */
-    @Test
-    public void testCheckRangeNull() {
-        System.out.println("checkRange with a string that is null");
-        String s = null;
-        Variables instance = new Variables();
-        boolean expResult = false;
-        boolean result = instance.checkRange(s);
-        assertEquals(expResult, result);
-    }
-    
     
     /**
      * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length but out of range.
@@ -194,11 +181,9 @@ public class VariablesTest {
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
     }
-
-   
   
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with correct entry.
      */
     @Test
     public void testSaveToVariablesCorrectNumber() {
@@ -211,7 +196,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with wrong null CompplexNumber as entry.
      */
     @Test
     public void testSaveToVariablesNullNumber() {
@@ -223,8 +208,9 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with wrong key as entry.
      */
+    
     @Test
     public void testSaveToVariablesWrongKey() {
         System.out.println("insert a complex Number correctly created");
@@ -235,10 +221,11 @@ public class VariablesTest {
     }
     
     /**
-     * Test of setValue method, of class Variables, analyzing the case in which the key has already a value associated.
+     * Test of SaveToVariables method, of class Variables, with replace the value in a setted variable.
      */
+    
     @Test
-    public void testSetValueReplace() {
+    public void testSaveToVariablesReplace() {
         System.out.println("setValue with the replacement of the value");
         String key = "b";
         ComplexNumber newValue = new ComplexNumber("-3.4", "0.9");
@@ -247,7 +234,41 @@ public class VariablesTest {
         instance.saveToVariable(key, oldValue);
         instance.saveToVariable(key, newValue);
         ComplexNumber retValue = instance.getMyVariables().get(key);
-        assertEquals(retValue, newValue);   
+        assertEquals(retValue, newValue); 
+    }
+    
+    /**
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable correctly written and initialized.
+     */
+    @Test
+    public void testSaveFromVariableCorrectVariable() {
+        System.out.println("save from a variable correctly written and initialized");
+        ComplexNumber a = new ComplexNumber("1000", "1000");
+        Variables instance = new Variables();
+        instance.saveToVariable("c", a);
+        assertEquals(a, instance.saveFromVariable("c"));
+    }
+    
+    /**
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly written.
+     */
+    @Test
+    public void testSaveFromVariableNotCorrectlyWrittenVariable() {
+        System.out.println("save from a variable not correctly written");
+        ComplexNumber a = new ComplexNumber("1000", "1000");
+        Variables instance = new Variables();
+        instance.saveToVariable("8", a);
+        assertEquals(null, instance.saveFromVariable("8"));
+    }
+    
+    /**
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly initialized.
+     */
+    @Test
+    public void testSaveFromVariableNotInitializedVariable() {
+        System.out.println("save from a variable not correctly initialized");
+        Variables instance = new Variables();
+        assertEquals(null, instance.saveFromVariable("c"));
     }
     
     
@@ -332,8 +353,4 @@ public class VariablesTest {
         assertEquals(ret, expRet); 
     }
     
-
-    
-
-  
 }

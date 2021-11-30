@@ -86,7 +86,7 @@ public class OperandCollection{
     * @return the int length
     */
     public int collectionLength(){
-        return l.size();
+        return l.size() + l1.size();
     }
 
     public void stamp(){
@@ -98,27 +98,4 @@ public class OperandCollection{
             System.out.println(iterator.next() + " "); 
         } 
     } 
-    
-    /*@Override
-    public Iterator<OperandCollection> iterator() {
-        Iterator<OperandCollection> it = new Iterator<OperandCollection>() {
-
-            private int currentIndex = 0;
-            @Override
-            public boolean hasNext() {
-                return currentIndex < collectionLength() && this[currentIndex] != null;
-            }
-
-            @Override
-            public Type next() {
-                return arrayList[currentIndex++];
-            }
-
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
-        return it;
-    }*/
 }
