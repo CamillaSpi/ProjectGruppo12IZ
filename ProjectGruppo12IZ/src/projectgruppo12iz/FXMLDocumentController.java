@@ -322,9 +322,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    @FXML
-    private void addFromStack(ActionEvent event) {
-    }
   
     /**
     * It call the MyOperandCollection's clear function, 
@@ -496,6 +493,37 @@ public class FXMLDocumentController implements Initializable {
             }else
                 showAlert("Specify a variable before click this button!");
         }else
+            showAlert("Insert at least an operand to execute this operation!");
+    }
+    /**
+    * This function is associated with the button to add to a variable 
+    * written in the text area of the user interface the value of the last inserted operand
+    * if there is at least one, and if the specified variable has a value already associated
+    * It takes the text from the variable's text area and checks if it's not null, after it calls the addToVariable method of class Variables
+    * passing it. If the operation could be performed, the last operand is removed from the stack,
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to add to a variable the value of the last inserted operand.
+    * @see OperandCollection, CompelxNumber
+    */
+    @FXML
+    private void addToVariable(ActionEvent event) {
+         ComplexNumber adding = collector.last();
+        if(adding != null){
+            String v = varTextArea.getText();
+            if(!("".equals(v))){
+                if(!vars.addToVariable(v, adding))
+                    showAlert("the operation is failed");
+                else{
+                    showAlert("the result will be saved in the variable " + v);
+                    this.collector.remove();
+                    OperandsTable.refresh();
+                }
+            }
+            else
+                showAlert("Specify a variable before click this button!");
+        }
+        else
             showAlert("Insert at least an operand to execute this operation!");
     }
 
