@@ -322,7 +322,22 @@ public class FXMLDocumentController implements Initializable {
     }
 
    @FXML
-    private void subtractionFromStack(ActionEvent event) {
+    private void subtractToVariable(ActionEvent event) {
+        ComplexNumber subtracting = collector.last();
+        if(subtracting != null){
+            String v = varTextArea.getText();
+            if(!("".equals(v))){
+                if(!vars.subtractToVariable(v, subtracting))
+                    showAlert("the operation is failed");
+                else{
+                    showAlert("the result will be saved in the variable" + v);
+                    this.collector.remove();
+                    OperandsTable.refresh();
+                }
+            }else
+                showAlert("Specify a variable before click this button");
+        }else
+            showAlert("Insert at least an operand to execute this opration");
     }
 
     @FXML

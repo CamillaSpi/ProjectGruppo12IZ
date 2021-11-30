@@ -60,6 +60,25 @@ public class Variables {
         return myVariables;
     }
     
+    /**
+    * It subtract the value passed from the value associated to the key passed as parameter,
+    * if the operation is concluded succesfully it stores the results as value of the key itself.
+    * <p> <!-- -->
+    * @param key  the variable associated to the value on which perform the subtraction.
+    * @param subtracting the value to subtract from that associated with the key passed.
+    * @return true if the operation is executed, false otherwise.
+    * @see ComplexNumber, Calculator
+    */ 
+    public boolean subtractToVariable(String key, ComplexNumber subtracting){
+        if(checkRange(key) && subtracting != null){
+            ComplexNumber value = this.getValue(key);
+            if( value != null){
+                this.saveToVariable(key, Calculator.subtraction(value, subtracting));
+                return true;
+            }
+        }
+        return false;
+    }
     
     /**
     * It associates the ComplexNumber passed as value with the String passed as key 
