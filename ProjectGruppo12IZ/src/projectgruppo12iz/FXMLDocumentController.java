@@ -413,6 +413,16 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
+    /**
+    * This function is associated with the button for saving the last operand in a variable writed in the user interface
+    * It check: if there is an operand in the stack and takes the text from the variable's text area and checks if it's not null, after it calls the saveToVariable 
+    * method of class variables passing it the text (the variable written). If the variable is written correctly and
+    * the associated value exists, it is pushed into the variable
+    * otherwise error messages will be shown. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save from a variable.
+    * @see OperandCollection
+    */
     @FXML
     private void saveToVariable(ActionEvent event) {
         ComplexNumber tmp = this.collector.last();
