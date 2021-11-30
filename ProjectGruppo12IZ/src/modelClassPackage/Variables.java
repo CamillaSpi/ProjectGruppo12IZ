@@ -39,6 +39,24 @@ public class Variables {
     /**
     * It returns the attribute myVariables
     * <p> <!-- -->
+    * 
+    * @param key its contains the real part of the complex number
+    * @param value its contains the imaginary part of the complex number
+    * @return a bollean value that represent if the number is correct save or not.
+    * 
+    */
+    public boolean saveToVariables(Character key, ComplexNumber value){
+        if(key != null && value != null)
+            if (key >= 'a' && key <= 'z'){
+                this.myVariables.put(key.toString(), value); 
+                return true;
+            }
+        return false;
+    }
+    
+    /**
+    * It returns the attribute myVariables
+    * <p> <!-- -->
     * @return a string definition for the current object
     * 
     */ 
