@@ -60,9 +60,13 @@ public class MyOperandCollection extends OperandCollection {
             this.insert(this.last());
         return size + 1 == this.collectionLength();
     }
-
-  
-
+    
+    
+    /**
+    * It duplicate the seconds last number and inserted inside the collection.
+    * <p> <!-- -->
+    * @return true if the seconds last element was duplicate and inserted, otherwise false
+    */
     public boolean over() {
     //push a copy of the seconds last elements
     int size = this.collectionLength();
