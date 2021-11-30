@@ -86,7 +86,7 @@ public class OperandCollection{
     * @return the int length
     */
     public int collectionLength(){
-        return l.size();
+        return l.size() + l1.size();
     }
 
     public void stamp(){
