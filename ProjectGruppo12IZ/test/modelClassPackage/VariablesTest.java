@@ -253,12 +253,12 @@ public class VariablesTest {
      * Test of insert method, of class OperandCollection.
      */
     @Test
-    public void testSaveFromVariableNotCorrectVariable() {
+    public void testSaveFromVariableNotCorrectlyWrittenVariable() {
         System.out.println("save from a variable not correctly written");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("8", a);
-        assertEquals(null, instance.getMyVariables().get("8"));
+        assertEquals(null, instance.saveFromVariable("8"));
     }
     
     /**
@@ -267,9 +267,7 @@ public class VariablesTest {
     @Test
     public void testSaveFromVariableNotInitializedVariable() {
         System.out.println("save from a variable not correctly initialized");
-        ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
-        instance.saveToVariable("8", a);
-        assertEquals(null, instance.getMyVariables().get("8"));
+        assertEquals(null, instance.saveFromVariable("c"));
     }
 }
