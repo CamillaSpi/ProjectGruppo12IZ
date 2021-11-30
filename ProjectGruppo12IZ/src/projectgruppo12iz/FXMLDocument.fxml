@@ -28,7 +28,7 @@
                         </ToggleButton>
                         <Button layoutX="17.0" layoutY="148.0" mnemonicParsing="false" onAction="#saveFromVariable" text="&lt;x" />
                         <Button layoutX="121.0" layoutY="148.0" mnemonicParsing="false" onAction="#saveToVariable" text="&gt;x" />
-                        <Button layoutX="17.0" layoutY="195.0" mnemonicParsing="false" onAction="#subtractionFromStack" text="-x" />
+                        <Button layoutX="17.0" layoutY="195.0" mnemonicParsing="false" onAction="#subtractToVariable" text="-x" />
                         <Button layoutX="121.0" layoutY="195.0" mnemonicParsing="false" onAction="#addFromStack" text="+x" />
                      </children>
                   </AnchorPane>

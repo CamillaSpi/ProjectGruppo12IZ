@@ -321,9 +321,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-   @FXML
-    private void subtractionFromStack(ActionEvent event) {
-    }
 
     @FXML
     private void addFromStack(ActionEvent event) {
@@ -459,6 +456,10 @@ public class FXMLDocumentController implements Initializable {
                 showAlert("Value from variable inserted correctly");
             }                
         }
+    }
+
+    @FXML
+    private void subtractToVariable(ActionEvent event) {
     }
 
 
