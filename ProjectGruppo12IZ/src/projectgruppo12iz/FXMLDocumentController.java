@@ -418,6 +418,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void saveToVariable(ActionEvent event) {
+        ComplexNumber tmp = this.collector.last();
+        if(tmp != null){
+            String variable = varTextArea.getText();
+            if(!("".equals(variable))){
+                if(!this.vars.saveToVariable(variable, tmp))
+                    showAlert("the operation is failed!\n");
+                else{
+                    showAlert("the last operand is saved in the writed variable!\n");
+                    this.collector.remove();
+                    OperandsTable.refresh();
+                }
+            }else
+                showAlert("write the variable where save the values!\n");
+        }else
+            showAlert("insert at least an operand before execute this operation!\n");
+            
     }
 
     @FXML

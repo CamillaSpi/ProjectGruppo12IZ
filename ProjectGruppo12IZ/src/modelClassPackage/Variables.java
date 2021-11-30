@@ -67,9 +67,9 @@ public class Variables {
     * If already exists a value associated with the specified key, this value will be replaced by the new one.
     * <p> <!-- -->
     * 
-    * @param key its contains the real part of the complex number
-    * @param value its contains the imaginary part of the complex number
-    * @return a bolean value that represent if the number is correctly saved or not.
+    * @param key its the string that rapresent the name of the the variable 
+    * @param value its contains the ComplexNumber to save in the variable
+    * @return a boolean value that represent if the number is correctly saved or not.
     * 
     */
     public boolean saveToVariable(String key, ComplexNumber value){

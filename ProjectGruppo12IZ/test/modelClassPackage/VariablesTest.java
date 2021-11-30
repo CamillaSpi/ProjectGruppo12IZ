@@ -198,11 +198,11 @@ public class VariablesTest {
    
   
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, Check with correct entry.
      */
     @Test
     public void testSaveToVariablesCorrectNumber() {
-        System.out.println("insert a complex Number correctly created");
+        System.out.println("SaveToVariables insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
@@ -211,11 +211,11 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, Check with Null ComplexNumber as entry.
      */
     @Test
     public void testSaveToVariablesNullNumber() {
-        System.out.println("insert a complex Number equal to null");
+        System.out.println("SaveToVariables insert a complex Number equal to null");
         ComplexNumber a = null;
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
@@ -223,11 +223,11 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, Check with wrong kay as entry.
      */
     @Test
     public void testSaveToVariablesWrongKey() {
-        System.out.println("insert a complex Number correctly created");
+        System.out.println("SaveToVariables insert a complex Number wrong key");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("8", a);
@@ -235,11 +235,11 @@ public class VariablesTest {
     }
     
     /**
-     * Test of setValue method, of class Variables, analyzing the case in which the key has already a value associated.
+     * Test of SaveToVariables method, of class Variables, Check with replace a setted variable value.
      */
     @Test
-    public void testSetValueReplace() {
-        System.out.println("setValue with the replacement of the value");
+    public void testSaveToVariablesReplace() {
+        System.out.println("SaveToVariables with the replacement of the value");
         String key = "b";
         ComplexNumber newValue = new ComplexNumber("-3.4", "0.9");
         ComplexNumber oldValue = new ComplexNumber("4.3", "-6.5");
