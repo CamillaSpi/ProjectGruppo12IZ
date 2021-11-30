@@ -406,7 +406,6 @@ public class FXMLDocumentController implements Initializable {
     private void swap(ActionEvent event) {
         if (!collector.swap()){
             showAlert("Not enough inserted operands!");
-            return;
         }
         else {
             showAlert("Swap operation completed successfully!");
@@ -415,5 +414,16 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
+    @FXML
+    private void saveToVariable(ActionEvent event) {
+    }
+
+    @FXML
+    private void showOperation(ActionEvent event) {
+    }
+
+    @FXML
+    private void UserToggleButton(ActionEvent event) {
+}
 
 }
