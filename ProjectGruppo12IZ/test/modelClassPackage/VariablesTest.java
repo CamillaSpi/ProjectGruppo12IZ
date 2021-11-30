@@ -79,6 +79,19 @@ public class VariablesTest {
         assertEquals(expResult, result);
     }
     
+        /**
+     * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
+     */
+    @Test
+    public void testCheckRangeNull() {
+        System.out.println("checkRange with a string that is null");
+        String s = null;
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.checkRange(s);
+        assertEquals(expResult, result);
+    }
+    
     
     /**
      * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length but out of range.
@@ -182,21 +195,7 @@ public class VariablesTest {
         assertEquals(expResult, result);
     }
 
-    
-
-    /**
-     * Test of getMyVariables method, of class Variables.
-     */
-    @Test
-    public void testGetMyVariables() {
-        System.out.println("getMyVariables");
-        Variables instance = new Variables();
-        Map<String, ComplexNumber> expResult = null;
-        Map<String, ComplexNumber> result = instance.getMyVariables();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+   
   
     /**
      * Test of insert method, of class OperandCollection.
