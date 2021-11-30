@@ -238,7 +238,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of SaveToVariables method, of class Variables, analyzing the case with a contained key in the Map.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable correctly written and initialized.
      */
     @Test
     public void testSaveFromVariableCorrectVariable() {
@@ -250,7 +250,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly written.
      */
     @Test
     public void testSaveFromVariableNotCorrectlyWrittenVariable() {
@@ -262,7 +262,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly initialized.
      */
     @Test
     public void testSaveFromVariableNotInitializedVariable() {
