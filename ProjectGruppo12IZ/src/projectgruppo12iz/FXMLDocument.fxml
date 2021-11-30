@@ -21,7 +21,7 @@
                      <children>
                         <TextArea fx:id="varTextArea" layoutX="11.0" layoutY="48.0" prefHeight="36.0" prefWidth="142.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="48.0" />
                         <Label layoutX="10.0" layoutY="22.0" text="Variable" />
-                        <ToggleButton fx:id="VariableToggleButton" layoutX="203.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="346.0" prefWidth="21.0" selected="true" style="-fx-background-radius: 0;" text="V&#10;a&#10;r&#10;i&#10;a&#10;b&#10;l&#10;e&#10;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
+                        <ToggleButton fx:id="VariableToggleButton" layoutX="203.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="346.0" prefWidth="21.0" selected="true" style="-fx-background-radius: 0" text="V&#10;a&#10;r&#10;i&#10;a&#10;b&#10;l&#10;e&#10;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="12.0" />
                            </font>
@@ -74,7 +74,7 @@
                         <Button fx:id="deleteOperation" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" text="Delete" />
                         <Button layoutX="425.0" layoutY="80.0" mnemonicParsing="false" text="Show" />
                         <ToggleButton fx:id="operationToggleButton" layoutX="477.0" layoutY="37.0" mnemonicParsing="false" selected="true" text="Operation" />
-                        <ToggleButton fx:id="UserToggleButton" layoutX="260.0" layoutY="6.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="564.0" selected="true" style="-fx-background-radius: ;" text="User Operations" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ToggleButton fx:id="UserToggleButton" layoutX="260.0" layoutY="6.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="564.0" selected="true" style="-fx-background-radius: 0" text="User Operations" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="11.0" />
                            </font>
