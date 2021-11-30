@@ -353,4 +353,62 @@ public class VariablesTest {
         assertEquals(ret, expRet); 
     }
     
+ /**
+     * Test of addToVariable method, of class Variables.
+     * Correct test case.
+     */
+    @Test
+    public void testAddToVariable() {
+        System.out.println("Add To Variable test");
+        ComplexNumber a = new ComplexNumber("157", "192");
+        Variables instance = new Variables();
+        instance.saveToVariable("a", a);
+        ComplexNumber toAdd = new ComplexNumber("19", "12");
+        instance.addToVariable("a", toAdd);
+        ComplexNumber expResult = Calculator.addiction(a, toAdd);
+        ComplexNumber result = instance.getMyVariables().get("a");
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of addToVariable method, of class Variables.
+     * Value to add is null
+     */
+    @Test
+    public void testAddToVariableAddNull() {
+        System.out.println("Add to var a Null value");
+        ComplexNumber a = new ComplexNumber("157", "192");
+        Variables instance = new Variables();
+        instance.saveToVariable("a", a);
+        ComplexNumber toAdd = null;
+        Boolean expResult = false;
+        Boolean result = instance.addToVariable("a", toAdd);
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of addToVariable method, of class Variables.
+     * Var value is never setted. (is null) 
+     */
+    @Test
+    public void testAddToVariableVarNull() {
+        System.out.println("add to a Null variable ");
+        Variables instance = new Variables();
+        ComplexNumber toAdd = new ComplexNumber("157", "192");
+        Boolean expResult = false;
+        Boolean result = instance.addToVariable("a", toAdd);
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of addToVariable method, of class Variables.
+     * Both value are null
+     */
+    @Test
+    public void testAddToVariableBothNull() {
+        System.out.println("add to a Null variable ");
+        Variables instance = new Variables();
+        ComplexNumber toAdd = null;
+        Boolean expResult = false;
+        Boolean result = instance.addToVariable("a", toAdd);
+        assertEquals(expResult, result);
+    }
+    
 }

@@ -116,6 +116,31 @@ public class Variables {
         return false;
     }
     
+     /**
+     * It add the ComplexNumber passed as value with the ComplexNumber
+     * associated with the Strings passed as key. If didn't exists a value
+     * associated with the specified key, return false.
+     * <p>
+     * <!-- -->
+     *
+     * @param key the variable associated with the value on which perform the
+     * addiction
+     * @param value its contains the imaginary part of the complex number
+     * @return a bolean value that represent if the number is correctly added or
+     * not.
+     *
+     */
+ public boolean addToVariable(String key, ComplexNumber value) {
+        if (checkRange(key) && value != null) {
+            ComplexNumber var = this.getValue(key);
+            if (var != null) {
+                this.saveToVariable(key, Calculator.addiction(var, value));
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
     * It returns the attribute myVariables
     * <p> <!-- -->
