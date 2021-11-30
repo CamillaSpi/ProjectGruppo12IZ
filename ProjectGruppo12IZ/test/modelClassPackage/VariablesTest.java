@@ -181,25 +181,9 @@ public class VariablesTest {
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
     }
-
-    
-
-    /**
-     * Test of getMyVariables method, of class Variables.
-     */
-    @Test
-    public void testGetMyVariables() {
-        System.out.println("getMyVariables");
-        Variables instance = new Variables();
-        Map<String, ComplexNumber> expResult = null;
-        Map<String, ComplexNumber> result = instance.getMyVariables();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
   
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with correct entry.
      */
     @Test
     public void testSaveToVariablesCorrectNumber() {
@@ -212,7 +196,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with wrong null CompplexNumber as entry.
      */
     @Test
     public void testSaveToVariablesNullNumber() {
@@ -224,7 +208,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class OperandCollection.
+     * Test of SaveToVariables method, of class Variables, with wrong key as entry.
      */
     
     @Test
@@ -237,7 +221,24 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class Variables.
+     * Test of SaveToVariables method, of class Variables, with replace the value in a setted variable.
+     */
+    
+    @Test
+    public void testSaveToVariablesReplace() {
+        System.out.println("setValue with the replacement of the value");
+        String key = "b";
+        ComplexNumber newValue = new ComplexNumber("-3.4", "0.9");
+        ComplexNumber oldValue = new ComplexNumber("4.3", "-6.5");
+        Variables instance = new Variables();
+        instance.saveToVariable(key, oldValue);
+        instance.saveToVariable(key, newValue);
+        ComplexNumber retValue = instance.getMyVariables().get(key);
+        assertEquals(retValue, newValue); 
+    }
+    
+    /**
+     * Test of SaveToVariables method, of class Variables, analyzing the case with a contained key in the Map.
      */
     @Test
     public void testSaveFromVariableCorrectVariable() {
