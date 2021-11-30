@@ -95,7 +95,14 @@ public class FXMLDocumentController implements Initializable {
         pause.setOnFinished(e -> errorLabel.setText(null));
         pause.play();
     }
-
+    
+    /**
+    * It insert the element passed as param in the collection.
+    * <p> <!-- -->
+    * @param num it's the ComplexNumber to insert in the collection
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
@@ -283,7 +290,13 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Error during Square Root!");
         }
     }
-
+    
+    /**
+    * It allow the calls to the Invert sign opation of the class Calculator pushing the result into the stack.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @see MyOperandCollection
+    */
     @FXML
     private void invertSign(ActionEvent event) {
         if (collector.collectionLength() < 1) {
@@ -300,7 +313,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     @FXML
     private void pushIntoStack(ActionEvent event) {
     }
@@ -353,9 +372,22 @@ public class FXMLDocumentController implements Initializable {
              OperandsTable.refresh();
         }
     }
-
+    
+    /**
+    * It duplicate the last number inserted inside the collection.
+    * <p> <!-- -->
+    * @param event its register the event
+    * @return true if the element was add, otherwise false
+    * @see MyOperandCollection
+    */
     @FXML
     private void dup(ActionEvent event) {
+        if (!collector.dup()) {
+            showAlert("There isn't an element for dup operation!\n");
+        } else {
+            showAlert("dubbed last item!");
+            OperandsTable.refresh();
+        }
     }
     
     /**
