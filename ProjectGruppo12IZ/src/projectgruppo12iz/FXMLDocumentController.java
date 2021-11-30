@@ -319,22 +319,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    /**
-    * It duplicate the last number inserted inside the collection.
-    * <p> <!-- -->
-    * @param event its register the event
-    * @return true if the element was add, otherwise false
-    * @see MyOperandCollection
-    */
-    @FXML
-    private void pushIntoStack(ActionEvent event) {
-    }
-
-    @FXML
-    private void putIntoStack(ActionEvent event) {
-    }
-
-    @FXML
+   @FXML
     private void subtractionFromStack(ActionEvent event) {
     }
 
