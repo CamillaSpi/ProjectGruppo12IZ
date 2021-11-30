@@ -446,7 +446,7 @@ public class FXMLDocumentController implements Initializable {
     * @see OperandCollection
     */
     @FXML
-    private void pushFromVariable(ActionEvent event) {
+    private void saveFromVariable(ActionEvent event) {
         String text = varTextArea.getText();
         if ("".equals(text)) {
             showAlert("Write a variable before press this button!");
