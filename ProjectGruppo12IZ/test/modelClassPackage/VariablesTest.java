@@ -237,7 +237,7 @@ public class VariablesTest {
     }
     
     /**
-     * Test of insert method, of class Variables.
+     * Test of saveFromVariable method, of class Variables.
      */
     @Test
     public void testSaveFromVariableCorrectVariable() {
