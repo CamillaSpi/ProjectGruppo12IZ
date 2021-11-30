@@ -332,9 +332,26 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void dup(ActionEvent event) {
     }
-
+    
+    /**
+    * It calls the swap operation of MyOperandCollection and check the boolean returned.
+    * If the value returned from the called function is true, it means the operation has been perfrormed correctly and so a message will be shown to user.
+    * If the value returned from the called function is false, it means the operation has not been performed and so an error message will be shown to user. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button swap.
+    * @see OperandCollection
+    */
     @FXML
     private void swap(ActionEvent event) {
+        if (!collector.swap()){
+            showAlert("Not enough inserted operands");
+            return;
+        }
+        else {
+            showAlert("Swap operation completed successfully");
+            OperandsTable.refresh();
+        }
+        
     }
 
     @FXML
