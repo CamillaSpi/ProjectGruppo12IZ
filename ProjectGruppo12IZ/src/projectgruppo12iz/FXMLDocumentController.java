@@ -331,9 +331,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void over(ActionEvent event) {
          if (!collector.over()) {
-            showAlert("There aren't least elements for over operation!\n");
+            showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("Over operation execute!");
+            showAlert("Over operation executed succesfully!");
              OperandsTable.refresh();
         }
     }
@@ -347,9 +347,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void drop(ActionEvent event) {
          if (!collector.drop()) {
-            showAlert("There aren't at least element for drop operation!\n");
+            showAlert("Not enough inserted operands!\n");
         } else {
-            showAlert("Dropped last item!");
+            showAlert("Dropped operation executed succesfully!");
              OperandsTable.refresh();
         }
     }
@@ -369,11 +369,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void swap(ActionEvent event) {
         if (!collector.swap()){
-            showAlert("Not enough inserted operands");
+            showAlert("Not enough inserted operands!");
             return;
         }
         else {
-            showAlert("Swap operation completed successfully");
+            showAlert("Swap operation completed successfully!");
             OperandsTable.refresh();
         }
         
