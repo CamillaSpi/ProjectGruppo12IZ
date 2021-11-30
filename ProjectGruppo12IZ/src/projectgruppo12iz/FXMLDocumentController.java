@@ -489,14 +489,14 @@ public class FXMLDocumentController implements Initializable {
                 if(!vars.subtractToVariable(v, subtracting))
                     showAlert("the operation is failed");
                 else{
-                    showAlert("the result will be saved in the variable" + v);
+                    showAlert("the result will be saved in the variable " + v);
                     this.collector.remove();
                     OperandsTable.refresh();
                 }
             }else
-                showAlert("Specify a variable before click this button");
+                showAlert("Specify a variable before click this button!");
         }else
-            showAlert("Insert at least an operand to execute this opration");
+            showAlert("Insert at least an operand to execute this operation!");
     }
 
 
