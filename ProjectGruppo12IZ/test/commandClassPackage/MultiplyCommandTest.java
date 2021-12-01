@@ -19,11 +19,11 @@ import static org.junit.Assert.*;
  *
  * @author Gruppo 12 IZ
  */
-public class SubtractCommandTest {
+public class MultiplyCommandTest {
     
     
     
-    public SubtractCommandTest() {
+    public MultiplyCommandTest() {
        
     }
     
@@ -46,23 +46,23 @@ public class SubtractCommandTest {
  
 
     /**
-     * Test of execute method, of class SubtractCommand, checking is pushed the correct result.
+     * Test of execute method, of class MultiplyCommand, checking is pushed the correct result.
      */
     @Test
-    public void testExecuteCorrectSubtraction() {
+    public void testExecuteCorrectMultiplication() {
         System.out.println("execute correct addiction");
         MyOperandCollection collector = new MyOperandCollection(12);
         ComplexNumber a = new ComplexNumber("-2", "9");
         ComplexNumber b = new ComplexNumber("4", "-3");
         collector.insert(a);
         collector.insert(b);
-        SubtractCommand instance = new SubtractCommand(collector);
+        MultiplyCommand instance = new MultiplyCommand(collector);
         instance.execute();
-        assertEquals(collector.last(),Calculator.subtraction(a, b));
+        assertEquals(collector.last(),Calculator.multiplication(a, b));
     }
     
-     /**
-     * Test of execute method, of class SubtractCommand, checking the correct size of operands in the collector.
+        /**
+     * Test of execute method, of class MultiplyCommand, checking the correct size of operands in the collector.
      */
     @Test
     public void testExecuteCorrectSize() {
@@ -72,14 +72,14 @@ public class SubtractCommandTest {
         ComplexNumber b = new ComplexNumber("4", "-3");
         collector.insert(a);
         collector.insert(b);
-        SubtractCommand instance = new SubtractCommand(collector);
+        MultiplyCommand instance = new MultiplyCommand(collector);
         instance.execute();
         assertEquals(1, collector.collectionLength());
     }
     
 
     /**
-     * Test of undo method, of class SubtractCommand, checking the operands are correctly re-pushed.
+     * Test of undo method, of class MultiplyCommand, checking the operands are correctly repushed.
      */
     @Test
     public void testUndoCorrectOperands() {
@@ -89,14 +89,14 @@ public class SubtractCommandTest {
         ComplexNumber b = new ComplexNumber("4", "-3");
         collector.insert(a);
         collector.insert(b);
-        SubtractCommand instance = new SubtractCommand(collector);
+        MultiplyCommand instance = new MultiplyCommand(collector);
         instance.execute();
         instance.undo();
         assertEquals(b, collector.last());
         assertEquals(a, collector.secondLast()); 
     }
     /**
-     * Test of undo method, of class SubtractCommand, checking the operands are correctly repushed.
+     * Test of undo method, of class MultiplyCommand, checking the operands are correctly repushed.
      */
     @Test
     public void testUndoCorrectSize() {
@@ -106,7 +106,7 @@ public class SubtractCommandTest {
         ComplexNumber b = new ComplexNumber("4", "-3");
         collector.insert(a);
         collector.insert(b);
-        SubtractCommand instance = new SubtractCommand(collector);
+        MultiplyCommand instance = new MultiplyCommand(collector);
         instance.execute();
         instance.undo();
         assertEquals(2, collector.collectionLength());
@@ -117,7 +117,7 @@ public class SubtractCommandTest {
      */
     @Test(expected = AssertionError.class)
     public void  testNull(){
-        SubtractCommand sub = new SubtractCommand(null);
+        MultiplyCommand mul = new MultiplyCommand(null);
     }
     
     /**
@@ -126,7 +126,7 @@ public class SubtractCommandTest {
     @Test(expected = AssertionError.class)
     public void  testNullOperands(){
         MyOperandCollection collector = new MyOperandCollection(12);
-        SubtractCommand sub = new SubtractCommand(collector);
+        MultiplyCommand mul = new MultiplyCommand(collector);
     }
     
 }
