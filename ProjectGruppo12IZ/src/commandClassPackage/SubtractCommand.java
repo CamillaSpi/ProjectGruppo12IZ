@@ -21,7 +21,7 @@ public class SubtractCommand implements Command{
     
     
     /**
-     * It create an object of the AddCommand if the collector is not null and 
+     * It create an object of the SubtractCommand if the collector is not null and 
      * contains enough element to perform the subtraction operation.
      * @param collector
      * @see ComplexNumber, MyOperandCollection
@@ -38,7 +38,7 @@ public class SubtractCommand implements Command{
     
     
     /**
-     *It execute the operation of subtraction on the last two inserted operand in the collector removing them,
+     *It executes the operation of subtraction on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
      * @see ComplexNumber, MyOperandCollection
      */
@@ -54,8 +54,8 @@ public class SubtractCommand implements Command{
     }
     
     /**
-     *It execute the undo of the addiction operation removing the last inserted element that is the result of the operation,
-     * and pushes the two operands that have been involved in the addiction operation.
+     * It executes the undo of the subtraction operation removing the last inserted element that is the result of the operation,
+     * and pushes the two operands that have been involved in the subtraction operation.
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

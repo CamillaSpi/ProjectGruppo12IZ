@@ -46,7 +46,7 @@ public class SubtractCommandTest {
  
 
     /**
-     * Test of execute method, of class SubtractionCommand, checking is pushed the correct result.
+     * Test of execute method, of class SubtractCommand, checking is pushed the correct result.
      */
     @Test
     public void testExecuteCorrectAddiction() {
