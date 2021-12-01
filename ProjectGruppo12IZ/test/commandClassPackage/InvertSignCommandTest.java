@@ -57,7 +57,7 @@ public class InvertSignCommandTest {
      */
     @Test(expected = AssertionError.class)
     public void testNull() {
-        System.out.println("undo");
+        System.out.println("null");
         InvertSignCommand instance = new InvertSignCommand(null);
     }
 

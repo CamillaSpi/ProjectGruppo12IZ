@@ -5,45 +5,46 @@
  */
 package commandClassPackage;
 
-import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author Gruppo 12 IZ
+ *
+ * @author nando
  */
-public class SquareRootCommandTest {
+public class OverCommandTest {
+    
+    
+     MyOperandCollection collector;
 
-    MyOperandCollection collector;
-
-    public SquareRootCommandTest() {
+    public OverCommandTest() {
         collector = new MyOperandCollection(12);
         collector.insert(new ComplexNumber("2", "7"));
+        collector.insert(new ComplexNumber("21", "97"));
     }
 
     /**
-     * Test of execute method, of class SquareRootCommand.
+     * Test of execute method, of class OverCommand.
      */
     @Test
     public void testExecute() {
         System.out.println("execute");
-        SquareRootCommand instance = new SquareRootCommand(collector);
-        ComplexNumber previusly = collector.last();
+        OverCommand instance = new OverCommand(collector);
+        ComplexNumber expResult = collector.secondLast();
         instance.execute();
         ComplexNumber result = collector.last();
-        ComplexNumber expResult = Calculator.squareRoot(previusly);
         assertEquals(result, expResult);
     }
 
     /**
-     * Test of undo method, of class SquareRootCommand.
+     * Test of undo method, of class OverCommand.
      */
     @Test
     public void testUndo() {
         System.out.println("undo");
-        SquareRootCommand instance = new SquareRootCommand(collector);
+        OverCommand instance = new OverCommand(collector);
         ComplexNumber previusly = collector.last();
         instance.execute();
         instance.undo();
@@ -52,13 +53,12 @@ public class SquareRootCommandTest {
     }
     
     /**
-     * Test of null method, of class SquareRootCommand.
-     * Expected AssertionError in new SquareRootCommand
+     * Test of null method, of class OverCommand.
+     * Expected AssertionError in new OverCommand
      */
     @Test(expected = AssertionError.class)
     public void testNull() {
         System.out.println("null");
-        SquareRootCommand instance = new SquareRootCommand(null);
-    }
-
+        OverCommand instance = new OverCommand(null);
+    }    
 }
