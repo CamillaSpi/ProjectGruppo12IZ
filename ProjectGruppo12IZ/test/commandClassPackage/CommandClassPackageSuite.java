@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author Cami
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({commandClassPackage.CommandTest.class})
+@Suite.SuiteClasses({CommandTest.class, SwapCommandTest.class})
 public class CommandClassPackageSuite {
 
     @BeforeClass
