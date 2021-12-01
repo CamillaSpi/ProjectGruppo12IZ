@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelClassPackage;
+package commandClassPackage;
 
 /**
  *Command interface with method execute and undo that will be implemented by the class that implement this interface.
