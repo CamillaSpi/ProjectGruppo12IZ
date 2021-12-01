@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Gruppo 12
+ * @author Mattia
  */
-public class SwapCommandTest {
+public class DropCommandTest {
     
-    public SwapCommandTest() {
+    public DropCommandTest() {
     }
     
     @BeforeClass
@@ -40,7 +40,7 @@ public class SwapCommandTest {
     }
 
     /**
-     * Test of execute method, of class SwapCommand with correct entry.
+     * Test of execute method, of class DropCommand, correct.
      */
     @Test
     public void testExecuteWithNumber() {
@@ -48,13 +48,13 @@ public class SwapCommandTest {
         MyOperandCollection coll = new MyOperandCollection(12);
         coll.insert(ComplexNumber.create("5+6j"));
         coll.insert(ComplexNumber.create("-0.2+18j"));
-        SwapCommand instance = new SwapCommand(coll);
+        DropCommand instance = new DropCommand(coll);
         instance.execute();
         assertEquals(ComplexNumber.create("5+6j"), coll.last());
     }
-    
+
     /**
-     * Test of execute method, of class SwapCommand, with empty Collection.
+     * Test of execute method, of class DropCommand, with empty Collection.
      */
     @Test(expected = AssertionError.class)
     public void testExecuteEmpty() {
@@ -65,7 +65,7 @@ public class SwapCommandTest {
     }
     
     /**
-     * Test of undo method, of class SwapCommand, correct.
+     * Test of undo method, of class DropCommand, correct.
      */
     @Test
     public void testUndo() {
@@ -73,7 +73,7 @@ public class SwapCommandTest {
         MyOperandCollection coll = new MyOperandCollection(12);
         coll.insert(ComplexNumber.create("5+6j"));
         coll.insert(ComplexNumber.create("-0.2+18j"));
-        SwapCommand instance = new SwapCommand(coll);
+        DropCommand instance = new DropCommand(coll);
         instance.execute();
         System.out.println("Execute:");
         System.out.println(coll.last());
@@ -84,16 +84,5 @@ public class SwapCommandTest {
         System.out.println(coll.secondLast());
         assertEquals(ComplexNumber.create("-0.2+18j"), coll.last());
     }
-
-    /**
-     * Test of execute method, of class SwapCommand.
-     */
-    @Test
-    public void testExecute() {
-        System.out.println("execute");
-        SwapCommand instance = null;
-        instance.execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
 }
