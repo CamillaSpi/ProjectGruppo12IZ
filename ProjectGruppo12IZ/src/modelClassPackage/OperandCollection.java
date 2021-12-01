@@ -66,6 +66,7 @@ public class OperandCollection{
             System.out.println("The OperandCollection was just empty.");
         return null;
     }
+    
     /**
     * It returns without remove (if the collection is not empty) the complexNumber at the top of the collection.
     * <p> <!-- -->
@@ -80,6 +81,22 @@ public class OperandCollection{
         }
         return null;
     }
+    
+    /**
+    * It returns without remove (if the collection has at least two element) the second complexNumber from the top of the collection.
+    * <p> <!-- -->
+    * @return the second element complexNumber or null
+    * @see ComplexNumber
+    */
+    public ComplexNumber secondLast(){
+        if(l.size() > 1)
+            return l.get(1);
+        else{
+            System.out.println("There are less than two elements inside the OperandCollection.");
+        }
+        return null;
+    }
+    
     /**
     * It returns the number of elements inside the collection.
     * <p> <!-- -->

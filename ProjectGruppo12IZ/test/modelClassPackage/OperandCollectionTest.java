@@ -112,6 +112,19 @@ public class OperandCollectionTest {
     }
 
     /**
+     * Test of remove method, of class OperandCollection.
+     */
+    @Test
+    public void testSecondLastNotEmptyCollection() {
+        System.out.println("return last complex Number from a not empty collection");
+        OperandCollection instance = new OperandCollection(11);
+        instance.insert(new ComplexNumber("5", "-5"));
+        instance.insert(new ComplexNumber("5", "-5"));
+        ComplexNumber result = instance.secondLast();
+        assertNotNull(result);
+    }
+    
+    /**
      * Test of collectionLength method, of class OperandCollection.
      */
     @Test
