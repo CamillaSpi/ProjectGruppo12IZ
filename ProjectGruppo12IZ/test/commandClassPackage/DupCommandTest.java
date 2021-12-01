@@ -14,15 +14,12 @@ import static org.junit.Assert.*;
  *
  * @author Gruppo 12 IZ
  */
-public class OverCommandTest {
+public class DupCommandTest {
     
-    
-     MyOperandCollection collector;
-
-    public OverCommandTest() {
+    MyOperandCollection collector;
+    public DupCommandTest() {
         collector = new MyOperandCollection(12);
         collector.insert(new ComplexNumber("2", "7"));
-        collector.insert(new ComplexNumber("21", "97"));
     }
 
     /**
@@ -31,8 +28,8 @@ public class OverCommandTest {
     @Test
     public void testExecute() {
         System.out.println("execute");
-        OverCommand instance = new OverCommand(collector);
-        ComplexNumber expResult = collector.secondLast();
+        DupCommand instance = new DupCommand(collector);
+        ComplexNumber expResult = collector.last();
         instance.execute();
         ComplexNumber result = collector.last();
         assertEquals(result, expResult);
@@ -44,7 +41,7 @@ public class OverCommandTest {
     @Test
     public void testUndo() {
         System.out.println("undo");
-        OverCommand instance = new OverCommand(collector);
+        DupCommand instance = new DupCommand(collector);
         ComplexNumber previusly = collector.last();
         instance.execute();
         instance.undo();
@@ -59,6 +56,6 @@ public class OverCommandTest {
     @Test(expected = AssertionError.class)
     public void testNull() {
         System.out.println("null");
-        OverCommand instance = new OverCommand(null);
-    }    
+        DupCommand instance = new DupCommand(null);
+    }      
 }
