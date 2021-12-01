@@ -5,19 +5,18 @@
  */
 package commandClassPackage;
 
-import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo12
  */
 public class SwapCommand implements Command{
 
     private MyOperandCollection collector;
 
     /**
-     * This method create an object that rapresent swap operationin order to execute and undo the command,
+     * This method create an object that rappresent swap operation in order to execute and undo the command,
      * assert if collection is null or if not have enough operand
      * <p> <!-- -->
      * @param collector is the collection were call swap method
