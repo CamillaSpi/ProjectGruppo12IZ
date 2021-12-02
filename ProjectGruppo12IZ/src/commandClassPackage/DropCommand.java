@@ -15,7 +15,7 @@ import modelClassPackage.MyOperandCollection;
 public class DropCommand implements Command{
 
     private final MyOperandCollection collector;
-    private final ComplexNumber first;
+    private ComplexNumber first;
 
     /**
      * This method create an object that rappresent drop operation in order to execute and undo the command,
@@ -27,16 +27,21 @@ public class DropCommand implements Command{
     public DropCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        this.first = collector.last();
-        assert this.first != null;
+
     }
     
     /**
      * This method implements execute method for drop operation from Command interface
+     * @return 
      */
     @Override
-    public void execute() {
+    public boolean execute() {       
+        this.first = collector.last();
+        if(this.first == null){
+            return false;
+        }
         collector.drop();
+        return true;
     }
 
     /**

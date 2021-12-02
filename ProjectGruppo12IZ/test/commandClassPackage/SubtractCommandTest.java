@@ -123,10 +123,11 @@ public class SubtractCommandTest {
     /**
      * Test of collector without elements
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void  testNullOperands(){
         MyOperandCollection collector = new MyOperandCollection(12);
         SubtractCommand sub = new SubtractCommand(collector);
+        assertEquals(false, sub.execute());
     }
     
 }

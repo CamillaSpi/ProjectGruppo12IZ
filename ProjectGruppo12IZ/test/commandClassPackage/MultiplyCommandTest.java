@@ -123,10 +123,11 @@ public class MultiplyCommandTest {
     /**
      * Test of collector without elements
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void  testNullOperands(){
         MyOperandCollection collector = new MyOperandCollection(12);
         MultiplyCommand mul = new MultiplyCommand(collector);
+        assertEquals(false, mul.execute());
     }
     
 }

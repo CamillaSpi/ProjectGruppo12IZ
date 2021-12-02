@@ -15,8 +15,8 @@ import modelClassPackage.MyOperandCollection;
  */
 public class MultiplyCommand implements Command{
     private final MyOperandCollection collector;
-    private final ComplexNumber firstOperand;
-    private final ComplexNumber secondOperand;
+    private ComplexNumber firstOperand;
+    private ComplexNumber secondOperand;
     
     
     
@@ -29,11 +29,7 @@ public class MultiplyCommand implements Command{
     public MultiplyCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
-        ComplexNumber value1 = collector.last();
-        ComplexNumber value2 = collector.secondLast();
-        assert value1 != null && value2 != null;
-        this.firstOperand = value1;
-        this.secondOperand = value2;
+        
     }
     
     
@@ -43,7 +39,13 @@ public class MultiplyCommand implements Command{
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        ComplexNumber value1 = collector.last();
+        ComplexNumber value2 = collector.secondLast();
+        if(value1 == null || value2 == null)
+            return false;
+        this.firstOperand = value1;
+        this.secondOperand = value2;
         //remove the last two inserted operands
         collector.remove();
         collector.remove();
@@ -51,6 +53,7 @@ public class MultiplyCommand implements Command{
         ComplexNumber result = Calculator.multiplication(firstOperand, secondOperand);
         //insert the result of the multiplication in the collection
         collector.insert(result);
+        return true;
     }
     
     /**

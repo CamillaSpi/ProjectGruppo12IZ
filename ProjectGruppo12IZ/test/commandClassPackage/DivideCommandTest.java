@@ -118,9 +118,10 @@ public class DivideCommandTest {
     /**
      * Test of collector without elements
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void  testNullOperands(){
         MyOperandCollection collector = new MyOperandCollection(12);
         DivideCommand division = new DivideCommand(collector);
+        assertEquals(false, division.execute());
     }
 }
