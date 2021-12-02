@@ -5,6 +5,7 @@
  */
 package projectgruppo12iz;
 
+import commandClassPackage.HashCommandTable;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
@@ -30,11 +31,12 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author t440
+ * @author Gruppo 12 IZ
  */
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
+    HashCommandTable UserCommand = new HashCommandTable(collector);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
     int last = 0;
