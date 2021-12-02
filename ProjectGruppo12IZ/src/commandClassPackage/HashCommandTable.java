@@ -59,7 +59,15 @@ public class HashCommandTable{
 
         
     }
-    
+    /**
+    * It delete a personalized Command starting from the name.If the remove operation
+    * return null, the elements is not contained in the hashmap, then false was returned, otherwise
+    * the personalized command exists.Now we check if this command is inserted in other personalized commands
+    * and if yes the personalized command is removed.
+    * 
+     * @param name
+     * @return If the elements doesn't exist then false was returned otherwise true. 
+    */
     public boolean delete(String name){
         if (name == null )
             return false;
