@@ -17,7 +17,6 @@ import org.junit.runners.Suite;
  * @author Mattia
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({commandClassPackage.HashCommandTableTest.class, commandClassPackage.CommandTest.class, commandClassPackage.SquareRootCommandTest.class, commandClassPackage.ConcreteCommandPersonalizedTest.class, commandClassPackage.InvertSignCommandTest.class, commandClassPackage.SwapCommandTest.class, commandClassPackage.DropCommandTest.class, commandClassPackage.AddCommandTest.class, commandClassPackage.OverCommandTest.class})
 public class CommandClassPackageSuite {
 
     @BeforeClass
