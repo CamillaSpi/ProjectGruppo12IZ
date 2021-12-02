@@ -9,7 +9,7 @@ package commandClassPackage;
  *Command interface with method execute and undo that will be implemented by the class that implement this interface.
  * @author Gruppo 12 IZ
  */
-public interface Command {
+public interface Command {  
     void execute();
     void undo(); 
 }

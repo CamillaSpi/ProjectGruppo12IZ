@@ -84,5 +84,17 @@ public class DropCommandTest {
         System.out.println(coll.secondLast());
         assertEquals(ComplexNumber.create("-0.2+18j"), coll.last());
     }
+
+    /**
+     * Test of execute method, of class DropCommand.
+     */
+    @Test
+    public void testExecute() {
+        System.out.println("execute");
+        DropCommand instance = null;
+        instance.execute();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }

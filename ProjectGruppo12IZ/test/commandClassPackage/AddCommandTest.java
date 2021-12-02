@@ -128,5 +128,29 @@ public class AddCommandTest {
         MyOperandCollection collector = new MyOperandCollection(12);
         AddCommand adder = new AddCommand(collector);
     }
+
+    /**
+     * Test of execute method, of class AddCommand.
+     */
+    @Test
+    public void testExecute() {
+        System.out.println("execute");
+        AddCommand instance = null;
+        instance.execute();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of undo method, of class AddCommand.
+     */
+    @Test
+    public void testUndo() {
+        System.out.println("undo");
+        AddCommand instance = null;
+        instance.undo();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
