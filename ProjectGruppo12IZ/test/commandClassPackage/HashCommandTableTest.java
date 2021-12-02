@@ -68,6 +68,11 @@ public class HashCommandTableTest {
 
     /**
      * Test of delete method, of class HashCommandTable.
+     * Create a concrete command "toAdd" that contains myCommand list. 
+     * The list myCommand contains AddCommand object.
+     * Concrete Command is added to hashmap like a personalized command,
+     * after a new concrete command was created with the previusly concretecommand created.
+     * So when the first command was delete also the second need to be deleted.
      */
     @Test
     public void testDelete() {
@@ -94,15 +99,10 @@ public class HashCommandTableTest {
         System.out.println(instance.delete("toAdd"));
         System.out.println(toOperate.get("toAdd"));
         System.out.println(toOperate.get("toAdd1"));
-        
-        
-        
+        ConcreteCommandPersonalized result = toOperate.get("toAdd1");
         
         boolean expResult = false;
-        boolean result = instance.delete(name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, result);
     }
     
 }
