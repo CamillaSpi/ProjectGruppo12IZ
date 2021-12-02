@@ -13,27 +13,42 @@ import modelClassPackage.MyOperandCollection;
  * @author Mattia
  */
 public class ConcreteCommandPersonalized implements Command{
-
-    private final MyOperandCollection collector;
-    private List<Command> commands;
+ 
     private final String commandName;
-
-    public ConcreteCommandPersonalized(MyOperandCollection collector, List<Command> commands, String commandName) {
-        assert collector != null;
-        this.collector = collector;
+    private List<Command> commands;
+   
+    public ConcreteCommandPersonalized(String commandName, List<Command> commands) {
         assert commands != null;
         this.commands = commands;
         this.commandName = commandName;
     }
     
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean execute() {
+        int count=0;
+        boolean flag = true;
+        for (Command command : commands){
+            if(command.execute()){
+                count++;
+            }
+            else{
+                Command tmp;
+                for (int i=0; i<count; i++){
+                    tmp = commands.get(count-i);
+                    tmp.undo();
+                }
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
     @Override
     public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Command command : commands){
+            command.undo();
+        }
     }
     
 }
