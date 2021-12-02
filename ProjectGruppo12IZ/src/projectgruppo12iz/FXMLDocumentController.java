@@ -33,11 +33,12 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author t440
+ * @author Gruppo 12 IZ
  */
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
+    HashCommandTable UserCommand = new HashCommandTable(collector);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
     Invoker inv = new Invoker();
@@ -530,22 +531,23 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void executeOpButton(ActionEvent event) {
+    private void executeOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            /*Command currcomm = commandcoll.getCommand(OpName);
+            Command currcomm = UserCommand.getUserCommand(OpName);
             if(currcomm == null)
                 showAlert("Operation not exists");
             else{
                 boolean res = inv.execute(currcomm);
-                if(!res)
-                    inv.undo();
+                if(!res){
+                    inv.undoLast();
                     showAlert("Operation can't be performed");
+                }
                 else
                     showAlert("Operation done succesfully");
-            }*/
+            }
         }
     }
 
