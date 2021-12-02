@@ -77,7 +77,6 @@ public class HashCommandTableTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        String name = "";
         HashCommandTable instance = new HashCommandTable();
         HashMap<String, ConcreteCommandPersonalized> toOperate = instance.getConcreteCommandHash();
         MyOperandCollection collector = new MyOperandCollection(12);
@@ -93,15 +92,10 @@ public class HashCommandTableTest {
         ConcreteCommandPersonalized concrete2 = new ConcreteCommandPersonalized("toAdd1",myCommand2);
         toOperate.put("toAdd1", concrete2);
         
-       
-        System.out.println(toOperate.get("toAdd"));
-        System.out.println(toOperate.get("toAdd1"));
         System.out.println(instance.delete("toAdd"));
-        System.out.println(toOperate.get("toAdd"));
-        System.out.println(toOperate.get("toAdd1"));
+        
         ConcreteCommandPersonalized result = toOperate.get("toAdd1");
         
-        boolean expResult = false;
         assertEquals(null, result);
     }
     
