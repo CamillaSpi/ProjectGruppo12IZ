@@ -553,6 +553,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteOperation(ActionEvent event) {
+        String OpName = nameOperationTextArea.getText();
+        if ("".equals(OpName))
+            showAlert("Write the name of the operation to delete");
+        else{
+           if(UserCommand.delete(OpName))
+            showAlert("Operation delete succesfully");
+           else{
+               showAlert("Operation not found");
+           }
+        }
     }
 
     @FXML
