@@ -14,13 +14,10 @@ import modelClassPackage.MyOperandCollection;
  */
 public class ConcreteCommandPersonalized implements Command{
 
-    private final MyOperandCollection collector;
     private List<Command> commands;
     private final String commandName;
 
-    public ConcreteCommandPersonalized(MyOperandCollection collector, List<Command> commands, String commandName) {
-        assert collector != null;
-        this.collector = collector;
+    public ConcreteCommandPersonalized(String commandName, List<Command> commands) {
         assert commands != null;
         this.commands = commands;
         this.commandName = commandName;

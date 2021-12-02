@@ -5,6 +5,8 @@
  */
 package commandClassPackage;
 
+import modelClassPackage.ComplexNumber;
+import modelClassPackage.MyOperandCollection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,8 +19,11 @@ import static org.junit.Assert.*;
  * @author Mattia
  */
 public class HashCommandTableTest {
-    
+    MyOperandCollection collector ;
     public HashCommandTableTest() {
+        collector = new MyOperandCollection(12);
+        collector.insert(new ComplexNumber("2", "3"));
+        collector.insert(new ComplexNumber("4", "5"));
     }
     
     @BeforeClass
@@ -39,12 +44,95 @@ public class HashCommandTableTest {
 
 
     /**
-     * Test of ciaooo method, of class HashCommandTable.
+     * Test of createPersonalizedCommand method, of class HashCommandTable, checking the case in which the String passed as name 
+     * corresponds to an already existing Basic operation.
      */
     @Test
-    public void testCiaooo() throws Exception {
-        System.out.println("ciaooo");
-        HashCommandTable instance = new HashCommandTable();
+    public void testCreatePersonalizedCommandIncorrectName() throws Exception {
+        System.out.println("createPersonalizedCommand with a name corresponding to an already existing basic operation");
+        String sequenceDefinition = "+ -";
+        String operationName = "dup";
+        HashCommandTable instance = new HashCommandTable(collector);
+        boolean expResult = false;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
+        assertEquals(expResult, result);
     }
     
+    /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable, 
+     * checking the case in which one of the string passed in the definition of the new operation
+     * is not correct.
+     */
+    @Test
+    public void testCreatePersonalizedCommandIncorrectDefinition() throws Exception {
+        System.out.println("createPersonalizedCommand with an incorrect definition");
+        String sequenceDefinition = "+ !";
+        String operationName = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        boolean expResult = false;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
+        assertEquals(expResult, result);
+    }
+    
+    
+    /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable, 
+     * checking the case in which the name for the new operation is correct and the definition
+     * contains only basic operations
+     */
+    @Test
+    public void testCreatePersonalizedCommandCorrectDefBasic() throws Exception {
+        System.out.println("createPersonalizedCommand with an incorrect definition");
+        String sequenceDefinition = "+ swap";
+        String operationName = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        boolean expResult = true;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
+        Command ret = instance.getUserCommand(operationName);
+        assertEquals(ret.getClass(),ConcreteCommandPersonalized.class);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable, 
+     * checking the case in which the name for the new operation is correct and the definition
+     * contains also user defined operation.
+     */
+    @Test
+    public void testCreatePersonalizedCommandCorrectDefUser() throws Exception {
+        System.out.println("createPersonalizedCommand with an incorrect definition");
+        String sequenceDefinition1 = "+ swap";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        String sequenceDefinition2 = "+ myOp";
+        String operationName2 = "myOp2";
+        boolean expResult = true;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition2, operationName2);
+        Command ret = instance.getUserCommand(operationName2);
+        assertEquals(ret.getClass(),ConcreteCommandPersonalized.class);
+        assertEquals(expResult, result);
+    }
+    
+    
+        /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable, 
+     * checking the case in which the name for the new operation is correct but 
+     * corresponds to an already defined operation, checking the command has been replaced.
+     */
+    @Test
+    public void testCreatePersonalizedCommandCorrectAlreadyDef() throws Exception {
+        System.out.println("createPersonalizedCommand with an incorrect definition");
+        String sequenceDefinition1 = "+ swap";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand(operationName1);
+        String sequenceDefinition2 = "+ -";
+        boolean expResult = true;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition2, operationName1);
+        Command command2 = instance.getUserCommand(operationName1);
+        assertNotEquals(command1, command2);
+        assertEquals(expResult, result);
+    }
 }
