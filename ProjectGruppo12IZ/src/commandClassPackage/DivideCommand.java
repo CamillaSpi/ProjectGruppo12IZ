@@ -15,9 +15,9 @@ import modelClassPackage.MyOperandCollection;
  */
 public class DivideCommand implements Command{
     private final MyOperandCollection collector;
-    private final ComplexNumber dividend;
-    private final ComplexNumber divider;
-    private MyOperandCollection backup;
+    private ComplexNumber dividend;
+    private ComplexNumber divider;
+    
     /**
      * It creates an object of the DivideCommand if the collector is not null and 
      * contains enough element to perform the division operation.
@@ -27,20 +27,23 @@ public class DivideCommand implements Command{
     public DivideCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
-        ComplexNumber first = collector.last();
-        ComplexNumber second = collector.secondLast();
-        assert first != null && second != null;
-        this.dividend = second;
-        this.divider = first;
     }
     
     /**
      *It executes the operation of division on the last two inserted operands in the collector removing them,
      * and pushes the result of the operation as last operand.
+     * @return 
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        ComplexNumber first = collector.last();
+        ComplexNumber second = collector.secondLast();
+        if(first == null || second == null){
+            return false;
+        }
+        this.dividend = second;
+        this.divider = first;
         //removes the last two inserted operands
         collector.remove();
         collector.remove();
@@ -48,6 +51,7 @@ public class DivideCommand implements Command{
         ComplexNumber result = Calculator.division(dividend, divider);
         //inserts the result of the division in the collection
         collector.insert(result);
+        return true;
     }
     
     /**

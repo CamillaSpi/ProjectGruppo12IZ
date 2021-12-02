@@ -10,6 +10,6 @@ package commandClassPackage;
  * @author Gruppo 12 IZ
  */
 public interface Command {  
-    void execute();
+    boolean execute();
     void undo(); 
 }

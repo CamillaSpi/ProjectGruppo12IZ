@@ -5,6 +5,9 @@
  */
 package commandClassPackage;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import org.junit.After;
@@ -48,7 +51,7 @@ public class HashCommandTableTest {
      * corresponds to an already existing Basic operation.
      */
     @Test
-    public void testCreatePersonalizedCommandIncorrectName() throws Exception {
+    public void testCreatePersonalizedCommandIncorrectName() {
         System.out.println("createPersonalizedCommand with a name corresponding to an already existing basic operation");
         String sequenceDefinition = "+ -";
         String operationName = "dup";
@@ -64,7 +67,7 @@ public class HashCommandTableTest {
      * is not correct.
      */
     @Test
-    public void testCreatePersonalizedCommandIncorrectDefinition() throws Exception {
+    public void testCreatePersonalizedCommandIncorrectDefinition(){
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition = "+ !";
         String operationName = "myOp";
@@ -81,7 +84,7 @@ public class HashCommandTableTest {
      * contains only basic operations
      */
     @Test
-    public void testCreatePersonalizedCommandCorrectDefBasic() throws Exception {
+    public void testCreatePersonalizedCommandCorrectDefBasic() {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition = "+ swap";
         String operationName = "myOp";
@@ -99,7 +102,7 @@ public class HashCommandTableTest {
      * contains also user defined operation.
      */
     @Test
-    public void testCreatePersonalizedCommandCorrectDefUser() throws Exception {
+    public void testCreatePersonalizedCommandCorrectDefUser() {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
@@ -121,7 +124,7 @@ public class HashCommandTableTest {
      * corresponds to an already defined operation, checking the command has been replaced.
      */
     @Test
-    public void testCreatePersonalizedCommandCorrectAlreadyDef() throws Exception {
+    public void testCreatePersonalizedCommandCorrectAlreadyDef() {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
@@ -140,7 +143,7 @@ public class HashCommandTableTest {
      * Test of getUserCommand method, with a correct key 
      */
     @Test
-    public void testgetUserCommandCorrect() throws Exception {
+    public void testgetUserCommandCorrect() {
         System.out.println("getUserCommand with an correct key");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
@@ -154,7 +157,7 @@ public class HashCommandTableTest {
      * Test of getUserCommand method, with a correct key 
      */
     @Test
-    public void testgetUserCommandIncorrect() throws Exception {
+    public void testgetUserCommandIncorrect() {
         System.out.println("getUserCommand with an incorrect key");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
@@ -162,6 +165,31 @@ public class HashCommandTableTest {
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
         Command command1 = instance.getUserCommand("myOp2");
         assertEquals(command1, null);   
+    }
+
+
+    /**
+     * Test of delete method, of class HashCommandTable.
+     * Create a concrete command "toAdd" that contains myCommand list. 
+     * The list myCommand contains AddCommand object.
+     * Concrete Command is added to hashmap like a personalized command,
+     * after a new concrete command was created with the previusly concretecommand created.
+     * So when the first command was delete also the second need to be deleted.
+     */
+    @Test
+    public void testDelete(){
+        System.out.println("delete");
+        String name = "";
+        HashCommandTable instance = new HashCommandTable(collector);
+        instance.createPersonalizedCommand("+", "toAdd");
+        instance.createPersonalizedCommand("toAdd", "toAdd1");
+        
+        System.out.println(instance.delete("toAdd"));
+     
+        Command result = instance.getUserCommand("toAdd1");
+        
+        boolean expResult = false;
+        assertEquals(null, result);
     }
     
 }

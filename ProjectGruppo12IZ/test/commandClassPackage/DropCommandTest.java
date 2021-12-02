@@ -56,12 +56,12 @@ public class DropCommandTest {
     /**
      * Test of execute method, of class DropCommand, with empty Collection.
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void testExecuteEmpty() {
         System.out.println("execute");
         MyOperandCollection coll = new MyOperandCollection(12);
         DropCommand instance = new DropCommand(coll);
-        instance.execute();
+        assertEquals(false, instance.execute());
     }
     
     /**
@@ -83,18 +83,6 @@ public class DropCommandTest {
         System.out.println(coll.last());
         System.out.println(coll.secondLast());
         assertEquals(ComplexNumber.create("-0.2+18j"), coll.last());
-    }
-
-    /**
-     * Test of execute method, of class DropCommand.
-     */
-    @Test
-    public void testExecute() {
-        System.out.println("execute");
-        DropCommand instance = null;
-        instance.execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

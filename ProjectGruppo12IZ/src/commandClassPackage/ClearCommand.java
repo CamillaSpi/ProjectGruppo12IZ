@@ -5,13 +5,8 @@
  */
 package commandClassPackage;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 
@@ -33,16 +28,19 @@ public class ClearCommand implements Command{
     public ClearCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        this.backup = new LinkedList(this.collector.getL());
-        assert this.collector.collectionLength()>0;
     }
     
     /**
      * This method implements execute method for clear operation from Command interface
+     * @return 
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        this.backup = new LinkedList(this.collector.getL());
+        if(this.collector.collectionLength() == 0)
+            return false;
         collector.clear();
+        return true;
     }
 
     /**

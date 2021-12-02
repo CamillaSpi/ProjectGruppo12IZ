@@ -25,15 +25,18 @@ public class SwapCommand implements Command{
     public SwapCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        assert this.collector.collectionLength()>1;
+        
     }
     
     /**
      * This method implements execute method for swap operation from Command interface
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        if(this.collector.collectionLength()<=1)
+            return false;
         collector.swap();
+        return true;
     }
 
     /**
