@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Utente
+ * @author Gruppo 12 IZ
  */
 public class ClearCommandTest {
     
