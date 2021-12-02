@@ -5,6 +5,8 @@
  */
 package projectgruppo12iz;
 
+import commandClassPackage.Command;
+import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +41,7 @@ public class FXMLDocumentController implements Initializable {
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
     Invoker inv = new Invoker();
+    HashCommandTable commandcoll = new HashCommandTable();
     int last = 0;
     private Label label;
     @FXML
@@ -533,7 +536,16 @@ public class FXMLDocumentController implements Initializable {
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            
+            Command currcomm = commandcoll.getCommand();
+            if(currcomm == null)
+                showAlert("Operation not exists");
+            else{
+                boolean res = currcomm.execute();
+                if(!res)
+                    showAlert("Operation can't be performed");
+                else
+                    showAlert("Operation done succesfully");
+            }
         }
     }
 
