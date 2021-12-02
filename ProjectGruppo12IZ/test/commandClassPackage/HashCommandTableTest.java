@@ -115,7 +115,7 @@ public class HashCommandTableTest {
     }
     
     
-        /**
+    /**
      * Test of createPersonalizedCommand method, of class HashCommandTable, 
      * checking the case in which the name for the new operation is correct but 
      * corresponds to an already defined operation, checking the command has been replaced.
@@ -135,4 +135,35 @@ public class HashCommandTableTest {
         assertNotEquals(command1, command2);
         assertEquals(expResult, result);
     }
+    
+    /**
+     * Test of getUserCommand method, with a correct key 
+     */
+    @Test
+    public void testgetUserCommandCorrect() throws Exception {
+        System.out.println("getUserCommand with an correct key");
+        String sequenceDefinition1 = "+ swap";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand(operationName1);
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);   
+    }
+    
+        /**
+     * Test of getUserCommand method, with a correct key 
+     */
+    @Test
+    public void testgetUserCommandIncorrect() throws Exception {
+        System.out.println("getUserCommand with an incorrect key");
+        String sequenceDefinition1 = "+ swap";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector);
+        instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp2");
+        assertEquals(command1, null);   
+    }
+    
 }
+
+
