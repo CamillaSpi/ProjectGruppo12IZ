@@ -8,6 +8,7 @@ package commandClassPackage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Map;
 import modelClassPackage.MyOperandCollection;
 
 /**
@@ -16,11 +17,15 @@ import modelClassPackage.MyOperandCollection;
  */
 public class HashCommandTable{
     
-    private final HashMap concreteCommandHash;
+    private final HashMap<String,ConcreteCommandPersonalized> concreteCommandHash;
     private final HashMap basicCommandHash;
 
+    public HashMap<String, ConcreteCommandPersonalized> getConcreteCommandHash() {
+        return concreteCommandHash;
+    }
+
     public HashCommandTable() {
-        this.concreteCommandHash = new HashMap<String,ConcreteCommandPersonalized>();
+        this.concreteCommandHash = new HashMap<>();
         this.basicCommandHash = new HashMap<String, String>();
         basicCommandHash.put("+", "AddCommand");
         basicCommandHash.put("-", "SubtractCommand");
@@ -53,6 +58,29 @@ public class HashCommandTable{
         
 
         
+    }
+    /**
+    * It delete a personalized Command starting from the name.If the remove operation
+    * return null, the elements is not contained in the hashmap, then false was returned, otherwise
+    * the personalized command exists.Now we check if this command is inserted in other personalized commands
+    * and if yes the personalized command is removed.
+    * 
+     * @param name
+     * @return If the elements doesn't exist then false was returned otherwise true. 
+    */
+    public boolean delete(String name){
+        if (name == null )
+            return false;
+        ConcreteCommandPersonalized toDelete = (ConcreteCommandPersonalized) concreteCommandHash.remove(name);
+        if(toDelete == null)
+            return false;
+        // If i'm there the ConcreteCommandPersonalized exists, so maybe its was inserted in other list
+        for(Map.Entry<String, ConcreteCommandPersonalized> maybeToDelete : concreteCommandHash.entrySet() ){
+            if(maybeToDelete.getValue().contains(name)){
+                concreteCommandHash.remove(maybeToDelete.getKey());
+            }
+        }
+        return true;
     }
     
     

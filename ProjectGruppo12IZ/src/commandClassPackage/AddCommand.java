@@ -15,8 +15,8 @@ import modelClassPackage.MyOperandCollection;
  */
 public class AddCommand implements Command{
     private final MyOperandCollection collector;
-    private final ComplexNumber firstOperand;
-    private final ComplexNumber secondOperand;
+    private ComplexNumber firstOperand;
+    private ComplexNumber secondOperand;
     
     
     
@@ -29,21 +29,24 @@ public class AddCommand implements Command{
     public AddCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
-        ComplexNumber value1 = collector.last();
-        ComplexNumber value2 = collector.secondLast();
-        assert value1 != null && value2 != null;
-        this.firstOperand = value1;
-        this.secondOperand = value2;
     }
     
     
     /**
      *It execute the operation of addiction on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
+     * @return 
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        //save effective first and second value if is possible
+        ComplexNumber value1 = collector.last();
+        ComplexNumber value2 = collector.secondLast();
+        if(value1 == null || value2 == null)
+            return false;
+        this.firstOperand = value1;
+        this.secondOperand = value2;
         //remove the last two inserted operands
         collector.remove();
         collector.remove();
@@ -51,6 +54,7 @@ public class AddCommand implements Command{
         ComplexNumber result = Calculator.addiction(firstOperand, secondOperand);
         //insert the result of the addiction in the collection
         collector.insert(result);
+        return true;
     }
     
     /**

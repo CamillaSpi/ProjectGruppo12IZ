@@ -56,12 +56,12 @@ public class ClearCommandTest {
     /**
      * Test of execute method, of class ClearCommand, with empty Collection.
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void testExecuteEmpty() {
         System.out.println("execute empty collection");
         MyOperandCollection coll = new MyOperandCollection(12);
         ClearCommand instance = new ClearCommand(coll);
-        instance.execute();
+        assertEquals(false, instance.execute());
     }
     
     /**

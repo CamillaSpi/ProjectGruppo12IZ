@@ -25,15 +25,18 @@ public class OverCommand implements Command{
     public OverCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        assert this.collector.collectionLength()>1;
+        
     }
     
     /**
      * This method implements execute method for over operation from Command interface
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        if(this.collector.collectionLength()<=1)
+            return false;
         collector.over();
+        return true;
     }
 
     /**

@@ -18,7 +18,7 @@ import modelClassPackage.MyOperandCollection;
  */
 public class InvertSignCommand implements Command {
     private final MyOperandCollection collector;
-    final ComplexNumber value;
+    private ComplexNumber value;
 
     /**
      * It create an object of the Invert sign if the collector is not null 
@@ -28,20 +28,24 @@ public class InvertSignCommand implements Command {
     public InvertSignCommand(MyOperandCollection collector) {
        assert collector != null;
        this.collector = collector;
-       value = this.collector.last();
-       assert value != null;
+       
     }
 
     /**
      * It execute the operation of invert sign on the last element and, if its not null,
      * pushes the result of the operation as last operand
+     * @return 
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        value = this.collector.last();
+        if(value == null)
+            return false;
         this.collector.remove();
         ComplexNumber NewValue = Calculator.invertSign(value);
         assert NewValue != null;
         this.collector.insert(NewValue);
+        return true;
     }
     /**
      * It undo the operation of invert sign, so take the last element and push 

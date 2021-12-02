@@ -18,7 +18,7 @@ import modelClassPackage.MyOperandCollection;
  */
 public class SquareRootCommand implements Command {
     private final MyOperandCollection collector;
-    final ComplexNumber value;
+    private ComplexNumber value;
 
     /**
      * It create an object of the SquareRootCommand if the collector is not null 
@@ -28,8 +28,7 @@ public class SquareRootCommand implements Command {
     public SquareRootCommand(MyOperandCollection collector) {
        assert collector != null;
        this.collector = collector;
-       value = this.collector.last();
-       assert value != null;
+       
     }
 
     /**
@@ -37,11 +36,15 @@ public class SquareRootCommand implements Command {
      * pushes the result of the operation as last operand
      */
     @Override
-    public void execute() {
+    public boolean execute() {
+        value = this.collector.last();
+        if(value == null)
+            return false;
         this.collector.remove();
         ComplexNumber NewValue = Calculator.squareRoot(value);
         assert NewValue != null;
         this.collector.insert(NewValue);
+        return true;
     }
     /**
      * It undo the operation of square root, so take the last element and push 
