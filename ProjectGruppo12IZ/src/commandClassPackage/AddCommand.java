@@ -17,9 +17,7 @@ public class AddCommand implements Command{
     private final MyOperandCollection collector;
     private ComplexNumber firstOperand;
     private ComplexNumber secondOperand;
-    
-    
-    
+        
     /**
      * It create an object of the AddCommand if the collector is not null and 
      * contains enough element to perform the addiction operation.
@@ -29,6 +27,14 @@ public class AddCommand implements Command{
     public AddCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
+    }
+
+    public ComplexNumber getFirstOperand() {
+        return firstOperand;
+    }
+
+    public ComplexNumber getSecondOperand() {
+        return secondOperand;
     }
     
     

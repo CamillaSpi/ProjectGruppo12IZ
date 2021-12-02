@@ -5,6 +5,11 @@
  */
 package commandClassPackage;
 
+import java.util.LinkedList;
+import java.util.List;
+import modelClassPackage.Calculator;
+import modelClassPackage.ComplexNumber;
+import modelClassPackage.MyOperandCollection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,7 +19,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo 12 IZ
  */
 public class ConcreteCommandPersonalizedTest {
     
@@ -41,12 +46,47 @@ public class ConcreteCommandPersonalizedTest {
      * Test of execute method, of class ConcreteCommandPersonalized.
      */
     @Test
-    public void testExecute() {
-        System.out.println("execute");
-        ConcreteCommandPersonalized instance = null;
+    public void testExecuteCorrectEntry(){
+        System.out.println("execute correct concrete");
+        MyOperandCollection collector = new MyOperandCollection(12);
+        ComplexNumber a = new ComplexNumber("-4", "2");
+        ComplexNumber b = new ComplexNumber("-7", "3");
+        ComplexNumber c = new ComplexNumber("-8", "5");
+        ComplexNumber d = new ComplexNumber("-11", "7");
+        List<Command> l = new LinkedList();
+        l.add(new AddCommand(collector));
+        l.add(new AddCommand(collector));
+        l.add(new AddCommand(collector));
+        collector.insert(a);
+        collector.insert(b);
+        collector.insert(c);
+        collector.insert(d);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
         instance.execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(collector.last(),ComplexNumber.create("-30+17j"));
+    }
+    
+    /**
+     * Test of execute method, of class ConcreteCommandPersonalized.
+     */
+    @Test
+    public void testExecuteFewOperand(){
+        System.out.println("execute correct concrete");
+        MyOperandCollection collector = new MyOperandCollection(12);
+        ComplexNumber a = new ComplexNumber("-4", "2");
+        ComplexNumber b = new ComplexNumber("-7", "3");
+        ComplexNumber c = new ComplexNumber("-8", "5");
+        List<Command> l = new LinkedList();
+        l.add(new AddCommand(collector));
+        l.add(new AddCommand(collector));
+        l.add(new AddCommand(collector));
+        collector.insert(a);
+        collector.insert(b);
+        collector.insert(c);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
+        instance.execute();
+        System.err.println(collector.last());
+        assertEquals(collector.last(),ComplexNumber.create("-8+5j"));
     }
 
     /**
@@ -54,11 +94,28 @@ public class ConcreteCommandPersonalizedTest {
      */
     @Test
     public void testUndo() {
-        System.out.println("undo");
-        ConcreteCommandPersonalized instance = null;
+                System.out.println("execute correct concrete");
+        MyOperandCollection collector = new MyOperandCollection(12);
+        ComplexNumber a = new ComplexNumber("-4", "2");
+        ComplexNumber b = new ComplexNumber("-7", "3");
+        ComplexNumber c = new ComplexNumber("-8", "5");
+        ComplexNumber d = new ComplexNumber("-11", "7");
+        List<Command> l = new LinkedList();
+        AddCommand sum1=new AddCommand(collector);
+        AddCommand sum2=new AddCommand(collector);
+        AddCommand sum3=new AddCommand(collector);
+        l.add(sum1);
+        l.add(sum2);
+        l.add(sum3);
+        collector.insert(a);
+        collector.insert(b);
+        collector.insert(c);
+        collector.insert(d);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
+        instance.execute();
+        
         instance.undo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(collector.last(),ComplexNumber.create("-11+7j"));
     }
     
 }

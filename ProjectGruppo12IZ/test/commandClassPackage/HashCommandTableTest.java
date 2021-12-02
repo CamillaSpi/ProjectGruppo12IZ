@@ -85,12 +85,12 @@ public class HashCommandTableTest {
         collector.insert(new ComplexNumber("-7","14"));
         List<Command> myCommand = new LinkedList<>();
         myCommand.add(new AddCommand(collector));
-        ConcreteCommandPersonalized concrete1 = new ConcreteCommandPersonalized(collector,myCommand,"toAdd");
+        ConcreteCommandPersonalized concrete1 = new ConcreteCommandPersonalized("toAdd",myCommand);
         toOperate.put("toAdd", concrete1);
         
         List<Command> myCommand2 = new LinkedList<>();
         myCommand2.add(concrete1);
-        ConcreteCommandPersonalized concrete2 = new ConcreteCommandPersonalized(collector,myCommand2,"toAdd1");
+        ConcreteCommandPersonalized concrete2 = new ConcreteCommandPersonalized("toAdd1",myCommand2);
         toOperate.put("toAdd1", concrete2);
         
        
