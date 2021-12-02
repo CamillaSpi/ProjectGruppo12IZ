@@ -6,7 +6,6 @@
 package commandClassPackage;
 
 import java.util.List;
-import modelClassPackage.MyOperandCollection;
 
 /**
  *
@@ -15,14 +14,14 @@ import modelClassPackage.MyOperandCollection;
 public class ConcreteCommandPersonalized implements Command{
  
     private final String commandName;
-    private List<Command> commands;
+    private final List<Command> commands;
    
     public ConcreteCommandPersonalized(String commandName, List<Command> commands) {
         assert commands != null;
         this.commands = commands;
         this.commandName = commandName;
     }
-    
+
     @Override
     public boolean execute() {
         int count=0;
@@ -50,5 +49,16 @@ public class ConcreteCommandPersonalized implements Command{
             command.undo();
         }
     }
-    
+
+    public boolean contains(String name) {
+        for (Command myCommand : commands) {
+            if (myCommand instanceof ConcreteCommandPersonalized) {
+                if (name.equals(((ConcreteCommandPersonalized) myCommand).commandName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
