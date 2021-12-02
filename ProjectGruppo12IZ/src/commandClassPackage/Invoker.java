@@ -26,9 +26,9 @@ public class Invoker{
      * into the invoker's deque and launches the execute method of the command.
      * @see Command
      */
-    public void execute(Command command) {
+    public boolean execute(Command command) {
         stack.addLast(command);
-        command.execute();
+        return command.execute();
     }
     
     /**

@@ -536,11 +536,11 @@ public class FXMLDocumentController implements Initializable {
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            Command currcomm = commandcoll.getCommand();
+            Command currcomm = commandcoll.getCommand(OpName);
             if(currcomm == null)
                 showAlert("Operation not exists");
             else{
-                boolean res = currcomm.execute();
+                boolean res = inv.execute(currcomm);
                 if(!res)
                     showAlert("Operation can't be performed");
                 else
