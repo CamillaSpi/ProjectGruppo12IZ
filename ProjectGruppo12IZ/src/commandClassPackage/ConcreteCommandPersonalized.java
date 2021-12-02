@@ -12,7 +12,7 @@ import modelClassPackage.MyOperandCollection;
  *
  * @author Mattia
  */
-public class ConcreteCommandPersonalized implements Command{
+public class ConcreteCommandPersonalized implements Command {
 
     private final MyOperandCollection collector;
     private List<Command> commands;
@@ -25,7 +25,7 @@ public class ConcreteCommandPersonalized implements Command{
         this.commands = commands;
         this.commandName = commandName;
     }
-    
+
     @Override
     public void execute() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -35,5 +35,16 @@ public class ConcreteCommandPersonalized implements Command{
     public void undo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public boolean contains(String name) {
+        for (Command myCommand : commands) {
+            if (myCommand instanceof ConcreteCommandPersonalized) {
+                if (name.equals(((ConcreteCommandPersonalized) myCommand).commandName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
