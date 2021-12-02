@@ -188,7 +188,6 @@ public class HashCommandTableTest {
      
         Command result = instance.getUserCommand("toAdd1");
         
-        boolean expResult = false;
         assertEquals(null, result);
     }
     

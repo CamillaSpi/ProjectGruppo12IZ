@@ -83,10 +83,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea operationTextArea;
     @FXML
-    private Button EnterOperation;
-    @FXML
-    private Button deleteOperation;
-    @FXML
     private AnchorPane baseAnchorPane;
 
     private void handleButtonAction(ActionEvent event) {
@@ -548,6 +544,18 @@ public class FXMLDocumentController implements Initializable {
                     showAlert("Operation done succesfully");
             }
         }
+    }
+
+    @FXML
+    private void enterOperation(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteOperation(ActionEvent event) {
+    }
+
+    @FXML
+    private void showOperation(ActionEvent event) {
     }
 
 
