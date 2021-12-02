@@ -5,7 +5,9 @@
  */
 package projectgruppo12iz;
 
+import commandClassPackage.Command;
 import commandClassPackage.HashCommandTable;
+import commandClassPackage.Invoker;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
@@ -39,6 +41,7 @@ public class FXMLDocumentController implements Initializable {
     HashCommandTable UserCommand = new HashCommandTable(collector);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
+    Invoker inv = new Invoker();
     int last = 0;
     private Label label;
     @FXML
@@ -81,8 +84,6 @@ public class FXMLDocumentController implements Initializable {
     private TextArea operationTextArea;
     @FXML
     private Button EnterOperation;
-    @FXML
-    private Button executeTextArea;
     @FXML
     private Button deleteOperation;
     @FXML
@@ -527,6 +528,27 @@ public class FXMLDocumentController implements Initializable {
         }
         else
             showAlert("Insert at least an operand to execute this operation!");
+    }
+
+    @FXML
+    private void executeOperation(ActionEvent event) {
+        String OpName = nameOperationTextArea.getText();
+        if ("".equals(OpName))
+            showAlert("Write the name of the operation to execute");
+        else{
+            Command currcomm = UserCommand.getUserCommand(OpName);
+            if(currcomm == null)
+                showAlert("Operation not exists");
+            else{
+                boolean res = inv.execute(currcomm);
+                if(!res){
+                    inv.undoLast();
+                    showAlert("Operation can't be performed");
+                }
+                else
+                    showAlert("Operation done succesfully");
+            }
+        }
     }
 
 
