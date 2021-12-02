@@ -542,7 +542,6 @@ public class FXMLDocumentController implements Initializable {
             else{
                 boolean res = inv.execute(currcomm);
                 if(!res){
-                    inv.undoLast();
                     showAlert("Operation can't be performed");
                 }
                 else
