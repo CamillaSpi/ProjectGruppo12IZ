@@ -40,5 +40,9 @@ public class Invoker{
         Command last = stack.removeLast();
         last.undo();
     }
+
+    public Deque<Command> getStack() {
+        return stack;
+    }
     
 }

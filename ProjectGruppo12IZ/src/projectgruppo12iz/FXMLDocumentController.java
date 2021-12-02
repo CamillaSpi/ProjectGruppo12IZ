@@ -41,7 +41,6 @@ public class FXMLDocumentController implements Initializable {
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
     Invoker inv = new Invoker();
-    HashCommandTable commandcoll = new HashCommandTable();
     int last = 0;
     private Label label;
     @FXML
@@ -536,16 +535,17 @@ public class FXMLDocumentController implements Initializable {
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            Command currcomm = commandcoll.getCommand(OpName);
+            /*Command currcomm = commandcoll.getCommand(OpName);
             if(currcomm == null)
                 showAlert("Operation not exists");
             else{
                 boolean res = inv.execute(currcomm);
                 if(!res)
+                    inv.undo();
                     showAlert("Operation can't be performed");
                 else
                     showAlert("Operation done succesfully");
-            }
+            }*/
         }
     }
 
