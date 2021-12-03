@@ -556,6 +556,7 @@ public class FXMLDocumentController implements Initializable {
                 else{
                     showAlert("Operation done succesfully");
                     OperandsTable.refresh();
+                    nameOperationTextArea.clear();
                 }
             }
         }
