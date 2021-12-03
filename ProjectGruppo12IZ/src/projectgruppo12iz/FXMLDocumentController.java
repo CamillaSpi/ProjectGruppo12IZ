@@ -43,9 +43,10 @@ import modelClassPackage.Variables;
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
-    HashCommandTable userCommand = new HashCommandTable(collector);
+    Variables vars= new Variables();
+    HashCommandTable userCommand = new HashCommandTable(collector, vars);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
-    Variables vars= new Variables();  
+      
     Invoker inv = new Invoker();
     int last = 0;
     private Label label;
