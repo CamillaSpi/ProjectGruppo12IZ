@@ -618,6 +618,8 @@ public class FXMLDocumentController implements Initializable {
                         showAlert("Operation not found");
                     }
                 }
+            }else{
+                showAlert("Operation not found");
             }
 
         }
