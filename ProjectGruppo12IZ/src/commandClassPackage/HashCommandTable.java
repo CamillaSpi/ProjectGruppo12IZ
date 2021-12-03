@@ -72,19 +72,7 @@ public class HashCommandTable{
         List<Command> commandList = new LinkedList<Command>();
         for(String stringCommand: stringOfCommands){
             //check if the string is one corrisponding to the basic operation
-            if(basicCommandHash.containsKey(stringCommand)){
-                try {
-                operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
-                commandConstructor = operation.getConstructor(MyOperandCollection.class);
-                //create a new command corresponding to the operation
-                newCommand = (Command) commandConstructor.newInstance(collector);
-                //add this new command to the list of command
-                commandList.add(newCommand);
-                }catch (Exception ex){
-                    return false;
-                }
-            }
-            else if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
+            if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
                 String substitute = stringCommand.substring(0, 1).concat("x");
                 if(basicCommandHash.containsKey(substitute)){  
                     try {
@@ -99,6 +87,19 @@ public class HashCommandTable{
                     }
                 }
             }
+            else if(basicCommandHash.containsKey(stringCommand)){
+                try {
+                operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
+                commandConstructor = operation.getConstructor(MyOperandCollection.class);
+                //create a new command corresponding to the operation
+                newCommand = (Command) commandConstructor.newInstance(collector);
+                //add this new command to the list of command
+                commandList.add(newCommand);
+                }catch (Exception ex){
+                    return false;
+                }
+            }
+            
             //check if the string is one corresponding to the user defined operation
             else if(concreteCommandHash.containsKey(stringCommand)){
                 //add this command to the list of command
