@@ -587,7 +587,13 @@ public class FXMLDocumentController implements Initializable {
         else
             showAlert("The name inserted for the operation is not correct");
     }
-
+    
+    /**
+    * This function allows to delete an previously defined user operation and all the
+    * other user operation that contains this one.
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to delete a user defined operation.
+    */
     @FXML
     private void deleteOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
@@ -598,12 +604,13 @@ public class FXMLDocumentController implements Initializable {
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setTitle("Deleting \"" + OpName +"\" operation");
                 alert.setHeaderText("Are you sure?");
-                alert.setContentText("This comport the delete of all operation that include this one!!!");
-
+                alert.setContentText("This involve the delete of all operation that include this one!!!");
+                
                 Optional<ButtonType> option = alert.showAndWait();
 
                 if (option.get() == null || option.get() == ButtonType.CANCEL) {
                     showAlert("Deletion canceled");
+                    nameOperationTextArea.clear();
                 } else if (option.get() == ButtonType.OK) {
                     if (userCommand.delete(OpName)) {
                         showAlert("Operation delete succesfully");
@@ -620,7 +627,7 @@ public class FXMLDocumentController implements Initializable {
     * This function allows to show in the apposit text area the operations that compose 
     * the operation writes in relative text area so you can view modify that(if exists).
     * <p> <!-- -->
-    * @param event the event of the presses of the button to save a new user defined operation.
+    * @param event the event of the presses of the button to show a user defined operation.
     * @see HashCommandTable
     */
     @FXML
