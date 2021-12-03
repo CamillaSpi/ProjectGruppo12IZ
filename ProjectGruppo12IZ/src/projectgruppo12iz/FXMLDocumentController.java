@@ -559,9 +559,13 @@ public class FXMLDocumentController implements Initializable {
     private void enterOperation(ActionEvent event) {
         String operationName = nameOperationTextArea.getText();
         String sequenceDefinition = operationTextArea.getText();
-        if(operationName.matches("[a-zA-Z]*")){
-            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName))
+        if(operationName.matches("[a-zA-Z0-9]*")){
+           
+                
+            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName)){
                 showAlert("Operation saved succesfully");
+                operationTextArea.clear();
+            }
             else
                 showAlert("The operation could not be saved");
         }
