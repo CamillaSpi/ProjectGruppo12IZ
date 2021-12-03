@@ -18,7 +18,6 @@ public class ConcreteCommandPersonalized implements Command{
    
     /**
      * It creates an object of the ConcreteCommandPersonalized if the collector is not null and 
-     * contains enough element to perform the division operation.
      * @param commandName is the name of the command, we choose to save this in this class, could be util for the future.
      * @param commands is the list of commands that compose this concrete complex command .
      * @see ComplexNumber, MyOperandCollection
@@ -27,6 +26,17 @@ public class ConcreteCommandPersonalized implements Command{
         assert commands != null;
         this.commands = commands;
         this.commandName = commandName;
+    }
+    
+    /**
+     * It creates an object of the ConcreteCommandPersonalized if the param is not null and 
+     * @param comm 
+     * @see ComplexNumber, MyOperandCollection
+     */
+    public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
+        assert comm != null;
+        this.commands = comm.commands;
+        this.commandName = comm.commandName;
     }
 
     /**
