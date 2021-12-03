@@ -73,8 +73,8 @@ public class Variables {
     * 
     */
     public boolean saveToVariable(String key, ComplexNumber value){
-        if(checkRange(key) && value != null){
-            this.myVariables.put(key.toString(), value); 
+        if(checkRange(key)){
+            this.myVariables.put(key, value); 
             return true;
         }
         return false;
