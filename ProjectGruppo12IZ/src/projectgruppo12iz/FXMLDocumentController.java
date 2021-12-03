@@ -38,7 +38,7 @@ import modelClassPackage.Variables;
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
-    HashCommandTable UserCommand = new HashCommandTable(collector);
+    HashCommandTable userCommand = new HashCommandTable(collector);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Variables vars= new Variables();  
     Invoker inv = new Invoker();
@@ -532,7 +532,7 @@ public class FXMLDocumentController implements Initializable {
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            Command currcomm = UserCommand.getUserCommand(OpName);
+            Command currcomm = userCommand.getUserCommand(OpName);
             if(currcomm == null)
                 showAlert("Operation not exists");
             else{
@@ -546,8 +546,27 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    
+
+    /**
+    * This function is associated with the button enter operation in order to avoid the user to store
+    * a personalized operation defining its name and its definition. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save a new user defined operation.
+    * @see HashCommandTable
+    */
     @FXML
     private void enterOperation(ActionEvent event) {
+        String operationName = nameOperationTextArea.getText();
+        String sequenceDefinition = operationTextArea.getText();
+        if(operationName.matches("[a-zA-Z]*")){
+            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName))
+                showAlert("Operation saved succesfully");
+            else
+                showAlert("The operation could not be saved");
+        }
+        else
+            showAlert("The name inserted for the operation is not correct");
     }
 
     @FXML
@@ -556,7 +575,7 @@ public class FXMLDocumentController implements Initializable {
         if ("".equals(OpName))
             showAlert("Write the name of the operation to delete");
         else{
-           if(UserCommand.delete(OpName))
+           if(userCommand.delete(OpName))
             showAlert("Operation delete succesfully");
            else{
                showAlert("Operation not found");
