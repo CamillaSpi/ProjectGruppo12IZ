@@ -41,7 +41,7 @@ public class HashCommandTable{
         basicCommandHash.put("clear", "ClearCommand");
         basicCommandHash.put(">x", "SaveToVariableCommand");
         basicCommandHash.put("<x", "SaveFromVariableCommand");
-        basicCommandHash.put("+x", "SumToVariableCommand");
+        basicCommandHash.put("+x", "AddToVariableCommand");
         basicCommandHash.put("-x", "SubtractToVariableCommand");
         this.collector = collector;
         this.vars = vars;
@@ -86,11 +86,10 @@ public class HashCommandTable{
             }
             else if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
                 String substitute = stringCommand.substring(0, 1).concat("x");
-                
                 if(basicCommandHash.containsKey(substitute)){  
                     try {
-                    operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
-                    commandConstructor = operation.getConstructor(MyOperandCollection.class);
+                    operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(substitute));
+                    commandConstructor = operation.getConstructor(MyOperandCollection.class, Variables.class, String.class);
                     //create a new command corresponding to the operation
                     newCommand = (Command) commandConstructor.newInstance(collector, vars, stringCommand.substring(1));
                     //add this new command to the list of command
@@ -98,7 +97,6 @@ public class HashCommandTable{
                     }catch (Exception ex){
                         return false;
                     }
-                
                 }
             }
             //check if the string is one corresponding to the user defined operation
