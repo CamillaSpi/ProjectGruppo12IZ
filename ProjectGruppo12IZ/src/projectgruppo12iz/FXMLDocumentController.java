@@ -598,6 +598,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+    * This function allows to show in the apposit text area the operations that compose 
+    * the operation writes in relative text area so you can view modify that(if exists).
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save a new user defined operation.
+    * @see HashCommandTable
+    */
     @FXML
     private void showOperation(ActionEvent event) {
         String operationName = nameOperationTextArea.getText();
