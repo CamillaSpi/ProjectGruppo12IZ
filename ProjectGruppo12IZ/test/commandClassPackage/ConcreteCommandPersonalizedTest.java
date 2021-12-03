@@ -61,7 +61,7 @@ public class ConcreteCommandPersonalizedTest {
         collector.insert(b);
         collector.insert(c);
         collector.insert(d);
-        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", "+ + +", l);
         instance.execute();
         assertEquals(collector.last(),ComplexNumber.create("-30+17j"));
     }
@@ -83,7 +83,7 @@ public class ConcreteCommandPersonalizedTest {
         collector.insert(a);
         collector.insert(b);
         collector.insert(c);
-        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized(new ConcreteCommandPersonalized("super_somma", l));
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized(new ConcreteCommandPersonalized("super_somma","+ + +", l));
         instance.execute();
         assertEquals(collector.last(),ComplexNumber.create("-8+5j"));
     }
@@ -110,7 +110,7 @@ public class ConcreteCommandPersonalizedTest {
         collector.insert(b);
         collector.insert(c);
         collector.insert(d);
-        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", "+ + +", l);
         instance.execute();
         
         instance.undo();
