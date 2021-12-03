@@ -14,7 +14,9 @@ import java.util.List;
 public class ConcreteCommandPersonalized implements Command{
  
     private final String commandName;
+    private final String operations;
     private final List<Command> commands;
+    
    
     /**
      * It creates an object of the ConcreteCommandPersonalized if the collector is not null and 
@@ -22,9 +24,10 @@ public class ConcreteCommandPersonalized implements Command{
      * @param commands is the list of commands that compose this concrete complex command .
      * @see ComplexNumber, MyOperandCollection
      */
-    public ConcreteCommandPersonalized(String commandName, List<Command> commands) {
+    public ConcreteCommandPersonalized(String commandName,String operations, List<Command> commands) {
         assert commands != null;
         this.commands = commands;
+        this.operations= operations;
         this.commandName = commandName;
     }
     
@@ -36,9 +39,24 @@ public class ConcreteCommandPersonalized implements Command{
     public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
         assert comm != null;
         this.commands = comm.commands;
+        this.operations = comm.operations;
         this.commandName = comm.commandName;
     }
 
+    /**
+     * getter method for Name of command
+     */
+    public String getCommandName() {
+        return commandName;
+    }
+
+    /**
+     * getter method for operations contains in the command
+     */
+    public List<Command> getCommands() {
+        return commands;
+    }
+    
     /**
      * It executes the complex operation throw the list of its basic operation list,
      * if it not performed at all, its undos all basic operation done at that moment.
