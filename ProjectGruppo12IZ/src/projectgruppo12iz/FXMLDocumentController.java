@@ -587,16 +587,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void showOperation(ActionEvent event) {
         String operationName = nameOperationTextArea.getText();
-        operationTextArea.setText( ((ConcreteCommandPersonalized)userCommand.getUserCommand(operationName)). );
-        if(operationName.matches("[a-zA-Z]*")){
-            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName))
-                showAlert("Operation saved succesfully");
-            else
-                showAlert("The operation could not be saved");
-        }
+        ConcreteCommandPersonalized command = (ConcreteCommandPersonalized)userCommand.getUserCommand(operationName);
+        if(command != null)
+            operationTextArea.setText(command.getCommands());       
         else
-            showAlert("The name inserted for the operation is not correct");
-        
+            showAlert("Operation not found");
     }
 
 
