@@ -184,7 +184,7 @@ public class HashCommandTableTest {
         String operationName1 = "myOp";
         HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
-        Command command1 = instance.getUserCommand("myOp");
+        Command command1 = instance.getUserCommand("myOp2");
         assertEquals(command1, null);   
     }
  
