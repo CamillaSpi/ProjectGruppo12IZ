@@ -612,6 +612,7 @@ public class FXMLDocumentController implements Initializable {
                 if (option.get() == null || option.get() == ButtonType.CANCEL) {
                     showAlert("Deletion canceled");
                     nameOperationTextArea.clear();
+                    operationTextArea.clear();
                 } else if (option.get() == ButtonType.OK) {
                     if (userCommand.delete(OpName)) {
                         showAlert("Operation delete succesfully");
