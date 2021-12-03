@@ -18,7 +18,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -561,8 +564,12 @@ public class FXMLDocumentController implements Initializable {
         String operationName = nameOperationTextArea.getText();
         String sequenceDefinition = operationTextArea.getText();
         if(operationName.matches("[a-zA-Z0-9]*")){
-            
-                
+            if(userCommand.getUserCommand(operationName) != null){
+                Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to update the " + operationName + "operation?", ButtonType.YES, ButtonType.NO);
+                alert.showAndWait();
+                if(alert.getResult() == ButtonType.NO)
+                    showAlert("The operation will not be updated");  
+            }
             if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName)){
                 showAlert("Operation saved succesfully");
                 operationTextArea.clear();
