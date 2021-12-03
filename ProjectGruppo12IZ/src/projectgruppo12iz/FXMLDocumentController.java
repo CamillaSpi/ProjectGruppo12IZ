@@ -566,7 +566,9 @@ public class FXMLDocumentController implements Initializable {
 
     /**
     * This function is associated with the button enter operation in order to avoid the user to store
-    * a personalized operation defining its name and its definition. 
+    * a personalized operation defining its name and its definition.
+    * If the operation name already exists it will be asked to user if he is sure to update the operation 
+    * and all the operation that uses it.
     * <p> <!-- -->
     * @param event the event of the presses of the button to save a new user defined operation.
     * @see HashCommandTable
@@ -577,10 +579,18 @@ public class FXMLDocumentController implements Initializable {
         String sequenceDefinition = operationTextArea.getText();
         if(operationName.matches("[a-zA-Z0-9]*")){
             if(userCommand.getUserCommand(operationName) != null){
-                Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to update the " + operationName + "operation?", ButtonType.YES, ButtonType.NO);
-                alert.showAndWait();
-                if(alert.getResult() == ButtonType.NO)
-                    showAlert("The operation will not be updated");  
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Updating \"" + operationName +"\" operation");
+                alert.setHeaderText("Are you sure?");
+                alert.setContentText("This means the updating of all the operation that uses it!!!");
+                
+                Optional<ButtonType> option = alert.showAndWait();
+                
+                if(option.get() == null || alert.getResult() == ButtonType.CANCEL){
+                    showAlert("The operation will not be updated"); 
+                    return;
+                }
+                
             }
             if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName)){
                 showAlert("Operation saved succesfully");
