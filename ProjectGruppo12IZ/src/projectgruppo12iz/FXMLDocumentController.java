@@ -10,6 +10,7 @@ import commandClassPackage.ConcreteCommandPersonalized;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
@@ -18,7 +19,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -588,14 +592,28 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deleteOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
-        if ("".equals(OpName))
+        if ("".equals(OpName)) {
             showAlert("Write the name of the operation to delete");
-        else{
-           if(userCommand.delete(OpName))
-            showAlert("Operation delete succesfully");
-           else{
-               showAlert("Operation not found");
-           }
+        } else {
+            if (userCommand.getUserCommand(OpName) != null) {
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Deleting \"" + OpName +"\" operation");
+                alert.setHeaderText("Are you sure?");
+                alert.setContentText("This comport the delete of all operation that include this one!!!");
+
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get() == null || option.get() == ButtonType.CANCEL) {
+                    showAlert("Deletion canceled");
+                } else if (option.get() == ButtonType.OK) {
+                    if (userCommand.delete(OpName)) {
+                        showAlert("Operation delete succesfully");
+                    } else {
+                        showAlert("Operation not found");
+                    }
+                }
+            }
+
         }
     }
 
