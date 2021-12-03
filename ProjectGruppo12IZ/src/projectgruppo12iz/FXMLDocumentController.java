@@ -10,6 +10,7 @@ import commandClassPackage.ConcreteCommandPersonalized;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
@@ -529,23 +530,34 @@ public class FXMLDocumentController implements Initializable {
         else
             showAlert("Insert at least an operand to execute this operation!");
     }
-
+    
+    /**
+    * This function is associated with the button execute operation in order to give 
+    * the possibility to the user to execute a personalized operation writing its name in the nameOperationTextArea. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to execute a user defined operation.
+    * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
+    */
     @FXML
     private void executeOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            Command currcomm = userCommand.getUserCommand(OpName);
-            if(currcomm == null)
+            Command getcomm = userCommand.getUserCommand(OpName);
+            if(getcomm == null)
                 showAlert("Operation not exists");
             else{
-                boolean res = inv.execute(currcomm);
+                ConcreteCommandPersonalized concrete = new ConcreteCommandPersonalized((ConcreteCommandPersonalized) getcomm);
+                boolean res = inv.execute(concrete);
                 if(!res){
                     showAlert("Operation can't be performed");
                 }
-                else
+                else{
                     showAlert("Operation done succesfully");
+                    OperandsTable.refresh();
+                    nameOperationTextArea.clear();
+                }
             }
         }
     }
@@ -584,17 +596,38 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deleteOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
-        if ("".equals(OpName))
+        if ("".equals(OpName)) {
             showAlert("Write the name of the operation to delete");
-        else{
-           if(userCommand.delete(OpName))
-            showAlert("Operation delete succesfully");
-           else{
-               showAlert("Operation not found");
-           }
+        } else {
+            if (userCommand.getUserCommand(OpName) != null) {
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Deleting \"" + OpName +"\" operation");
+                alert.setHeaderText("Are you sure?");
+                alert.setContentText("This comport the delete of all operation that include this one!!!");
+
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get() == null || option.get() == ButtonType.CANCEL) {
+                    showAlert("Deletion canceled");
+                } else if (option.get() == ButtonType.OK) {
+                    if (userCommand.delete(OpName)) {
+                        showAlert("Operation delete succesfully");
+                    } else {
+                        showAlert("Operation not found");
+                    }
+                }
+            }
+
         }
     }
 
+    /**
+    * This function allows to show in the apposit text area the operations that compose 
+    * the operation writes in relative text area so you can view modify that(if exists).
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to save a new user defined operation.
+    * @see HashCommandTable
+    */
     @FXML
     private void showOperation(ActionEvent event) {
         String operationName = nameOperationTextArea.getText();
