@@ -83,9 +83,8 @@ public class ConcreteCommandPersonalizedTest {
         collector.insert(a);
         collector.insert(b);
         collector.insert(c);
-        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized("super_somma", l);
+        ConcreteCommandPersonalized instance = new ConcreteCommandPersonalized(new ConcreteCommandPersonalized("super_somma", l));
         instance.execute();
-        System.err.println(collector.last());
         assertEquals(collector.last(),ComplexNumber.create("-8+5j"));
     }
 
