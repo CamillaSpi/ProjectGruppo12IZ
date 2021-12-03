@@ -24,6 +24,8 @@ public class Invoker{
     /**
      * execute method of class Invoker that adds the command to be executed, passed as a parameter, 
      * into the invoker's deque and launches the execute method of the command.
+     * @param command command that has to be executed.
+     * @return true, if the op has been executed, false otherwise.
      * @see Command
      */
     public boolean execute(Command command) {

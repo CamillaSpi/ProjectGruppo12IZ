@@ -526,18 +526,26 @@ public class FXMLDocumentController implements Initializable {
         else
             showAlert("Insert at least an operand to execute this operation!");
     }
-
+    
+    /**
+    * This function is associated with the button execute operation in order to give 
+    * the possibility to the user to execute a personalized operation writing its name in the nameOperationTextArea. 
+    * <p> <!-- -->
+    * @param event the event of the presses of the button to execute a user defined operation.
+    * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
+    */
     @FXML
     private void executeOperation(ActionEvent event) {
         String OpName = nameOperationTextArea.getText();
         if ("".equals(OpName))
             showAlert("Write the name of the operation to execute");
         else{
-            Command currcomm = userCommand.getUserCommand(OpName);
-            if(currcomm == null)
+            Command getcomm = userCommand.getUserCommand(OpName);
+            if(getcomm == null)
                 showAlert("Operation not exists");
             else{
-                boolean res = inv.execute(currcomm);
+                ConcreteCommandPersonalized concrete = new ConcreteCommandPersonalized((ConcreteCommandPersonalized) getcomm);
+                boolean res = inv.execute(concrete);
                 if(!res){
                     showAlert("Operation can't be performed");
                 }
