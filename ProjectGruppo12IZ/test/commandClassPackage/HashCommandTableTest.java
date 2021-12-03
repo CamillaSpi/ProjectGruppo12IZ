@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
+import modelClassPackage.Variables;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,10 +24,14 @@ import static org.junit.Assert.*;
  */
 public class HashCommandTableTest {
     MyOperandCollection collector ;
+    Variables vars;
     public HashCommandTableTest() {
         collector = new MyOperandCollection(12);
         collector.insert(new ComplexNumber("2", "3"));
         collector.insert(new ComplexNumber("4", "5"));
+        vars = new Variables();
+        vars.saveToVariable("a", new ComplexNumber("5", "7"));
+        vars.saveToVariable("b", new ComplexNumber("-3", "-6"));
     }
     
     @BeforeClass
@@ -55,7 +60,7 @@ public class HashCommandTableTest {
         System.out.println("createPersonalizedCommand with a name corresponding to an already existing basic operation");
         String sequenceDefinition = "+ -";
         String operationName = "dup";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         boolean expResult = false;
         boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
         assertEquals(expResult, result);
@@ -67,11 +72,27 @@ public class HashCommandTableTest {
      * is not correct.
      */
     @Test
-    public void testCreatePersonalizedCommandIncorrectDefinition(){
+    public void testCreatePersonalizedCommandIncorrectDefinition1(){
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition = "+ !";
         String operationName = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean expResult = false;
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable, 
+     * checking the case in which one of the string passed in the definition of the new operation
+     * is not correct.
+     */
+    @Test
+    public void testCreatePersonalizedCommandIncorrectDefinition2(){
+        System.out.println("createPersonalizedCommand with an incorrect definition");
+        String sequenceDefinition = "+ <";
+        String operationName = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         boolean expResult = false;
         boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
         assertEquals(expResult, result);
@@ -88,7 +109,7 @@ public class HashCommandTableTest {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition = "+ swap";
         String operationName = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         boolean expResult = true;
         boolean result = instance.createPersonalizedCommand(sequenceDefinition, operationName);
         Command ret = instance.getUserCommand(operationName);
@@ -106,7 +127,7 @@ public class HashCommandTableTest {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
         String sequenceDefinition2 = "+ myOp";
         String operationName2 = "myOp2";
@@ -128,7 +149,7 @@ public class HashCommandTableTest {
         System.out.println("createPersonalizedCommand with an incorrect definition");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
         Command command1 = instance.getUserCommand(operationName1);
         String sequenceDefinition2 = "+ -";
@@ -147,24 +168,86 @@ public class HashCommandTableTest {
         System.out.println("getUserCommand with an correct key");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
         Command command1 = instance.getUserCommand(operationName1);
         assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);   
     }
     
-        /**
-     * Test of getUserCommand method, with a correct key 
+    /**
+     * Test of getUserCommand method, with an incorrect key 
      */
     @Test
     public void testgetUserCommandIncorrect() {
         System.out.println("getUserCommand with an incorrect key");
         String sequenceDefinition1 = "+ swap";
         String operationName1 = "myOp";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
-        Command command1 = instance.getUserCommand("myOp2");
+        Command command1 = instance.getUserCommand("myOp");
         assertEquals(command1, null);   
+    }
+ 
+    
+    /**
+     * Test of createPersonalizedCommand method, with one of the function in the user definition 
+     * having the SaveToVariable operation(>x) 
+     */
+    @Test
+    public void testCreatePersonalizedCommandSaveTo() {
+        System.out.println("createPersonalizedCommand with a SaveToVariable function in the definition");
+        String sequenceDefinition1 = "+ >a";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
+    }
+    
+    /**
+     * Test of createPersonalizedCommand method, with one of the function in the user definition having the SaveFromVariable operation(<x) 
+     */
+    @Test
+    public void testCreatePersonalizedCommandSaveFrom() {
+        System.out.println("createPersonalizedCommand with a SaveFromVariable function in the definition");
+        String sequenceDefinition1 = "+ <a";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
+    }
+    
+    /**
+     * Test of createPersonalizedCommand method, with one of the function in the user definition having the AddToVariable operation(+x) 
+     */
+    @Test
+    public void testCreatePersonalizedCommandAddTo() {
+        System.out.println("createPersonalizedCommand with a addToVariable function in the definition");
+        String sequenceDefinition1 = "+ +a";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
+    }
+    
+    /**
+     * Test of createPersonalizedCommand method, with one of the function in the user definition having the SubtractToVariable operation(-x) 
+     */
+    @Test
+    public void testCreatePersonalizedCommandSubtractTo() {
+        System.out.println("createPersonalizedCommand with a subtractToVariable function in the definition");
+        String sequenceDefinition1 = "+ -a";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
     }
 
 
@@ -180,7 +263,7 @@ public class HashCommandTableTest {
     public void testDelete(){
         System.out.println("delete");
         String name = "";
-        HashCommandTable instance = new HashCommandTable(collector);
+        HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand("+", "toAdd");
         instance.createPersonalizedCommand("toAdd", "toAdd1");
         

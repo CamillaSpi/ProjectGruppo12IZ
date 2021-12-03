@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import modelClassPackage.MyOperandCollection;
+import modelClassPackage.Variables;
 
 /**
  *
@@ -22,8 +23,9 @@ public class HashCommandTable{
     private final HashMap<String,ConcreteCommandPersonalized> concreteCommandHash;
     private final HashMap<String,String> basicCommandHash;
     private MyOperandCollection collector;
+    private Variables vars;
 
-    public HashCommandTable(MyOperandCollection collector) {
+    public HashCommandTable(MyOperandCollection collector, Variables vars) {
         this.concreteCommandHash = new HashMap<>();
         this.basicCommandHash = new HashMap<>();
         basicCommandHash.put("+", "AddCommand");
@@ -37,7 +39,12 @@ public class HashCommandTable{
         basicCommandHash.put("swap", "SwapCommand");
         basicCommandHash.put("over", "OverCommand");
         basicCommandHash.put("clear", "ClearCommand");
+        basicCommandHash.put(">x", "SaveToVariableCommand");
+        basicCommandHash.put("<x", "SaveFromVariableCommand");
+        basicCommandHash.put("+x", "SumToVariableCommand");
+        basicCommandHash.put("-x", "SubtractToVariableCommand");
         this.collector = collector;
+        this.vars = vars;
     }
     
     public void setCollector(MyOperandCollection collector){
@@ -77,6 +84,23 @@ public class HashCommandTable{
                     return false;
                 }
             }
+            else if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
+                String substitute = stringCommand.substring(0, 1).concat("x");
+                
+                if(basicCommandHash.containsKey(substitute)){  
+                    try {
+                    operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
+                    commandConstructor = operation.getConstructor(MyOperandCollection.class);
+                    //create a new command corresponding to the operation
+                    newCommand = (Command) commandConstructor.newInstance(collector, vars, stringCommand.substring(1));
+                    //add this new command to the list of command
+                    commandList.add(newCommand);
+                    }catch (Exception ex){
+                        return false;
+                    }
+                
+                }
+            }
             //check if the string is one corresponding to the user defined operation
             else if(concreteCommandHash.containsKey(stringCommand)){
                 //add this command to the list of command
@@ -91,6 +115,7 @@ public class HashCommandTable{
         concreteCommandHash.put(operationName, personalizedCommand);
         return true;
     }
+    
     /**
     * It delete a personalized Command starting from the name.If the remove operation
     * return null, the elements is not contained in the hashmap, then false was returned, otherwise
@@ -100,6 +125,7 @@ public class HashCommandTable{
      * @param name
      * @return If the elements doesn't exist then false was returned otherwise true. 
     */
+    
     public boolean delete(String name){
         if (name == null )
             return false;
