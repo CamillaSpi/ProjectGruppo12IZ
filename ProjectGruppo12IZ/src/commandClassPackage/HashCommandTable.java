@@ -86,7 +86,7 @@ public class HashCommandTable{
                 return false;
         }
         //starting from the list creadet, create a new commandPersonalized object
-        ConcreteCommandPersonalized personalizedCommand = new ConcreteCommandPersonalized(operationName,commandList);
+        ConcreteCommandPersonalized personalizedCommand = new ConcreteCommandPersonalized(operationName, sequenceDefinition, commandList);
         //add this new personalizedCommand to the hashMap containing all the user defined command
         concreteCommandHash.put(operationName, personalizedCommand);
         return true;
