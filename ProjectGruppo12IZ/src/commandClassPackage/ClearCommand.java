@@ -32,7 +32,7 @@ public class ClearCommand implements Command{
     
     /**
      * This method implements execute method for clear operation from Command interface
-     * @return 
+     * @return true if the collection is not empty and the operation is performed, false otherwise
      */
     @Override
     public boolean execute() {
