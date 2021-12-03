@@ -6,6 +6,7 @@
 package projectgruppo12iz;
 
 import commandClassPackage.Command;
+import commandClassPackage.ConcreteCommandPersonalized;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.net.URL;
@@ -585,6 +586,17 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperation(ActionEvent event) {
+        String operationName = nameOperationTextArea.getText();
+        operationTextArea.setText( ((ConcreteCommandPersonalized)userCommand.getUserCommand(operationName)). );
+        if(operationName.matches("[a-zA-Z]*")){
+            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName))
+                showAlert("Operation saved succesfully");
+            else
+                showAlert("The operation could not be saved");
+        }
+        else
+            showAlert("The name inserted for the operation is not correct");
+        
     }
 
 

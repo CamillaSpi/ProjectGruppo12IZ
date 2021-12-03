@@ -44,17 +44,19 @@ public class ConcreteCommandPersonalized implements Command{
     }
 
     /**
-     * getter method for Name of command
+     * getter method for Name of command.
+     * @return String rappresent the name of the operations
      */
     public String getCommandName() {
         return commandName;
     }
 
     /**
-     * getter method for operations contains in the command
+     * getter method for operations contains in the command.
+     * @return String rappresent operations
      */
-    public List<Command> getCommands() {
-        return commands;
+    public String getCommands() {
+        return operations;
     }
     
     /**
