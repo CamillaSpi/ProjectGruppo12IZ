@@ -549,8 +549,10 @@ public class FXMLDocumentController implements Initializable {
                 if(!res){
                     showAlert("Operation can't be performed");
                 }
-                else
+                else{
                     showAlert("Operation done succesfully");
+                    OperandsTable.refresh();
+                }
             }
         }
     }
