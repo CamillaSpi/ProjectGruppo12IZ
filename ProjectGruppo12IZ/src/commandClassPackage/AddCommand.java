@@ -28,15 +28,6 @@ public class AddCommand implements Command{
         assert collector != null;
         this.collector = collector;
     }
-
-    public ComplexNumber getFirstOperand() {
-        return firstOperand;
-    }
-
-    public ComplexNumber getSecondOperand() {
-        return secondOperand;
-    }
-    
     
     /**
      *It execute the operation of addiction on the last two inserted operand in the collector removing them,
