@@ -9,9 +9,16 @@ import commandClassPackage.Command;
 import commandClassPackage.ConcreteCommandPersonalized;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -19,6 +26,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -29,7 +37,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
@@ -43,27 +55,25 @@ import modelClassPackage.Variables;
 public class FXMLDocumentController implements Initializable {
 
     MyOperandCollection collector = new MyOperandCollection(12);
-    Variables vars= new Variables();
+    Variables vars = new Variables();
     HashCommandTable userCommand = new HashCommandTable(collector, vars);
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
-      
     Invoker inv = new Invoker();
+    FadeTransition fadeIn = new FadeTransition(Duration.millis(1000));
+    FadeTransition fadeOut = new FadeTransition(Duration.millis(1000));
     int last = 0;
-    private Label label;
+    @FXML
+    private AnchorPane baseAnchorPane;
     @FXML
     private TextArea textArea;
     @FXML
-    private TableView<ComplexNumber> OperandsTable;
-    @FXML
-    private TableColumn<ComplexNumber, String> OperandsClm;
-    @FXML
     private Button sumButton;
+    @FXML
+    private Button divButton;
     @FXML
     private Button subButton;
     @FXML
     private Button molButton;
-    @FXML
-    private Button divButton;
     @FXML
     private Button sqrtButton;
     @FXML
@@ -73,27 +83,130 @@ public class FXMLDocumentController implements Initializable {
 
     private ObservableList<ComplexNumber> latestOperands;
     @FXML
-    private AnchorPane operationAnchorPane;
-    @FXML
-    private ToggleButton operationToggleButton;
-    @FXML
-    private ToggleButton UserToggleButton;
+    private AnchorPane varAnchorPane;
     @FXML
     private ToggleButton VariableToggleButton;
     @FXML
-    private AnchorPane varAnchorPane;
+    private AnchorPane operationAnchorPane;
     @FXML
-    private TextArea varTextArea;
+    private TableView<ComplexNumber> OperandsTable;
+    @FXML
+    private TableColumn<ComplexNumber, String> OperandsClm;
+    @FXML
+    private Button swapButton;
+    @FXML
+    private Button dropButton;
+    @FXML
+    private Button overButton;
+    @FXML
+    private Button dupButton;
+    @FXML
+    private Button clearButton;
+    @FXML
+    private Button undoButton;
+    @FXML
+    private Button enterBtton;
+    @FXML
+    private HBox fourthHBox;
+    @FXML
+    private HBox firstHBox;
+    @FXML
+    private HBox secondHBox;
+    @FXML
+    private HBox thirdHBox;
+    @FXML
+    private VBox externalVBox;
     @FXML
     private TextArea nameOperationTextArea;
     @FXML
-    private TextArea operationTextArea;
-    @FXML
-    private AnchorPane baseAnchorPane;
+    private VBox operationVBox;
+
+    ArrayList<Button> myButtonArray = new ArrayList<>();
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World! test 5");
+
+    }
+
+    private void moveAnchor(boolean flag) {
+        TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
+
+        if (flag) {
+            slide.setFromX(0);
+            slide.setToX(200);
+            slide.setRate(1);
+            slide.play();
+
+        } else {
+            slide.setFromX(200);
+            slide.setToX(0);
+
+            slide.setRate(1);
+            slide.play();
+
+        }
+
+    }
+
+    private void moveAnchorOperation(boolean anchorFlag) {
+        TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), externalVBox);
+        TranslateTransition slide2 = new TranslateTransition(Duration.seconds(0.4), operationVBox);
+
+        if (anchorFlag) {
+            slide.setFromY(0);
+            slide.setToY(60);
+            slide2.setFromY(0);
+            slide2.setToY(110);
+            slide.setRate(1);
+            slide.play();
+            slide2.setRate(1);
+            slide2.play();
+
+        } else {
+            slide.setFromY(externalVBox.getTranslateY());
+            slide.setToY(0);
+            slide2.setFromY(operationVBox.getTranslateY());
+            slide2.setToY(0);
+            slide.setRate(1);
+            slide.play();
+            slide2.setRate(1);
+            slide2.play();
+
+        }
+
+    }
+
+    private void showButton(Node myBtn) {
+        System.out.print("forse show " + myBtn + myBtn.isVisible());
+        if (!myBtn.isVisible()) {
+           /* fadeIn.setRate(1);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.setCycleCount(1);
+            fadeIn.setNode(myBtn);
+            fadeIn.play();
+           */ System.out.println("show");
+            myBtn.setVisible(true);
+        } else {
+            System.out.println("notshow");
+        }
+
+    }
+
+    private void hideButton(Node myBtn) {
+        System.out.print("forse hide " + myBtn + myBtn.isVisible());
+        if (myBtn.isVisible()) {
+           /* fadeIn.setRate(1);
+            fadeIn.setFromValue(1.0);
+            fadeIn.setToValue(0.0);
+            fadeIn.setNode(myBtn);
+            fadeIn.play();
+           */ System.out.println("hide");
+            myBtn.setVisible(false);
+        } else {
+            System.out.println("npothide");
+        }
+
     }
 
     private void showAlert(String error) {
@@ -102,14 +215,15 @@ public class FXMLDocumentController implements Initializable {
         pause.setOnFinished(e -> errorLabel.setText(null));
         pause.play();
     }
-    
+
     /**
-    * It insert the element passed as param in the collection.
-    * <p> <!-- -->
-    * @param num it's the ComplexNumber to insert in the collection
-    * @return true if the element was add, otherwise false
-    * @see MyOperandCollection
-    */
+     * It insert the element passed as param in the collection.
+     * <p>
+     * <!-- --> @param num it's the ComplexNumber to insert in the collection
+     *
+     * @return true if the element was add, otherwise false
+     * @see MyOperandCollection
+     */
     public boolean pushIntoStack(ComplexNumber num) {
         int length = collector.collectionLength();
         collector.insert(num);
@@ -123,95 +237,17 @@ public class FXMLDocumentController implements Initializable {
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
+
         VariableToggleButton.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
 
-            if (VariableToggleButton.isSelected()) {
-                slide.setFromX(-170);
-                slide.setToX(0);
-
-                slide.setRate(1);
-                slide.play();
-            } else {
-                slide.setFromX(0);
-                slide.setToX(-170);
-
-                slide.setRate(1);
-                slide.play();
-            }
+            moveAnchor(VariableToggleButton.isSelected());
 
         });
-        operationToggleButton.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), operationAnchorPane);
-
-            if (operationToggleButton.isSelected()) {
-                slide.setFromY(70);
-                slide.setToY(0);
-                slide.setRate(1);
-                slide.play();
-            } else {
-                slide.setFromY(0);
-                slide.setToY(70);
-                slide.setRate(1);
-                slide.play();
-            }
-
-        });
-// to fix
-        UserToggleButton.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), operationAnchorPane);
-           
-            if (UserToggleButton.isSelected()) {
-                if (operationToggleButton.isSelected()) {
-                    slide.setFromY(120);
-                    slide.setToY(0);
-                    last = 0;
-                    slide.setRate(1);
-                    slide.play();
-                } else {
-                    slide.setFromY(120);
-                    slide.setToY(70);
-                    last = 70;
-                    slide.setRate(1);
-                    slide.play();
-                }
-            } else {
-
-                slide.setFromY(last);
-                slide.setToY(120);
-                slide.setRate(1);
-                slide.play();
-            }
-
-        });
-
-        //Building the sublist of the first twelve elements of the operands collection and adding it in the operands table.
-        //OperandsTable.setItems(FXCollections.observableList(collector.subList(0, 11)));  
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
         OperandsTable.setItems(latestOperands);
 
-    }
-
-    @FXML
-    private void handleEnterAction(ActionEvent event) {
-        String text = textArea.getText();
-        if ("".equals(text)) {
-            showAlert("Write a complex number before press enter!");
-        } else {
-            ComplexNumber checkNum = ComplexNumber.create(text);
-            if (checkNum != null) {
-                if (this.pushIntoStack(checkNum)) {
-                    showAlert("Number entered correctl");
-                    textArea.clear();
-                } else {
-                    showAlert("the number to be entered is not stored correctly");
-                }
-            } else {
-                showAlert("the number to be entered was not written correctly");
-            }
-        }
     }
 
     @FXML
@@ -230,13 +266,15 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
+
     /**
-    * It allows the calls to the subtraction operation of the class Calculator pushing the result into the stack.
-    * <p> <!-- -->
-    * @param event it registers the event
-    * @see MyOperandCollection
-    */
+     * It allows the calls to the subtraction operation of the class Calculator
+     * pushing the result into the stack.
+     * <p>
+     * <!-- --> @param event it registers the event
+     *
+     * @see MyOperandCollection
+     */
     @FXML
     private void sub(ActionEvent event) {
         if (collector.collectionLength() < 2) {
@@ -303,13 +341,15 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Error during Square Root!");
         }
     }
-    
+
     /**
-    * It allows the calls to the Invert sign operation of the class Calculator pushing the result into the stack.
-    * <p> <!-- -->
-    * @param event its register the event
-    * @see MyOperandCollection
-    */
+     * It allows the calls to the Invert sign operation of the class Calculator
+     * pushing the result into the stack.
+     * <p>
+     * <!-- --> @param event its register the event
+     *
+     * @see MyOperandCollection
+     */
     @FXML
     private void invertSign(ActionEvent event) {
         if (collector.collectionLength() < 1) {
@@ -326,65 +366,69 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
-  
     /**
-    * It call the MyOperandCollection's clear function, 
-    * if the function returns false the collection is already empty and
-    * an error message is shown, otherwise, if it is not empty, a confirmation message is shown.
-    * @param event An Event representing some type of action.
-    * <p> <!-- -->
-    */
+     * It call the MyOperandCollection's clear function, if the function returns
+     * false the collection is already empty and an error message is shown,
+     * otherwise, if it is not empty, a confirmation message is shown.
+     *
+     * @param event An Event representing some type of action.
+     * <p>
+     * <!-- -->
+     */
     @FXML
     private void clear(ActionEvent event) {
-        if(!collector.clear()) {
+        if (!collector.clear()) {
             showAlert("Collection already empty!\n");
         } else {
             showAlert("Clear operation executed succesfully!");
             OperandsTable.refresh();
         }
     }
-    
+
     /**
-    * It call the MyOperandCollection's over function, 
-    * if the function returns 
-    * an error message is shown.
-    * @param event An Event representing some type of action.
-    * <p> <!-- -->
-    */
+     * It call the MyOperandCollection's over function, if the function returns
+     * an error message is shown.
+     *
+     * @param event An Event representing some type of action.
+     * <p>
+     * <!-- -->
+     */
     @FXML
     private void over(ActionEvent event) {
-         if (!collector.over()) {
+        if (!collector.over()) {
             showAlert("Not enough inserted operands!\n");
         } else {
             showAlert("Over operation executed succesfully!");
-             OperandsTable.refresh();
+            OperandsTable.refresh();
         }
     }
+
     /**
-    * It call the MyOperandCollection's drop function, 
-    * if the function returns false
-    * an error message is shown.
-    * @param event An Event representing some type of action.
-    * <p> <!-- -->
-    */
+     * It call the MyOperandCollection's drop function, if the function returns
+     * false an error message is shown.
+     *
+     * @param event An Event representing some type of action.
+     * <p>
+     * <!-- -->
+     */
     @FXML
     private void drop(ActionEvent event) {
-         if (!collector.drop()) {
+        if (!collector.drop()) {
             showAlert("Not enough inserted operands!\n");
         } else {
             showAlert("Drop operation executed succesfully!");
-             OperandsTable.refresh();
+            OperandsTable.refresh();
         }
     }
-    
+
     /**
-    * It duplicate the last number inserted inside the collection.
-    * <p> <!-- -->
-    * @param event its register the event
-    * @return true if the element was add, otherwise false
-    * @see MyOperandCollection
-    */
+     * It duplicate the last number inserted inside the collection.
+     * <p>
+     * <!-- --> @param event its register the event
+     *
+     * @return true if the element was add, otherwise false
+     * @see MyOperandCollection
+     */
     @FXML
     private void dup(ActionEvent event) {
         if (!collector.dup()) {
@@ -394,272 +438,132 @@ public class FXMLDocumentController implements Initializable {
             OperandsTable.refresh();
         }
     }
-    
+
     /**
-    * It calls the swap operation of MyOperandCollection and check the boolean returned.
-    * If the value returned from the called function is true, it means the operation has been perfrormed correctly and so a message will be shown to user.
-    * If the value returned from the called function is false, it means the operation has not been performed and so an error message will be shown to user. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button swap.
-    * @see OperandCollection
-    */
+     * It calls the swap operation of MyOperandCollection and check the boolean
+     * returned. If the value returned from the called function is true, it
+     * means the operation has been perfrormed correctly and so a message will
+     * be shown to user. If the value returned from the called function is
+     * false, it means the operation has not been performed and so an error
+     * message will be shown to user.
+     * <p>
+     * <!-- --> @param event the event of the presses of the button swap.
+     *
+     * @see OperandCollection
+     */
     @FXML
     private void swap(ActionEvent event) {
-        if (!collector.swap()){
+        if (!collector.swap()) {
             showAlert("Not enough inserted operands!");
-        }
-        else {
+        } else {
             showAlert("Swap operation completed successfully!");
             OperandsTable.refresh();
         }
-        
+
     }
 
-    /**
-    * This function is associated with the button for saving the last operand in a variable writed in the user interface
-    * It check: if there is an operand in the stack and takes the text from the variable's text area and checks if it's not null, after it calls the saveToVariable 
-    * method of class variables passing it the text (the variable written). If the variable is written correctly and
-    * the associated value exists, it is pushed into the variable
-    * otherwise error messages will be shown. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to save from a variable.
-    * @see OperandCollection
-    */
     @FXML
-    private void saveToVariable(ActionEvent event) {
-        ComplexNumber tmp = this.collector.last();
-        if(tmp != null){
-            String variable = varTextArea.getText();
-            if(!("".equals(variable))){
-                if(!this.vars.saveToVariable(variable, tmp))
-                    showAlert("the operation is failed!\n");
-                else{
-                    showAlert("the last operand is saved in the writed variable!\n");
-                    this.collector.remove();
-                    OperandsTable.refresh();
-                }
-            }else
-                showAlert("write the variable where save the values!\n");
-        }else
-            showAlert("insert at least an operand before execute this operation!\n");
-            
+    private void saveVariablesIntoStack(ActionEvent event) {
     }
-    
-    /**
-    * This function is associated with the button for saving from a variable of the user interface
-    * It takes the text from the variable's text area and checks if it's not null, after it calls the saveFromVariable method of class variables
-    * passing it the text (the variable written). If the variable is written correctly and the associated value exists, it is pushed into the stack
-    * otherwise error messages will be shown. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to save from a variable.
-    * @see OperandCollection
-    */
+
     @FXML
-    private void saveFromVariable(ActionEvent event) {
-        String text = varTextArea.getText();
+    private void saveUserOperationToFile(ActionEvent event) {
+    }
+
+    @FXML
+    private void restoreVariablesFromStack(ActionEvent event) {
+    }
+
+    @FXML
+    private void restoreUserOperationFromFile(ActionEvent event) {
+    }
+
+    @FXML
+    private void about(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URL("https://github.com/CamillaSpi/ProjectGruppo12IZ").toURI());
+        } catch (IOException | URISyntaxException e) {
+        }
+    }
+
+    @FXML
+    private void handleEnterAction(ActionEvent event) {
+        String text = textArea.getText();
         if ("".equals(text)) {
-            showAlert("Write a variable before press this button!");
+            showAlert("Write a complex number before press enter!");
         } else {
-            ComplexNumber topush = vars.saveFromVariable(text);
-            if(topush == null)
-                showAlert("This variable can't be used, it is not correct or initialized!");
-            else{
-                pushIntoStack(topush);
-                showAlert("Value from variable inserted correctly");
-            }                
-        }
-    }
-    
-    
-    /**
-    * This function is associated with the button to subtract from a variable 
-    * written in the text area of the user interface the value of the last inserted operand
-    * if there is at least one, and if the specified variable has a value already associated
-    * It takes the text from the variable's text area and checks if it's not null, after it calls the subtractToVariable method of class Variables
-    * passing it. If the operation could be performed, the last operand is removed from the stack,
-    * otherwise error messages will be shown. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to subtract to a variable the value of the last inserted operand.
-    * @see OperandCollection, CompelxNumber
-    */
-    @FXML
-    private void subtractToVariable(ActionEvent event) {
-        ComplexNumber subtracting = collector.last();
-        if(subtracting != null){
-            String v = varTextArea.getText();
-            if(!("".equals(v))){
-                if(!vars.subtractToVariable(v, subtracting))
-                    showAlert("the operation is failed");
-                else{
-                    showAlert("the result will be saved in the variable " + v);
-                    this.collector.remove();
-                    OperandsTable.refresh();
+            ComplexNumber checkNum = ComplexNumber.create(text);
+            if (checkNum != null) {
+                if (this.pushIntoStack(checkNum)) {
+                    showAlert("Number entered correctl");
+                    textArea.clear();
+                } else {
+                    showAlert("the number to be entered is not stored correctly");
                 }
-            }else
-                showAlert("Specify a variable before click this button!");
-        }else
-            showAlert("Insert at least an operand to execute this operation!");
-    }
-    /**
-    * This function is associated with the button to add to a variable 
-    * written in the text area of the user interface the value of the last inserted operand
-    * if there is at least one, and if the specified variable has a value already associated
-    * It takes the text from the variable's text area and checks if it's not null, after it calls the addToVariable method of class Variables
-    * passing it. If the operation could be performed, the last operand is removed from the stack,
-    * otherwise error messages will be shown. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to add to a variable the value of the last inserted operand.
-    * @see OperandCollection, CompelxNumber
-    */
-    @FXML
-    private void addToVariable(ActionEvent event) {
-         ComplexNumber adding = collector.last();
-        if(adding != null){
-            String v = varTextArea.getText();
-            if(!("".equals(v))){
-                if(!vars.addToVariable(v, adding))
-                    showAlert("the operation is failed");
-                else{
-                    showAlert("the result will be saved in the variable " + v);
-                    this.collector.remove();
-                    OperandsTable.refresh();
-                }
-            }
-            else
-                showAlert("Specify a variable before click this button!");
-        }
-        else
-            showAlert("Insert at least an operand to execute this operation!");
-    }
-    
-    /**
-    * This function is associated with the button execute operation in order to give 
-    * the possibility to the user to execute a personalized operation writing its name in the nameOperationTextArea. 
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to execute a user defined operation.
-    * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
-    */
-    @FXML
-    private void executeOperation(ActionEvent event) {
-        String OpName = nameOperationTextArea.getText();
-        if ("".equals(OpName))
-            showAlert("Write the name of the operation to execute");
-        else{
-            Command getcomm = userCommand.getUserCommand(OpName);
-            if(getcomm == null)
-                showAlert("Operation not exists");
-            else{
-                ConcreteCommandPersonalized concrete = new ConcreteCommandPersonalized((ConcreteCommandPersonalized) getcomm);
-                boolean res = inv.execute(concrete);
-                if(!res){
-                    showAlert("Operation can't be performed");
-                }
-                else{
-                    showAlert("Operation done succesfully");
-                    OperandsTable.refresh();
-                    nameOperationTextArea.clear();
-                }
+            } else {
+                showAlert("the number to be entered was not written correctly");
             }
         }
     }
 
-    
-
-    /**
-    * This function is associated with the button enter operation in order to avoid the user to store
-    * a personalized operation defining its name and its definition.
-    * If the operation name already exists it will be asked to user if he is sure to update the operation 
-    * and all the operation that uses it.
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to save a new user defined operation.
-    * @see HashCommandTable
-    */
     @FXML
-    private void enterOperation(ActionEvent event) {
-        String operationName = nameOperationTextArea.getText();
-        String sequenceDefinition = operationTextArea.getText();
-        if(operationName.matches("[a-zA-Z0-9]*")){
-            if(userCommand.getUserCommand(operationName) != null){
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Updating \"" + operationName +"\" operation");
-                alert.setHeaderText("Are you sure?");
-                alert.setContentText("This means the updating of all the operation that uses it!!!");
-                
-                Optional<ButtonType> option = alert.showAndWait();
-                
-                if(option.get() == null || alert.getResult() == ButtonType.CANCEL){
-                    showAlert("The operation will not be updated"); 
-                    return;
-                }
-                
-            }
-            if(userCommand.createPersonalizedCommand(sequenceDefinition, operationName)){
-                showAlert("Operation saved succesfully");
-                operationTextArea.clear();
-            }
-            else
-                showAlert("The operation could not be saved");
-        }
-        else
-            showAlert("The name inserted for the operation is not correct");
-    }
-    
-    /**
-    * This function allows to delete an previously defined user operation and all the
-    * other user operation that contains this one.
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to delete a user defined operation.
-    */
-    @FXML
-    private void deleteOperation(ActionEvent event) {
-        String OpName = nameOperationTextArea.getText();
-        if ("".equals(OpName)) {
-            showAlert("Write the name of the operation to delete");
-        } else {
-            if (userCommand.getUserCommand(OpName) != null) {
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Deleting \"" + OpName +"\" operation");
-                alert.setHeaderText("Are you sure?");
-                alert.setContentText("This involve the delete of all operation that include this one!!!");
-                
-                Optional<ButtonType> option = alert.showAndWait();
-
-                if (option.get() == null || option.get() == ButtonType.CANCEL) {
-                    showAlert("Deletion canceled");
-                    nameOperationTextArea.clear();
-                    operationTextArea.clear();
-                } else if (option.get() == ButtonType.OK) {
-                    if (userCommand.delete(OpName)) {
-                        showAlert("Operation delete succesfully");
-                        nameOperationTextArea.clear();
-                        operationTextArea.clear();
-                    } else {
-                        showAlert("Operation not found");
-                    }
-                }
-            }else{
-                showAlert("Operation not found");
-            }
-
-        }
+    private void undo(ActionEvent event) {
     }
 
-    /**
-    * This function allows to show in the apposit text area the operations that compose 
-    * the operation writes in relative text area so you can view modify that(if exists).
-    * <p> <!-- -->
-    * @param event the event of the presses of the button to show a user defined operation.
-    * @see HashCommandTable
-    */
     @FXML
-    private void showOperation(ActionEvent event) {
-        String operationName = nameOperationTextArea.getText();
-        ConcreteCommandPersonalized command = (ConcreteCommandPersonalized)userCommand.getUserCommand(operationName);
-        if(command != null)
-            operationTextArea.setText(command.getCommands());       
-        else
-            showAlert("Operation not found");
+    private void showStandard(ActionEvent event) {
+        showButton(clearButton);
+        showButton(sumButton);
+        showButton(sqrtButton);
+        showButton(dupButton);
+        showButton(clearButton);
+        showButton(undoButton);
+        showButton(divButton);
+        showButton(sqrtButton);
+        showButton(invertSignButton);
+        showButton(swapButton);
+        showButton(dropButton);
+        showButton(overButton);
+        VariableToggleButton.setSelected(false);
+        moveAnchor(VariableToggleButton.isSelected());
+        System.out.println("\n\n");
+        moveAnchorOperation(false);
     }
 
+    @FXML
+    private void showVariables(ActionEvent event) {
+        showButton(divButton);
+        showButton(invertSignButton);
+        hideButton(sumButton);
+        hideButton(sqrtButton); 
+        hideButton(dupButton);
+        hideButton(clearButton);
+        hideButton(undoButton);
+        hideButton(swapButton);
+        hideButton(dropButton);
+        hideButton(overButton);
+        VariableToggleButton.setSelected(false);
+        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchorOperation(false);
+        System.out.println("\n\n");
+    }
 
+    @FXML
+    private void showOperations(ActionEvent event) {
+        hideButton(dupButton);
+        hideButton(clearButton);
+        hideButton(undoButton);
+        hideButton(divButton);
+        hideButton(sqrtButton);
+        hideButton(invertSignButton);
+        hideButton(swapButton);
+        hideButton(dropButton);
+        hideButton(overButton);
+        showButton(sumButton);
+        VariableToggleButton.setSelected(false);
+        moveAnchor(VariableToggleButton.isSelected());
+        System.out.println("\n\n");
+        moveAnchorOperation(true);
+
+    }
 }

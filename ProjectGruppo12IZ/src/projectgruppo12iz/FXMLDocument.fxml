@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,121 +16,127 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="baseAnchorPane" prefHeight="488.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectgruppo12iz.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="baseAnchorPane" prefHeight="416.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectgruppo12iz.FXMLDocumentController">
     <children>
-      <SplitPane dividerPositions="0.7556390977443609" layoutX="14.0" prefHeight="400.0" prefWidth="428.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="386.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="495.0" fitWidth="493.0" layoutX="-19.0" opacity="0.58" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../images/1092810.png" />
+               </image>
+            </ImageView>
+            <VBox fx:id="operationVBox" layoutX="24.0" layoutY="-67.0" prefHeight="50.0" prefWidth="310.0" spacing="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <children>
-                  <AnchorPane fx:id="varAnchorPane" layoutY="-1.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label text="Name" />
+                  <TextArea fx:id="nameOperationTextArea" minHeight="-Infinity" prefHeight="27.0" prefWidth="217.0" />
+               </children>
+            </VBox>
+            <MenuBar layoutX="142.0" layoutY="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Save">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#saveVariablesIntoStack" text="Save Variables" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveUserOperationToFile" text="Save User defined operation" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Restore">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#restoreVariablesFromStack" text="Restore Variables" />
+                        <MenuItem mnemonicParsing="false" onAction="#restoreUserOperationFromFile" text="Restore User defined operation" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox alignment="TOP_CENTER" layoutX="235.0" layoutY="50.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0" />
+            <VBox fx:id="externalVBox" layoutX="92.0" layoutY="86.0" prefHeight="200.0" prefWidth="320.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <HBox prefHeight="42.0" prefWidth="276.0" spacing="10.0">
                      <children>
-                        <TextArea fx:id="varTextArea" layoutX="11.0" layoutY="48.0" prefHeight="36.0" prefWidth="142.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="48.0" />
-                        <Label layoutX="10.0" layoutY="22.0" text="Variable" />
-                        <ToggleButton fx:id="VariableToggleButton" layoutX="203.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="346.0" prefWidth="21.0" selected="true" style="-fx-background-radius: 0" text="V&#10;a&#10;r&#10;i&#10;a&#10;b&#10;l&#10;e&#10;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font size="12.0" />
-                           </font>
-                        </ToggleButton>
-                        <Button layoutX="17.0" layoutY="148.0" mnemonicParsing="false" onAction="#saveFromVariable" text="&lt;x" />
-                        <Button layoutX="121.0" layoutY="148.0" mnemonicParsing="false" onAction="#saveToVariable" text="&gt;x" />
-                        <Button layoutX="17.0" layoutY="195.0" mnemonicParsing="false" onAction="#subtractToVariable" text="-x" />
-                        <Button layoutX="121.0" layoutY="195.0" mnemonicParsing="false" onAction="#addToVariable" text="+x" />
-                     </children>
-                  </AnchorPane>
-                  <TextArea fx:id="textArea" layoutX="235.0" layoutY="15.0" minHeight="-Infinity" prefHeight="42.0" prefWidth="284.0" />
-                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="99.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0" AnchorPane.leftAnchor="241.0">
-                     <children>
-                        <Button fx:id="sumButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#add" text="SUM" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="240.0" layoutY="141.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button fx:id="divButton" mnemonicParsing="false" onAction="#division" text="DIV" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="99.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button fx:id="subButton" mnemonicParsing="false" onAction="#sub" text="SUB" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="448.0" layoutY="100.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button fx:id="molButton" mnemonicParsing="false" onAction="#multiply" text="MOL" />
+                        <TextArea fx:id="textArea" minHeight="-Infinity" prefHeight="42.0" prefWidth="217.0" />
+                        <Button fx:id="enterBtton" mnemonicParsing="false" onAction="#handleEnterAction" prefHeight="52.0" prefWidth="73.0" text="ENTER" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="343.0" layoutY="140.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                  <Label fx:id="errorLabel" prefHeight="27.0" prefWidth="339.0" text="Welcome!" textFill="WHITE">
+                     <font>
+                        <Font name="System Font" size="14.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="231.0" prefWidth="311.0" spacing="2.0">
                      <children>
-                        <Button fx:id="sqrtButton" mnemonicParsing="false" onAction="#sqrt" text="SQRT" />
+                        <HBox fx:id="firstHBox" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="297.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="molButton" mnemonicParsing="false" onAction="#multiply" prefHeight="50.0" prefWidth="100.0" text="MOL" />
+                              <Button fx:id="sumButton" alignment="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="50.0" prefWidth="100.0" text="SUM" />
+                              <Button fx:id="subButton" mnemonicParsing="false" onAction="#sub" prefHeight="50.0" prefWidth="100.0" text="SUB" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="secondHBox" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="297.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="divButton" alignment="CENTER" mnemonicParsing="false" onAction="#division" prefHeight="50.0" prefWidth="100.0" text="DIV" />
+                              <Button fx:id="sqrtButton" alignment="CENTER" mnemonicParsing="false" onAction="#sqrt" prefHeight="50.0" prefWidth="100.0" text="SQRT" />
+                              <Button fx:id="invertSignButton" mnemonicParsing="false" onAction="#invertSign" prefHeight="50.0" prefWidth="100.0" text="+/-" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="thirdHBox" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="297.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="swapButton" alignment="CENTER" mnemonicParsing="false" onAction="#swap" prefHeight="50.0" prefWidth="100.0" text="SWAP" />
+                              <Button fx:id="dropButton" alignment="CENTER" mnemonicParsing="false" onAction="#drop" prefHeight="50.0" prefWidth="100.0" text="DROP" />
+                              <Button fx:id="overButton" mnemonicParsing="false" onAction="#over" prefHeight="50.0" prefWidth="100.0" text="OVER" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="fourthHBox" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="297.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="dupButton" alignment="CENTER" mnemonicParsing="false" onAction="#dup" prefHeight="50.0" prefWidth="100.0" text="DUP" />
+                              <Button fx:id="clearButton" alignment="CENTER" mnemonicParsing="false" onAction="#clear" prefHeight="120.0" prefWidth="100.0" text="CLEAR" />
+                              <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undo" prefHeight="50.0" prefWidth="100.0" text="UNDO" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="449.0" layoutY="141.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
+                  </VBox>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="varAnchorPane" layoutX="-200.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
                      <children>
-                        <Button fx:id="invertSignButton" mnemonicParsing="false" onAction="#invertSign" prefHeight="25.0" prefWidth="40.0" text="+/-" />
+                        <Button mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" text="Standards" />
+                        <Button mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" text="Variables" />
+                        <Button mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" text="Operations" />
                      </children>
-                  </HBox>
-                  <AnchorPane fx:id="operationAnchorPane" layoutY="345.0" prefHeight="141.0" prefWidth="564.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <TextArea fx:id="nameOperationTextArea" layoutX="90.0" layoutY="38.0" prefHeight="17.0" prefWidth="176.0" />
-                        <TextArea fx:id="operationTextArea" layoutX="90.0" layoutY="86.0" prefHeight="17.0" prefWidth="252.0" />
-                        <Label layoutX="14.0" layoutY="38.0" text="Name" />
-                        <Label layoutX="17.0" layoutY="86.0" text="Operations" />
-                        <Button layoutX="357.0" layoutY="80.0" mnemonicParsing="false" onAction="#enterOperation" text="Enter" />
-                        <Button layoutX="333.0" layoutY="37.0" mnemonicParsing="false" onAction="#executeOperation" text="Execute" />
-                        <Button layoutX="412.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteOperation" text="Delete" />
-                        <Button layoutX="425.0" layoutY="80.0" mnemonicParsing="false" onAction="#showOperation" text="Show" />
-                        <ToggleButton fx:id="operationToggleButton" layoutX="477.0" layoutY="37.0" mnemonicParsing="false" selected="true" text="Operation" />
-                        <ToggleButton fx:id="UserToggleButton" layoutX="260.0" layoutY="6.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="564.0" selected="true" style="-fx-background-radius: 0" text="User Operations" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                        </ToggleButton>
-                     </children>
-                  </AnchorPane>
-                  <Button layoutX="539.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEnterAction" text="Enter" />
-                  <Label fx:id="errorLabel" layoutX="244.0" layoutY="63.0" prefHeight="27.0" prefWidth="339.0" text="Welcome!" />
-                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="250.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#clear" text="CLEAR" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="448.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#over" text="OVER" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#drop" text="DROP" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="250.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#dup" text="DUP" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="241.0" layoutY="208.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0">
-                     <children>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#swap" text="SWAP" />
-                     </children>
-                  </HBox>
+                  </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <TableView fx:id="OperandsTable" editable="true" prefHeight="486.0" prefWidth="157.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <placeholder>
-                        <Label text="No Operands inserted" />
-                    </placeholder>
-                    <columns>
-                      <TableColumn fx:id="OperandsClm" editable="false" prefWidth="190.00006103515625" text="Operands" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+            <ToggleButton fx:id="VariableToggleButton" layoutX="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 0" text="=" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="operationAnchorPane" layoutX="340.0" prefHeight="495.0" prefWidth="134.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="495.0" fitWidth="134.0" opacity="0.33" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../images/1092810.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="OperandsTable" editable="true" layoutX="91.0" layoutY="210.0" prefHeight="84.0" prefWidth="157.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="OperandsClm" editable="false" prefWidth="190.00006103515625" style="-fx-background-color: transparent;" text="Operands" />
+               </columns>
+               <placeholder>
+                  <Label text="No Operands inserted" />
+               </placeholder>
+            </TableView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

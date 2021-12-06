@@ -24,6 +24,7 @@ public class ProjectGruppo12IZ extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        scene.getStylesheets().add("mycss.css");
         stage.show();
     }
 

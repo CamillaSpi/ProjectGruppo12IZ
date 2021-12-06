@@ -1,0 +1,23 @@
+.table-view .table-cell {
+  -fx-border-color: transparent;
+  -fx-padding: 2 0 2 10px;
+}
+
+.table-row-cell: odd {
+  -fx-background-color:transparent;
+}
+
+.table-row-cell: even {
+  -fx-background-color: transparent;
+}
+.button {
+    -fx-background-color: #555555;
+    -fx-opacity: 0.8;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-border: 0.5px solid black;
+    -fx-background-radius: 0px;
+}
+.button: hover {
+    -fx-background-color: gray;
+}
