@@ -47,6 +47,8 @@ import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import modelClassPackage.Variables;
+import stateClassPackage.State;
+import stateClassPackage.StateStandard;
 
 /**
  *
@@ -60,6 +62,7 @@ public class FXMLDocumentController implements Initializable {
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Invoker inv = new Invoker();
     FadeTransition fadeIn = new FadeTransition(Duration.millis(1000));
+    State state;
     int last = 0;
     @FXML
     private AnchorPane baseAnchorPane;
@@ -243,6 +246,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        state = new StateStandard(this);
         myButtonArray.add(buttonOne);
         myButtonArray.add(buttonTwo);
         myButtonArray.add(buttonThree);
@@ -633,5 +637,8 @@ public class FXMLDocumentController implements Initializable {
     public Invoker getInvoker(){
         return this.inv;
     }
-
+    
+    public void setState(State state){
+        this.state = state;
+    } 
 }
