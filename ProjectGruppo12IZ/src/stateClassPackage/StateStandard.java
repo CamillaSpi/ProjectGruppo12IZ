@@ -63,7 +63,7 @@ public class StateStandard extends State{
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
         MultiplyCommand mulComm = new MultiplyCommand(collector);
-        if(mulComm.execute()){
+        if(mulComm != null && mulComm.execute()){
             controller.showAlert("Multiplication done succesfully!");
             controller.refresh();
         }
@@ -81,7 +81,7 @@ public class StateStandard extends State{
     public void onButtonThree() {
         MyOperandCollection collector = controller.getCollector();
         SubtractCommand subComm = new SubtractCommand(collector);
-        if(subComm.execute()){
+        if(subComm != null && subComm.execute()){
             controller.showAlert("Division done succesfully!");
             controller.refresh();
         }
@@ -90,20 +90,42 @@ public class StateStandard extends State{
         
     }
 
-    
+     /**
+     * This method do not perform operation because it only leaves the context in the same state where it already is.
+     * 
+     */
     @Override
-    public void setStateStandard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void setStateStandard() {}
 
+     /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables.
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateVariables() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        controller.changeButtonText(0, ">x");
+        controller.changeButtonText(2, "<x");
+        controller.changeButtonText(3, "+x");
+        controller.changeButtonText(5, "-x");
+        controller.hideButton(new int[] {1, 4, 6, 7, 8, 9, 10, 11, 12});
+        controller.setState(new StateVariables(controller)); 
     }
 
+    /**
+     * It changes the State of the controller to that of StateOperations,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform on user defined operations.
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateOperations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        controller.changeButtonText(0, "DELETE");
+        controller.changeButtonText(1, "SHOW");
+        controller.changeButtonText(2, "EXECUTE");
+        controller.hideButton(new int[] {3, 4, 5, 6, 7, 8, 9, 10, 11});
+        controller.setState(new StateOperations(controller));  
     }
     
     
