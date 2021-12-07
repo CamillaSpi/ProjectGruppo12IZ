@@ -7,6 +7,7 @@ package stateClassPackage;
 
 
 import commandClassPackage.MultiplyCommand;
+import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
 
@@ -32,9 +33,31 @@ public class StateStandard extends State{
      * @see FXMLDocumentController, ComplexNumber
      */
     public void OnButtonEnter(){
-        
+        String text = controller.getText();
+        if("".equals(text)){
+            controller.showAlert("You must write a Complex Number!");
+        }else {
+            ComplexNumber checkNum = ComplexNumber.create(text);
+            if (checkNum != null) {
+                if (controller.pushIntoStack(checkNum)) {
+                    controller.showAlert("Operand saved succesfully!");
+                    controller.clearText();
+                } else {
+                    controller.showAlert("Operand not saved!");
+                }
+            } else {
+                controller.showAlert("Operand not written correctly!");
+            }
+        }
+            
     }
     
+     /**
+     * It create a new MultiplyCommand Operation and execute it if it is possible,
+     * If the operation could not be performed, because there are not enough operands for example
+     * an error message will be shown. 
+     * @see FXMLDocumentController, ComplexNumber
+     */
     @Override
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
