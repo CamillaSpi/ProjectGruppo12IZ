@@ -218,7 +218,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    private void showAlert(String error) {
+    public void showAlert(String error) {
         errorLabel.setText(error);
         pause.stop();
         pause.setOnFinished(e -> errorLabel.setText(null));
@@ -574,5 +574,13 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("\n\n");
         moveAnchorOperation(true);
 
+    }
+
+    public void refresh() {
+        OperandsTable.refresh();
+    }
+    
+    public String getText() {
+        return this.textArea.getText();
     }
 }
