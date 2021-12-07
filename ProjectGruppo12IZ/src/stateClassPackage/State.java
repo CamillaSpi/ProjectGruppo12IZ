@@ -5,22 +5,31 @@
  */
 package stateClassPackage;
 
+import projectgruppo12iz.FXMLDocumentController;
+
 /**
  *
  * @author GRUPPO 12 IZ
  */
-public interface State {
+public abstract class State {
+    
+    FXMLDocumentController controller;
+    
+    public State(FXMLDocumentController controller){
+        this.controller = controller;
+    }
+    
 
-    public void onPressEnter();
+    public abstract void onPressEnter();
 
-    public void onButtonOne();
+    public abstract void onButtonOne();
 
-    public void onButtonThree();
+    public abstract void onButtonThree();
 
-    public void setStateStandard();
+    public abstract void setStateStandard();
 
-    public void setStateVariables();
+    public abstract void setStateVariables();
 
-    public void setStateOperations();
+    public abstract void setStateOperations();
     
 }
