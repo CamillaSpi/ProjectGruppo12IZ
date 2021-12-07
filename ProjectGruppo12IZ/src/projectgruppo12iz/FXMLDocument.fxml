@@ -21,19 +21,21 @@
     <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-color: black; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="operationVBox" layoutX="24.0" layoutY="-67.0" prefHeight="50.0" prefWidth="310.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox fx:id="operationVBox" layoutY="-76.0" prefHeight="50.0" prefWidth="310.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Label text="Name" textFill="WHITE">
+                  <Label text="Name:" textFill="WHITE">
                      <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin></Label>
-                  <TextArea fx:id="nameOperationTextArea" minHeight="-Infinity" prefHeight="34.0" prefWidth="329.0" style="-fx-text-fill: white;">
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea fx:id="nameOperationTextArea" minHeight="-Infinity" prefHeight="42.0" prefWidth="227.0" style="-fx-text-fill: white;">
                      <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="20.0" right="100.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Verdana" size="17.0" />
-                     </font></TextArea>
+                        <Font name="Verdana" size="22.0" />
+                     </font>
+                  </TextArea>
                </children>
             </VBox>
             <MenuBar layoutX="142.0" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -105,7 +107,7 @@
                         <HBox fx:id="thirdHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
                               <Button fx:id="buttonSeven" mnemonicParsing="false" onAction="#sub" prefHeight="75.0" prefWidth="75.0" text="SUB" />
-                              <Button fx:id="buttonEigth" mnemonicParsing="false" onAction="#invertSign" prefHeight="75.0" prefWidth="75.0" text="+/-" />
+                              <Button fx:id="buttonEight" mnemonicParsing="false" onAction="#invertSign" prefHeight="75.0" prefWidth="75.0" text="+/-" />
                               <Button fx:id="buttonNine" mnemonicParsing="false" onAction="#over" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="OVER" />
                            </children>
                         </HBox>
@@ -120,7 +122,7 @@
                   </VBox>
                </children>
             </VBox>
-            <AnchorPane fx:id="varAnchorPane" layoutX="-200.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="varAnchorPane" layoutX="-200.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-radius: 1em;" styleClass="BoxState" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
                      <children>
