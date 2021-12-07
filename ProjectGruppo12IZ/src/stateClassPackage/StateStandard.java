@@ -63,7 +63,7 @@ public class StateStandard extends State{
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
         MultiplyCommand mulComm = new MultiplyCommand(collector);
-        if(mulComm.execute()){
+        if(mulComm != null && mulComm.execute()){
             controller.showAlert("Multiplication done succesfully!");
             controller.refresh();
         }
@@ -81,7 +81,7 @@ public class StateStandard extends State{
     public void onButtonThree() {
         MyOperandCollection collector = controller.getCollector();
         SubtractCommand subComm = new SubtractCommand(collector);
-        if(subComm.execute()){
+        if(subComm != null && subComm.execute()){
             controller.showAlert("Division done succesfully!");
             controller.refresh();
         }
@@ -90,11 +90,12 @@ public class StateStandard extends State{
         
     }
 
-    
+     /**
+     * This method do not perform operation because it only leaves the context in the same state where it already is.
+     * 
+     */
     @Override
-    public void setStateStandard() {
-        
-    }
+    public void setStateStandard() {}
 
      /**
      * It changes the State of the controller to that of StateVariables,
