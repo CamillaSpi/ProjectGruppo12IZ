@@ -54,7 +54,7 @@ public class StateStandard extends State{
     }
     
      /**
-     * It create a new MultiplyCommand Operation and calls the method execute on it if it is possible.
+     * It create a new MultiplyCommand and calls the method execute on it if it is possible.
      * If the operation could not be performed, because there are not enough operands for example,
      * an error message will be shown. 
      * @see FXMLDocumentController, MultiplicationCommand
@@ -68,11 +68,11 @@ public class StateStandard extends State{
             controller.refresh();
         }
         else
-            controller.showAlert("Multiplication cannot be performed!");
+            controller.showAlert("Multiplication cannot be performed!\nHave you inserted at least two operands?");
     }
 
      /**
-     * It create a new SubtractCommand Operation and calls the method execute on it if it is possible.
+     * It create a new SubtractCommand and calls the method execute on it if it is possible.
      * If the operation could not be performed, because there are not enough operands for example,
      * an error message will be shown. 
      * @see FXMLDocumentController, SubtractCommand
@@ -86,7 +86,7 @@ public class StateStandard extends State{
             controller.refresh();
         }
         else
-            controller.showAlert("Division cannot be performed!");
+            controller.showAlert("Division cannot be performed!\nHave you inserted at least two operands?");
         
     }
 

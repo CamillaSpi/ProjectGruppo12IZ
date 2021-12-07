@@ -5,10 +5,10 @@
  */
 package projectgruppo12iz;
 
-import commandClassPackage.AddCommand;
-import commandClassPackage.Command;
-import commandClassPackage.ConcreteCommandPersonalized;
+import commandClassPackage.ClearCommand;
 import commandClassPackage.*;
+import commandClassPackage.HashCommandTable;
+import commandClassPackage.Invoker;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -362,99 +362,102 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It call the MyOperandCollection's clear function, if the function returns
-     * false the collection is already empty and an error message is shown,
-     * otherwise, if it is not empty, a confirmation message is shown.
+     * It create a new ClearCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there are no operands 
+     * an error message will be shown.
      *
-     * @param event An Event representing some type of action.
+     * @param event the event of the presses of the button clear.
      * <p>
      * <!-- -->
+     * @see ClearCommand
      */
     @FXML
     private void clear(ActionEvent event) {
-        if (!collector.clear()) {
-            showAlert("Collection already empty!\n");
-        } else {
-            showAlert("Clear operation executed succesfully!");
-            OperandsTable.refresh();
-        }
+        ClearCommand clearComm = new ClearCommand(this.collector);
+        if (clearComm != null && clearComm.execute()) {
+            showAlert("Clear Operation done succesfully!");
+            refresh();
+        } else 
+            showAlert("Clear operation cannot be performed!\n Have you inserted any operand?");
     }
 
     /**
-     * It call the MyOperandCollection's over function, if the function returns
-     * an error message is shown.
+     * It create a new OverCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there not at least two operands 
+     * an error message will be shown.
      *
-     * @param event An Event representing some type of action.
+     * @param event the event of the presses of the button over.
      * <p>
      * <!-- -->
+     * @see OverCommand
      */
     @FXML
     private void over(ActionEvent event) {
-        if (!collector.over()) {
-            showAlert("Not enough inserted operands!\n");
-        } else {
-            showAlert("Over operation executed succesfully!");
-            OperandsTable.refresh();
-        }
+        OverCommand overComm = new OverCommand(this.collector);
+        if (overComm != null && overComm.execute()) {
+            showAlert("Over Operation done succesfully!");
+            refresh();
+        } else 
+            showAlert("Over operation cannot be performed!\n Have you inserted at least two operands?");
     }
 
     /**
-     * It call the MyOperandCollection's drop function, if the function returns
-     * false an error message is shown.
+     * It create a new DropCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there aren't any operands 
+     * an error message will be shown.
      *
-     * @param event An Event representing some type of action.
+     * @param event the event of the presses of the button drop.
      * <p>
      * <!-- -->
+     * @see DropCommand
      */
     @FXML
     private void drop(ActionEvent event) {
-        if (!collector.drop()) {
-            showAlert("Not enough inserted operands!\n");
-        } else {
-            showAlert("Drop operation executed succesfully!");
-            OperandsTable.refresh();
-        }
+        DropCommand dropComm = new DropCommand(this.collector);
+        if (dropComm != null && dropComm.execute()) {
+            showAlert("Drop Operation done succesfully!");
+            refresh();
+        } else 
+            showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
     }
 
-    /**
-     * It duplicate the last number inserted inside the collection.
-     * <p>
-     * <!-- --> @param event its register the event
+    /**It create a new DupCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there not at least one operand 
+     * an error message will be shown.
      *
-     * @return true if the element was add, otherwise false
-     * @see MyOperandCollection
+     * @param event the event of the presses of the button dup.
+     * <p>
+     * <!-- -->
+     * @see DupCommand
      */
     @FXML
     private void dup(ActionEvent event) {
-        if (!collector.dup()) {
-            showAlert("Not enough inserted operands!\n");
-        } else {
-            showAlert("Dup operation executed succesfully!");
-            OperandsTable.refresh();
-        }
+        DupCommand dupComm = new DupCommand(this.collector);
+        if (dupComm != null && dupComm.execute()) {
+            showAlert("Dup Operation done succesfully!");
+            refresh();
+        } else 
+            showAlert("Dup operation cannot be performed!\n Have you inserted any operand?");
     }
 
     /**
-     * It calls the swap operation of MyOperandCollection and check the boolean
-     * returned. If the value returned from the called function is true, it
-     * means the operation has been perfrormed correctly and so a message will
-     * be shown to user. If the value returned from the called function is
-     * false, it means the operation has not been performed and so an error
-     * message will be shown to user.
-     * <p>
-     * <!-- --> @param event the event of the presses of the button swap.
+     * It create a new SwapCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there are not at least two operands
+     * an error message will be shown.
      *
-     * @see OperandCollection
+     * @param event the event of the presses of the button swap.
+     * <p>
+     * <!-- -->
+     * @see SwapCommand
      */
     @FXML
     private void swap(ActionEvent event) {
-        if (!collector.swap()) {
-            showAlert("Not enough inserted operands!");
-        } else {
-            showAlert("Swap operation completed successfully!");
-            OperandsTable.refresh();
-        }
-
+        SwapCommand swapComm = new SwapCommand(this.collector);
+        if (swapComm != null && swapComm.execute()) {
+            showAlert("Swap Operation done succesfully!");
+            refresh();
+        } else 
+            showAlert("Swap operation cannot be performed!\n Have you inserted at least two operands?");
     }
 
     @FXML
