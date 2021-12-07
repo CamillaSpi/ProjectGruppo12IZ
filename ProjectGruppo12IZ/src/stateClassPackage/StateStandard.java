@@ -10,7 +10,6 @@ import commandClassPackage.AddCommand;
 import commandClassPackage.DivideCommand;
 import commandClassPackage.MultiplyCommand;
 import commandClassPackage.SquareRootCommand;
-import commandClassPackage.SubtractCommand;
 import commandClassPackage.SwapCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
@@ -24,7 +23,7 @@ public class StateStandard extends State{
     
     /**
      * It create a new object StateStandard calling the constructor method of the super class.
-     * @param collector
+     * @param controller The DocumentController object
      * @see FXMLDocumentController
      */
     public StateStandard(FXMLDocumentController controller) {
@@ -33,8 +32,8 @@ public class StateStandard extends State{
     
     /**
      * It insert a new Complex Operand on which to perfrom operations,
-     * if it is write in the correct form in the corresponding text area, 
-     * otherwise an error message will be shown. 
+     * if it is write in the correct form in the corresponding text area the operand will be stored,
+     * otherwise an error message will be shown and anithing new is inserted. 
      * @see FXMLDocumentController, ComplexNumber
      */
     public void onButtonEnter(){
@@ -59,9 +58,9 @@ public class StateStandard extends State{
     
      /**
      * It create a new MultiplyCommand and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not enough operands for example,
-     * an error message will be shown. 
-     * @see FXMLDocumentController, MultiplicationCommand
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, MultiplyCommand
      */
     @Override
     public void onButtonOne() {
@@ -77,28 +76,30 @@ public class StateStandard extends State{
     
     
     /**
-     * It create a new SwapCommand and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not enough operands for example,
-     * an error message will be shown. 
-     * @see FXMLDocumentController, SwapCommand
+     * It create a new AddCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed.
+     * @see FXMLDocumentController, AddCommand
      */
     @Override
     public void onButtonTwo() {
         MyOperandCollection collector = controller.getCollector();
         AddCommand addComm = new AddCommand(collector);
         if(addComm!=null && controller.commandExecute(addComm)){
-            controller.showAlert("Add done succesfully!");
+            controller.showAlert("Addiction done succesfully!");
             controller.refresh();
         }
         else
-           controller.showAlert("Add cannot be performed,\nhave you insert at least two operands?");
+           controller.showAlert("Addiction cannot be performed,\nhave you insert at least two operands?");
         
     }
 
-     /**
+    
+    
+    /**
      * It create a new SwapCommand and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not enough operands for example,
-     * an error message will be shown. 
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
      * @see FXMLDocumentController, SwapCommand
      */
     public void onButtonThree() {
@@ -111,13 +112,14 @@ public class StateStandard extends State{
             controller.showAlert("Swap operation cannot be performed!\n Have you inserted at least two operands?");
      
     }
-
     
-       /**
-     * It create a new SwapCommand and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not enough operands for example,
-     * an error message will be shown. 
-     * @see FXMLDocumentController, SwapCommand
+    
+    
+    /**
+     * It create a new DivideCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, DivideCommand
      */
     public void onButtonFour() {
         MyOperandCollection collector = controller.getCollector();
@@ -131,11 +133,13 @@ public class StateStandard extends State{
         
     }
     
-           /**
-     * It create a new SwapCommand and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not enough operands for example,
-     * an error message will be shown. 
-     * @see FXMLDocumentController, SwapCommand
+    
+    
+    /**
+     * It create a new SquareRootCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least one operand for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, SqyareRootCommand
      */
     public void onButtonFive() {
         MyOperandCollection collector = controller.getCollector();
@@ -145,9 +149,11 @@ public class StateStandard extends State{
             controller.refresh();
         }
         else
-           controller.showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
+           controller.showAlert("Square Root cannot be performed,\nhave you insert at least one operand?");
         
     }
+    
+    
     
      /**
      * This method do not perform operation because it only leaves the context in the same state where it already is.
@@ -156,10 +162,12 @@ public class StateStandard extends State{
     @Override
     public void setStateStandard() {}
 
-     /**
+    
+    
+    /**
      * It changes the State of the controller to that of StateVariables,
      * sets this state into the controller and make visible only the buttons 
-     * necessary to perform operations on variables.
+     * necessary to perform operations on variables, .
      * @see FXMLDocumentController
      */
     @Override
@@ -172,6 +180,8 @@ public class StateStandard extends State{
         controller.setState(new StateVariables(controller)); 
     }
 
+    
+    
     /**
      * It changes the State of the controller to that of StateOperations,
      * sets this state into the controller and make visible only the buttons 
@@ -186,9 +196,6 @@ public class StateStandard extends State{
         controller.hideButton(new int[] {3, 4, 5, 6, 7, 8, 9, 10, 11});
         controller.setState(new StateOperations(controller));  
     }
-    
-    
-    
     
     
 }
