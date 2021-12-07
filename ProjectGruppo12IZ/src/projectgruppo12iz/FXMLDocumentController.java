@@ -127,7 +127,10 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("You clicked me!");
 
     }
-
+    
+    public MyOperandCollection getCollector(){
+        return collector;
+    }
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
 
