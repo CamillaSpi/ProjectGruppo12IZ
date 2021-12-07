@@ -6,8 +6,12 @@
 package stateClassPackage;
 
 
+import commandClassPackage.AddCommand;
+import commandClassPackage.DivideCommand;
 import commandClassPackage.MultiplyCommand;
+import commandClassPackage.SquareRootCommand;
 import commandClassPackage.SubtractCommand;
+import commandClassPackage.SwapCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
@@ -70,26 +74,81 @@ public class StateStandard extends State{
         else
             controller.showAlert("Multiplication cannot be performed!\nHave you inserted at least two operands?");
     }
-
-     /**
-     * It create a new SubtractCommand and calls the method execute on it if it is possible.
+    
+    
+    /**
+     * It create a new SwapCommand and calls the method execute on it if it is possible.
      * If the operation could not be performed, because there are not enough operands for example,
      * an error message will be shown. 
-     * @see FXMLDocumentController, SubtractCommand
+     * @see FXMLDocumentController, SwapCommand
+     */
+    public void onButtonTwo() {
+        MyOperandCollection collector = controller.getCollector();
+        AddCommand addComm = new AddCommand(collector);
+        if(addComm!=null && addComm.execute()){
+            controller.showAlert("Add done succesfully!");
+            controller.refresh();
+        }
+        else
+           controller.showAlert("Add cannot be performed,\nhave you insert at least two operands?");
+        
+    }
+
+     /**
+     * It create a new SwapCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
+     * an error message will be shown. 
+     * @see FXMLDocumentController, SwapCommand
      */
     @Override
     public void onButtonThree() {
         MyOperandCollection collector = controller.getCollector();
-        SubtractCommand subComm = new SubtractCommand(collector);
-        if(subComm != null && subComm.execute()){
+        SwapCommand swapComm = new SwapCommand(collector);
+        if (swapComm != null && swapComm.execute()) {
+            controller.showAlert("Swap Operation done succesfully!");
+            controller.refresh();
+        } else 
+            controller.showAlert("Swap operation cannot be performed!\n Have you inserted at least two operands?");
+     
+    }
+
+    
+       /**
+     * It create a new SwapCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
+     * an error message will be shown. 
+     * @see FXMLDocumentController, SwapCommand
+     */
+    public void onButtonFour() {
+        MyOperandCollection collector = controller.getCollector();
+        DivideCommand divComm = new DivideCommand(collector);
+        if(divComm!=null && divComm.execute()){
             controller.showAlert("Division done succesfully!");
             controller.refresh();
         }
         else
-            controller.showAlert("Division cannot be performed!\nHave you inserted at least two operands?");
+           controller.showAlert("Division cannot be performed,\nhave you insert at least two operands?");
         
     }
-
+    
+           /**
+     * It create a new SwapCommand and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
+     * an error message will be shown. 
+     * @see FXMLDocumentController, SwapCommand
+     */
+    public void onButtonFive() {
+        MyOperandCollection collector = controller.getCollector();
+        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
+        if(sqrtComm!=null && sqrtComm.execute()){
+            controller.showAlert("Square Root done succesfully!");
+            controller.refresh();
+        }
+        else
+           controller.showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
+        
+    }
+    
      /**
      * This method do not perform operation because it only leaves the context in the same state where it already is.
      * 

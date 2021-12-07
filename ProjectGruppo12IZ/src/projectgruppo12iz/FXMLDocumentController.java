@@ -281,13 +281,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) throws InterruptedException {
-        AddCommand addComm = new AddCommand(collector);
-        if(addComm!=null && addComm.execute()){
-            showAlert("Add done succesfully!");
-            refresh();
-        }
+        if(this.state instanceof StateOperations)
+            ((StateOperations) this.state).onButtonTwo();
         else
-           showAlert("Add cannot be performed,\nhave you insert at least two operands?");
+            ((StateStandard) this.state).onButtonTwo();
     }
 
     /**
@@ -311,35 +308,23 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void multiply(ActionEvent event) {
-        MultiplyCommand mulComm = new MultiplyCommand(collector);
-        if(mulComm!=null && mulComm.execute()){
-            showAlert("multiplication done succesfully!");
-            refresh();
-        }
-        else
-           showAlert("multiplication cannot be performed,\nhave you insert at least two operands?");
+       this.state.onButtonOne();
     }
 
     @FXML
     private void division(ActionEvent event) {
-        DivideCommand divComm = new DivideCommand(collector);
-        if(divComm!=null && divComm.execute()){
-            showAlert("multiplication done succesfully!");
-            refresh();
-        }
+         if(this.state instanceof StateVariables)
+            ((StateVariables) this.state).onButtonFour();
         else
-           showAlert("multiplication cannot be performed,\nhave you insert at least two operands?");
+            ((StateStandard) this.state).onButtonFour();
     }
 
     @FXML
     private void sqrt(ActionEvent event) {
-        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
-        if(sqrtComm!=null && sqrtComm.execute()){
-            showAlert("Square Root done succesfully!");
-            refresh();
-        }
+        if(this.state instanceof StateVariables)
+            ((StateVariables) this.state).onButtonFour();
         else
-           showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
+            ((StateStandard) this.state).onButtonFour();
     }
 
     /**
@@ -452,12 +437,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void swap(ActionEvent event) {
-        SwapCommand swapComm = new SwapCommand(this.collector);
-        if (swapComm != null && swapComm.execute()) {
-            showAlert("Swap Operation done succesfully!");
-            refresh();
-        } else 
-            showAlert("Swap operation cannot be performed!\n Have you inserted at least two operands?");
+        this.state.onButtonThree();
     }
 
     @FXML
