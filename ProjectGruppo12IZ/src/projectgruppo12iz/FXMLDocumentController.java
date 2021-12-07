@@ -8,9 +8,7 @@ package projectgruppo12iz;
 import commandClassPackage.AddCommand;
 import commandClassPackage.Command;
 import commandClassPackage.ConcreteCommandPersonalized;
-import commandClassPackage.HashCommandTable;
-import commandClassPackage.Invoker;
-import commandClassPackage.SubtractCommand;
+import commandClassPackage.*;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -286,7 +284,7 @@ public class FXMLDocumentController implements Initializable {
             refresh();
         }
         else
-           showAlert("Add cannot be performed, have you insert at least two operands?");
+           showAlert("Add cannot be performed,\nhave you insert at least two operands?");
     }
 
     /**
@@ -301,60 +299,44 @@ public class FXMLDocumentController implements Initializable {
     private void sub(ActionEvent event) {
         SubtractCommand subComm = new SubtractCommand(collector);
         if(subComm!=null && subComm.execute()){
-            showAlert("Add done succesfully!");
+            showAlert("Subtract done succesfully!");
             refresh();
         }
         else
-           showAlert("Add cannot be performed, have you insert at least two operands?");
+           showAlert("Subtract cannot be performed,\nhave you insert at least two operands?");
     }
 
     @FXML
     private void multiply(ActionEvent event) {
-        if (collector.collectionLength() < 2) {
-            showAlert("You didn't insert at least two operands ");
-            return;
+        MultiplyCommand mulComm = new MultiplyCommand(collector);
+        if(mulComm!=null && mulComm.execute()){
+            showAlert("multiplication done succesfully!");
+            refresh();
         }
-        ComplexNumber result = Calculator.multiplication(collector.remove(), collector.remove());
-        if (result != null) {
-            pushIntoStack(result);
-            showAlert("Multiplication done succesfully!\n");
-
-        } else {
-            showAlert("Error during Multiplication!");
-        }
+        else
+           showAlert("multiplication cannot be performed,\nhave you insert at least two operands?");
     }
 
     @FXML
     private void division(ActionEvent event) {
-        if (collector.collectionLength() < 2) {
-            showAlert("You didn't insert at least two operands ");
-            return;
+        DivideCommand divComm = new DivideCommand(collector);
+        if(divComm!=null && divComm.execute()){
+            showAlert("multiplication done succesfully!");
+            refresh();
         }
-        ComplexNumber divisor = collector.remove();
-        ComplexNumber result = Calculator.division(collector.remove(), divisor);
-        if (result != null) {
-            pushIntoStack(result);
-            showAlert("Division done succesfully!\n");
-
-        } else {
-            showAlert("Error during Division!");
-        }
+        else
+           showAlert("multiplication cannot be performed,\nhave you insert at least two operands?");
     }
 
     @FXML
     private void sqrt(ActionEvent event) {
-        if (collector.collectionLength() < 1) {
-            showAlert("You didn't insert at least one operands ");
-            return;
+        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
+        if(sqrtComm!=null && sqrtComm.execute()){
+            showAlert("Square Root done succesfully!");
+            refresh();
         }
-        ComplexNumber result = Calculator.squareRoot(collector.remove());
-        if (result != null) {
-            pushIntoStack(result);
-            showAlert("Square Root done succesfully!\n");
-
-        } else {
-            showAlert("Error during Square Root!");
-        }
+        else
+           showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
     }
 
     /**
@@ -367,18 +349,13 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void invertSign(ActionEvent event) {
-        if (collector.collectionLength() < 1) {
-            showAlert("You didn't insert at least one operands ");
-            return;
+        InvertSignCommand invsignComm = new InvertSignCommand(collector);
+        if(invsignComm!=null && invsignComm.execute()){
+            showAlert("Square Root done succesfully!");
+            refresh();
         }
-        ComplexNumber result = Calculator.invertSign(collector.remove());
-        if (result != null) {
-            pushIntoStack(result);
-            showAlert("Invert sign done succesfully!");
-
-        } else {
-            showAlert("Error during Square Root!");
-        }
+        else
+           showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
     }
 
     /**
