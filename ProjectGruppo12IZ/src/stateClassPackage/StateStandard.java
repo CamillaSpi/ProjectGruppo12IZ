@@ -67,7 +67,7 @@ public class StateStandard extends State{
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
         MultiplyCommand mulComm = new MultiplyCommand(collector);
-        if(mulComm != null && mulComm.execute()){
+        if(mulComm != null && controller.commandExecute(mulComm)){
             controller.showAlert("Multiplication done succesfully!");
             controller.refresh();
         }
@@ -86,7 +86,7 @@ public class StateStandard extends State{
     public void onButtonTwo() {
         MyOperandCollection collector = controller.getCollector();
         AddCommand addComm = new AddCommand(collector);
-        if(addComm!=null && addComm.execute()){
+        if(addComm!=null && controller.commandExecute(addComm)){
             controller.showAlert("Add done succesfully!");
             controller.refresh();
         }
@@ -104,7 +104,7 @@ public class StateStandard extends State{
     public void onButtonThree() {
         MyOperandCollection collector = controller.getCollector();
         SwapCommand swapComm = new SwapCommand(collector);
-        if (swapComm != null && swapComm.execute()) {
+        if (swapComm != null && controller.commandExecute(swapComm)) {
             controller.showAlert("Swap Operation done succesfully!");
             controller.refresh();
         } else 
@@ -122,7 +122,7 @@ public class StateStandard extends State{
     public void onButtonFour() {
         MyOperandCollection collector = controller.getCollector();
         DivideCommand divComm = new DivideCommand(collector);
-        if(divComm!=null && divComm.execute()){
+        if(divComm!=null && controller.commandExecute(divComm)){
             controller.showAlert("Division done succesfully!");
             controller.refresh();
         }
@@ -140,7 +140,7 @@ public class StateStandard extends State{
     public void onButtonFive() {
         MyOperandCollection collector = controller.getCollector();
         SquareRootCommand sqrtComm = new SquareRootCommand(collector);
-        if(sqrtComm!=null && sqrtComm.execute()){
+        if(sqrtComm!=null && controller.commandExecute(sqrtComm)){
             controller.showAlert("Square Root done succesfully!");
             controller.refresh();
         }

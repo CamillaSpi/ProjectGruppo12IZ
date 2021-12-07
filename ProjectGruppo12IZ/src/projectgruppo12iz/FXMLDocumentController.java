@@ -294,7 +294,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void sub(ActionEvent event) {
         SubtractCommand subComm = new SubtractCommand(collector);
-        if(subComm!=null && subComm.execute()){
+        if(subComm!=null && commandExecute(subComm)){
             showAlert("Subtract done succesfully!");
             refresh();
         }
@@ -334,7 +334,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void invertSign(ActionEvent event) {
         InvertSignCommand invsignComm = new InvertSignCommand(collector);
-        if(invsignComm!=null && invsignComm.execute()){
+        if(invsignComm!=null && commandExecute(invsignComm)){
             showAlert("Square Root done succesfully!");
             refresh();
         }
@@ -355,7 +355,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clear(ActionEvent event) {
         ClearCommand clearComm = new ClearCommand(this.collector);
-        if (clearComm != null && clearComm.execute()) {
+        if (clearComm != null && commandExecute(clearComm)) {
             showAlert("Clear Operation done succesfully!");
             refresh();
         } else 
@@ -375,7 +375,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void over(ActionEvent event) {
         OverCommand overComm = new OverCommand(this.collector);
-        if (overComm != null && overComm.execute()) {
+        if (overComm != null && commandExecute(overComm)) {
             showAlert("Over Operation done succesfully!");
             refresh();
         } else 
@@ -395,7 +395,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void drop(ActionEvent event) {
         DropCommand dropComm = new DropCommand(this.collector);
-        if (dropComm != null && dropComm.execute()) {
+        if (dropComm != null && commandExecute(dropComm)) {
             showAlert("Drop Operation done succesfully!");
             refresh();
         } else 
@@ -414,7 +414,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void dup(ActionEvent event) {
         DupCommand dupComm = new DupCommand(this.collector);
-        if (dupComm != null && dupComm.execute()) {
+        if (dupComm != null && commandExecute(dupComm)) {
             showAlert("Dup Operation done succesfully!");
             refresh();
         } else 
@@ -473,6 +473,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void undo(ActionEvent event) {
+        inv.undoLast();
+        refresh();
     }
 
     @FXML
@@ -585,4 +587,8 @@ public class FXMLDocumentController implements Initializable {
     public void setState(State state){
         this.state = state;
     } 
+    
+    public boolean commandExecute(Command command){
+        return inv.execute(command);
+    }
 }

@@ -34,7 +34,7 @@ public class StateVariables extends State{
             String variable = this.controller.getText();
             if(!("".equals(variable))){
                 SaveToVariableCommand cmd = new SaveToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if(!cmd.execute())
+                if(!controller.commandExecute(cmd))
                     this.controller.showAlert("the operation is failed, are you sure you write a varible a-z?!\n");
                 else{
                     this.controller.showAlert("the last operand is saved in the writed variable!\n");
@@ -60,7 +60,7 @@ public class StateVariables extends State{
         } else {
             SaveFromVariableCommand cmd = new SaveFromVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
             if(cmd != null){
-                if(!cmd.execute())
+                if(!controller.commandExecute(cmd))
                     this.controller.showAlert("the operation is failed, are you sure have set the variable?\n");
                 else{
                     this.controller.showAlert("Value from variable inserted correctly\n");
@@ -84,7 +84,7 @@ public class StateVariables extends State{
             if(!("".equals(variable))){
                 AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
-                    if(!cmd.execute())
+                    if(!controller.commandExecute(cmd))
                         this.controller.showAlert("the operation is failed, are you sure have set the variable?");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
@@ -112,7 +112,7 @@ public class StateVariables extends State{
             if(!("".equals(variable))){
                 SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
-                    if(!cmd.execute())
+                    if(!controller.commandExecute(cmd))
                         this.controller.showAlert("the operation is failed, are you sure have set the variable?");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
