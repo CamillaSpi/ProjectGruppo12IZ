@@ -150,7 +150,7 @@ public class StateOperations extends State {
 
     @Override
     public void setStateStandard() {
-        this.controller.showButton(new int[]{3, 4, 5, 6, 7, 8, 9, 10, 11});
+        this.controller.showButton(new int[]{3, 4, 5, 6, 7, 8, 9, 10, 11,12});
         this.controller.changeButtonText(0, "MOL");
         this.controller.changeButtonText(1, "SUM");
         this.controller.changeButtonText(2, "SUB");
@@ -171,7 +171,7 @@ public class StateOperations extends State {
         this.controller.changeButtonText(2, "<x");
         this.controller.changeButtonText(3, "+x");
         this.controller.changeButtonText(5, "-x");
-        this.controller.hideButton(new int[]{1});
+        this.controller.hideButton(new int[]{1,12});
     }
 
     @Override

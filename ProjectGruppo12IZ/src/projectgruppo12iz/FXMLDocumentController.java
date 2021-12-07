@@ -568,7 +568,7 @@ public class FXMLDocumentController implements Initializable {
         hideButton(buttonNine);
 */
         
-        hideButton(new int[] {1,4,6,7,8,9,10,11});
+        hideButton(new int[] {1,4,6,7,8,9,10,11,12});
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         moveAnchorOperation(false);
