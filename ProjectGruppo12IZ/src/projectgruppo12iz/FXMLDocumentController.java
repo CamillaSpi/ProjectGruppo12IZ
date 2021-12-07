@@ -278,18 +278,31 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    
+    /**
+     * It calls the method implemented in the classes State named onButtonTwo(), the execution of this method 
+     * depends on the current state. So for the StateStandard the AddCommand will be executed if possible,
+     * for the StateVariables the SaveFromVariableCommand will be executed if possible
+     * for the StateOperations the Show of the operation will be performed if possible.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button in second position
+     *
+     * @see StateOperations, StateStandard, StateVariables
+     */
     @FXML
     private void add(ActionEvent event) throws InterruptedException {
         this.state.onButtonTwo();
     }
 
     /**
-     * It allows the calls to the subtraction operation of the class Calculator
-     * pushing the result into the stack.
-     * <p>
-     * <!-- --> @param event it registers the event
+     * It create a new SubtractCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there are not at least two operands 
+     * an error message will be shown.
      *
-     * @see MyOperandCollection
+     * @param event the event of the presses of the button sub.
+     * <p>
+     * <!-- -->
+     * @see SubCommand
      */
     @FXML
     private void sub(ActionEvent event) {
@@ -302,11 +315,31 @@ public class FXMLDocumentController implements Initializable {
            showAlert("Subtract cannot be performed,\nhave you insert at least two operands?");
     }
 
+    /**
+     * It calls the method implemented in the classes State named onButtonOne(), the execution of this method 
+     * depends on the current state. So for the StateStandard the MultiplyCommand will be executed if possible,
+     * for the StateVariables the SaveToVariableCommand will be executed if possible
+     * for the StateOperations the Delete of the specified operation will be performed if possible.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button in first position
+     *
+     * @see StateOperations, StateStandard, StateVariables
+     */
     @FXML
     private void multiply(ActionEvent event) {
        this.state.onButtonOne();
     }
 
+    /**
+     * It calls the method implemented in the classes State named onButtonFour(), the execution of this method 
+     * depends on the current state. So for the StateStandard the DivisionCommand will be executed if possible,
+     * for the StateVariables the AddToVariableCommand will be executed if possible
+     * for the StateOperations this button is not shown so it could not be pressed.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button in fourth position
+     *
+     * @see StateOperations, StateStandard, StateVariables
+     */
     @FXML
     private void division(ActionEvent event) {
          if(this.state instanceof StateVariables)
@@ -315,6 +348,16 @@ public class FXMLDocumentController implements Initializable {
             ((StateStandard) this.state).onButtonFour();
     }
 
+    /**
+     * It calls the method implemented in the classes State named onButtonFive(), the execution of this method 
+     * depends on the current state. So for the StateStandard the SquareRootCommand will be executed if possible,
+     * for the StateVariables the SubtractToVariableCommand will be executed if possible
+     * for the StateOperations this button is not shown so it could not be pressed.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button in fifth position
+     *
+     * @see StateOperations, StateStandard, StateVariables
+     */
     @FXML
     private void sqrt(ActionEvent event) {
         if(this.state instanceof StateVariables)
@@ -324,12 +367,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It allows the calls to the Invert sign operation of the class Calculator
-     * pushing the result into the stack.
-     * <p>
-     * <!-- --> @param event its register the event
+     * It create a new InvertSignCommand and calls the execute method on it if it is possible.
+     * If the Operation could not be performed because there are no operand inserted
+     * an error message will be shown.
      *
-     * @see MyOperandCollection
+     * @param event the event of the presses of the button invertSign.
+     * <p>
+     * <!-- -->
+     * @see InvertSignCommand
      */
     @FXML
     private void invertSign(ActionEvent event) {
@@ -421,15 +466,15 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Dup operation cannot be performed!\n Have you inserted any operand?");
     }
 
-    /**
-     * It create a new SwapCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there are not at least two operands
-     * an error message will be shown.
-     *
-     * @param event the event of the presses of the button swap.
+     /**
+     * It calls the method implemented in the classes State named onButtonThree(), the execution of this method 
+     * depends on the current state. So for the StateStandard the SwapCommand will be executed if possible,
+     * for the StateVariables this button is not shown so it could not be pressed
+     * for the StateOperations the UserDefined operation specified will be executed if possible.
      * <p>
-     * <!-- -->
-     * @see SwapCommand
+     * <!-- --> @param event it registers the event of the click of the button in fourth position
+     *
+     * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void swap(ActionEvent event) {
