@@ -604,8 +604,8 @@ public class FXMLDocumentController implements Initializable {
     public void clearText(){
         textArea.clear();
     }
-    public void changeTextButtonOne(){
-        
+    public Variables getVariables(){
+        return this.vars;
     }
     
 }
