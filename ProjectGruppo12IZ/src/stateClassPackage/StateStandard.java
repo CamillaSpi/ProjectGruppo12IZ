@@ -5,6 +5,8 @@
  */
 package stateClassPackage;
 
+import commandClassPackage.AddCommand;
+import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
 
 /**
@@ -26,9 +28,13 @@ public class StateStandard extends State{
     public void OnButtonEnter(){
         
     }
+    
     @Override
     public void onButtonOne() {
-        
+        MyOperandCollection collector = controller.getCollector();
+        AddCommand addComm = new AddCommand(collector);
+        if(addComm.execute())
+            collector.
     }
 
     @Override
