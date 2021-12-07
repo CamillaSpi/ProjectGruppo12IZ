@@ -22,6 +22,12 @@ public class StateVariables extends State{
         super(controller);
     }
 
+    /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables.
+     * @see FXMLDocumentController
+     */
     @Override
     public void onButtonOne() {
         if(this.controller.getCollector().last() != null){
@@ -40,8 +46,14 @@ public class StateVariables extends State{
             this.controller.showAlert("insert at least an operand before execute this operation!\n");
     }
 
+    /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables.
+     * @see FXMLDocumentController
+     */
     @Override
-    public void onButtonThree() {
+    public void onButtonTwo() {
         String variable = this.controller.getText();
         if ("".equals(variable)) {
             this.controller.showAlert("Write a variable before press this button!");
@@ -58,6 +70,12 @@ public class StateVariables extends State{
         }
     }
     
+    /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables.
+     * @see FXMLDocumentController
+     */
     public void onButtonFour() {
          ComplexNumber adding = this.controller.getCollector().last();
         if(adding != null){
@@ -80,7 +98,13 @@ public class StateVariables extends State{
             this.controller.showAlert("Insert at least an operand to execute this operation!");
     }
     
-    public void onButtonSix() {
+    /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables.
+     * @see FXMLDocumentController
+     */
+    public void onButtonFive() {
         ComplexNumber subtracting = this.controller.getCollector().last();
         if(subtracting != null){
             String variable = this.controller.getText();
