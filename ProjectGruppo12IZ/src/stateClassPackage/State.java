@@ -18,9 +18,6 @@ public abstract class State {
     public State(FXMLDocumentController controller){
         this.controller = controller;
     }
-    
-
-    public abstract void onPressEnter();
 
     public abstract void onButtonOne();
 

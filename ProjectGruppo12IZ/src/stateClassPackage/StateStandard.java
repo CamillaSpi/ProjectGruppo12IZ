@@ -13,7 +13,7 @@ import projectgruppo12iz.FXMLDocumentController;
  */
 public class StateStandard extends State{
     
-    private FXMLDocumentController controller;
+    
     
     
     
