@@ -162,6 +162,7 @@ public class StateOperations extends State {
         this.controller.changeButtonText(3, "DIV");
         this.controller.changeButtonText(4, "SQRT");
         this.controller.changeButtonText(5, "+/-");
+        controller.setState(new StateStandard(controller)); 
     }
 
     @Override
@@ -177,6 +178,7 @@ public class StateOperations extends State {
         this.controller.changeButtonText(3, "+x");
         this.controller.changeButtonText(5, "-x");
         this.controller.hideButton(new int[]{1,12});
+        controller.setState(new StateVariables(controller)); 
     }
 
     @Override

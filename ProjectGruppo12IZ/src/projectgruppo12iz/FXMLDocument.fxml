@@ -92,20 +92,20 @@
                            <children>
                               <Button fx:id="buttonOne" mnemonicParsing="false" onAction="#multiply" prefHeight="75.0" prefWidth="75.0" text="MOL" />
                               <Button fx:id="buttonTwo" alignment="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="60.0" prefWidth="75.0" text="SUM" />
-                              <Button fx:id="buttonSeven" alignment="CENTER" mnemonicParsing="false" onAction="#swap" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="SWAP" />
+                              <Button fx:id="buttonThree" alignment="CENTER" mnemonicParsing="false" onAction="#swap" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="SWAP" />
                            </children>
                         </HBox>
                         <HBox fx:id="secondHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
                               <Button fx:id="buttonFour" alignment="CENTER" mnemonicParsing="false" onAction="#division" prefHeight="75.0" prefWidth="75.0" text="DIV" />
                               <Button fx:id="buttonFive" alignment="CENTER" mnemonicParsing="false" onAction="#sqrt" prefHeight="75.0" prefWidth="75.0" text="SQRT" />
-                              <Button fx:id="buttonEight" alignment="CENTER" mnemonicParsing="false" onAction="#drop" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DROP" />
+                              <Button fx:id="buttonSix" alignment="CENTER" mnemonicParsing="false" onAction="#drop" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DROP" />
                            </children>
                         </HBox>
                         <HBox fx:id="thirdHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
-                              <Button fx:id="buttonThree" mnemonicParsing="false" onAction="#sub" prefHeight="75.0" prefWidth="75.0" text="SUB" />
-                              <Button fx:id="buttonSix" mnemonicParsing="false" onAction="#invertSign" prefHeight="75.0" prefWidth="75.0" text="+/-" />
+                              <Button fx:id="buttonSeven" mnemonicParsing="false" onAction="#sub" prefHeight="75.0" prefWidth="75.0" text="SUB" />
+                              <Button fx:id="buttonEigth" mnemonicParsing="false" onAction="#invertSign" prefHeight="75.0" prefWidth="75.0" text="+/-" />
                               <Button fx:id="buttonNine" mnemonicParsing="false" onAction="#over" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="OVER" />
                            </children>
                         </HBox>

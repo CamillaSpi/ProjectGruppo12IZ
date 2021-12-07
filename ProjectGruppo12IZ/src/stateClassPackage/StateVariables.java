@@ -108,6 +108,7 @@ public class StateVariables extends State{
         this.controller.changeButtonText(2, "SUB");
         this.controller.changeButtonText(3, "DIV");
         this.controller.changeButtonText(5, "+/-");
+        controller.setState(new StateStandard(controller));
     }
 
     @Override
@@ -119,6 +120,7 @@ public class StateVariables extends State{
         this.controller.hideButton(new int[]{3, 5});
         this.controller.changeButtonText(0, "MOL");
         this.controller.changeButtonText(2, "SUB");
+        controller.setState(new StateOperations(controller)); 
     }
     
     
