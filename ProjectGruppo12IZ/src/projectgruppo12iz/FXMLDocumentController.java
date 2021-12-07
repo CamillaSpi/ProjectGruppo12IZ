@@ -243,6 +243,18 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        myButtonArray.add(buttonOne);
+        myButtonArray.add(buttonTwo);
+        myButtonArray.add(buttonThree);
+        myButtonArray.add(buttonFour);
+        myButtonArray.add(buttonFive);
+        myButtonArray.add(buttonSix);
+        myButtonArray.add(buttonSeven);
+        myButtonArray.add(buttonEight);
+        myButtonArray.add(buttonNine);
+        myButtonArray.add(buttonTen);
+        myButtonArray.add(buttonEleven);
+        myButtonArray.add(buttonTwelve);
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
