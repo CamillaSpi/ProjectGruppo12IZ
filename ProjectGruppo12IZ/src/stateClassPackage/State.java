@@ -21,7 +21,7 @@ public abstract class State {
 
     public abstract void onButtonOne();
 
-    public abstract void onButtonThree();
+    public abstract void onButtonTwo();
 
     public abstract void setStateStandard();
 
