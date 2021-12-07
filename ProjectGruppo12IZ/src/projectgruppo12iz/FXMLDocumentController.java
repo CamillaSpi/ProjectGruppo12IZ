@@ -60,7 +60,6 @@ public class FXMLDocumentController implements Initializable {
     PauseTransition pause = new PauseTransition(Duration.seconds(5));
     Invoker inv = new Invoker();
     FadeTransition fadeIn = new FadeTransition(Duration.millis(1000));
-    FadeTransition fadeOut = new FadeTransition(Duration.millis(1000));
     int last = 0;
     @FXML
     private AnchorPane baseAnchorPane;
@@ -127,10 +126,11 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("You clicked me!");
 
     }
-    
-    public MyOperandCollection getCollector(){
+
+    public MyOperandCollection getCollector() {
         return collector;
     }
+
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
 
@@ -179,43 +179,44 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    private void showButton(Node myBtn) {
-        System.out.print("forse show " + myBtn + myBtn.isVisible());
-        if (!myBtn.isVisible()) {
-            fadeIn.setRate(1);
-            fadeIn.setFromValue(0.0);
-            fadeIn.setToValue(1.0);
-            fadeIn.setCycleCount(1);
-            fadeIn.setNode(myBtn);
-            fadeIn.play();
-            fadeIn.setOnFinished(event -> {
-                myBtn.setVisible(false);
-                System.out.println("show");
-            });
-            myBtn.setVisible(true);
-        } else {
-            System.out.println("notshow");
+    public void showButton(int[] index) {
+        Button myBtn;
+        for (int i = 0; i < index.length; i++) {
+            myBtn = myButtonArray.get(index[i]);
+            System.out.print("forse show " + myBtn + myBtn.isVisible());
+            if (!myBtn.isVisible()) {
+                fadeIn.setRate(1);
+                fadeIn.setFromValue(0);
+                fadeIn.setToValue(1);
+                fadeIn.setCycleCount(1);
+                fadeIn.setNode(myBtn);
+                fadeIn.play();
+                myBtn.setVisible(true);
+            } else {
+                System.out.println("notshow");
+            }
         }
 
     }
 
-    private void hideButton(Node myBtn) {
-        System.out.print("forse hide " + myBtn + myBtn.isVisible());
-        if (myBtn.isVisible()) {
-            fadeIn.setRate(1);
-            fadeIn.setFromValue(1.0);
-            fadeIn.setToValue(0.0);
-            fadeIn.setNode(myBtn);
-            fadeIn.play();
-            fadeIn.setOnFinished(event -> {
+    public void hideButton(int[] index) {
+        Button myBtn;
+        for (int i = 0; i < index.length; i++) {
+            myBtn = myButtonArray.get(index[i]);
+            System.out.print("forse hide " + myBtn + myBtn.isVisible());
+            if (myBtn.isVisible()) {
+                fadeIn.setRate(1);
+                fadeIn.setFromValue(1);
+                fadeIn.setToValue(0);
+                fadeIn.setNode(myBtn);
+                fadeIn.play();
                 myBtn.setVisible(false);
                 System.out.println("hide");
-            });
 
-        } else {
-            System.out.println("npothide");
+            } else {
+                System.out.println("npothide");
+            }
         }
-
     }
 
     public void showAlert(String error) {
@@ -533,7 +534,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
-        showButton(buttonEleven);
+        /*showButton(buttonEleven);
         showButton(buttonTwo);
         showButton(buttonFive);
         showButton(buttonTen);
@@ -545,6 +546,8 @@ public class FXMLDocumentController implements Initializable {
         showButton(buttonSeven);
         showButton(buttonEight);
         showButton(buttonNine);
+*/
+        showButton(new int[] {0,1,2,3,4,5,6,7,8,9,10,11});
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
@@ -553,7 +556,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showVariables(ActionEvent event) {
-        showButton(buttonFour);
+        /*showButton(buttonFour);
         showButton(buttonSix);
         hideButton(buttonTwo);
         hideButton(buttonFive);
@@ -563,6 +566,9 @@ public class FXMLDocumentController implements Initializable {
         hideButton(buttonSeven);
         hideButton(buttonEight);
         hideButton(buttonNine);
+*/
+        
+        hideButton(new int[] {1,4,6,7,8,9,10,11});
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         moveAnchorOperation(false);
@@ -571,7 +577,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-        hideButton(buttonTen);
+       /* hideButton(buttonTen);
         hideButton(buttonEleven);
         hideButton(buttonTwelve);
         hideButton(buttonFour);
@@ -581,6 +587,9 @@ public class FXMLDocumentController implements Initializable {
         hideButton(buttonEight);
         hideButton(buttonNine);
         showButton(buttonTwo);
+*/
+        showButton(new int[] {0,1,2});
+        hideButton(new int[] {3,4,5,6,7,8,9,10,11});
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
@@ -591,24 +600,29 @@ public class FXMLDocumentController implements Initializable {
     public void refresh() {
         OperandsTable.refresh();
     }
-    
+
     public String getText() {
         return this.textArea.getText();
     }
+
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
     }
-    public HashCommandTable getuserCommand(){
+
+    public HashCommandTable getuserCommand() {
         return this.userCommand;
     }
-    public void clearText(){
+
+    public void clearText() {
         textArea.clear();
     }
-    public Variables getVariables(){
+
+    public Variables getVariables() {
         return this.vars;
     }
-    public void changeButtonText(int index, String value){
+
+    public void changeButtonText(int index, String value) {
         myButtonArray.get(index).setText(value);
     }
-    
+
 }
