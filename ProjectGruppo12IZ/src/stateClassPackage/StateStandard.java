@@ -7,6 +7,7 @@ package stateClassPackage;
 
 
 import commandClassPackage.MultiplyCommand;
+import commandClassPackage.SubtractCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
@@ -53,16 +54,16 @@ public class StateStandard extends State{
     }
     
      /**
-     * It create a new MultiplyCommand Operation and execute it if it is possible,
-     * If the operation could not be performed, because there are not enough operands for example
+     * It create a new MultiplyCommand Operation and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
      * an error message will be shown. 
-     * @see FXMLDocumentController, ComplexNumber
+     * @see FXMLDocumentController, MultiplicationCommand
      */
     @Override
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
-        MultiplyCommand addComm = new MultiplyCommand(collector);
-        if(addComm.execute()){
+        MultiplyCommand mulComm = new MultiplyCommand(collector);
+        if(mulComm.execute()){
             controller.showAlert("Multiplication done succesfully!");
             controller.refresh();
         }
@@ -70,11 +71,26 @@ public class StateStandard extends State{
             controller.showAlert("Multiplication cannot be performed!");
     }
 
+     /**
+     * It create a new SubtractCommand Operation and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
+     * an error message will be shown. 
+     * @see FXMLDocumentController, SubtractCommand
+     */
     @Override
     public void onButtonThree() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MyOperandCollection collector = controller.getCollector();
+        SubtractCommand subComm = new SubtractCommand(collector);
+        if(subComm.execute()){
+            controller.showAlert("Division done succesfully!");
+            controller.refresh();
+        }
+        else
+            controller.showAlert("Division cannot be performed!");
+        
     }
 
+    
     @Override
     public void setStateStandard() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
