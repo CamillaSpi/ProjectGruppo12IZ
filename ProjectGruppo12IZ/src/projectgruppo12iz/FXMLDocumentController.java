@@ -138,13 +138,13 @@ public class FXMLDocumentController implements Initializable {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
 
         if (flag) {
-            slide.setFromX(0);
+            slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(200);
             slide.setRate(1);
             slide.play();
 
         } else {
-            slide.setFromX(200);
+            slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(0);
 
             slide.setRate(1);
@@ -159,9 +159,9 @@ public class FXMLDocumentController implements Initializable {
         TranslateTransition slide2 = new TranslateTransition(Duration.seconds(0.4), operationVBox);
 
         if (anchorFlag) {
-            slide.setFromY(0);
+            slide.setFromY(externalVBox.getTranslateY());
             slide.setToY(60);
-            slide2.setFromY(0);
+            slide2.setFromY(operationVBox.getTranslateY());
             slide2.setToY(110);
             slide.setRate(1);
             slide.play();

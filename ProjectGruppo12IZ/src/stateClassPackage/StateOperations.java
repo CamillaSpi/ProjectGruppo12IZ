@@ -22,6 +22,11 @@ public class StateOperations extends State {
 
     private HashCommandTable userCommand;
 
+     /**
+     * It create a new object StateStandard calling the constructor method of the super class.
+     * @param collector
+     * @see FXMLDocumentController
+     */
     public StateOperations(FXMLDocumentController controller) {
         super(controller);
         this.userCommand = this.controller.getuserCommand();
