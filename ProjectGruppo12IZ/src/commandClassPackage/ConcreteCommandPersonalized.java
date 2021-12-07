@@ -5,6 +5,7 @@
  */
 package commandClassPackage;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -21,12 +22,14 @@ public class ConcreteCommandPersonalized implements Command{
     /**
      * It creates an object of the ConcreteCommandPersonalized if the collector is not null and 
      * @param commandName is the name of the command, we choose to save this in this class, could be util for the future.
+     * @param operations is the string that contains operations.
      * @param commands is the list of commands that compose this concrete complex command .
      * @see ComplexNumber, MyOperandCollection
      */
     public ConcreteCommandPersonalized(String commandName,String operations, List<Command> commands) {
         assert commands != null;
-        this.commands = commands;
+        this.commands = new LinkedList<>();
+        this.commands.addAll(commands);
         this.operations= operations;
         this.commandName = commandName;
     }
@@ -38,7 +41,8 @@ public class ConcreteCommandPersonalized implements Command{
      */
     public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
         assert comm != null;
-        this.commands = comm.commands;
+        this.commands = new LinkedList<>();
+        this.commands.addAll(commands);
         this.operations = comm.operations;
         this.commandName = comm.commandName;
     }
