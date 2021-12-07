@@ -64,6 +64,12 @@
     -fx-shadow: 5px 5px 5px 5px;
     -fx-background-radius: 12em;
 }
+.BoxState{
+    -fx-background-color: #9b9b9b;
+}
+
+
+
 .text-area{
     -fx-background-color: transparent; 
     -fx-background-radius: 1em;

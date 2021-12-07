@@ -98,6 +98,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<ComplexNumber, String> OperandsClm;
     @FXML
     private Button buttonSeven;
+    @FXML
     private Button buttonEight;
     @FXML
     private Button buttonNine;
@@ -125,8 +126,6 @@ public class FXMLDocumentController implements Initializable {
     private VBox operationVBox;
 
     ArrayList<Button> myButtonArray = new ArrayList<>();
-    @FXML
-    private Button buttonEigth;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -319,9 +318,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void sqrt(ActionEvent event) {
         if(this.state instanceof StateVariables)
-            ((StateVariables) this.state).onButtonFour();
+            ((StateVariables) this.state).onButtonFive();
         else
-            ((StateStandard) this.state).onButtonFour();
+            ((StateStandard) this.state).onButtonFive();
     }
 
     /**
@@ -492,10 +491,11 @@ public class FXMLDocumentController implements Initializable {
         showButton(buttonNine);
 
         showButton(new int[] {0,1,2,3,4,5,6,7,8,9,10,11});
+        */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
-        moveAnchorOperation(false);*/
+        moveAnchorOperation(false);
         this.state.setStateStandard();
     }
 
@@ -514,10 +514,11 @@ public class FXMLDocumentController implements Initializable {
 
         
         hideButton(new int[] {1,4,6,7,8,9,10,11,12});
+        */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         moveAnchorOperation(false);
-        System.out.println("\n\n");*/
+        System.out.println("\n\n");
         this.state.setStateVariables();
     }
 
@@ -536,10 +537,11 @@ public class FXMLDocumentController implements Initializable {
 
         showButton(new int[] {0,1,2});
         hideButton(new int[] {3,4,5,6,7,8,9,10,11});
+        */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
-        moveAnchorOperation(true);*/
+        moveAnchorOperation(true);
         this.state.setStateOperations();
     }
 

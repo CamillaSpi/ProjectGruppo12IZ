@@ -158,10 +158,7 @@ public class StateOperations extends State {
         this.controller.showButton(new int[]{3, 4, 5, 6, 7, 8, 9, 10, 11,12});
         this.controller.changeButtonText(0, "MOL");
         this.controller.changeButtonText(1, "SUM");
-        this.controller.changeButtonText(2, "SUB");
-        this.controller.changeButtonText(3, "DIV");
-        this.controller.changeButtonText(4, "SQRT");
-        this.controller.changeButtonText(5, "+/-");
+        this.controller.changeButtonText(2, "SWAP");
         controller.setState(new StateStandard(controller)); 
     }
 
@@ -172,12 +169,13 @@ public class StateOperations extends State {
         // +x 
         // -x
 
-        this.controller.showButton(new int[]{3, 5});
+        this.controller.showButton(new int[]{3, 4});
         this.controller.changeButtonText(0, ">x");
-        this.controller.changeButtonText(2, "<x");
+        this.controller.changeButtonText(1, "<x");
+        this.controller.changeButtonText(2, "SWAP");
         this.controller.changeButtonText(3, "+x");
-        this.controller.changeButtonText(5, "-x");
-        this.controller.hideButton(new int[]{1,12});
+        this.controller.changeButtonText(4, "-x");
+        this.controller.hideButton(new int[]{2,12});
         controller.setState(new StateVariables(controller)); 
     }
 
