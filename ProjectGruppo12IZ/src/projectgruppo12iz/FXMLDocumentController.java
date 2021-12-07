@@ -281,10 +281,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) throws InterruptedException {
-        if(this.state instanceof StateOperations)
-            ((StateOperations) this.state).onButtonTwo();
-        else
-            ((StateStandard) this.state).onButtonTwo();
+        this.state.onButtonTwo();
     }
 
     /**
@@ -437,7 +434,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void swap(ActionEvent event) {
-        this.state.onButtonThree();
+        if(this.state instanceof StateOperations)
+            ((StateOperations) this.state).onButtonThree();
+        else
+            ((StateStandard) this.state).onButtonThree();
     }
 
     @FXML
@@ -466,22 +466,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
-        String text = textArea.getText();
-        if ("".equals(text)) {
-            showAlert("Write a complex number before press enter!");
-        } else {
-            ComplexNumber checkNum = ComplexNumber.create(text);
-            if (checkNum != null) {
-                if (this.pushIntoStack(checkNum)) {
-                    showAlert("Number entered correctl");
-                    textArea.clear();
-                } else {
-                    showAlert("the number to be entered is not stored correctly");
-                }
-            } else {
-                showAlert("the number to be entered was not written correctly");
-            }
-        }
+        if(this.state instanceof StateOperations)
+            ((StateOperations) this.state).onButtonEnter();
+        else
+            ((StateStandard) this.state).onButtonEnter();
     }
 
     @FXML

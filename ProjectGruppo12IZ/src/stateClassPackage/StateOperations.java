@@ -40,7 +40,7 @@ public class StateOperations extends State {
     * <p> <!-- -->
     * @see HashCommandTable
     */
-    public void onPressEnter() {
+    public void onButtonEnter() {
         String operationName = this.controller.getOperationName();
         String sequenceDefinition = this.controller.getText();
         if (operationName.matches("[a-zA-Z0-9]*")) {
@@ -113,6 +113,7 @@ public class StateOperations extends State {
     * <p> <!-- -->
     * @see HashCommandTable
     */
+    @Override
     public void onButtonTwo() {
         //show
         String operationName = this.controller.getText();
@@ -129,7 +130,6 @@ public class StateOperations extends State {
     * <p> <!-- -->
     * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
     */
-    @Override
     public void onButtonThree() {
          String OpName =  this.controller.getText();
         if ("".equals(OpName))
