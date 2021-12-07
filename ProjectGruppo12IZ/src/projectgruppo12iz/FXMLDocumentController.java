@@ -234,7 +234,6 @@ public class FXMLDocumentController implements Initializable {
      * @see MyOperandCollection
      */
     public boolean pushIntoStack(ComplexNumber num) {
-        int length = collector.collectionLength();
         collector.insert(num);
         OperandsTable.refresh();
         return true;

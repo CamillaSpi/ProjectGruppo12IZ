@@ -5,7 +5,8 @@
  */
 package stateClassPackage;
 
-import commandClassPackage.AddCommand;
+
+import commandClassPackage.MultiplyCommand;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
 
@@ -24,7 +25,12 @@ public class StateStandard extends State{
         super(controller);
     }
     
-    
+    /**
+     * It insert a new Complex Operand on which to perfrom operations,
+     * if it is write in the correct form in the corresponding text area, 
+     * otherwise an error message will be shown. 
+     * @see FXMLDocumentController, ComplexNumber
+     */
     public void OnButtonEnter(){
         
     }
@@ -32,9 +38,13 @@ public class StateStandard extends State{
     @Override
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
-        AddCommand addComm = new AddCommand(collector);
-        if(addComm.execute())
-            collector.
+        MultiplyCommand addComm = new MultiplyCommand(collector);
+        if(addComm.execute()){
+            controller.showAlert("Multiplication done succesfully!");
+            controller.refresh();
+        }
+        else
+            controller.showAlert("Multiplication cannot be performed!");
     }
 
     @Override
