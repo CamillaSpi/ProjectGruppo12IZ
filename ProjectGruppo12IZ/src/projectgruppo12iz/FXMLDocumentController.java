@@ -179,13 +179,16 @@ public class FXMLDocumentController implements Initializable {
     private void showButton(Node myBtn) {
         System.out.print("forse show " + myBtn + myBtn.isVisible());
         if (!myBtn.isVisible()) {
-           /* fadeIn.setRate(1);
+            fadeIn.setRate(1);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
             fadeIn.setCycleCount(1);
             fadeIn.setNode(myBtn);
             fadeIn.play();
-           */ System.out.println("show");
+            fadeIn.setOnFinished(event -> {
+                myBtn.setVisible(false);
+                System.out.println("show");
+            });
             myBtn.setVisible(true);
         } else {
             System.out.println("notshow");
@@ -196,13 +199,16 @@ public class FXMLDocumentController implements Initializable {
     private void hideButton(Node myBtn) {
         System.out.print("forse hide " + myBtn + myBtn.isVisible());
         if (myBtn.isVisible()) {
-           /* fadeIn.setRate(1);
+            fadeIn.setRate(1);
             fadeIn.setFromValue(1.0);
             fadeIn.setToValue(0.0);
             fadeIn.setNode(myBtn);
             fadeIn.play();
-           */ System.out.println("hide");
-            myBtn.setVisible(false);
+            fadeIn.setOnFinished(event -> {
+                myBtn.setVisible(false);
+                System.out.println("hide");
+            });
+
         } else {
             System.out.println("npothide");
         }
@@ -535,7 +541,7 @@ public class FXMLDocumentController implements Initializable {
         showButton(divButton);
         showButton(invertSignButton);
         hideButton(sumButton);
-        hideButton(sqrtButton); 
+        hideButton(sqrtButton);
         hideButton(dupButton);
         hideButton(clearButton);
         hideButton(undoButton);

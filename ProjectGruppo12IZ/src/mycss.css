@@ -15,9 +15,10 @@
     -fx-opacity: 0.8;
     -fx-text-fill: white;
     -fx-cursor: hand;
-    -fx-border: 0.5px solid black;
     -fx-background-radius: 0px;
 }
 .button: hover {
     -fx-background-color: gray;
+    -fx-border-color: black;
+    -fx-shadow: 5px 5px 5px 5px;
 }
