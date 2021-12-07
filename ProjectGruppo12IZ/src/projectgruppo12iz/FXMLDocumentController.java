@@ -67,17 +67,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea textArea;
     @FXML
-    private Button sumButton;
+    private Button buttonTwo;
     @FXML
-    private Button divButton;
+    private Button buttonFour;
     @FXML
-    private Button subButton;
+    private Button buttonThree;
     @FXML
-    private Button molButton;
+    private Button buttonOne;
     @FXML
-    private Button sqrtButton;
+    private Button buttonFive;
     @FXML
-    private Button invertSignButton;
+    private Button buttonSix;
     @FXML
     private Label errorLabel;
 
@@ -93,17 +93,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<ComplexNumber, String> OperandsClm;
     @FXML
-    private Button swapButton;
+    private Button buttonSeven;
     @FXML
-    private Button dropButton;
+    private Button buttonEight;
     @FXML
-    private Button overButton;
+    private Button buttonNine;
     @FXML
-    private Button dupButton;
+    private Button buttonTen;
     @FXML
-    private Button clearButton;
+    private Button buttonEleven;
     @FXML
-    private Button undoButton;
+    private Button buttonTwelve;
     @FXML
     private Button enterBtton;
     @FXML
@@ -242,6 +242,18 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        myButtonArray.add(buttonOne);
+        myButtonArray.add(buttonTwo);
+        myButtonArray.add(buttonThree);
+        myButtonArray.add(buttonFour);
+        myButtonArray.add(buttonFive);
+        myButtonArray.add(buttonSix);
+        myButtonArray.add(buttonSeven);
+        myButtonArray.add(buttonEight);
+        myButtonArray.add(buttonNine);
+        myButtonArray.add(buttonTen);
+        myButtonArray.add(buttonEleven);
+        myButtonArray.add(buttonTwelve);
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
@@ -520,18 +532,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
-        showButton(clearButton);
-        showButton(sumButton);
-        showButton(sqrtButton);
-        showButton(dupButton);
-        showButton(clearButton);
-        showButton(undoButton);
-        showButton(divButton);
-        showButton(sqrtButton);
-        showButton(invertSignButton);
-        showButton(swapButton);
-        showButton(dropButton);
-        showButton(overButton);
+        showButton(buttonEleven);
+        showButton(buttonTwo);
+        showButton(buttonFive);
+        showButton(buttonTen);
+        showButton(buttonEleven);
+        showButton(buttonTwelve);
+        showButton(buttonFour);
+        showButton(buttonFive);
+        showButton(buttonSix);
+        showButton(buttonSeven);
+        showButton(buttonEight);
+        showButton(buttonNine);
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
@@ -540,16 +552,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showVariables(ActionEvent event) {
-        showButton(divButton);
-        showButton(invertSignButton);
-        hideButton(sumButton);
-        hideButton(sqrtButton);
-        hideButton(dupButton);
-        hideButton(clearButton);
-        hideButton(undoButton);
-        hideButton(swapButton);
-        hideButton(dropButton);
-        hideButton(overButton);
+        showButton(buttonFour);
+        showButton(buttonSix);
+        hideButton(buttonTwo);
+        hideButton(buttonFive);
+        hideButton(buttonTen);
+        hideButton(buttonEleven);
+        hideButton(buttonTwelve);
+        hideButton(buttonSeven);
+        hideButton(buttonEight);
+        hideButton(buttonNine);
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         moveAnchorOperation(false);
@@ -558,16 +570,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-        hideButton(dupButton);
-        hideButton(clearButton);
-        hideButton(undoButton);
-        hideButton(divButton);
-        hideButton(sqrtButton);
-        hideButton(invertSignButton);
-        hideButton(swapButton);
-        hideButton(dropButton);
-        hideButton(overButton);
-        showButton(sumButton);
+        hideButton(buttonTen);
+        hideButton(buttonEleven);
+        hideButton(buttonTwelve);
+        hideButton(buttonFour);
+        hideButton(buttonFive);
+        hideButton(buttonSix);
+        hideButton(buttonSeven);
+        hideButton(buttonEight);
+        hideButton(buttonNine);
+        showButton(buttonTwo);
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
@@ -582,4 +594,20 @@ public class FXMLDocumentController implements Initializable {
     public String getText() {
         return this.textArea.getText();
     }
+    public String getOperationName() {
+        return this.nameOperationTextArea.getText();
+    }
+    public HashCommandTable getuserCommand(){
+        return this.userCommand;
+    }
+    public void clearText(){
+        textArea.clear();
+    }
+    public Variables getVariables(){
+        return this.vars;
+    }
+    public void changeButtonText(int index, String value){
+        myButtonArray.get(index).setText(value);
+    }
+    
 }

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -29,6 +30,7 @@ public class ProjectGruppo12IZ extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         scene.getStylesheets().add("mycss.css");
+        scene.setFill(Color.TRANSPARENT);
         stage.show();
         root.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
