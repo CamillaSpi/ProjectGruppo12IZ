@@ -104,7 +104,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button buttonTwelve;
     @FXML
-    private Button enterBtton;
+    private Button enterButton;
     @FXML
     private HBox fourthHBox;
     @FXML
@@ -255,6 +255,7 @@ public class FXMLDocumentController implements Initializable {
         myButtonArray.add(buttonTen);
         myButtonArray.add(buttonEleven);
         myButtonArray.add(buttonTwelve);
+        myButtonArray.add(enterButton);
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
