@@ -603,6 +603,9 @@ public class FXMLDocumentController implements Initializable {
     public String getText() {
         return this.textArea.getText();
     }
+    public void setText(String value) {
+        this.textArea.setText(value);
+    }
 
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
@@ -615,6 +618,9 @@ public class FXMLDocumentController implements Initializable {
     public void clearText() {
         textArea.clear();
     }
+    public void clearNameText() {
+        nameOperationTextArea.clear();
+    }
 
     public Variables getVariables() {
         return this.vars;
@@ -622,6 +628,9 @@ public class FXMLDocumentController implements Initializable {
 
     public void changeButtonText(int index, String value) {
         myButtonArray.get(index).setText(value);
+    }
+    public Invoker getInvoker(){
+        return this.inv;
     }
 
 }
