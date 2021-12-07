@@ -604,6 +604,9 @@ public class FXMLDocumentController implements Initializable {
     public void clearText(){
         textArea.clear();
     }
+    public Variables getVariables(){
+        return this.vars;
+    }
     public void changeButtonText(int index, String value){
         myButtonArray.get(index).setText(value);
     }
