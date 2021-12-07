@@ -93,17 +93,29 @@ public class StateStandard extends State{
     
     @Override
     public void setStateStandard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
+     /**
+     * It create a new SubtractCommand Operation and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not enough operands for example,
+     * an error message will be shown. 
+     * @see FXMLDocumentController, SubtractCommand
+     */
     @Override
     public void setStateVariables() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        controller.changeButtonText(0, ">x");
+        controller.changeButtonText(2, "<x");
+        controller.changeButtonText(3, "+x");
+        controller.changeButtonText(3, "-x");
+        controller.hideButton(new int[] {1, 4, 6, 7, 8, 9, 10, 11, 12});
+        
+        
     }
 
     @Override
     public void setStateOperations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
     }
     
     
