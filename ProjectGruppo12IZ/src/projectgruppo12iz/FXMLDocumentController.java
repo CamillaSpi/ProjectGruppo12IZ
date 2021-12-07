@@ -5,10 +5,12 @@
  */
 package projectgruppo12iz;
 
+import commandClassPackage.AddCommand;
 import commandClassPackage.Command;
 import commandClassPackage.ConcreteCommandPersonalized;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
+import commandClassPackage.SubtractCommand;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -278,19 +280,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) throws InterruptedException {
-        if (collector.collectionLength() < 2) {
-            showAlert("You didn't insert at least two operands ");
-            return;
+        AddCommand addComm = new AddCommand(collector);
+        if(addComm!=null && addComm.execute()){
+            showAlert("Add done succesfully!");
+            refresh();
         }
-        ComplexNumber result = Calculator.addiction(collector.remove(), collector.remove());
-        if (result != null) {
-            pushIntoStack(result);
-            showAlert("Addiction done succesfully!\n");
-
-        } else {
-            showAlert("Error during Addiction!");
-        }
-
+        else
+           showAlert("Add cannot be performed, have you insert at least two operands?");
     }
 
     /**
@@ -303,20 +299,13 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void sub(ActionEvent event) {
-        if (collector.collectionLength() < 2) {
-            showAlert("You didn't insert at least two operands ");
-        } else {
-            ComplexNumber b = collector.remove();
-            ComplexNumber a = collector.remove();
-            ComplexNumber result = Calculator.subtraction(a, b);
-            boolean tmp = pushIntoStack(result);
-            if (tmp == false) {
-                showAlert("Error during subtraction!");
-            } else {
-                showAlert("Subtraction done succesfully!\n");
-
-            }
+        SubtractCommand subComm = new SubtractCommand(collector);
+        if(subComm!=null && subComm.execute()){
+            showAlert("Add done succesfully!");
+            refresh();
         }
+        else
+           showAlert("Add cannot be performed, have you insert at least two operands?");
     }
 
     @FXML
