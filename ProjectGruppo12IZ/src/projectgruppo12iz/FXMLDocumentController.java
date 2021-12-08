@@ -283,7 +283,7 @@ public class FXMLDocumentController implements Initializable {
         listOpVars = FXCollections.observableMap(vars.getMyVariables());
         nameClm.setCellValueFactory(new PropertyValueFactory<>("keyProperty"));
         contentClm.setCellValueFactory(new PropertyValueFactory<>("valueProperty"));
-        tableOpVar.setItems;
+        
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
