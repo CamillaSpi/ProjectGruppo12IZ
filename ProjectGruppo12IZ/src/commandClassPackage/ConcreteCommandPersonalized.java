@@ -114,4 +114,9 @@ public class ConcreteCommandPersonalized implements Command{
         return false;
     }
 
+    @Override
+    public String toString() {
+        return operations;
+    }
+
 }

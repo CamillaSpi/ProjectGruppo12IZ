@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 
 /**
  * This is a class containing a Map as attribute, in order to contain variables 
@@ -16,7 +18,7 @@ import javafx.beans.property.StringProperty;
  * @author Gruppo 12 IZ
  */
 public class Variables {
-    private final Map<String,ComplexNumber> myVariables;
+    private final ObservableMap<String,ComplexNumber> myVariables;
     
     /**
     * It inizialize the attribute myVariables, as an HashMap with
@@ -25,7 +27,7 @@ public class Variables {
     * @see ComplexNumber
     */   
     public Variables(){
-        this.myVariables = new HashMap<>();
+        this.myVariables = FXCollections.observableHashMap();
     }
     
     /**
@@ -72,7 +74,7 @@ public class Variables {
     * @return myVariable the map attribute, containing couples Key-Value
     * @see ComplexNumber
     */ 
-    public Map<String, ComplexNumber> getMyVariables() {
+    public ObservableMap<String,ComplexNumber> getMyVariables() {
         return myVariables;
     }
     

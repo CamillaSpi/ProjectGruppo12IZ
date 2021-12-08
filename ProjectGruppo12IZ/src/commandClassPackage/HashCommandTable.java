@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 import modelClassPackage.MyOperandCollection;
 import modelClassPackage.Variables;
 
@@ -20,13 +22,13 @@ import modelClassPackage.Variables;
  */
 public class HashCommandTable{
     
-    private final HashMap<String,ConcreteCommandPersonalized> concreteCommandHash;
+    private final ObservableMap<String,ConcreteCommandPersonalized> concreteCommandHash;
     private final HashMap<String,String> basicCommandHash;
     private MyOperandCollection collector;
     private Variables vars;
 
     public HashCommandTable(MyOperandCollection collector, Variables vars) {
-        this.concreteCommandHash = new HashMap<>();
+        this.concreteCommandHash = FXCollections.observableHashMap();
         this.basicCommandHash = new HashMap<>();
         basicCommandHash.put("+", "AddCommand");
         basicCommandHash.put("-", "SubtractCommand");
@@ -151,6 +153,9 @@ public class HashCommandTable{
             return concreteCommandHash.get(commandName);
         else 
             return null;
+    }
+     public ObservableMap<String,ConcreteCommandPersonalized> getMyCommandHash() {
+        return this.concreteCommandHash;
     }
     
 }

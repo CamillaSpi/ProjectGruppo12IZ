@@ -29,6 +29,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
@@ -141,17 +142,20 @@ public class FXMLDocumentController implements Initializable {
 
     ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
     @FXML
-    private TableView<Map.Entry<String, ComplexNumber>> tableOpVar;
+    private TableView<String> tableOpVar;
     @FXML
-    private TableColumn<Map.Entry<String, ComplexNumber>, String> nameClm;
+    private TableColumn<String, String> nameClm;
     @FXML
-    private TableColumn<Map.Entry<String, ComplexNumber>, ComplexNumber> contentClm;
-    
-    private ObservableList<Map.Entry<String, ComplexNumber>> listOpVars;
+    private TableColumn<String, ComplexNumber> contentClm;
+
+    ObservableList<String> varKeys = FXCollections.observableArrayList();
+    ObservableList<String> operationKeys = FXCollections.observableArrayList();
     @FXML
     private AnchorPane bottomAnchorPane;
     @FXML
     private ToggleButton ShowBottomAnchorPane;
+    @FXML
+    private TableColumn<String, ConcreteCommandPersonalized> operationClm;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -359,39 +363,45 @@ public class FXMLDocumentController implements Initializable {
                 if (ke.getCode().equals(KeyCode.ENTER)) {
                     //"press" execute button only in stateOperations
                     if (state instanceof StateOperations) {
-                        
-                         ((StateOperations) state).onButtonThree();
+
+                        ((StateOperations) state).onButtonThree();
                     }
                 }
             }
         });
 
-        
-        nameClm = new TableColumn<>("Key");
-        nameClm.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, String> p) {
-                return new SimpleStringProperty(p.getValue().getKey());
+        vars.getMyVariables().addListener((MapChangeListener.Change<? extends String, ? extends ComplexNumber> change) -> {
+            boolean removed = change.wasRemoved();
+            if (removed != change.wasAdded()) {
+                // no put for existing key
+                if (removed) {
+                    varKeys.remove(change.getKey());
+                } else {
+                    varKeys.add(change.getKey());
+                }
             }
         });
-        
-        contentClm = new TableColumn<>("Value");
-        contentClm.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, ComplexNumber>, ObservableValue<ComplexNumber>>() {
-            @Override
-            public ObservableValue<ComplexNumber> call(TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, ComplexNumber> p) {
-                return new SimpleObjectProperty(p.getValue().getValue());
+        userCommand.getMyCommandHash().addListener((MapChangeListener.Change<? extends String, ? extends ConcreteCommandPersonalized> change) -> {
+            boolean removed = change.wasRemoved();
+            if (removed != change.wasAdded()) {
+                // no put for existing key
+                if (removed) {
+                    operationKeys.remove(change.getKey());
+                } else {
+                    operationKeys.add(change.getKey());
+                }
             }
         });
+
         vars.put("a", new ComplexNumber("3", "2"));
-        
-        
-        listOpVars = FXCollections.observableArrayList(vars.getMyVariables().entrySet());
-        tableOpVar = new TableView(listOpVars);  
-        tableOpVar.getColumns().setAll(nameClm, contentClm);
-        System.out.println("\n\n\n\n" +listOpVars.get(0)+ " \n\n\n\n");
-        tableOpVar.refresh();
-      
-        
+        vars.put("b", new ComplexNumber("0", "2"));
+
+        nameClm.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
+
+        contentClm.setCellValueFactory(cd -> Bindings.valueAt(vars.getMyVariables(), cd.getValue()));
+        operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
+        tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
+
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
@@ -707,6 +717,9 @@ public class FXMLDocumentController implements Initializable {
         moveTextArea(true);
         moveAnchorOperation(false);
         System.out.println("\n\n");
+        tableOpVar.setItems(varKeys);
+        operationClm.setVisible(false);
+        contentClm.setVisible(true);
         this.state.setStateVariables();
     }
 
@@ -731,6 +744,10 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("\n\n");
         moveAnchorOperation(true);
         moveTextArea(false);
+        tableOpVar.setItems(operationKeys);
+        operationClm.setVisible(true);
+        contentClm.setVisible(false);
+
         this.state.setStateOperations();
     }
 
