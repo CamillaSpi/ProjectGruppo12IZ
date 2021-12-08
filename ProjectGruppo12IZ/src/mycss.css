@@ -41,13 +41,22 @@
     -fx-background-color: #9b9b9b;
 }
 .menuButton{
-    -fx-background-color: #9b9b9b;
+    -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
+    -fx-background-color: #0CC0AB;
     -fx-cursor: hand;
 }
 .menuButton:hover{
-    -fx-background-color: gray;
-    -fx-shadow: 5px 5px 5px 5px;
-    -fx-background-radius: 12em;
+    -fx-background-color: #86d1be;
+    
+}
+.bottomMenuButton{
+    -fx-background-color: #0CC0AB;
+    -fx-cursor: hand;
+    -fx-graphic: url('https://icons.iconarchive.com/icons/iconsmind/outline/24/Clock-Forward-icon.png');
+}
+.bottomMenuButton:hover{
+    -fx-background-color: #86d1be;
+    
 }
 
 .serviceMenu{
@@ -91,7 +100,7 @@
     -fx-background-radius: 1em;
 }
 .toggle-button {
-  -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
+  -fx-min-width:30;
 }
 
 .toggle-button:selected {

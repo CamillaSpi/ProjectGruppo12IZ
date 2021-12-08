@@ -148,7 +148,7 @@
                   <Font size="12.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="ShowBottomAnchorPane" layoutX="320.0" layoutY="400.0" maxHeight="33.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 1em;" styleClass="menuButton" textAlignment="CENTER">
+            <ToggleButton fx:id="ShowBottomAnchorPane" layoutX="320.0" layoutY="400.0" maxHeight="33.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 1em;" styleClass="bottomMenuButton" textAlignment="CENTER">
                <font>
                   <Font size="12.0" />
                </font>

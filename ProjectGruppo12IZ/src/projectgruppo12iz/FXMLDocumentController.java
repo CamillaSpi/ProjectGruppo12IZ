@@ -32,6 +32,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -44,9 +45,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
@@ -79,7 +83,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane baseAnchorPane;
     @FXML
-    private TextArea textArea;
+    private TextField textArea;
     @FXML
     private Button buttonTwo;
     @FXML
@@ -131,7 +135,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private VBox externalVBox;
     @FXML
-    private TextArea nameOperationTextArea;
+    private TextField nameOperationTextArea;
     @FXML
     private VBox operationVBox;
 
@@ -205,9 +209,10 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    private void moveBottomAnchorPane(boolean anchorFlag){
+
+    private void moveBottomAnchorPane(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), bottomAnchorPane);
-         if (anchorFlag) {
+        if (anchorFlag) {
             slide.setFromY(bottomAnchorPane.getTranslateY());
             slide.setToY(350);
             slide.setRate(1);
@@ -216,6 +221,23 @@ public class FXMLDocumentController implements Initializable {
         } else {
             slide.setFromY(bottomAnchorPane.getTranslateY());
             slide.setToY(0);
+            slide.setRate(1);
+            slide.play();
+
+        }
+    }
+
+    private void moveTextArea(boolean anchorFlag) {
+        TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), textArea);
+        if (anchorFlag) {
+            slide.setFromX(textArea.getTranslateX());
+            slide.setToX(50);
+            slide.setRate(1);
+            slide.play();
+
+        } else {
+            slide.setFromX(textArea.getTranslateX());
+            slide.setToX(0);
             slide.setRate(1);
             slide.play();
 
@@ -314,9 +336,36 @@ public class FXMLDocumentController implements Initializable {
         });
         ShowBottomAnchorPane.setOnMouseClicked(event -> {
 
-            moveBottomAnchorPane(ShowBottomAnchorPane.isSelected());
+            moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
         });
+        textArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.ENTER)) {
+                    //"press" enter button for staetOperations or Standard
+                    if (state instanceof StateOperations) {
+                        ((StateOperations) state).onButtonEnter();
+                    } else {
+                        ((StateStandard) state).onButtonEnter();
+                    }
+                }
+
+            }
+        });
+        nameOperationTextArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.ENTER)) {
+                    //"press" execute button only in stateOperations
+                    if (state instanceof StateOperations) {
+                        
+                         ((StateOperations) state).onButtonThree();
+                    }
+                }
+            }
+        });
+
         
         nameClm = new TableColumn<>("Key");
         nameClm.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, String>, ObservableValue<String>>() {
@@ -350,14 +399,16 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    
     /**
-     * It calls the method implemented in the classes State named onButtonTwo(), the execution of this method 
-     * depends on the current state. So for the StateStandard the AddCommand will be executed if possible,
-     * for the StateVariables the SaveFromVariableCommand will be executed if possible
-     * for the StateOperations the Show of the operation will be performed if possible.
+     * It calls the method implemented in the classes State named onButtonTwo(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the AddCommand will be executed if possible, for the
+     * StateVariables the SaveFromVariableCommand will be executed if possible
+     * for the StateOperations the Show of the operation will be performed if
+     * possible.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button in second position
+     * <!-- --> @param event it registers the event of the click of the button
+     * in second position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
@@ -367,107 +418,115 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It create a new SubtractCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there are not at least two operands 
-     * an error message will be shown.
+     * It create a new SubtractCommand and calls the execute method on it if it
+     * is possible. If the Operation could not be performed because there are
+     * not at least two operands an error message will be shown.
      *
      * @param event the event of the presses of the button sub.
      * <p>
-     * <!-- -->
-     * @see SubCommand
+     * <!-- --> @see SubCommand
      */
     @FXML
     private void sub(ActionEvent event) {
         SubtractCommand subComm = new SubtractCommand(collector);
-        if(subComm!=null && commandExecute(subComm)){
+        if (subComm != null && commandExecute(subComm)) {
             showAlert("Subtract done succesfully!");
             refresh();
+        } else {
+            showAlert("Subtract cannot be performed,\nhave you insert at least two operands?");
         }
-        else
-           showAlert("Subtract cannot be performed,\nhave you insert at least two operands?");
     }
 
     /**
-     * It calls the method implemented in the classes State named onButtonOne(), the execution of this method 
-     * depends on the current state. So for the StateStandard the MultiplyCommand will be executed if possible,
-     * for the StateVariables the SaveToVariableCommand will be executed if possible
-     * for the StateOperations the Delete of the specified operation will be performed if possible.
+     * It calls the method implemented in the classes State named onButtonOne(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the MultiplyCommand will be executed if possible, for the
+     * StateVariables the SaveToVariableCommand will be executed if possible for
+     * the StateOperations the Delete of the specified operation will be
+     * performed if possible.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button in first position
+     * <!-- --> @param event it registers the event of the click of the button
+     * in first position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void multiply(ActionEvent event) {
-       this.state.onButtonOne();
+        this.state.onButtonOne();
     }
 
     /**
-     * It calls the method implemented in the classes State named onButtonFour(), the execution of this method 
-     * depends on the current state. So for the StateStandard the DivisionCommand will be executed if possible,
-     * for the StateVariables the AddToVariableCommand will be executed if possible
-     * for the StateOperations this button is not shown so it could not be pressed.
+     * It calls the method implemented in the classes State named
+     * onButtonFour(), the execution of this method depends on the current
+     * state. So for the StateStandard the DivisionCommand will be executed if
+     * possible, for the StateVariables the AddToVariableCommand will be
+     * executed if possible for the StateOperations this button is not shown so
+     * it could not be pressed.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button in fourth position
+     * <!-- --> @param event it registers the event of the click of the button
+     * in fourth position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void division(ActionEvent event) {
-         if(this.state instanceof StateVariables)
+        if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonFour();
-        else
+        } else {
             ((StateStandard) this.state).onButtonFour();
+        }
     }
 
     /**
-     * It calls the method implemented in the classes State named onButtonFive(), the execution of this method 
-     * depends on the current state. So for the StateStandard the SquareRootCommand will be executed if possible,
-     * for the StateVariables the SubtractToVariableCommand will be executed if possible
-     * for the StateOperations this button is not shown so it could not be pressed.
+     * It calls the method implemented in the classes State named
+     * onButtonFive(), the execution of this method depends on the current
+     * state. So for the StateStandard the SquareRootCommand will be executed if
+     * possible, for the StateVariables the SubtractToVariableCommand will be
+     * executed if possible for the StateOperations this button is not shown so
+     * it could not be pressed.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button in fifth position
+     * <!-- --> @param event it registers the event of the click of the button
+     * in fifth position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void sqrt(ActionEvent event) {
-        if(this.state instanceof StateVariables)
+        if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonFive();
-        else
+        } else {
             ((StateStandard) this.state).onButtonFive();
+        }
     }
 
     /**
-     * It create a new InvertSignCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there are no operand inserted
-     * an error message will be shown.
+     * It create a new InvertSignCommand and calls the execute method on it if
+     * it is possible. If the Operation could not be performed because there are
+     * no operand inserted an error message will be shown.
      *
      * @param event the event of the presses of the button invertSign.
      * <p>
-     * <!-- -->
-     * @see InvertSignCommand
+     * <!-- --> @see InvertSignCommand
      */
     @FXML
     private void invertSign(ActionEvent event) {
         InvertSignCommand invsignComm = new InvertSignCommand(collector);
-        if(invsignComm!=null && commandExecute(invsignComm)){
+        if (invsignComm != null && commandExecute(invsignComm)) {
             showAlert("Square Root done succesfully!");
             refresh();
+        } else {
+            showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
         }
-        else
-           showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
     }
 
     /**
-     * It create a new ClearCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there are no operands 
-     * an error message will be shown.
+     * It create a new ClearCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there are no
+     * operands an error message will be shown.
      *
      * @param event the event of the presses of the button clear.
      * <p>
-     * <!-- -->
-     * @see ClearCommand
+     * <!-- --> @see ClearCommand
      */
     @FXML
     private void clear(ActionEvent event) {
@@ -475,19 +534,19 @@ public class FXMLDocumentController implements Initializable {
         if (clearComm != null && commandExecute(clearComm)) {
             showAlert("Clear Operation done succesfully!");
             refresh();
-        } else 
+        } else {
             showAlert("Clear operation cannot be performed!\n Have you inserted any operand?");
+        }
     }
 
     /**
-     * It create a new OverCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there not at least two operands 
-     * an error message will be shown.
+     * It create a new OverCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there not at
+     * least two operands an error message will be shown.
      *
      * @param event the event of the presses of the button over.
      * <p>
-     * <!-- -->
-     * @see OverCommand
+     * <!-- --> @see OverCommand
      */
     @FXML
     private void over(ActionEvent event) {
@@ -495,19 +554,19 @@ public class FXMLDocumentController implements Initializable {
         if (overComm != null && commandExecute(overComm)) {
             showAlert("Over Operation done succesfully!");
             refresh();
-        } else 
+        } else {
             showAlert("Over operation cannot be performed!\n Have you inserted at least two operands?");
+        }
     }
 
     /**
-     * It create a new DropCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there aren't any operands 
-     * an error message will be shown.
+     * It create a new DropCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there aren't
+     * any operands an error message will be shown.
      *
      * @param event the event of the presses of the button drop.
      * <p>
-     * <!-- -->
-     * @see DropCommand
+     * <!-- --> @see DropCommand
      */
     @FXML
     private void drop(ActionEvent event) {
@@ -515,18 +574,19 @@ public class FXMLDocumentController implements Initializable {
         if (dropComm != null && commandExecute(dropComm)) {
             showAlert("Drop Operation done succesfully!");
             refresh();
-        } else 
+        } else {
             showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
+        }
     }
 
-    /**It create a new DupCommand and calls the execute method on it if it is possible.
-     * If the Operation could not be performed because there not at least one operand 
-     * an error message will be shown.
+    /**
+     * It create a new DupCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there not at
+     * least one operand an error message will be shown.
      *
      * @param event the event of the presses of the button dup.
      * <p>
-     * <!-- -->
-     * @see DupCommand
+     * <!-- --> @see DupCommand
      */
     @FXML
     private void dup(ActionEvent event) {
@@ -534,26 +594,31 @@ public class FXMLDocumentController implements Initializable {
         if (dupComm != null && commandExecute(dupComm)) {
             showAlert("Dup Operation done succesfully!");
             refresh();
-        } else 
+        } else {
             showAlert("Dup operation cannot be performed!\n Have you inserted any operand?");
+        }
     }
 
-     /**
-     * It calls the method implemented in the classes State named onButtonThree(), the execution of this method 
-     * depends on the current state. So for the StateStandard the SwapCommand will be executed if possible,
-     * for the StateVariables this button is not shown so it could not be pressed
-     * for the StateOperations the UserDefined operation specified will be executed if possible.
+    /**
+     * It calls the method implemented in the classes State named
+     * onButtonThree(), the execution of this method depends on the current
+     * state. So for the StateStandard the SwapCommand will be executed if
+     * possible, for the StateVariables this button is not shown so it could not
+     * be pressed for the StateOperations the UserDefined operation specified
+     * will be executed if possible.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button in fourth position
+     * <!-- --> @param event it registers the event of the click of the button
+     * in fourth position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void swap(ActionEvent event) {
-        if(this.state instanceof StateOperations)
+        if (this.state instanceof StateOperations) {
             ((StateOperations) this.state).onButtonThree();
-        else
+        } else {
             ((StateStandard) this.state).onButtonThree();
+        }
     }
 
     @FXML
@@ -582,10 +647,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
-        if(this.state instanceof StateOperations)
+        if (this.state instanceof StateOperations) {
             ((StateOperations) this.state).onButtonEnter();
-        else
+        } else {
             ((StateStandard) this.state).onButtonEnter();
+        }
     }
 
     @FXML
@@ -610,12 +676,13 @@ public class FXMLDocumentController implements Initializable {
         showButton(buttonNine);
 
         showButton(new int[] {0,1,2,3,4,5,6,7,8,9,10,11});
-        */
+         */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
         moveAnchorOperation(false);
         moveBottomAnchorPane(true);
+        moveTextArea(false);
         this.state.setStateStandard();
     }
 
@@ -634,9 +701,10 @@ public class FXMLDocumentController implements Initializable {
 
         
         hideButton(new int[] {1,4,6,7,8,9,10,11,12});
-        */
+         */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
+        moveTextArea(true);
         moveAnchorOperation(false);
         System.out.println("\n\n");
         this.state.setStateVariables();
@@ -644,7 +712,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-       /* hideButton(buttonTen);
+        /* hideButton(buttonTen);
         hideButton(buttonEleven);
         hideButton(buttonTwelve);
         hideButton(buttonFour);
@@ -657,11 +725,12 @@ public class FXMLDocumentController implements Initializable {
 
         showButton(new int[] {0,1,2});
         hideButton(new int[] {3,4,5,6,7,8,9,10,11});
-        */
+         */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
         moveAnchorOperation(true);
+        moveTextArea(false);
         this.state.setStateOperations();
     }
 
@@ -672,6 +741,7 @@ public class FXMLDocumentController implements Initializable {
     public String getText() {
         return this.textArea.getText();
     }
+
     public void setText(String value) {
         this.textArea.setText(value);
     }
@@ -687,6 +757,7 @@ public class FXMLDocumentController implements Initializable {
     public void clearText() {
         textArea.clear();
     }
+
     public void clearNameText() {
         nameOperationTextArea.clear();
     }
@@ -698,19 +769,20 @@ public class FXMLDocumentController implements Initializable {
     public void changeButtonText(int index, String value) {
         myButtonArray.get(index).setText(value);
     }
-    public Invoker getInvoker(){
+
+    public Invoker getInvoker() {
         return this.inv;
     }
-    
-    public void setState(State state){
+
+    public void setState(State state) {
         this.state = state;
-    } 
-    
-    public boolean commandExecute(Command command){
+    }
+
+    public boolean commandExecute(Command command) {
         return inv.execute(command);
     }
-    
-    public void refreshVarsOp(){
+
+    public void refreshVarsOp() {
         this.tableOpVar.refresh();
     }
 }
