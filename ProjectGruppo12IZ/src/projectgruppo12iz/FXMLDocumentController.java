@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
@@ -48,6 +55,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
@@ -133,13 +141,13 @@ public class FXMLDocumentController implements Initializable {
 
     ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
     @FXML
-    private TableView<String> tableOpVar;
+    private TableView<Map.Entry<String, ComplexNumber>> tableOpVar;
     @FXML
-    private TableColumn<String, String> nameClm;
+    private TableColumn<Map.Entry<String, ComplexNumber>, String> nameClm;
     @FXML
-    private TableColumn<String, String> contentClm;
-
-    private ObservableMap<String, ComplexNumber> listOpVars;
+    private TableColumn<Map.Entry<String, ComplexNumber>, ComplexNumber> contentClm;
+    
+    private ObservableList<Map.Entry<String, ComplexNumber>> listOpVars;
     @FXML
     private AnchorPane bottomAnchorPane;
     @FXML
@@ -358,10 +366,32 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        listOpVars = FXCollections.observableMap(vars.getMyVariables());
-        nameClm.setCellValueFactory(new PropertyValueFactory<>("keyProperty"));
-        contentClm.setCellValueFactory(new PropertyValueFactory<>("valueProperty"));
-
+        
+        nameClm = new TableColumn<>("Key");
+        nameClm.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, String> p) {
+                return new SimpleStringProperty(p.getValue().getKey());
+            }
+        });
+        
+        contentClm = new TableColumn<>("Value");
+        contentClm.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, ComplexNumber>, ObservableValue<ComplexNumber>>() {
+            @Override
+            public ObservableValue<ComplexNumber> call(TableColumn.CellDataFeatures<Map.Entry<String, ComplexNumber>, ComplexNumber> p) {
+                return new SimpleObjectProperty(p.getValue().getValue());
+            }
+        });
+        vars.put("a", new ComplexNumber("3", "2"));
+        
+        
+        listOpVars = FXCollections.observableArrayList(vars.getMyVariables().entrySet());
+        tableOpVar = new TableView(listOpVars);  
+        tableOpVar.getColumns().setAll(nameClm, contentClm);
+        System.out.println("\n\n\n\n" +listOpVars.get(0)+ " \n\n\n\n");
+        tableOpVar.refresh();
+      
+        
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
