@@ -156,6 +156,9 @@ public class Variables {
         }
         return false;
     }
+ public void put(String key, ComplexNumber value){
+     this.myVariables.put(key, value);
+ }
     
     /**
     * It returns the attribute myVariables
