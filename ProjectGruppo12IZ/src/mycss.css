@@ -77,25 +77,7 @@
     -fx-background-color: #9b9b9b;
 }
 
-
-
-.text-area{
-    -fx-background-color: transparent; 
-    -fx-background-radius: 1em;
-}
-
-.text-area .scroll-pane {
-    -fx-background-color: #2D2D2D;
-    -fx-background-radius: 1em;
-}
-
-.text-area .scroll-pane .viewport{
-    -fx-background-color: #2D2D2D;
-    -fx-background-radius: 1em;
-}
-
-
-.text-area .scroll-pane .content{
+.text-field{
     -fx-background-color: #2D2D2D;
     -fx-background-radius: 1em;
 }

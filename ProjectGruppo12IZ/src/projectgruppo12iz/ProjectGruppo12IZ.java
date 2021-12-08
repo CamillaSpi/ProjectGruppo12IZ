@@ -29,7 +29,9 @@ public class ProjectGruppo12IZ extends Application {
         
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setTitle("GRUPPO12IZ-Calculator");
         stage.setScene(scene);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/calculator-icon.png")));
         scene.getStylesheets().add("mycss.css");
         scene.setFill(Color.TRANSPARENT);
         stage.show();
