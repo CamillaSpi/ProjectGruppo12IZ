@@ -213,6 +213,22 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
+    private void moveTextArea(boolean anchorFlag){
+        TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), textArea);
+         if (anchorFlag) {
+            slide.setFromX(textArea.getTranslateX());
+            slide.setToX(50);
+            slide.setRate(1);
+            slide.play();
+
+        } else {
+            slide.setFromX(textArea.getTranslateX());
+            slide.setToX(0);
+            slide.setRate(1);
+            slide.play();
+
+        }
+    }
 
     public void showButton(int[] index) {
         ButtonBase myBtn;
@@ -306,7 +322,7 @@ public class FXMLDocumentController implements Initializable {
         });
         ShowBottomAnchorPane.setOnMouseClicked(event -> {
 
-            moveBottomAnchorPane(ShowBottomAnchorPane.isSelected());
+            moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
         });
         
@@ -587,6 +603,7 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("\n\n");
         moveAnchorOperation(false);
         moveBottomAnchorPane(true);
+        moveTextArea(false);
         this.state.setStateStandard();
     }
 
@@ -608,6 +625,7 @@ public class FXMLDocumentController implements Initializable {
         */
         VariableToggleButton.setSelected(false);
         moveAnchor(VariableToggleButton.isSelected());
+        moveTextArea(true);
         moveAnchorOperation(false);
         System.out.println("\n\n");
         this.state.setStateVariables();
@@ -633,6 +651,7 @@ public class FXMLDocumentController implements Initializable {
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
         moveAnchorOperation(true);
+        moveTextArea(false);
         this.state.setStateOperations();
     }
 
