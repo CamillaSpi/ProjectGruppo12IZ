@@ -122,6 +122,16 @@
                   </VBox>
                </children>
             </VBox>
+            <AnchorPane fx:id="bottomAnchorPane" layoutY="166.0" prefHeight="275.0" prefWidth="349.0" AnchorPane.topAnchor="166.0">
+               <children>
+                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="nameClm" prefWidth="98.0" text="Name" />
+                      <TableColumn fx:id="contentClm" prefWidth="250.0" text="Content" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="varAnchorPane" layoutX="-200.0" prefHeight="486.0" prefWidth="191.0" style="-fx-background-radius: 1em;" styleClass="BoxState" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
@@ -134,6 +144,11 @@
                </children>
             </AnchorPane>
             <ToggleButton fx:id="VariableToggleButton" layoutX="11.0" maxHeight="33.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 1em;" styleClass="menuButton" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="ShowBottomAnchorPane" layoutX="320.0" layoutY="400.0" maxHeight="33.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 1em;" styleClass="menuButton" textAlignment="CENTER">
                <font>
                   <Font size="12.0" />
                </font>
@@ -155,11 +170,5 @@
             </TableView>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableOpVar" layoutX="42.0" layoutY="440.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn fx:id="nameClm" prefWidth="98.0" text="Name" />
-          <TableColumn fx:id="contentClm" prefWidth="101.0" text="Content" />
-        </columns>
-      </TableView>
     </children>
 </AnchorPane>

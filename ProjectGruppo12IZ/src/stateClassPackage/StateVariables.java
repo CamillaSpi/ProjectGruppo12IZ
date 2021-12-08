@@ -137,6 +137,7 @@ public class StateVariables extends State{
         this.controller.changeButtonText(1, "SUM");
         this.controller.changeButtonText(3, "DIV");
         this.controller.changeButtonText(4, "SQRT");
+        this.controller.hideButton(new int[]{13});
         this.controller.setState(new StateStandard(controller));
     }
 
@@ -145,7 +146,7 @@ public class StateVariables extends State{
 
     @Override
     public void setStateOperations() {
-        this.controller.showButton(new int[]{2, 12});
+        this.controller.showButton(new int[]{2, 12,13});
         this.controller.hideButton(new int[]{3, 4});
         this.controller.changeButtonText(0, "DELETE");
         this.controller.changeButtonText(1, "SHOW");

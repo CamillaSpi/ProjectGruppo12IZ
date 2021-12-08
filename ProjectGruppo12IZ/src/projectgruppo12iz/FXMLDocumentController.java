@@ -31,6 +31,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -126,7 +127,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private VBox operationVBox;
 
-    ArrayList<Button> myButtonArray = new ArrayList<>();
+    ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
     @FXML
     private TableView<String> tableOpVar;
     @FXML
@@ -135,6 +136,10 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<String, String> contentClm;
     
     private ObservableMap<String, ComplexNumber> listOpVars;
+    @FXML
+    private AnchorPane bottomAnchorPane;
+    @FXML
+    private ToggleButton ShowBottomAnchorPane;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -192,9 +197,25 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
+    private void moveBottomAnchorPane(boolean anchorFlag){
+        TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), bottomAnchorPane);
+         if (anchorFlag) {
+            slide.setFromY(bottomAnchorPane.getTranslateY());
+            slide.setToY(350);
+            slide.setRate(1);
+            slide.play();
+
+        } else {
+            slide.setFromY(bottomAnchorPane.getTranslateY());
+            slide.setToY(0);
+            slide.setRate(1);
+            slide.play();
+
+        }
+    }
 
     public void showButton(int[] index) {
-        Button myBtn;
+        ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
             myBtn = myButtonArray.get(index[i]);
             System.out.print("forse show " + myBtn + myBtn.isVisible());
@@ -214,7 +235,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void hideButton(int[] index) {
-        Button myBtn;
+        ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
             myBtn = myButtonArray.get(index[i]);
             System.out.print("forse hide " + myBtn + myBtn.isVisible());
@@ -257,6 +278,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bottomAnchorPane.setTranslateY(350);
         state = new StateStandard(this);
         myButtonArray.add(buttonOne);
         myButtonArray.add(buttonTwo);
@@ -271,6 +293,8 @@ public class FXMLDocumentController implements Initializable {
         myButtonArray.add(buttonEleven);
         myButtonArray.add(buttonTwelve);
         myButtonArray.add(enterButton);
+        myButtonArray.add(ShowBottomAnchorPane);
+        ShowBottomAnchorPane.setVisible(false);
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
@@ -280,6 +304,12 @@ public class FXMLDocumentController implements Initializable {
             moveAnchor(VariableToggleButton.isSelected());
 
         });
+        ShowBottomAnchorPane.setOnMouseClicked(event -> {
+
+            moveBottomAnchorPane(ShowBottomAnchorPane.isSelected());
+
+        });
+        
         listOpVars = FXCollections.observableMap(vars.getMyVariables());
         nameClm.setCellValueFactory(new PropertyValueFactory<>("keyProperty"));
         contentClm.setCellValueFactory(new PropertyValueFactory<>("valueProperty"));
@@ -556,6 +586,7 @@ public class FXMLDocumentController implements Initializable {
         moveAnchor(VariableToggleButton.isSelected());
         System.out.println("\n\n");
         moveAnchorOperation(false);
+        moveBottomAnchorPane(true);
         this.state.setStateStandard();
     }
 

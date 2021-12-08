@@ -177,6 +177,8 @@ public class StateStandard extends State{
         controller.changeButtonText(3, "+x");
         controller.changeButtonText(4, "-x");
         controller.hideButton(new int[] {2, 5, 6, 7, 8, 9, 10, 11, 12});
+        controller.showButton(new int[] {13});
+        
         controller.setState(new StateVariables(controller)); 
     }
 
@@ -194,6 +196,7 @@ public class StateStandard extends State{
         controller.changeButtonText(1, "SHOW");
         controller.changeButtonText(2, "EXECUTE");
         controller.hideButton(new int[] {3, 4, 5, 6, 7, 8, 9, 10, 11});
+        controller.showButton(new int[] {13});
         controller.setState(new StateOperations(controller));  
     }
     
