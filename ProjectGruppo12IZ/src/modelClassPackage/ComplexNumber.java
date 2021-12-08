@@ -176,7 +176,12 @@ public class ComplexNumber {
     
     @Override
     public String toString() {
-        return "ComplexNumber{" + "real=" + real + ", imaginary=" + imaginary + '}';
+        String toReturn;
+        if( imaginary.compareTo(new BigDecimal("0")) < 0)
+           toReturn = real + "" + imaginary + "j";
+        else
+           toReturn  = real + "+" + imaginary + "j";
+        return toReturn;
     }
 
 }
