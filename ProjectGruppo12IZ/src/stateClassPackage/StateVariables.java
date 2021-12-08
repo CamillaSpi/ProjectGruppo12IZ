@@ -39,6 +39,7 @@ public class StateVariables extends State{
                 else{
                     this.controller.showAlert("the last operand is saved in the writed variable!\n");
                     this.controller.refresh();
+                    this.controller.refreshVarsOp();
                 }
             }else
                 this.controller.showAlert("write the variable where save the values!\n");
@@ -65,6 +66,7 @@ public class StateVariables extends State{
                 else{
                     this.controller.showAlert("Value from variable inserted correctly\n");
                     this.controller.refresh();
+                    this.controller.refreshVarsOp();
                 }     
             }else
                 this.controller.showAlert("the operation is failed\n");
@@ -89,6 +91,7 @@ public class StateVariables extends State{
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
+                        this.controller.refreshVarsOp();
                     }
                 }else
                     this.controller.showAlert("the operation is failed\n");
@@ -117,6 +120,7 @@ public class StateVariables extends State{
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
+                        this.controller.refreshVarsOp();
                     }
                 }else
                     this.controller.showAlert("the operation is failed\n");

@@ -7,6 +7,8 @@ package modelClassPackage;
 
 import java.util.HashMap;
 import java.util.Map;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * This is a class containing a Map as attribute, in order to contain variables 
@@ -48,7 +50,21 @@ public class Variables {
         return myVariables.get(key);  
     }
     
+    public StringProperty getValueProperty(String key){
+        StringProperty ret = new SimpleStringProperty();
+        ret.setValue(myVariables.get(key).complexStringProperty().toString());
+        return ret;
+    }
     
+    public StringProperty getKeyProperty(String key){
+        if(myVariables.get(key) != null){
+            StringProperty ret = new SimpleStringProperty();
+            ret.setValue(key);
+            return ret;
+        }
+        else 
+            return null;
+    }
     
     /**
     * It returns the attribute myVariables

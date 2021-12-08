@@ -43,12 +43,15 @@ public class DivideCommand implements Command{
             return false;
         }
         this.dividend = second;
-        this.divider = first;
+        this.divider = first; 
+        //executes the division of the two removed operands
+        ComplexNumber result = Calculator.division(dividend, divider);
+        if(result == null){
+            return false;
+        }
         //removes the last two inserted operands
         collector.remove();
         collector.remove();
-        //executes the division of the two removed operands
-        ComplexNumber result = Calculator.division(dividend, divider);
         //inserts the result of the division in the collection
         collector.insert(result);
         return true;

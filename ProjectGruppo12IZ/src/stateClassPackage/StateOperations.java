@@ -75,7 +75,7 @@ public class StateOperations extends State {
     */
     @Override
     public void onButtonOne() {
-        String OpName = this.controller.getText();
+        String OpName = this.controller.getOperationName();
         if ("".equals(OpName)) {
             this.controller.showAlert("Write the name of the operation to delete");
         } else {
@@ -116,7 +116,7 @@ public class StateOperations extends State {
     @Override
     public void onButtonTwo() {
         //show
-        String operationName = this.controller.getText();
+        String operationName = this.controller.getOperationName();
         ConcreteCommandPersonalized command = (ConcreteCommandPersonalized) userCommand.getUserCommand(operationName);
         if (command != null) {
             this.controller.setText(command.getCommands());
@@ -131,7 +131,7 @@ public class StateOperations extends State {
     * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
     */
     public void onButtonThree() {
-         String OpName =  this.controller.getText();
+         String OpName = this.controller.getOperationName();
         if ("".equals(OpName))
              this.controller.showAlert("Write the name of the operation to execute");
         else{

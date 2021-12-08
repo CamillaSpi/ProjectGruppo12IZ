@@ -23,6 +23,7 @@ import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -126,6 +127,14 @@ public class FXMLDocumentController implements Initializable {
     private VBox operationVBox;
 
     ArrayList<Button> myButtonArray = new ArrayList<>();
+    @FXML
+    private TableView<String> tableOpVar;
+    @FXML
+    private TableColumn<String, String> nameClm;
+    @FXML
+    private TableColumn<String, String> contentClm;
+    
+    private ObservableMap<String, ComplexNumber> listOpVars;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -271,6 +280,10 @@ public class FXMLDocumentController implements Initializable {
             moveAnchor(VariableToggleButton.isSelected());
 
         });
+        listOpVars = FXCollections.observableMap(vars.getMyVariables());
+        nameClm.setCellValueFactory(new PropertyValueFactory<>("keyProperty"));
+        contentClm.setCellValueFactory(new PropertyValueFactory<>("valueProperty"));
+        tableOpVar.setItems;
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
@@ -635,5 +648,9 @@ public class FXMLDocumentController implements Initializable {
     
     public boolean commandExecute(Command command){
         return inv.execute(command);
+    }
+    
+    public void refreshVarsOp(){
+        this.tableOpVar.refresh();
     }
 }

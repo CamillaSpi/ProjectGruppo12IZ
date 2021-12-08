@@ -155,5 +155,11 @@
             </TableView>
          </children>
       </AnchorPane>
+      <TableView fx:id="tableOpVar" layoutX="42.0" layoutY="440.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nameClm" prefWidth="98.0" text="Name" />
+          <TableColumn fx:id="contentClm" prefWidth="101.0" text="Content" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>
