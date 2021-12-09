@@ -10,6 +10,7 @@ import commandClassPackage.*;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -32,6 +33,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -56,6 +58,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import modelClassPackage.Calculator;
@@ -401,6 +404,7 @@ public class FXMLDocumentController implements Initializable {
         contentClm.setCellValueFactory(cd -> Bindings.valueAt(vars.getMyVariables(), cd.getValue()));
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
+      
 
     }
 
@@ -642,9 +646,42 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void restoreVariablesFromStack(ActionEvent event) {
     }
-
+    
+    
+     /**
+     * It create a new FileChooser and open the Dialog on the base anchor pane. 
+     * From it the user can choose the origin file from which to restore the user's operations 
+     * defined in a previous usage session.
+     * Before it a message is shown to user in ordere to comunicate that the operation defined in the current usage 
+     * remains and that if there are some operations defined in the current usage with same name of some in the file,
+     * these will be replaced.
+     * The chosen file is then passed to a service whose work is to read the operations from the specified file.
+     * If the operation can be performed a confirmation message will be shown to User
+     * otherwise an error message is shown.
+     * 
+     * <p>
+     * <!-- --> 
+     * @param event it registers the event of the click of the button for restore User Operations
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void restoreUserOperationFromFile(ActionEvent event) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Restoring operations from File");
+        alert.setHeaderText("This means the current operation will be kept!");
+        alert.setContentText("If you have defined some with the same name, it will be replaced!");
+        Optional<ButtonType> option = alert.showAndWait();
+        if (alert.getResult() == ButtonType.OK) {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Open ");
+            File file = fc.showOpenDialog(this.baseAnchorPane.getScene().getWindow());
+            CommandRetrievingService commandRetr = new CommandRetrievingService(file, userCommand);
+            commandRetr.start();
+            commandRetr.setOnSucceeded(event1 -> showAlert("Restore operation done successfully!"));
+            commandRetr.setOnFailed((WorkerStateEvent event1) -> showAlert("Restore operation cannot be performed!"));
+        }
+        else
+            showAlert("Restore operation will not be performed!");
     }
 
     @FXML
