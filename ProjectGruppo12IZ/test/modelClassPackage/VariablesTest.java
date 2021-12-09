@@ -179,7 +179,7 @@ public class VariablesTest {
         String key = "a";
         Variables instance = new Variables();
         ComplexNumber value = new ComplexNumber("-4","3");
-        instance.getMyVariables().put(key, value);
+        instance.put(key, value);
         ComplexNumber expResult = value;
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
@@ -195,7 +195,7 @@ public class VariablesTest {
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
         System.out.println(instance.toString());
-        assertEquals(a, instance.getMyVariables().get("a"));
+        assertEquals(a, instance.getValue("a"));
     }
     
     /**
@@ -207,7 +207,7 @@ public class VariablesTest {
         ComplexNumber a = null;
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
-        assertEquals(null, instance.getMyVariables().get("a"));
+        assertEquals(null, instance.getValue("a"));
     }
     
     /**
@@ -220,7 +220,7 @@ public class VariablesTest {
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("8", a);
-        assertEquals(null, instance.getMyVariables().get("8"));
+        assertEquals(null, instance.getValue("8"));
     }
     
     /**
@@ -236,7 +236,7 @@ public class VariablesTest {
         Variables instance = new Variables();
         instance.saveToVariable(key, oldValue);
         instance.saveToVariable(key, newValue);
-        ComplexNumber retValue = instance.getMyVariables().get(key);
+        ComplexNumber retValue = instance.getValue(key);
         assertEquals(retValue, newValue); 
     }
     
@@ -369,7 +369,7 @@ public class VariablesTest {
         ComplexNumber toAdd = new ComplexNumber("19", "12");
         instance.addToVariable("a", toAdd);
         ComplexNumber expResult = Calculator.addiction(a, toAdd);
-        ComplexNumber result = instance.getMyVariables().get("a");
+        ComplexNumber result = instance.getValue("a");
         assertEquals(expResult, result);
     }
     /**

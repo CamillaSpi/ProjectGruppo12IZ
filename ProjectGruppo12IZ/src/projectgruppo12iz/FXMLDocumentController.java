@@ -10,6 +10,7 @@ import commandClassPackage.*;
 import commandClassPackage.HashCommandTable;
 import commandClassPackage.Invoker;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -56,6 +57,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import modelClassPackage.Calculator;
@@ -404,15 +406,15 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        vars.put("a", new ComplexNumber("3", "2"));
-        vars.put("b", new ComplexNumber("0", "2"));
-
         nameClm.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
 
         contentClm.setCellValueFactory(cd -> Bindings.valueAt(vars.getMyVariables(), cd.getValue()));
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
 
+        this.userCommand.createPersonalizedCommand("+ - +", "cami");
+        this.userCommand.createPersonalizedCommand("+ - + *", "cami2");
+        this.userCommand.createPersonalizedCommand("+ - + /", "cami3");
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
@@ -653,6 +655,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void saveUserOperationToFile(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Open ");
+        File file = fc.showOpenDialog(this.baseAnchorPane.getScene().getWindow());
+        SaveService thread = new SaveService(file, this.userCommand);
+        thread.setOnSucceeded(e -> this.showAlert("operations saved successfully"));
+        thread.setOnFailed(e -> this.showAlert("operations not saved"));
+        thread.start();
     }
 
     @FXML

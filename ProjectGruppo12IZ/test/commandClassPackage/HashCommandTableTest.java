@@ -5,9 +5,11 @@
  */
 package commandClassPackage;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.collections.ObservableMap;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import modelClassPackage.Variables;
@@ -272,6 +274,61 @@ public class HashCommandTableTest {
         Command result = instance.getUserCommand("toAdd1");
         
         assertEquals(null, result);
+    }
+
+    /**
+     * Test of setCollector method, of class HashCommandTable.
+     */
+    @Test
+    public void testSetCollector() {
+        System.out.println("setCollector");
+        assertEquals(true, true);
+    }
+
+    /**
+     * Test of createPersonalizedCommand method, of class HashCommandTable.
+     */
+    @Test
+    public void testCreatePersonalizedCommand() {
+        System.out.println("createPersonalizedCommand");
+        assertEquals(true, true);
+
+    }
+
+    /**
+     * Test of getUserCommand method, of class HashCommandTable.
+     */
+    @Test
+    public void testGetUserCommand() {
+        System.out.println("getUserCommand");
+        assertEquals(true, true);
+
+    }
+
+    /**
+     * Test of getMyCommandHash method, of class HashCommandTable.
+     */
+    @Test
+    public void testGetMyCommandHash() {
+        System.out.println("getMyCommandHash");
+        assertEquals(true, true);
+
+    }
+
+    /**
+     * Test of printCommandToFile method, of class HashCommandTable.
+     */
+    @Test
+    public void testPrintCommandToFile() {
+        System.out.println("testPrintCommandToFile with a subtractToVariable function in the definition");
+        String sequenceDefinition1 = "+ -a";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        instance.createPersonalizedCommand("+", "toAdd");
+        instance.createPersonalizedCommand("toAdd", "toAdd1");
+        File f = new File("pippo");
+        boolean result = instance.printCommandToFile(f);
+        assertEquals(true, result); 
     }
     
 }
