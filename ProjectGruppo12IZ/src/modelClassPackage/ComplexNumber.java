@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
  * @author Gruppo 12 IZ
  *
  */
-public class ComplexNumber {
+public class ComplexNumber{
 
     private final BigDecimal real;
     private final BigDecimal imaginary;

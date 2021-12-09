@@ -255,18 +255,5 @@ public class ComplexNumberTest {
         StringProperty resSp = cn.complexStringProperty();
         assertEquals(expSp.getValue(), resSp.getValue());
     }
-    
-    
-    /**
-     * Test of toString method, of class ComplexNumber.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        ComplexNumber instance = new ComplexNumber("5","8");
-        String expResult = "ComplexNumber{real=5, imaginary=8}";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-    }
 
 }
