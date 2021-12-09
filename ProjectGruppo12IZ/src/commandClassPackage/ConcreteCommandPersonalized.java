@@ -5,13 +5,14 @@
  */
 package commandClassPackage;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Mattia
  */
-public class ConcreteCommandPersonalized implements Command{
+public class ConcreteCommandPersonalized implements Command, Serializable{
  
     private final String commandName;
     private final String operations;

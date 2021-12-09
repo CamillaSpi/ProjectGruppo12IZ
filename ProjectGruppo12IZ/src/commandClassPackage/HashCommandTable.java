@@ -12,6 +12,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -34,7 +39,7 @@ public class HashCommandTable{
     private final ObservableMap<String,ConcreteCommandPersonalized> concreteCommandHash;
     private final HashMap<String,String> basicCommandHash;
     private MyOperandCollection collector;
-    private Variables vars;
+    private final Variables vars;
 
     public HashCommandTable(MyOperandCollection collector, Variables vars) {
         this.concreteCommandHash = FXCollections.observableHashMap();
@@ -80,7 +85,7 @@ public class HashCommandTable{
         Class<?> operation;
         Constructor<?> commandConstructor;
         Command newCommand;
-        List<Command> commandList = new LinkedList<Command>();
+        List<Command> commandList = new LinkedList<>();
         for(String stringCommand: stringOfCommands){
             //check if the string is one corrisponding to the basic operation
             if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
@@ -143,11 +148,9 @@ public class HashCommandTable{
         if(toDelete == null)
             return false;
         // If i'm there the ConcreteCommandPersonalized exists, so maybe its was inserted in other list
-        for(Map.Entry<String, ConcreteCommandPersonalized> maybeToDelete : concreteCommandHash.entrySet() ){
-            if(maybeToDelete.getValue().contains(name)){
-                concreteCommandHash.remove(maybeToDelete.getKey());
-            }
-        }
+        concreteCommandHash.entrySet().stream().filter(maybeToDelete -> (maybeToDelete.getValue().contains(name))).forEachOrdered(maybeToDelete -> {
+            concreteCommandHash.remove(maybeToDelete.getKey());
+        });
         return true;
     }
     
@@ -194,4 +197,15 @@ public class HashCommandTable{
         return true;
     }
     
+    public boolean printCommandToFile(File file) {
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
+            concreteCommandHash.entrySet().forEach(m -> {
+                out.print(m.getKey() + "," + m.getValue().getCommands() + "\n");
+            });
+        } catch (IOException ex) {
+            System.out.println("errore nella lettura del file");
+            return false;
+        }   
+        return true;        
+    }
 }

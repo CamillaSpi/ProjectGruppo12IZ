@@ -48,7 +48,7 @@ public class SaveFromVariableCommandTest {
         System.out.println("execute with an initialized variable");
         MyOperandCollection coll = new MyOperandCollection(12);
         Variables vars= new Variables();
-        vars.getMyVariables().put("a", new ComplexNumber("5","6"));
+        vars.put("a", new ComplexNumber("5","6"));
         SaveFromVariableCommand instance = new SaveFromVariableCommand(coll,vars,"a");
         boolean expResult = true;
         boolean result = instance.execute();
@@ -79,7 +79,7 @@ public class SaveFromVariableCommandTest {
         MyOperandCollection coll = new MyOperandCollection(12);
         Variables vars = new Variables();
         ComplexNumber val = new ComplexNumber("5","6");
-        vars.getMyVariables().put("a", val);
+        vars.put("a", val);
         SaveFromVariableCommand instance = new SaveFromVariableCommand(coll,vars,"a");
         boolean expResult = false;
         instance.execute();

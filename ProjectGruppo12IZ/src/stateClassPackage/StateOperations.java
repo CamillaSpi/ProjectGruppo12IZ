@@ -113,7 +113,6 @@ public class StateOperations extends State {
     * <p> <!-- -->
     * @see HashCommandTable
     */
-    @Override
     public void onButtonTwo() {
         //show
         String operationName = this.controller.getOperationName();
@@ -130,6 +129,7 @@ public class StateOperations extends State {
     * <p> <!-- -->
     * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
     */
+    @Override
     public void onButtonThree() {
          String OpName = this.controller.getOperationName();
         if ("".equals(OpName))
@@ -152,7 +152,13 @@ public class StateOperations extends State {
             }
         }
    }
-
+    
+    /**
+     * It changes the State of the controller to that of StateStandard,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables, .
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateStandard() {
         this.controller.showButton(new int[]{3, 4, 5, 6, 7, 8, 9, 10, 11,12});
@@ -162,21 +168,22 @@ public class StateOperations extends State {
         this.controller.hideButton(new int[]{13});
         controller.setState(new StateStandard(controller)); 
     }
-
+    
+    /**
+     * It changes the State of the controller to that of StateVariables,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform on user defined operations.
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateVariables() {
-        // save >x 
-        // <x
-        // +x 
-        // -x
-
-        this.controller.showButton(new int[]{3, 4,13});
+        this.controller.showButton(new int[]{3, 5,13});
         this.controller.changeButtonText(0, ">x");
-        this.controller.changeButtonText(1, "<x");
-        this.controller.changeButtonText(2, "SWAP");
+        this.controller.changeButtonText(2, "<x");
+        this.controller.changeButtonText(1, "SUM");
         this.controller.changeButtonText(3, "+x");
-        this.controller.changeButtonText(4, "-x");
-        this.controller.hideButton(new int[]{2,12});
+        this.controller.changeButtonText(5, "-x");
+        this.controller.hideButton(new int[]{1,12});
         controller.setState(new StateVariables(controller)); 
     }
 

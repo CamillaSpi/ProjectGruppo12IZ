@@ -6,6 +6,9 @@
 package modelClassPackage;
 
 import java.util.Map;
+import java.util.Stack;
+import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -70,7 +73,7 @@ public class VariablesTest {
      * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
      */
     @Test
-    public void testCheckRangeCorrectLength() {
+    public void testCheckRange() {
         System.out.println("checkRange with correct length");
         String s = "a";
         Variables instance = new Variables();
@@ -171,12 +174,12 @@ public class VariablesTest {
      * Test of getValue method, of class Variables, analyzing the case with a contained key in the Map.
      */
     @Test
-    public void testGetValueContainedKey() {
+    public void testGetValue() {
         System.out.println("getValue with a contained key");
         String key = "a";
         Variables instance = new Variables();
         ComplexNumber value = new ComplexNumber("-4","3");
-        instance.getMyVariables().put(key, value);
+        instance.put(key, value);
         ComplexNumber expResult = value;
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
@@ -186,13 +189,13 @@ public class VariablesTest {
      * Test of SaveToVariables method, of class Variables, with correct entry.
      */
     @Test
-    public void testSaveToVariablesCorrectNumber() {
+    public void testSaveToVariable() {
         System.out.println("insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
         System.out.println(instance.toString());
-        assertEquals(a, instance.getMyVariables().get("a"));
+        assertEquals(a, instance.getValue("a"));
     }
     
     /**
@@ -204,7 +207,7 @@ public class VariablesTest {
         ComplexNumber a = null;
         Variables instance = new Variables();
         instance.saveToVariable("a", a);
-        assertEquals(null, instance.getMyVariables().get("a"));
+        assertEquals(null, instance.getValue("a"));
     }
     
     /**
@@ -217,7 +220,7 @@ public class VariablesTest {
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
         instance.saveToVariable("8", a);
-        assertEquals(null, instance.getMyVariables().get("8"));
+        assertEquals(null, instance.getValue("8"));
     }
     
     /**
@@ -233,7 +236,7 @@ public class VariablesTest {
         Variables instance = new Variables();
         instance.saveToVariable(key, oldValue);
         instance.saveToVariable(key, newValue);
-        ComplexNumber retValue = instance.getMyVariables().get(key);
+        ComplexNumber retValue = instance.getValue(key);
         assertEquals(retValue, newValue); 
     }
     
@@ -241,7 +244,7 @@ public class VariablesTest {
      * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable correctly written and initialized.
      */
     @Test
-    public void testSaveFromVariableCorrectVariable() {
+    public void testSaveFromVariable() {
         System.out.println("save from a variable correctly written and initialized");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
@@ -338,7 +341,7 @@ public class VariablesTest {
      * Test of subtractToVariable method, of class Variables, analyzing the case in which the key as an already value associated and the subtracting is not null.
      */
     @Test
-    public void testSubtractToVariableCorrectCase() {
+    public void testSubtractToVariable() {
         System.out.println("subtractToVariable already associated value to key and correct subtracting");
         String keyA = "a";
         String keyB = "b";
@@ -366,7 +369,7 @@ public class VariablesTest {
         ComplexNumber toAdd = new ComplexNumber("19", "12");
         instance.addToVariable("a", toAdd);
         ComplexNumber expResult = Calculator.addiction(a, toAdd);
-        ComplexNumber result = instance.getMyVariables().get("a");
+        ComplexNumber result = instance.getValue("a");
         assertEquals(expResult, result);
     }
     /**
@@ -410,5 +413,91 @@ public class VariablesTest {
         Boolean result = instance.addToVariable("a", toAdd);
         assertEquals(expResult, result);
     }
+    /**
+     * Test of getMyVariables method, of class Variables.
+     */
+    @Test
+    public void testGetMyVariables() {
+        System.out.println("getMyVariables");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of put method, of class Variables.
+     */
+    @Test
+    public void testPut() {
+        System.out.println("put");
+        String key = "a";
+        ComplexNumber value = new ComplexNumber("3", "2");
+        Variables instance = new Variables();
+        int length = instance.getMyVariables().size();
+        instance.put(key, value);
+        assertEquals(length +1 , instance.getMyVariables().size());
+    }
+
+    /**
+     * Test of saveVariablesIntoStack method, of class Variables.
+     */
+    @Test
+    public void testSavevariablesIntoStack() {
+        System.out.println("SavevariablesIntoStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.saveVariablesIntoStack();
+        
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        instance.restoreVariablesFromStack();
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testRestoreVariablesFromStack() {
+        System.out.println("restoreVariablesFromStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.saveVariablesIntoStack();
+        instance.put("c", new ComplexNumber("0", "2"));
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        instance.restoreVariablesFromStack();
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertNotEquals(expResult, result);
+    }
+    /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testRestoreFromNullStack() {
+        System.out.println("RestoreFromNullStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.put("c", new ComplexNumber("0", "2"));
+        boolean expResult = false;
+        boolean result = instance.restoreVariablesFromStack();
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testSaveNullIntoStack() {
+        System.out.println("SaveNullIntoStack");
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.saveVariablesIntoStack();
+        assertEquals(expResult, result);
+    }
+
     
 }
