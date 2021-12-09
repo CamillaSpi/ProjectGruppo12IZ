@@ -326,7 +326,7 @@ public class HashCommandTableTest {
         HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand("+", "toAdd");
         instance.createPersonalizedCommand("toAdd", "toAdd1");
-        File f = new File("test/commandClassPackage/pippo");
+        File f = new File("test/filesForTests/pippo");
         boolean result = instance.printCommandToFile(f);
         assertEquals(true, result); 
     }
@@ -338,7 +338,7 @@ public class HashCommandTableTest {
     public void testReadCommandFromFile() {
         System.out.println("testReadCommandFromFile passing a correct file name with right content");
         HashCommandTable instance = new HashCommandTable(collector, vars);
-        File fileName = new File("TestSaveFrom.txt");
+        File fileName = new File("test/filesForTests/TestSaveFrom.txt");
         instance.readCommandFromFile(fileName);
         ConcreteCommandPersonalized value1 = (ConcreteCommandPersonalized)instance.getUserCommand("FirstOperation");
         ConcreteCommandPersonalized value2 = (ConcreteCommandPersonalized)instance.getUserCommand("SecondOperation");
