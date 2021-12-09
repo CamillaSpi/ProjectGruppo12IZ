@@ -326,7 +326,7 @@ public class HashCommandTableTest {
         HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand("+", "toAdd");
         instance.createPersonalizedCommand("toAdd", "toAdd1");
-        File f = new File("pippo");
+        File f = new File("test/commandClassPackage/pippo");
         boolean result = instance.printCommandToFile(f);
         assertEquals(true, result); 
     }
