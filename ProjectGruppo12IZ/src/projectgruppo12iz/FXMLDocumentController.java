@@ -15,52 +15,34 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.util.Callback;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import modelClassPackage.Variables;
@@ -161,6 +143,8 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<String, ConcreteCommandPersonalized> operationClm;
     @FXML
     private Button openMenuButton;
+    @FXML
+    private Button closeButton;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -710,7 +694,6 @@ public class FXMLDocumentController implements Initializable {
     private void showStandard(ActionEvent event) {
 
         moveAnchor(false);
-        System.out.println("\n\n");
         moveAnchorOperation(false);
         ShowBottomAnchorPane.setSelected(false);
         moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
@@ -723,22 +706,26 @@ public class FXMLDocumentController implements Initializable {
         moveAnchor(false);
         moveTextArea(true);
         moveAnchorOperation(false);
-        System.out.println("\n\n");
         tableOpVar.setItems(varKeys);
         operationClm.setVisible(false);
         contentClm.setVisible(true);
+        
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
         this.state.setStateVariables();
     }
 
     @FXML
     private void showOperations(ActionEvent event) {
         moveAnchor(false);
-        System.out.println("\n\n");
         moveAnchorOperation(true);
         moveTextArea(false);
         tableOpVar.setItems(operationKeys);
         operationClm.setVisible(true);
         contentClm.setVisible(false);
+        
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
         this.state.setStateOperations();
     }
@@ -746,7 +733,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void showTranscendental(ActionEvent event) {
         moveAnchor(false);
-        System.out.println("\n\n");
         moveAnchorOperation(false);
         ShowBottomAnchorPane.setSelected(false);
         moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
@@ -809,5 +795,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void closeSideMenu(ActionEvent event) {
         moveAnchor(false);
+    }
+
+    @FXML
+    private void handleCloseButtonAction(ActionEvent event) {
+          Stage stage = (Stage) closeButton.getScene().getWindow();
+    stage.close();
     }
 }
