@@ -107,11 +107,11 @@ public class StateTranscendental extends State {
      */
     @Override
     public void setStateStandard() {
-        this.controller.showButton(new int[]{2, 5, 6, 7, 8, 9, 10, 11, 12});
+        this.controller.showButton(new int[]{1,2,4, 5, 6, 7, 8, 9, 10, 11, 12});
         this.controller.changeButtonText(0, "MOL");
-        this.controller.changeButtonText(1, "SUM");
+        this.controller.changeButtonText(2, "SWAP");
         this.controller.changeButtonText(3, "DIV");
-        this.controller.changeButtonText(4, "SQRT");
+        this.controller.changeButtonText(5, "DROP");
         this.controller.hideButton(new int[]{13});
         this.controller.setState(new StateStandard(controller));
     }
@@ -127,9 +127,9 @@ public class StateTranscendental extends State {
     @Override
     public void setStateVariables() {
         controller.changeButtonText(0, ">x");
-        controller.changeButtonText(1, "<x");
+        controller.changeButtonText(2, "<x"); 
         controller.changeButtonText(3, "+x");
-        controller.changeButtonText(4, "-x");
+        controller.changeButtonText(5, "-x");
         controller.showButton(new int[] {13});
         controller.hideButton(new int[] {12});
         controller.setState(new StateVariables(controller)); 
@@ -145,13 +145,11 @@ public class StateTranscendental extends State {
      */
     @Override
     public void setStateOperations() {
-        this.controller.showButton(new int[]{2, 12,13});
-        this.controller.hideButton(new int[]{3, 4});
+        this.controller.showButton(new int[]{1, 12,13});
+        this.controller.hideButton(new int[]{3, 4, 5});
         this.controller.changeButtonText(0, "DELETE");
         this.controller.changeButtonText(1, "SHOW");
         this.controller.changeButtonText(2, "EXECUTE");
-        this.controller.changeButtonText(3, "DIV");
-        this.controller.changeButtonText(4, "SQRT");
         this.controller.setState(new StateOperations(controller)); 
     }
 
