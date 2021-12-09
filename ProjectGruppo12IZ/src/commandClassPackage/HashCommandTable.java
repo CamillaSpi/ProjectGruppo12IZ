@@ -162,7 +162,6 @@ public class HashCommandTable{
     }
     
     public boolean printCommandToFile(File file) {
-        System.out.println("SDalvo su file !!!!!!");
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
             concreteCommandHash.entrySet().forEach(m -> {
                 out.print(m.getKey() + "," + m.getValue().getCommands() + "\n");

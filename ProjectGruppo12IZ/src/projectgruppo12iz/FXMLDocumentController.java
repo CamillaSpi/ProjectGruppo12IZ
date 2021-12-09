@@ -400,10 +400,6 @@ public class FXMLDocumentController implements Initializable {
         contentClm.setCellValueFactory(cd -> Bindings.valueAt(vars.getMyVariables(), cd.getValue()));
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
-
-        this.userCommand.createPersonalizedCommand("+ - +", "cami");
-        this.userCommand.createPersonalizedCommand("+ - + *", "cami2");
-        this.userCommand.createPersonalizedCommand("+ - + /", "cami3");
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
@@ -412,21 +408,25 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It calls the method implemented in the classes State named onButtonTwo(),
-     * the execution of this method depends on the current state. So for the
-     * StateStandard the AddCommand will be executed if possible, for the
-     * StateVariables the SaveFromVariableCommand will be executed if possible
-     * for the StateOperations the Show of the operation will be performed if
-     * possible.
+     * It calls the method implemented in the classes State named
+     * onButtonTwo(), the execution of this method depends on the current
+     * state. So for the StateStandard the AddCommand will be executed if
+     * possible, for the StateVariables this button is not shown so it could not
+     * be pressed for the StateOperations the UserDefined operation specified
+     * will be executed if possible.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
-     * in second position
+     * in fourth position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void add(ActionEvent event) throws InterruptedException {
-        this.state.onButtonTwo();
+        if (this.state instanceof StateOperations) {
+            ((StateOperations) this.state).onButtonTwo();
+        } else {
+            ((StateStandard) this.state).onButtonTwo();
+        }
     }
 
     /**
@@ -490,25 +490,17 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It calls the method implemented in the classes State named
-     * onButtonFive(), the execution of this method depends on the current
-     * state. So for the StateStandard the SquareRootCommand will be executed if
-     * possible, for the StateVariables the SubtractToVariableCommand will be
-     * executed if possible for the StateOperations this button is not shown so
-     * it could not be pressed.
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
-     * in fifth position
+     * It create a new sqrtCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there aren't
+     * any operands an error message will be shown.
      *
-     * @see StateOperations, StateStandard, StateVariables
+     * @param event the event of the presses of the button sqrt.
+     * <p>
+     * <!-- --> @see DropCommand
      */
     @FXML
     private void sqrt(ActionEvent event) {
-        if (this.state instanceof StateVariables) {
-            ((StateVariables) this.state).onButtonFive();
-        } else {
-            ((StateStandard) this.state).onButtonFive();
-        }
+        ((StateStandard) this.state).onButtonFive();
     }
 
     /**
@@ -571,24 +563,35 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    
     /**
-     * It create a new DropCommand and calls the execute method on it if it is
-     * possible. If the Operation could not be performed because there aren't
-     * any operands an error message will be shown.
-     *
-     * @param event the event of the presses of the button drop.
+     * It calls the method implemented in the classes State named
+     * onButtonSix(), the execution of this method depends on the current
+     * state. So for the StateStandard the SquareRootCommand will be executed if
+     * possible, for the StateVariables the SubtractToVariableCommand will be
+     * executed if possible for the StateOperations this button is not shown so
+     * it could not be pressed.
      * <p>
-     * <!-- --> @see DropCommand
+     * <!-- --> @param event it registers the event of the click of the button
+     * in sixth position
+     *
+     * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void drop(ActionEvent event) {
-        DropCommand dropComm = new DropCommand(this.collector);
-        if (dropComm != null && commandExecute(dropComm)) {
-            showAlert("Drop Operation done succesfully!");
-            refresh();
-        } else {
-            showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
+        if (this.state instanceof StateVariables) {
+            ((StateVariables) this.state).onButtonSix();
+        } else {        
+            DropCommand dropComm = new DropCommand(this.collector);
+            if (dropComm != null && commandExecute(dropComm)) {
+                showAlert("Drop Operation done succesfully!");
+                refresh();
+            } else {
+                showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
+            }
         }
+        
+
     }
 
     /**
@@ -612,25 +615,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It calls the method implemented in the classes State named
-     * onButtonThree(), the execution of this method depends on the current
-     * state. So for the StateStandard the SwapCommand will be executed if
-     * possible, for the StateVariables this button is not shown so it could not
-     * be pressed for the StateOperations the UserDefined operation specified
-     * will be executed if possible.
+     * It calls the method implemented in the classes State named onButtonThree(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the AddCommand will be executed if possible, for the
+     * StateVariables the SaveFromVariableCommand will be executed if possible
+     * for the StateOperations the Show of the operation will be performed if
+     * possible.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
-     * in fourth position
+     * in Third position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
     private void swap(ActionEvent event) {
-        if (this.state instanceof StateOperations) {
-            ((StateOperations) this.state).onButtonThree();
-        } else {
-            ((StateStandard) this.state).onButtonThree();
-        }
+        this.state.onButtonThree();
     }
 
     @FXML
