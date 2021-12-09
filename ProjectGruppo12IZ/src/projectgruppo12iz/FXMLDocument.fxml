@@ -30,7 +30,7 @@
                   </TextField>
                </children>
             </VBox>
-            <MenuBar layoutX="142.0" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <MenuBar layoutX="142.0" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="0.0">
               <menus>
                 <Menu mnemonicParsing="false" styleClass="servicesButton" text="Save">
                   <items>
@@ -51,6 +51,15 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Button fx:id="closeButton" layoutX="90.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="35.0" prefWidth="39.0" styleClass="openMenuButton" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="openMenuButton">
+                     <image>
+                        <Image url="@../images/close%20logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <HBox alignment="TOP_CENTER" layoutX="235.0" layoutY="50.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0" />
             <VBox fx:id="externalVBox" layoutX="92.0" layoutY="86.0" prefHeight="200.0" prefWidth="320.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
@@ -120,8 +129,8 @@
                   <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameClm" editable="false" prefWidth="98.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Name" />
-                      <TableColumn fx:id="contentClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Var" />
-                        <TableColumn fx:id="operationClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Button" />
+                      <TableColumn fx:id="contentClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Values" />
+                        <TableColumn fx:id="operationClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Operations" />
                     </columns>
                      <placeholder>
                   <Label text="No content in table " textFill="WHITE" />
@@ -157,7 +166,17 @@
                   <Font size="12.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="variableButton" layoutX="40.0" layoutY="16.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" styleClass="openMenuButton" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="variableButton" layoutX="40.0" layoutY="16.0" maxHeight="33.0" maxWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" styleClass="openMenuButton" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../images/complexNumbersLogo.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="operationAnchorPane" layoutX="340.0" prefHeight="439.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-background-radius: 1em;" AnchorPane.leftAnchor="349.0">
