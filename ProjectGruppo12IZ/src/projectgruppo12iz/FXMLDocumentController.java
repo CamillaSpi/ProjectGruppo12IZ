@@ -403,12 +403,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It calls the method implemented in the classes State named
-     * onButtonTwo(), the execution of this method depends on the current
-     * state. So for the StateStandard the AddCommand will be executed if
-     * possible, for the StateVariables this button is not shown so it could not
-     * be pressed for the StateOperations the UserDefined operation specified
-     * will be executed if possible.
+     * It calls the method implemented in the classes State named onButtonTwo(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the AddCommand will be executed if possible, for the
+     * StateVariables this button is not shown so it could not be pressed for
+     * the StateOperations the UserDefined operation specified will be executed
+     * if possible.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
      * in fourth position
@@ -479,9 +479,9 @@ public class FXMLDocumentController implements Initializable {
     private void division(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonFour();
-        } else if (this.state instanceof StateTranscendental){
+        } else if (this.state instanceof StateTranscendental) {
             ((StateTranscendental) this.state).onButtonFour();
-        }else{
+        } else {
             ((StateStandard) this.state).onButtonFour();
         }
     }
@@ -560,14 +560,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    
     /**
-     * It calls the method implemented in the classes State named
-     * onButtonSix(), the execution of this method depends on the current
-     * state. So for the StateStandard the SquareRootCommand will be executed if
-     * possible, for the StateVariables the SubtractToVariableCommand will be
-     * executed if possible for the StateOperations this button is not shown so
-     * it could not be pressed.
+     * It calls the method implemented in the classes State named onButtonSix(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the SquareRootCommand will be executed if possible, for the
+     * StateVariables the SubtractToVariableCommand will be executed if possible
+     * for the StateOperations this button is not shown so it could not be
+     * pressed.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
      * in sixth position
@@ -578,9 +577,9 @@ public class FXMLDocumentController implements Initializable {
     private void drop(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
-        } else if (this.state instanceof StateTranscendental){
-             ((StateTranscendental) this.state).onButtonSix();
-        }else {        
+        } else if (this.state instanceof StateTranscendental) {
+            ((StateTranscendental) this.state).onButtonSix();
+        } else {
             DropCommand dropComm = new DropCommand(this.collector);
             if (dropComm != null && commandExecute(dropComm)) {
                 showAlert("Drop Operation done succesfully!");
@@ -589,7 +588,6 @@ public class FXMLDocumentController implements Initializable {
                 showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
             }
         }
-        
 
     }
 
@@ -614,12 +612,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It calls the method implemented in the classes State named onButtonThree(),
-     * the execution of this method depends on the current state. So for the
-     * StateStandard the AddCommand will be executed if possible, for the
-     * StateVariables the SaveFromVariableCommand will be executed if possible
-     * for the StateOperations the Show of the operation will be performed if
-     * possible.
+     * It calls the method implemented in the classes State named
+     * onButtonThree(), the execution of this method depends on the current
+     * state. So for the StateStandard the AddCommand will be executed if
+     * possible, for the StateVariables the SaveFromVariableCommand will be
+     * executed if possible for the StateOperations the Show of the operation
+     * will be performed if possible.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
      * in Third position
@@ -709,7 +707,7 @@ public class FXMLDocumentController implements Initializable {
         tableOpVar.setItems(varKeys);
         operationClm.setVisible(false);
         contentClm.setVisible(true);
-        
+
         ShowBottomAnchorPane.setSelected(false);
         moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
         this.state.setStateVariables();
@@ -723,7 +721,7 @@ public class FXMLDocumentController implements Initializable {
         tableOpVar.setItems(operationKeys);
         operationClm.setVisible(true);
         contentClm.setVisible(false);
-        
+
         ShowBottomAnchorPane.setSelected(false);
         moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
@@ -799,7 +797,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {
-          Stage stage = (Stage) closeButton.getScene().getWindow();
-    stage.close();
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }
