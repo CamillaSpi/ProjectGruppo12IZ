@@ -105,7 +105,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane varAnchorPane;
     @FXML
-    private ToggleButton VariableToggleButton;
+    private Button variableButton;
     @FXML
     private AnchorPane operationAnchorPane;
     @FXML
@@ -157,6 +157,8 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton ShowBottomAnchorPane;
     @FXML
     private TableColumn<String, ConcreteCommandPersonalized> operationClm;
+    @FXML
+    private Button openMenuButton;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -169,19 +171,26 @@ public class FXMLDocumentController implements Initializable {
 
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
-
         if (flag) {
             slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(200);
             slide.setRate(1);
             slide.play();
-
+            variableButton.setVisible(false);
         } else {
             slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(0);
-
+            variableButton.setText("");
+            variableButton.setPrefSize(24, 33);
             slide.setRate(1);
             slide.play();
+            slide.setOnFinished(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent event) {
+                    variableButton.setVisible(true);
+                }
+            });
 
         }
 
@@ -334,9 +343,9 @@ public class FXMLDocumentController implements Initializable {
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
 
-        VariableToggleButton.setOnMouseClicked(event -> {
+        variableButton.setOnMouseClicked(event -> {
 
-            moveAnchor(VariableToggleButton.isSelected());
+            moveAnchor(true);
 
         });
         ShowBottomAnchorPane.setOnMouseClicked(event -> {
@@ -687,19 +696,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+
+        moveAnchor(false);
         System.out.println("\n\n");
         moveAnchorOperation(false);
-        moveBottomAnchorPane(true);
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
         moveTextArea(false);
         this.state.setStateStandard();
     }
 
     @FXML
     private void showVariables(ActionEvent event) {
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         moveTextArea(true);
         moveAnchorOperation(false);
         System.out.println("\n\n");
@@ -711,8 +720,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         System.out.println("\n\n");
         moveAnchorOperation(true);
         moveTextArea(false);
@@ -725,11 +733,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showTranscendental(ActionEvent event) {
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         System.out.println("\n\n");
         moveAnchorOperation(false);
-        moveBottomAnchorPane(true);
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
         moveTextArea(false);
         this.state.setStateTranscendetal();
     }
@@ -784,5 +792,10 @@ public class FXMLDocumentController implements Initializable {
 
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
+    }
+
+    @FXML
+    private void closeSideMenu(ActionEvent event) {
+        moveAnchor(false);
     }
 }

@@ -6,14 +6,7 @@
 
 package stateClassPackage;
 
-import commandClassPackage.AddCommand;
-import commandClassPackage.AddToVariableCommand;
-import commandClassPackage.DivideCommand;
 import commandClassPackage.MultiplyCommand;
-import commandClassPackage.SaveFromVariableCommand;
-import commandClassPackage.SquareRootCommand;
-import commandClassPackage.SubtractToVariableCommand;
-import commandClassPackage.SwapCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
@@ -138,7 +131,6 @@ public class StateTranscendental extends State {
         controller.changeButtonText(4, "-x");
         controller.showButton(new int[] {13});
         controller.hideButton(new int[] {12});
-        
         controller.setState(new StateVariables(controller)); 
     }
 
