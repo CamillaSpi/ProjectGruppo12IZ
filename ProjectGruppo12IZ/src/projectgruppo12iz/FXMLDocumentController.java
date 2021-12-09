@@ -633,6 +633,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void saveVariablesIntoStack(ActionEvent event) {
+        if (vars.saveVariablesIntoStack()) {
+            showAlert("Tt appsot");
+        } else {
+            showAlert("idk what is success");
+        }
     }
 
     @FXML
@@ -641,6 +646,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void restoreVariablesFromStack(ActionEvent event) {
+        if (vars.restoreVariablesFromStack()) {
+            showAlert("Tt appsot");
+           tableOpVar.refresh();
+        } else {
+            showAlert("idk what is success");
+        }
     }
 
     @FXML

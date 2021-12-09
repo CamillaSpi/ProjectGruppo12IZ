@@ -6,6 +6,9 @@
 package modelClassPackage;
 
 import java.util.Map;
+import java.util.Stack;
+import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -408,6 +411,200 @@ public class VariablesTest {
         ComplexNumber toAdd = null;
         Boolean expResult = false;
         Boolean result = instance.addToVariable("a", toAdd);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of checkRange method, of class Variables.
+     */
+    @Test
+    public void testCheckRange() {
+        System.out.println("checkRange");
+        String s = "";
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.checkRange(s);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getValue method, of class Variables.
+     */
+    @Test
+    public void testGetValue() {
+        System.out.println("getValue");
+        String key = "";
+        Variables instance = new Variables();
+        ComplexNumber expResult = null;
+        ComplexNumber result = instance.getValue(key);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getValueProperty method, of class Variables.
+     */
+    @Test
+    public void testGetValueProperty() {
+        System.out.println("getValueProperty");
+        String key = "";
+        Variables instance = new Variables();
+        StringProperty expResult = null;
+        StringProperty result = instance.getValueProperty(key);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getKeyProperty method, of class Variables.
+     */
+    @Test
+    public void testGetKeyProperty() {
+        System.out.println("getKeyProperty");
+        String key = "";
+        Variables instance = new Variables();
+        StringProperty expResult = null;
+        StringProperty result = instance.getKeyProperty(key);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getMyVariables method, of class Variables.
+     */
+    @Test
+    public void testGetMyVariables() {
+        System.out.println("getMyVariables");
+        Variables instance = new Variables();
+        ObservableMap<String, ComplexNumber> expResult = null;
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of saveToVariable method, of class Variables.
+     */
+    @Test
+    public void testSaveToVariable() {
+        System.out.println("saveToVariable");
+        String key = "";
+        ComplexNumber value = null;
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.saveToVariable(key, value);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of saveFromVariable method, of class Variables.
+     */
+    @Test
+    public void testSaveFromVariable() {
+        System.out.println("saveFromVariable");
+        String key = "";
+        Variables instance = new Variables();
+        ComplexNumber expResult = null;
+        ComplexNumber result = instance.saveFromVariable(key);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of subtractToVariable method, of class Variables.
+     */
+    @Test
+    public void testSubtractToVariable() {
+        System.out.println("subtractToVariable");
+        String key = "";
+        ComplexNumber subtracting = null;
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.subtractToVariable(key, subtracting);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of put method, of class Variables.
+     */
+    @Test
+    public void testPut() {
+        System.out.println("put");
+        String key = "";
+        ComplexNumber value = null;
+        Variables instance = new Variables();
+        instance.put(key, value);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of saveVariablesIntoStack method, of class Variables.
+     */
+    @Test
+    public void testSaveAndRestoreSameVariablesIntoStack() {
+        System.out.println("SaveAndRestoreSameVariablesIntoStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.saveVariablesIntoStack();
+        
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        instance.restoreVariablesFromStack();
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testRestoreVariablesFromStack() {
+        System.out.println("restoreVariablesFromStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.saveVariablesIntoStack();
+        instance.put("c", new ComplexNumber("0", "2"));
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        instance.restoreVariablesFromStack();
+        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        assertNotEquals(expResult, result);
+    }
+    /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testRestoreFromNullStack() {
+        System.out.println("RestoreFromNullStack");
+        Variables instance = new Variables();
+        instance.put("a", new ComplexNumber("3", "2"));
+        instance.put("b", new ComplexNumber("0", "2"));
+        instance.put("c", new ComplexNumber("0", "2"));
+        boolean expResult = false;
+        boolean result = instance.restoreVariablesFromStack();
+        assertEquals(expResult, result);
+    }
+     /**
+     * Test of restoreVariablesFromStack method, of class Variables.
+     */
+    @Test
+    public void testSaveNullIntoStack() {
+        System.out.println("SaveNullIntoStack");
+        Variables instance = new Variables();
+        boolean expResult = false;
+        boolean result = instance.saveVariablesIntoStack();
         assertEquals(expResult, result);
     }
     
