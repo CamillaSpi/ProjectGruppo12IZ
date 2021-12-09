@@ -75,63 +75,62 @@ public class StateVariables extends State {
             }
         }
     }
-
-    /**
-     */
-    public void onButtonFour() {
-        ComplexNumber adding = this.controller.getCollector().last();
-        if (adding != null) {
-            String variable = this.controller.getText();
-            if (!("".equals(variable))) {
-                AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if (cmd != null) {
-                    if (!controller.commandExecute(cmd)) {
-                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
-                    } else {
-                        this.controller.showAlert("the result will be saved in the variable " + variable);
-                        this.controller.refresh();
-                        this.controller.refreshVarsOp();
-                    }
-                } else {
-                    this.controller.showAlert("the operation is failed\n");
-                }
-            } else {
-                this.controller.showAlert("Specify a variable before click this button!");
-            }
-        } else {
-            this.controller.showAlert("Insert at least an operand to execute this operation!");
-        }
-    }
-
+    
     /**
      * It create a new AddToVariable and calls the method execute on it if it is possible.
      * If the operation could not be performed, because there are not at least two operands for example,
      * an error message will be shown and the operation will not be performed. 
      * @see FXMLDocumentController, AddToVariable
      */
-    public void onButtonSix() {
-        ComplexNumber subtracting = this.controller.getCollector().last();
-        if (subtracting != null) {
+    public void onButtonFour() {
+         ComplexNumber adding = this.controller.getCollector().last();
+        if(adding != null){
             String variable = this.controller.getText();
-            if (!("".equals(variable))) {
-                SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if (cmd != null) {
-                    if (!controller.commandExecute(cmd)) {
+            if(!("".equals(variable))){
+                AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
+                if(cmd != null){
+                    if(!controller.commandExecute(cmd))
                         this.controller.showAlert("the operation is failed, are you sure have set the variable?");
-                    } else {
+                    else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
                         this.controller.refreshVarsOp();
                     }
-                } else {
+                }else
                     this.controller.showAlert("the operation is failed\n");
-                }
-            } else {
+            }else
                 this.controller.showAlert("Specify a variable before click this button!");
-            }
-        } else {
-            this.controller.showAlert("Insert at least an operand to execute this operation!");
         }
+        else
+            this.controller.showAlert("Insert at least an operand to execute this operation!");
+    }
+    
+    /**
+     * It create a new SubtractToVariable and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, SubtractToVariable
+     */
+    public void onButtonSix() {
+        ComplexNumber subtracting = this.controller.getCollector().last();
+        if(subtracting != null){
+            String variable = this.controller.getText();
+            if(!("".equals(variable))){
+                SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
+                if(cmd != null){
+                    if(!controller.commandExecute(cmd))
+                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
+                    else{
+                        this.controller.showAlert("the result will be saved in the variable " + variable);
+                        this.controller.refresh();
+                        this.controller.refreshVarsOp();
+                    }
+                }else
+                    this.controller.showAlert("the operation is failed\n");
+            }else
+                this.controller.showAlert("Specify a variable before click this button!");
+        }else
+            this.controller.showAlert("Insert at least an operand to execute this operation!");
     }
 
     /**
@@ -156,20 +155,21 @@ public class StateVariables extends State {
     }
 
     /**
-     * It create a new SubtractToVariable and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not at least two operands for example,
-     * an error message will be shown and the operation will not be performed. 
-     * @see FXMLDocumentController, SubtractToVariable
+     * It changes the State of the controller to that of StateOperations,
+     * sets this state into the controller and make visible only the buttons 
+     * necessary to perform operations on variables, .
+     * @see FXMLDocumentController
      */
     @Override
     public void setStateOperations() {
-    
+        this.controller.showButton(new int[]{1, 12, 13});
+        this.controller.hideButton(new int[]{3, 5});
         this.controller.changeButtonText(0, "DELETE");
         this.controller.changeButtonText(1, "SHOW");
         this.controller.changeButtonText(2, "EXECUTE");
         this.controller.changeButtonText(3, "DIV");
-        this.controller.showButton(new int[]{1, 12, 13});
-        this.controller.hideButton(new int[]{3, 5});
+        this.controller.changeButtonText(5, "DROP");
+        this.controller.setState(new StateOperations(controller)); 
     }
 
     @Override
