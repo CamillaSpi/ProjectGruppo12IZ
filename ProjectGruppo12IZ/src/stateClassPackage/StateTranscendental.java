@@ -7,7 +7,6 @@
 package stateClassPackage;
 
 import commandClassPackage.ModCommand;
-import commandClassPackage.MultiplyCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;
@@ -68,38 +67,35 @@ public class StateTranscendental extends State {
             controller.showAlert("ModOperation cannot be performed!\nHave you inserted at least one operand?");
     }
     
-    /**
-     * It changes the State of the controller to that of StateVariables, sets
-     * this state into the controller and make visible only the buttons
-     * necessary to perform operations on variables.
-     *
-     * @see FXMLDocumentController
+   /**
+     * It create a new SaveFromVariable and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, SaveFromVariable
      */
-    public void onButtonTwo() {
-        this.controller.showAlert("Button need to be implements");
-    }
-
-    /**
-     * It changes the State of the controller to that of StateVariables, sets
-     * this state into the controller and make visible only the buttons
-     * necessary to perform operations on variables.
-     *
-     * @see FXMLDocumentController
-     */
-     @Override
+    @Override
     public void onButtonThree() {
-       this.controller.showAlert("Button need to be implements");
+       this.controller.showAlert("not Implemented yet");
     }
-
+    
     /**
-     * It changes the State of the controller to that of StateVariables, sets
-     * this state into the controller and make visible only the buttons
-     * necessary to perform operations on variables.
-     *
-     * @see FXMLDocumentController
+     * It create a new AddToVariable and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, AddToVariable
      */
-    public void onButtonFive() {
-        this.controller.showAlert("Button need to be implements");
+    public void onButtonFour() {
+         this.controller.showAlert("not Implemented yet");
+    }
+    
+    /**
+     * It create a new SubtractToVariable and calls the method execute on it if it is possible.
+     * If the operation could not be performed, because there are not at least two operands for example,
+     * an error message will be shown and the operation will not be performed. 
+     * @see FXMLDocumentController, SubtractToVariable
+     */
+    public void onButtonSix() {
+        this.controller.showAlert("not Implemented yet");
     }
      /**
      * This method do not perform operation because it only leaves the context in the same state where it already is.

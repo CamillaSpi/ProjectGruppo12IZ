@@ -495,7 +495,9 @@ public class FXMLDocumentController implements Initializable {
     private void division(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonFour();
-        } else {
+        } else if (this.state instanceof StateTranscendental){
+            ((StateTranscendental) this.state).onButtonFour();
+        }else{
             ((StateStandard) this.state).onButtonFour();
         }
     }
@@ -592,7 +594,9 @@ public class FXMLDocumentController implements Initializable {
     private void drop(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
-        } else {        
+        } else if (this.state instanceof StateTranscendental){
+             ((StateTranscendental) this.state).onButtonSix();
+        }else {        
             DropCommand dropComm = new DropCommand(this.collector);
             if (dropComm != null && commandExecute(dropComm)) {
                 showAlert("Drop Operation done succesfully!");
