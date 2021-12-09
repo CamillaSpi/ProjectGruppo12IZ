@@ -711,4 +711,88 @@ public class CalculatorTest {
         ComplexNumber result = Calculator.mod(null);
         assertEquals(null, result);
     }
+
+    /**
+     * Test of arg method, of class Calculator, with real part 0 and imaginary part positive.
+     */
+    @Test
+    public void testArgZeroPos() {
+        System.out.println("arg zero positive");
+        ComplexNumber a = new ComplexNumber("0", "2");
+        ComplexNumber expResult = new ComplexNumber("1.570796327", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real part 0 and imaginary part negative.
+     */
+    @Test
+    public void testArgZeroNeg() {
+        System.out.println("arg zero negative");
+        ComplexNumber a = new ComplexNumber("0", "-2");
+        ComplexNumber expResult = new ComplexNumber("-1.570796327", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real and imaginary part 0.
+     */
+    @Test
+    public void testArgZeroZero() {
+        System.out.println("arg zero zero");
+        ComplexNumber a = new ComplexNumber("0", "0");
+        ComplexNumber expResult = null;
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real and imaginary part positive.
+     */
+    @Test
+    public void testArgPosPos() {
+        System.out.println("arg positive positive");
+        ComplexNumber a = new ComplexNumber("2", "5");
+        ComplexNumber expResult = new ComplexNumber("1.190289950", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real part positive and imaginary part negative.
+     */
+    @Test
+    public void testArgPosNeg() {
+        System.out.println("arg positive negative");
+        ComplexNumber a = new ComplexNumber("2", "-5");
+        ComplexNumber expResult = new ComplexNumber("-1.190289950", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real part negative and imaginary part positive.
+     */
+    @Test
+    public void testArgNegPos() {
+        System.out.println("arg neg positive");
+        ComplexNumber a = new ComplexNumber("-2", "5");
+        ComplexNumber expResult = new ComplexNumber("1.951302704", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of arg method, of class Calculator, with real part negative and imaginary part negative.
+     */
+    @Test
+    public void testArgNegNeg() {
+        System.out.println("arg neg neg");
+        ComplexNumber a = new ComplexNumber("-2", "-5");
+        ComplexNumber expResult = new ComplexNumber("-1.951302704", "0");
+        ComplexNumber result = Calculator.arg(a);
+        assertEquals(expResult, result);
+    }
 }

@@ -16,7 +16,7 @@ import projectgruppo12iz.FXMLDocumentController;
  *
  * @author Mattia
  */
-public class StateVariables extends State{
+public class StateVariables extends State {
 
     public StateVariables(FXMLDocumentController controller) {
         super(controller);
@@ -30,21 +30,23 @@ public class StateVariables extends State{
      */
     @Override
     public void onButtonOne() {
-        if(this.controller.getCollector().last() != null){
+        if (this.controller.getCollector().last() != null) {
             String variable = this.controller.getText();
-            if(!("".equals(variable))){
+            if (!("".equals(variable))) {
                 SaveToVariableCommand cmd = new SaveToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if(!controller.commandExecute(cmd))
+                if (!controller.commandExecute(cmd)) {
                     this.controller.showAlert("the operation is failed, are you sure you write a varible a-z?!\n");
-                else{
+                } else {
                     this.controller.showAlert("the last operand is saved in the writed variable!\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
                 }
-            }else
+            } else {
                 this.controller.showAlert("write the variable where save the values!\n");
-        }else
+            }
+        } else {
             this.controller.showAlert("insert at least an operand before execute this operation!\n");
+        }
     }
 
     /**
@@ -60,16 +62,17 @@ public class StateVariables extends State{
             this.controller.showAlert("Write a variable before press this button!");
         } else {
             SaveFromVariableCommand cmd = new SaveFromVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-            if(cmd != null){
-                if(!controller.commandExecute(cmd))
+            if (cmd != null) {
+                if (!controller.commandExecute(cmd)) {
                     this.controller.showAlert("the operation is failed, are you sure have set the variable?\n");
-                else{
+                } else {
                     this.controller.showAlert("Value from variable inserted correctly\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
-                }     
-            }else
+                }
+            } else {
                 this.controller.showAlert("the operation is failed\n");
+            }
         }
     }
     
@@ -148,7 +151,8 @@ public class StateVariables extends State{
     }
 
     @Override
-    public void setStateVariables() {}
+    public void setStateVariables() {
+    }
 
     /**
      * It changes the State of the controller to that of StateOperations,
@@ -167,7 +171,18 @@ public class StateVariables extends State{
         this.controller.changeButtonText(5, "DROP");
         this.controller.setState(new StateOperations(controller)); 
     }
-    
-    
-    
+
+    @Override
+    public void setStateTranscendetal() {
+        this.controller.showButton(new int[]{12});
+        controller.changeButtonText(0, "MOD");
+        controller.changeButtonText(2, "ARG");
+        controller.changeButtonText(3, "POW");
+        controller.changeButtonText(5, "EXP");
+        controller.hideButton(new int[]{13});
+
+        controller.setState(new StateTranscendental(controller));
+    }
+
 }
+        

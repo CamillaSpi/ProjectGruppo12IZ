@@ -6,6 +6,7 @@
 package modelClassPackage;
 
 import static java.lang.Math.PI;
+import static java.lang.Math.atan;
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -234,7 +235,7 @@ public class Calculator {
      * <p>
      * <!-- --> 
      *
-     * @param num its contains the input complex number
+     * @param num it contains the input complex number
      * @return return the module of a ComplexNumber or null
      * @see ComplexNumber
      *
@@ -251,4 +252,43 @@ public class Calculator {
         return null;
     }
 
+    /**
+     *
+     * calculates and returns the argument of a Complex Number, if it is not
+     * null in its part or its parts are zero (in this case the arg is not defined), otherwise returns null.
+     * <p>
+     * <!-- --> 
+     *
+     * @param num it contains the input complex number
+     * @return return the argument of a ComplexNumber or null
+     * @see ComplexNumber
+     *
+     */
+    public static ComplexNumber arg(ComplexNumber num) {
+        if (num != null && num.getReal() != null && num.getImaginary() != null && (!num.getReal().equals(0) || !num.getImaginary().equals(0))) {
+            MathContext mc = new MathContext(10);
+            BigDecimal a = num.getReal();
+            BigDecimal b = num.getImaginary();
+            if (a.doubleValue() == 0 && b.doubleValue() > 0)
+                return new ComplexNumber(new BigDecimal(PI/2,mc),new BigDecimal(0));
+            else
+                if (a.doubleValue() == 0 && b.doubleValue() < 0)
+                    return new ComplexNumber(new BigDecimal(-PI/2,mc),new BigDecimal(0));
+                else
+                    if (a.doubleValue() > 0)
+                        if(b.doubleValue() < 0)
+                            return new ComplexNumber(new BigDecimal(-atan((b.doubleValue()*(-1))/a.doubleValue()),mc), new BigDecimal(0));
+                        else
+                            return new ComplexNumber(new BigDecimal(atan(b.doubleValue()/a.doubleValue()),mc), new BigDecimal(0));
+                    else
+                        if (a.doubleValue() < 0 && b.doubleValue() >= 0)
+                            return new ComplexNumber(new BigDecimal(-atan(b.doubleValue()/(a.doubleValue())*(-1)) + PI,mc), new BigDecimal(0));
+                        else
+                            if (a.doubleValue() < 0 && b.doubleValue() < 0)
+                                return new ComplexNumber(new BigDecimal(atan((b.doubleValue()*(-1))/(a.doubleValue()*(-1))) - PI,mc), new BigDecimal(0));
+        } else {
+            System.out.println("Operation not possible: the input number is incorrect");
+        }
+        return null;
+    }
 }

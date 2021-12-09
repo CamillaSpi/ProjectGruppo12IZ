@@ -200,7 +200,7 @@ public class HashCommandTable{
     public boolean printCommandToFile(File file) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
             concreteCommandHash.entrySet().forEach(m -> {
-                out.print(m.getKey() + "," + m.getValue().getCommands() + "\n");
+                out.print(m.getKey() + "," + m.getValue().getCommands() + ",");
             });
         } catch (IOException ex) {
             System.out.println("errore nella lettura del file");
