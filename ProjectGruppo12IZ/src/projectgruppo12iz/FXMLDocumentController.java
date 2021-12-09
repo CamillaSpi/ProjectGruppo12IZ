@@ -67,6 +67,7 @@ import modelClassPackage.Variables;
 import stateClassPackage.State;
 import stateClassPackage.StateOperations;
 import stateClassPackage.StateStandard;
+import stateClassPackage.StateTranscendental;
 import stateClassPackage.StateVariables;
 
 /**
@@ -106,7 +107,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane varAnchorPane;
     @FXML
-    private ToggleButton VariableToggleButton;
+    private Button variableButton;
     @FXML
     private AnchorPane operationAnchorPane;
     @FXML
@@ -158,6 +159,8 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton ShowBottomAnchorPane;
     @FXML
     private TableColumn<String, ConcreteCommandPersonalized> operationClm;
+    @FXML
+    private Button openMenuButton;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -170,19 +173,26 @@ public class FXMLDocumentController implements Initializable {
 
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
-
         if (flag) {
             slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(200);
             slide.setRate(1);
             slide.play();
-
+            variableButton.setVisible(false);
         } else {
             slide.setFromX(varAnchorPane.getTranslateX());
             slide.setToX(0);
-
+            variableButton.setText("");
+            variableButton.setPrefSize(24, 33);
             slide.setRate(1);
             slide.play();
+            slide.setOnFinished(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent event) {
+                    variableButton.setVisible(true);
+                }
+            });
 
         }
 
@@ -334,9 +344,9 @@ public class FXMLDocumentController implements Initializable {
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
         setOpView(latestOperands);
 
-        VariableToggleButton.setOnMouseClicked(event -> {
+        variableButton.setOnMouseClicked(event -> {
 
-            moveAnchor(VariableToggleButton.isSelected());
+            moveAnchor(true);
 
         });
         ShowBottomAnchorPane.setOnMouseClicked(event -> {
@@ -351,8 +361,10 @@ public class FXMLDocumentController implements Initializable {
                     //"press" enter button for staetOperations or Standard
                     if (state instanceof StateOperations) {
                         ((StateOperations) state).onButtonEnter();
-                    } else {
+                    } else if (state instanceof StateStandard) {
                         ((StateStandard) state).onButtonEnter();
+                    } else {
+                        ((StateTranscendental) state).onButtonEnter();
                     }
                 }
 
@@ -364,7 +376,6 @@ public class FXMLDocumentController implements Initializable {
                 if (ke.getCode().equals(KeyCode.ENTER)) {
                     //"press" execute button only in stateOperations
                     if (state instanceof StateOperations) {
-
                         ((StateOperations) state).onButtonThree();
                     }
                 }
@@ -656,7 +667,7 @@ public class FXMLDocumentController implements Initializable {
     private void restoreVariablesFromStack(ActionEvent event) {
         if (vars.restoreVariablesFromStack()) {
             showAlert("Tt appsot");
-           tableOpVar.refresh();
+            tableOpVar.refresh();
         } else {
             showAlert("idk what is success");
         }
@@ -676,10 +687,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEnterAction(ActionEvent event) {
-        if (this.state instanceof StateOperations) {
-            ((StateOperations) this.state).onButtonEnter();
+        if (state instanceof StateOperations) {
+            ((StateOperations) state).onButtonEnter();
+        } else if (state instanceof StateStandard) {
+            ((StateStandard) state).onButtonEnter();
         } else {
-            ((StateStandard) this.state).onButtonEnter();
+            ((StateTranscendental) state).onButtonEnter();
         }
     }
 
@@ -691,48 +704,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
-        /*showButton(buttonEleven);
-        showButton(buttonTwo);
-        showButton(buttonFive);
-        showButton(buttonTen);
-        showButton(buttonEleven);
-        showButton(buttonTwelve);
-        showButton(buttonFour);
-        showButton(buttonFive);
-        showButton(buttonSix);
-        showButton(buttonSeven);
-        showButton(buttonEight);
-        showButton(buttonNine);
 
-        showButton(new int[] {0,1,2,3,4,5,6,7,8,9,10,11});
-         */
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         System.out.println("\n\n");
         moveAnchorOperation(false);
-        moveBottomAnchorPane(true);
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
         moveTextArea(false);
         this.state.setStateStandard();
     }
 
     @FXML
     private void showVariables(ActionEvent event) {
-        /*showButton(buttonFour);
-        showButton(buttonSix);
-        hideButton(buttonTwo);
-        hideButton(buttonFive);
-        hideButton(buttonTen);
-        hideButton(buttonEleven);
-        hideButton(buttonTwelve);
-        hideButton(buttonSeven);
-        hideButton(buttonEight);
-        hideButton(buttonNine);
-
-        
-        hideButton(new int[] {1,4,6,7,8,9,10,11,12});
-         */
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         moveTextArea(true);
         moveAnchorOperation(false);
         System.out.println("\n\n");
@@ -744,22 +728,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-        /* hideButton(buttonTen);
-        hideButton(buttonEleven);
-        hideButton(buttonTwelve);
-        hideButton(buttonFour);
-        hideButton(buttonFive);
-        hideButton(buttonSix);
-        hideButton(buttonSeven);
-        hideButton(buttonEight);
-        hideButton(buttonNine);
-        showButton(buttonTwo);
-
-        showButton(new int[] {0,1,2});
-        hideButton(new int[] {3,4,5,6,7,8,9,10,11});
-         */
-        VariableToggleButton.setSelected(false);
-        moveAnchor(VariableToggleButton.isSelected());
+        moveAnchor(false);
         System.out.println("\n\n");
         moveAnchorOperation(true);
         moveTextArea(false);
@@ -768,6 +737,17 @@ public class FXMLDocumentController implements Initializable {
         contentClm.setVisible(false);
 
         this.state.setStateOperations();
+    }
+
+    @FXML
+    private void showTranscendental(ActionEvent event) {
+        moveAnchor(false);
+        System.out.println("\n\n");
+        moveAnchorOperation(false);
+        ShowBottomAnchorPane.setSelected(false);
+        moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
+        moveTextArea(false);
+        this.state.setStateTranscendetal();
     }
 
     public void refresh() {
@@ -820,5 +800,10 @@ public class FXMLDocumentController implements Initializable {
 
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
+    }
+
+    @FXML
+    private void closeSideMenu(ActionEvent event) {
+        moveAnchor(false);
     }
 }
