@@ -150,6 +150,7 @@ public class StateTranscendental extends State {
         this.controller.changeButtonText(0, "DELETE");
         this.controller.changeButtonText(1, "SHOW");
         this.controller.changeButtonText(2, "EXECUTE");
+        this.controller.changeButtonText(3, "DIV");
         this.controller.setState(new StateOperations(controller)); 
     }
 
