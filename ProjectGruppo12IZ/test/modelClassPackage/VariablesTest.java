@@ -73,7 +73,7 @@ public class VariablesTest {
      * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
      */
     @Test
-    public void testCheckRangeCorrectLength() {
+    public void testCheckRange() {
         System.out.println("checkRange with correct length");
         String s = "a";
         Variables instance = new Variables();
@@ -174,7 +174,7 @@ public class VariablesTest {
      * Test of getValue method, of class Variables, analyzing the case with a contained key in the Map.
      */
     @Test
-    public void testGetValueContainedKey() {
+    public void testGetValue() {
         System.out.println("getValue with a contained key");
         String key = "a";
         Variables instance = new Variables();
@@ -189,7 +189,7 @@ public class VariablesTest {
      * Test of SaveToVariables method, of class Variables, with correct entry.
      */
     @Test
-    public void testSaveToVariablesCorrectNumber() {
+    public void testSaveToVariable() {
         System.out.println("insert a complex Number correctly created");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
@@ -244,7 +244,7 @@ public class VariablesTest {
      * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable correctly written and initialized.
      */
     @Test
-    public void testSaveFromVariableCorrectVariable() {
+    public void testSaveFromVariable() {
         System.out.println("save from a variable correctly written and initialized");
         ComplexNumber a = new ComplexNumber("1000", "1000");
         Variables instance = new Variables();
@@ -341,7 +341,7 @@ public class VariablesTest {
      * Test of subtractToVariable method, of class Variables, analyzing the case in which the key as an already value associated and the subtracting is not null.
      */
     @Test
-    public void testSubtractToVariableCorrectCase() {
+    public void testSubtractToVariable() {
         System.out.println("subtractToVariable already associated value to key and correct subtracting");
         String keyA = "a";
         String keyB = "b";
@@ -413,67 +413,6 @@ public class VariablesTest {
         Boolean result = instance.addToVariable("a", toAdd);
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of checkRange method, of class Variables.
-     */
-    @Test
-    public void testCheckRange() {
-        System.out.println("checkRange");
-        String s = "";
-        Variables instance = new Variables();
-        boolean expResult = false;
-        boolean result = instance.checkRange(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getValue method, of class Variables.
-     */
-    @Test
-    public void testGetValue() {
-        System.out.println("getValue");
-        String key = "";
-        Variables instance = new Variables();
-        ComplexNumber expResult = null;
-        ComplexNumber result = instance.getValue(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getValueProperty method, of class Variables.
-     */
-    @Test
-    public void testGetValueProperty() {
-        System.out.println("getValueProperty");
-        String key = "";
-        Variables instance = new Variables();
-        StringProperty expResult = null;
-        StringProperty result = instance.getValueProperty(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getKeyProperty method, of class Variables.
-     */
-    @Test
-    public void testGetKeyProperty() {
-        System.out.println("getKeyProperty");
-        String key = "";
-        Variables instance = new Variables();
-        StringProperty expResult = null;
-        StringProperty result = instance.getKeyProperty(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of getMyVariables method, of class Variables.
      */
@@ -481,58 +420,10 @@ public class VariablesTest {
     public void testGetMyVariables() {
         System.out.println("getMyVariables");
         Variables instance = new Variables();
-        ObservableMap<String, ComplexNumber> expResult = null;
+        instance.put("a", new ComplexNumber("3", "2"));
+        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
         ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of saveToVariable method, of class Variables.
-     */
-    @Test
-    public void testSaveToVariable() {
-        System.out.println("saveToVariable");
-        String key = "";
-        ComplexNumber value = null;
-        Variables instance = new Variables();
-        boolean expResult = false;
-        boolean result = instance.saveToVariable(key, value);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of saveFromVariable method, of class Variables.
-     */
-    @Test
-    public void testSaveFromVariable() {
-        System.out.println("saveFromVariable");
-        String key = "";
-        Variables instance = new Variables();
-        ComplexNumber expResult = null;
-        ComplexNumber result = instance.saveFromVariable(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of subtractToVariable method, of class Variables.
-     */
-    @Test
-    public void testSubtractToVariable() {
-        System.out.println("subtractToVariable");
-        String key = "";
-        ComplexNumber subtracting = null;
-        Variables instance = new Variables();
-        boolean expResult = false;
-        boolean result = instance.subtractToVariable(key, subtracting);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -541,20 +432,20 @@ public class VariablesTest {
     @Test
     public void testPut() {
         System.out.println("put");
-        String key = "";
-        ComplexNumber value = null;
+        String key = "a";
+        ComplexNumber value = new ComplexNumber("3", "2");
         Variables instance = new Variables();
+        int length = instance.getMyVariables().size();
         instance.put(key, value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(length +1 , instance.getMyVariables().size());
     }
 
     /**
      * Test of saveVariablesIntoStack method, of class Variables.
      */
     @Test
-    public void testSaveAndRestoreSameVariablesIntoStack() {
-        System.out.println("SaveAndRestoreSameVariablesIntoStack");
+    public void testSavevariablesIntoStack() {
+        System.out.println("SavevariablesIntoStack");
         Variables instance = new Variables();
         instance.put("a", new ComplexNumber("3", "2"));
         instance.put("b", new ComplexNumber("0", "2"));
@@ -607,5 +498,6 @@ public class VariablesTest {
         boolean result = instance.saveVariablesIntoStack();
         assertEquals(expResult, result);
     }
+
     
 }

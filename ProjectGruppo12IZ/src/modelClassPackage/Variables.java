@@ -70,23 +70,6 @@ public class Variables implements Serializable {
     public ComplexNumber getValue(String key) {
         return myVariables.get(key);
     }
-
-    public StringProperty getValueProperty(String key) {
-        StringProperty ret = new SimpleStringProperty();
-        ret.setValue(myVariables.get(key).complexStringProperty().toString());
-        return ret;
-    }
-
-    public StringProperty getKeyProperty(String key) {
-        if (myVariables.get(key) != null) {
-            StringProperty ret = new SimpleStringProperty();
-            ret.setValue(key);
-            return ret;
-        } else {
-            return null;
-        }
-    }
-
     /**
      * It returns the attribute myVariables
      * <p>
