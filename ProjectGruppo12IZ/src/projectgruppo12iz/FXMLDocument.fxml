@@ -144,7 +144,17 @@
                         <Button mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Transcendental" />
                      </children>
                   </VBox>
-                  <Button fx:id="openMenuButton" layoutY="1.0" mnemonicParsing="false" onAction="#closeSideMenu" prefHeight="33.0" prefWidth="191.0" styleClass="menuButton" text="THE APP" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="openMenuButton" layoutY="1.0" mnemonicParsing="false" onAction="#closeSideMenu" prefHeight="33.0" prefWidth="191.0" styleClass="menuButton" text="Complex Number Calculator" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../images/complexNumbersLogo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
             <ToggleButton fx:id="ShowBottomAnchorPane" layoutX="320.0" layoutY="400.0" maxHeight="33.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="24.0" style="-fx-background-radius: 1em;" styleClass="bottomMenuButton" textAlignment="CENTER">

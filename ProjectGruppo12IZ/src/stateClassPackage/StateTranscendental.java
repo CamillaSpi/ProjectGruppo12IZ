@@ -6,6 +6,7 @@
 
 package stateClassPackage;
 
+import commandClassPackage.ModCommand;
 import commandClassPackage.MultiplyCommand;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
@@ -58,13 +59,13 @@ public class StateTranscendental extends State {
     public void onButtonOne() {
         MyOperandCollection collector = controller.getCollector();
         //MOD
-        MultiplyCommand mulComm = new MultiplyCommand(collector);
-        if(mulComm != null && controller.commandExecute(mulComm)){
-            controller.showAlert("Multiplication done succesfully!");
+        ModCommand ModComm = new ModCommand(collector);
+        if(ModComm != null && controller.commandExecute(ModComm)){
+            controller.showAlert("ModOperation done succesfully!");
             controller.refresh();
         }
         else
-            controller.showAlert("Multiplication cannot be performed!\nHave you inserted at least two operands?");
+            controller.showAlert("ModOperation cannot be performed!\nHave you inserted at least one operand?");
     }
     
     /**
@@ -74,7 +75,6 @@ public class StateTranscendental extends State {
      *
      * @see FXMLDocumentController
      */
-    @Override
     public void onButtonTwo() {
         this.controller.showAlert("Button need to be implements");
     }
@@ -86,7 +86,8 @@ public class StateTranscendental extends State {
      *
      * @see FXMLDocumentController
      */
-    public void onButtonFour() {
+     @Override
+    public void onButtonThree() {
        this.controller.showAlert("Button need to be implements");
     }
 
@@ -158,7 +159,7 @@ public class StateTranscendental extends State {
     @Override
     public void setStateTranscendetal() {
     }
-    
+
     
 
 }

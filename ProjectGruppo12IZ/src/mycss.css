@@ -99,7 +99,8 @@
     -fx-background-color: #86d1be;
 }
 .menuButton{
-    -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/ios7/24/Arrows-Forward-icon.png');
+    -fx-max-width:191;
+    -fx-max-heigth:33;
     -fx-background-color: #0CC0AB;
     -fx-cursor: hand;
 }
