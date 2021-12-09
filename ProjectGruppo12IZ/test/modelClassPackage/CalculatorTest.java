@@ -666,4 +666,49 @@ public class CalculatorTest {
         assertEquals(null, result);
     }
 
+    /**
+     * Test of mod method, of class Calculator, with positive real and imaginary parts.
+     */
+    @Test
+    public void testModPositiveParts() {
+        System.out.println("mod with positive real and imaginary parts");
+        ComplexNumber num = new ComplexNumber("3","1");
+        ComplexNumber expResult = new ComplexNumber("3.162277660","0");
+        ComplexNumber result = Calculator.mod(num);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of mod method, of class Calculator, with negative real and imaginary parts.
+     */
+    @Test
+    public void testModNegativeParts() {
+        System.out.println("mod with negative real and imaginary parts");
+        ComplexNumber num = new ComplexNumber("-2","-1");
+        ComplexNumber expResult = new ComplexNumber("2.236067977","0");
+        ComplexNumber result = Calculator.mod(num);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of mod method, of class Calculator, with zero real and imaginary parts.
+     */
+    @Test
+    public void testModZeroParts() {
+        System.out.println("mod with zero real and imaginary parts");
+        ComplexNumber num = new ComplexNumber("0","0");
+        ComplexNumber expResult = new ComplexNumber("0","0");
+        ComplexNumber result = Calculator.mod(num);
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of mod method, of class Calculator, with null.
+     */
+    @Test
+    public void testModNull() {
+        System.out.println("mod with null");
+        ComplexNumber result = Calculator.mod(null);
+        assertEquals(null, result);
+    }
 }

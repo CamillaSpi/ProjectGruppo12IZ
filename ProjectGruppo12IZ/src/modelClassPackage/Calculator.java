@@ -226,5 +226,29 @@ public class Calculator {
         }
         return null;
     }
+    
+    /**
+     *
+     * calculates and returns the module of a Complex Number, if it is not
+     * null in its parts, otherwise returns null.
+     * <p>
+     * <!-- --> 
+     *
+     * @param num its contains the input complex number
+     * @return return the module of a ComplexNumber or null
+     * @see ComplexNumber
+     *
+     */
+    public static ComplexNumber mod(ComplexNumber num) {
+        if (num != null && num.getReal() != null && num.getImaginary() != null) {
+            MathContext mc = new MathContext(10);
+            BigDecimal result = num.getReal().pow(2,mc).add(num.getImaginary().pow(2,mc),mc);
+            Double mod = sqrt(result.doubleValue());
+            return new ComplexNumber(new BigDecimal(mod,mc),new BigDecimal(0));
+        } else {
+            System.out.println("Operation not possible: the input number is incorrect");
+        }
+        return null;
+    }
 
 }
