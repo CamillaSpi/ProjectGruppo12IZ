@@ -197,6 +197,7 @@ public class StateOperations extends State {
     this.controller.showButton(new int[]{3, 5,12});
         controller.changeButtonText(0, "MOD");
         controller.changeButtonText(2, "ARG");
+        controller.changeButtonText(1, "SUM");
         controller.changeButtonText(3, "POW");
         controller.changeButtonText(5, "EXP");
         this.controller.hideButton(new int[]{1,13});
