@@ -191,7 +191,6 @@ public class FXMLDocumentController implements Initializable {
     private void moveAnchorOperation(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), externalVBox);
         TranslateTransition slide2 = new TranslateTransition(Duration.seconds(0.4), operationVBox);
-
         if (anchorFlag) {
             slide.setFromY(externalVBox.getTranslateY());
             slide.setToY(60);
@@ -237,7 +236,7 @@ public class FXMLDocumentController implements Initializable {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), textArea);
         if (anchorFlag) {
             slide.setFromX(textArea.getTranslateX());
-            slide.setToX(50);
+            slide.setToX(40);
             slide.setRate(1);
             slide.play();
 
@@ -400,6 +399,7 @@ public class FXMLDocumentController implements Initializable {
         contentClm.setCellValueFactory(cd -> Bindings.valueAt(vars.getMyVariables(), cd.getValue()));
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
+        nameOperationTextArea.setPromptText("Name");
     }
 
     public void setOpView(ObservableList<ComplexNumber> latestOperands) {
