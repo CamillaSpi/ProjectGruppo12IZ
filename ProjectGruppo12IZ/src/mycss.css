@@ -90,6 +90,7 @@
     
 }
 .openMenuButton{
+  -fx-min-width:30;
   -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
     -fx-background-color: #0CC0AB;
     -fx-cursor: hand;
