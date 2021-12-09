@@ -81,7 +81,6 @@ public class StateStandard extends State{
      * an error message will be shown and the operation will not be performed.
      * @see FXMLDocumentController, AddCommand
      */
-    @Override
     public void onButtonTwo() {
         MyOperandCollection collector = controller.getCollector();
         AddCommand addComm = new AddCommand(collector);
@@ -102,6 +101,7 @@ public class StateStandard extends State{
      * an error message will be shown and the operation will not be performed. 
      * @see FXMLDocumentController, SwapCommand
      */
+    @Override
     public void onButtonThree() {
         MyOperandCollection collector = controller.getCollector();
         SwapCommand swapComm = new SwapCommand(collector);
@@ -173,10 +173,10 @@ public class StateStandard extends State{
     @Override
     public void setStateVariables() {
         controller.changeButtonText(0, ">x");
-        controller.changeButtonText(1, "<x");
+        controller.changeButtonText(2, "<x");
         controller.changeButtonText(3, "+x");
-        controller.changeButtonText(4, "-x");
-        controller.hideButton(new int[] {2, 5, 6, 7, 8, 9, 10, 11, 12});
+        controller.changeButtonText(5, "-x");
+        controller.hideButton(new int[] {1, 4, 6, 7, 8, 9, 10, 11, 12});
         controller.showButton(new int[] {13});
         
         controller.setState(new StateVariables(controller)); 
@@ -198,6 +198,19 @@ public class StateStandard extends State{
         controller.hideButton(new int[] {3, 4, 5, 6, 7, 8, 9, 10, 11});
         controller.showButton(new int[] {13});
         controller.setState(new StateOperations(controller));  
+    }
+
+    @Override
+    public void setStateTranscendetal() {
+        controller.changeButtonText(0, "MOD");
+        controller.changeButtonText(2, "ARG");
+        controller.changeButtonText(3, "POW");
+        controller.changeButtonText(5, "EXP");
+        controller.hideButton(new int[] {1, 4, 6, 7, 8, 9, 10, 11});
+        controller.showButton(new int[] {12});
+        
+        controller.setState(new StateTranscendental(controller)); 
+    
     }
     
     

@@ -12,6 +12,15 @@
 .table-view .column-header .label {
     -fx-text-fill: white;
 }
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
 
 .table-row-cell:odd {
     -fx-background-color:transparent;
@@ -40,25 +49,6 @@
 .enterButton{
     -fx-background-color: #9b9b9b;
 }
-.menuButton{
-    -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
-    -fx-background-color: #0CC0AB;
-    -fx-cursor: hand;
-}
-.menuButton:hover{
-    -fx-background-color: #86d1be;
-    
-}
-.bottomMenuButton{
-    -fx-background-color: #0CC0AB;
-    -fx-cursor: hand;
-    -fx-graphic: url('https://icons.iconarchive.com/icons/iconsmind/outline/24/Clock-Forward-icon.png');
-}
-.bottomMenuButton:hover{
-    -fx-background-color: #86d1be;
-    
-}
-
 .serviceMenu{
     -fx-background-color: #9b9b9b;
     -fx-cursor: hand;
@@ -74,17 +64,53 @@
     -fx-background-radius: 12em;
 }
 .BoxState{
-    -fx-background-color: #9b9b9b;
+    -fx-background-color: #121723;
 }
-
+.sideMenuButton{
+     -fx-background-color: transparent;
+}
+.sideMenuButton:hover{
+    -fx-background-color: #303847;
+    -fx-shadow: 5px 5px 5px 5px;
+    -fx-background-radius: 12em;
+}
 .text-field{
     -fx-background-color: #2D2D2D;
     -fx-background-radius: 1em;
 }
 .toggle-button {
   -fx-min-width:30;
+  -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
+    -fx-background-color: #0CC0AB;
+    -fx-cursor: hand;
+  
+}
+.toggle-button:hover{
+    -fx-background-color: #86d1be;
+    
+}
+.openMenuButton{
+  -fx-min-width:30;
+  -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
+    -fx-background-color: #0CC0AB;
+    -fx-cursor: hand;
+}
+.openMenuButton:hover{
+    -fx-background-color: #86d1be;
+}
+.menuButton{
+    -fx-max-width:191;
+    -fx-max-heigth:33;
+    -fx-background-color: #0CC0AB;
+    -fx-cursor: hand;
 }
 
+.bottomMenuButton{
+    -fx-graphic: url('https://icons.iconarchive.com/icons/iconsmind/outline/24/Clock-Forward-icon.png');
+}
+.menuButton:hover{
+    -fx-background-color: #86d1be;
+}
 .toggle-button:selected {
   -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/ios7/24/Arrows-Forward-icon.png');
 }

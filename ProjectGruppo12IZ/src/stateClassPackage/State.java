@@ -21,12 +21,14 @@ public abstract class State {
 
     public abstract void onButtonOne();
 
-    public abstract void onButtonTwo();
+    public abstract void onButtonThree();
 
     public abstract void setStateStandard();
 
     public abstract void setStateVariables();
 
     public abstract void setStateOperations();
+    
+    public abstract void setStateTranscendetal();
     
 }
