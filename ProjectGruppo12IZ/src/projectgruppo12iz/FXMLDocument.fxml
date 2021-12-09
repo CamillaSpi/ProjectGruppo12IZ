@@ -138,6 +138,7 @@
                         <Button mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" text="Standards" />
                         <Button mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" text="Variables" />
                         <Button mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" text="Operations" />
+                        <Button mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" text="Trascendetal" />
                      </children>
                   </VBox>
                </children>

@@ -184,4 +184,16 @@ public class StateOperations extends State {
     public void setStateOperations() {
 
     }
+
+    @Override
+    public void setStateTranscendetal() {
+    this.controller.showButton(new int[]{3, 4,12});
+        controller.changeButtonText(0, "MOD");
+        controller.changeButtonText(1, "ARG");
+        controller.changeButtonText(3, "POW");
+        controller.changeButtonText(4, "EXP");
+        this.controller.hideButton(new int[]{2,13});
+        controller.setState(new StateTranscendental(controller)); 
+    
+    }
 }

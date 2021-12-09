@@ -199,6 +199,19 @@ public class StateStandard extends State{
         controller.showButton(new int[] {13});
         controller.setState(new StateOperations(controller));  
     }
+
+    @Override
+    public void setStateTranscendetal() {
+         controller.changeButtonText(0, "MOD");
+        controller.changeButtonText(1, "ARG");
+        controller.changeButtonText(3, "POW");
+        controller.changeButtonText(4, "EXP");
+        controller.hideButton(new int[] {2, 5, 6, 7, 8, 9, 10, 11});
+        controller.showButton(new int[] {12});
+        
+        controller.setState(new StateTranscendental(controller)); 
+    
+    }
     
     
 }
