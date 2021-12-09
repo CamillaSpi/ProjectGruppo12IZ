@@ -117,7 +117,7 @@
             </VBox>
             <AnchorPane fx:id="bottomAnchorPane" layoutY="166.0" prefHeight="275.0" prefWidth="349.0" AnchorPane.topAnchor="166.0">
                <children>
-                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameClm" editable="false" prefWidth="98.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Name" />
                       <TableColumn fx:id="contentClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Var" />
