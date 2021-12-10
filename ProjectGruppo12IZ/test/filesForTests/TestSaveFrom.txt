@@ -1,0 +1,1 @@
+FirstOperation,dup swap *,SecondOperation,+ * -

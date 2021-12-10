@@ -5,6 +5,13 @@
  */
 package commandClassPackage;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -15,7 +22,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 import modelClassPackage.MyOperandCollection;
@@ -157,8 +166,35 @@ public class HashCommandTable{
         else 
             return null;
     }
-     public ObservableMap<String,ConcreteCommandPersonalized> getMyCommandHash() {
+    public ObservableMap<String,ConcreteCommandPersonalized> getMyCommandHash() {
         return this.concreteCommandHash;
+    }
+     
+    
+    /**
+     * It reads from a file the name and the definition of user operations defined by user in previous usage session
+     * if it is possible. Otherwise, if the name of the File is not correct or the content is not right the operation will not be performed.
+     * If the reading went well the operations contained in the task will be added to that defined in the current usage session.
+     * @param fileName the file from which to read the contents
+     * @return true if the reading operation went well otherwise false.
+     * @see ConcreteCommandPersonalized
+     */
+     public boolean readCommandFromFile(File fileName) {
+        String opName;
+        String userCommandDefinition;
+        
+        try(Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)))){
+            in.useLocale(Locale.US);
+            in.useDelimiter(",");
+            while(in.hasNext()){
+                opName = in.next();
+                userCommandDefinition = in.next();
+                createPersonalizedCommand(userCommandDefinition, opName);
+            }
+        }catch(FileNotFoundException ex){
+            return false;
+        }
+        return true;
     }
     
     public boolean printCommandToFile(File file) {

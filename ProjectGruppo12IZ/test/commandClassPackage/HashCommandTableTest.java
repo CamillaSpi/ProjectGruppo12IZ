@@ -326,11 +326,37 @@ public class HashCommandTableTest {
         HashCommandTable instance = new HashCommandTable(collector, vars);
         instance.createPersonalizedCommand("+", "toAdd");
         instance.createPersonalizedCommand("toAdd", "toAdd1");
-        File f = new File("test/commandClassPackage/pippo");
+        File f = new File("test/filesForTests/pippo");
         boolean result = instance.printCommandToFile(f);
         assertEquals(true, result); 
     }
-    
+
+    /**
+     * Test of readCommandFromFile method, of class HashCommandTable, passing a correct file name with right content.
+     */
+    @Test
+    public void testReadCommandFromFile() {
+        System.out.println("testReadCommandFromFile passing a correct file name with right content");
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        File fileName = new File("test/filesForTests/TestSaveFrom.txt");
+        instance.readCommandFromFile(fileName);
+        ConcreteCommandPersonalized value1 = (ConcreteCommandPersonalized)instance.getUserCommand("FirstOperation");
+        ConcreteCommandPersonalized value2 = (ConcreteCommandPersonalized)instance.getUserCommand("SecondOperation");
+        assertEquals(value1.getCommands(), "dup swap *");
+        assertEquals(value2.getCommands(), "+ * -");
+    }
+    /**
+     * Test of readCommandFromFile method, of class HashCommandTable, passing an incorrect file.
+     */
+    @Test
+    public void testReadCommandFromFileError() {
+        System.out.println("testReadCommandFromFile passing an incorrect name");
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        File fileName = new File("TestSave.txt");
+        boolean ret = instance.readCommandFromFile(fileName);
+        assertEquals(ret,false);
+    }
+        
 }
 
 

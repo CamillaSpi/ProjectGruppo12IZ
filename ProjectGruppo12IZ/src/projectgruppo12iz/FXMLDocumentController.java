@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -27,8 +28,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -658,9 +662,42 @@ public class FXMLDocumentController implements Initializable {
             showAlert("idk what is success");
         }
     }
-
+    
+    
+     /**
+     * It create a new FileChooser and open the Dialog on the base anchor pane. 
+     * From it the user can choose the origin file from which to restore the user's operations 
+     * defined in a previous usage session.
+     * Before it a message is shown to user in ordere to comunicate that the operation defined in the current usage 
+     * remains and that if there are some operations defined in the current usage with same name of some in the file,
+     * these will be replaced.
+     * The chosen file is then passed to a service whose work is to read the operations from the specified file.
+     * If the operation can be performed a confirmation message will be shown to User
+     * otherwise an error message is shown.
+     * 
+     * <p>
+     * <!-- --> 
+     * @param event it registers the event of the click of the button for restore User Operations
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void restoreUserOperationFromFile(ActionEvent event) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Restoring operations from File");
+        alert.setHeaderText("This means the current operation will be kept!");
+        alert.setContentText("If you have defined some with the same name, it will be replaced!");
+        Optional<ButtonType> option = alert.showAndWait();
+        if (alert.getResult() == ButtonType.OK) {
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Open ");
+            File file = fc.showOpenDialog(this.baseAnchorPane.getScene().getWindow());
+            CommandRetrievingService commandRetr = new CommandRetrievingService(file, userCommand);
+            commandRetr.start();
+            commandRetr.setOnSucceeded(event1 -> showAlert("Restore operation done successfully!"));
+            commandRetr.setOnFailed(event1 -> showAlert("Restore operation cannot be performed!"));
+        }
+        else
+            showAlert("Restore operation will not be performed!");
     }
 
     @FXML
