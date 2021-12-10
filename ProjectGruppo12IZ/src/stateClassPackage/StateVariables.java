@@ -90,7 +90,7 @@ public class StateVariables extends State {
                 AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
+                        this.controller.showAlert("operation failed, set a value to the specified variable");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
@@ -119,7 +119,7 @@ public class StateVariables extends State {
                 SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
+                        this.controller.showAlert("operation failed, set a value to the specified variable");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
