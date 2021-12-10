@@ -66,24 +66,10 @@
 .BoxState{
     -fx-background-color: #121723;
 }
-.sideMenuButton{
-     -fx-background-color: transparent;
-}
-.sideMenuButton:hover{
-    -fx-background-color: #303847;
-    -fx-shadow: 5px 5px 5px 5px;
-    -fx-background-radius: 12em;
-}
+
 .text-field{
     -fx-background-color: #2D2D2D;
     -fx-background-radius: 1em;
-}
-.toggle-button {
-  -fx-min-width:30;
-  -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/windows-8/24/Very-Basic-Menu-icon.png');
-    -fx-background-color: #0CC0AB;
-    -fx-cursor: hand;
-  
 }
 .toggle-button:hover{
     -fx-background-color: #86d1be;
@@ -104,11 +90,28 @@
 }
 
 .bottomMenuButton{
+     -fx-min-width:30;
+    -fx-background-color: #0CC0AB;
+    -fx-cursor: hand;
     -fx-graphic: url('https://icons.iconarchive.com/icons/iconsmind/outline/24/Clock-Forward-icon.png');
 }
 .menuButton:hover{
     -fx-background-color: #86d1be;
 }
-.toggle-button:selected {
+.bottomMenuButton:selected {
   -fx-graphic: url('https://icons.iconarchive.com/icons/icons8/ios7/24/Arrows-Forward-icon.png');
+}
+.sideMenuButton{
+     -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.sideMenuButton:hover{
+    -fx-background-color: #303847;
+    -fx-shadow: 5px 5px 5px 5px;
+    -fx-background-radius: 12em;
+}
+.sideMenuButton:selected {
+     -fx-background-color: #303847;
+    -fx-shadow: 5px 5px 5px 5px;
+    -fx-background-radius: 12em;
 }

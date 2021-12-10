@@ -72,7 +72,8 @@ public class FXMLDocumentController implements Initializable {
     private final ObservableList<String> operationKeys = FXCollections.observableArrayList();
     private ObservableList<ComplexNumber> latestOperands;
     private final ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
-    
+    private final ArrayList<ToggleButton> myToggleButtonArray = new ArrayList<>();
+
     @FXML
     private AnchorPane baseAnchorPane;
     @FXML
@@ -145,13 +146,20 @@ public class FXMLDocumentController implements Initializable {
     private Button openMenuButton;
     @FXML
     private Button closeButton;
+    @FXML
+    private ToggleButton standardsToggle;
+    @FXML
+    private ToggleButton variablesToggle;
+    @FXML
+    private ToggleButton operationsToggle;
+    @FXML
+    private ToggleButton transcendentalToggle;
 
-    
     @FXML
     private void closeSideMenu(ActionEvent event) {
         moveAnchor(false);
     }
-    
+
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
         if (flag) {
@@ -235,7 +243,7 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-    
+
     public void showButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
@@ -264,7 +272,7 @@ public class FXMLDocumentController implements Initializable {
                 fadeIn.setNode(myBtn);
                 fadeIn.play();
                 myBtn.setVisible(false);
-            } 
+            }
         }
     }
 
@@ -273,6 +281,12 @@ public class FXMLDocumentController implements Initializable {
         pause.stop();
         pause.setOnFinished(e -> errorLabel.setText(null));
         pause.play();
+    }
+
+    public void changeToggleButton(ToggleButton toNotChange) {
+        myToggleButtonArray.stream().filter(x -> (x != toNotChange)).forEachOrdered(x -> {
+            x.setSelected(false);
+        });
     }
 
     /**
@@ -308,6 +322,10 @@ public class FXMLDocumentController implements Initializable {
         myButtonArray.add(buttonEleven);
         myButtonArray.add(buttonTwelve);
         myButtonArray.add(enterButton);
+        myToggleButtonArray.add(standardsToggle);
+        myToggleButtonArray.add(variablesToggle);
+        myToggleButtonArray.add(operationsToggle);
+        myToggleButtonArray.add(transcendentalToggle);
         myButtonArray.add(ShowBottomAnchorPane);
         ShowBottomAnchorPane.setVisible(false);
         latestOperands = FXCollections.observableList(collector.getL());
@@ -324,7 +342,7 @@ public class FXMLDocumentController implements Initializable {
             moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
         });
-        
+
         textArea.setOnKeyPressed((KeyEvent ke) -> {
             if (ke.getCode().equals(KeyCode.ENTER)) {
                 //"press" enter button for staetOperations or Standard
@@ -375,7 +393,7 @@ public class FXMLDocumentController implements Initializable {
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
         nameOperationTextArea.setPromptText("Name");
-        
+
     }
 
     /**
@@ -646,6 +664,7 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
      * for restore User Operations
+     *
      * @see CommandRetrievingService, HashhCommandTable
      */
     @FXML
@@ -695,7 +714,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
-
+        changeToggleButton(standardsToggle);
         moveAnchor(false);
         moveAnchorOperation(false);
         ShowBottomAnchorPane.setSelected(false);
@@ -706,6 +725,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showVariables(ActionEvent event) {
+
+        changeToggleButton(variablesToggle);
         moveAnchor(false);
         moveTextArea(true);
         moveAnchorOperation(false);
@@ -720,6 +741,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
+
+        changeToggleButton(operationsToggle);
         moveAnchor(false);
         moveAnchorOperation(true);
         moveTextArea(false);
@@ -735,6 +758,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showTranscendental(ActionEvent event) {
+        changeToggleButton(transcendentalToggle);
         moveAnchor(false);
         moveAnchorOperation(false);
         ShowBottomAnchorPane.setSelected(false);
@@ -794,11 +818,10 @@ public class FXMLDocumentController implements Initializable {
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
     }
+
     public MyOperandCollection getCollector() {
         return collector;
     }
-
-    
 
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {
