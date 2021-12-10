@@ -52,6 +52,7 @@ public class StateStandard extends State {
                 if (enterComm != null && controller.commandExecute(enterComm)) {
                     controller.showAlert("enterCommand done succesfully!");
                     controller.refresh();
+                    this.controller.clearText();
                 } else {
                     controller.showAlert("Operand not saved!");
                 }
