@@ -12,14 +12,13 @@ import modelClassPackage.Variables;
 /**
  *
  * @author nando
- * @time Dec 10, 2021 1:57:18 PM
  */
 public class SaveVariablesCommand implements Command{
 
     private final Variables vars;
 
     /**
-     * This method create an object that rappresent SaveToVariable operation in order to execute and undo the command.
+     * This method create an object that represent saveVariablesIntoStack operation in order to execute and undo the command.
      * <p> <!-- -->
      * @param vars is the name of the variable were call SaveToVariable.
      * @see MyOperandCollection
@@ -31,7 +30,7 @@ public class SaveVariablesCommand implements Command{
     }
     
     /**
-     * This method implements execute method for SaveToVariable operation from Command interface.
+     * This method implements execute method for saveVariablesIntoStack operation from Command interface.
      * @return true or false if operation executed.
      */
     @Override
@@ -41,7 +40,7 @@ public class SaveVariablesCommand implements Command{
     }
 
     /**
-     * This method implements undo method for SaveToVariable operation from Command interface
+     * This method implements undo method for saveVariablesIntoStack operation from Command interface
      */
     @Override
     public void undo() {

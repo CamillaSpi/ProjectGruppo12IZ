@@ -10,14 +10,13 @@ import modelClassPackage.Variables;
 /**
  *
  * @author nando
- * @time Dec 10, 2021 1:57:18 PM
  */
 public class RestoreVariablesCommand implements Command {
 
     private final Variables vars;
 
     /**
-     * This method create an object that rappresent SaveToVariable operation in
+     * This method create an object that represent RestoreVariablesFromStack operation in
      * order to execute and undo the command.
      * <p>
      * <!-- --> 
@@ -32,7 +31,7 @@ public class RestoreVariablesCommand implements Command {
     }
 
     /**
-     * This method implements execute method for SaveToVariable operation from
+     * This method implements execute method for RestoreVariablesFromStack operation from
      * Command interface.
      *
      * @return true or false if operation executed.
@@ -44,7 +43,7 @@ public class RestoreVariablesCommand implements Command {
     }
 
     /**
-     * This method implements undo method for SaveToVariable operation from
+     * This method implements undo method for RestoreVariablesFromStack operation from
      * Command interface
      */
     @Override

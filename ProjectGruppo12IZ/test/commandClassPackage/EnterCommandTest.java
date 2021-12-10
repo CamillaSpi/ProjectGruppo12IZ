@@ -39,7 +39,6 @@ public class EnterCommandTest {
     @Test
     public void testUndo() {
         System.out.println("undo");
-        System.out.println("undo");
         MyOperandCollection coll = new MyOperandCollection(12);
         ComplexNumber a = new ComplexNumber("-2", "9");
         EnterCommand instance = new EnterCommand(coll, a);
@@ -65,7 +64,6 @@ public class EnterCommandTest {
     @Test(expected = AssertionError.class)
     public void testNullComplexNumber() {
         System.out.println("null");
-
         MyOperandCollection collector = new MyOperandCollection(12);
         EnterCommand instance = new EnterCommand(collector, null);
     }
