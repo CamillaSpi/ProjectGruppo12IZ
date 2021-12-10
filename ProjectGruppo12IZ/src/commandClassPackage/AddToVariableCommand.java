@@ -52,9 +52,11 @@ public class AddToVariableCommand implements Command{
             return false;
         this.OperandFromStack = value;
         
-        collector.remove();
         this.oldValueVar = vars.getValue(this.variables);
         
+        if (this.oldValueVar == null)
+            return false;
+        collector.remove();
         return vars.addToVariable(this.variables, this.OperandFromStack);
         
     }

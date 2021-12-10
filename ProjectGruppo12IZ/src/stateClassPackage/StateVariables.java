@@ -35,9 +35,9 @@ public class StateVariables extends State {
             if (!("".equals(variable))) {
                 SaveToVariableCommand cmd = new SaveToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("the operation is failed, are you sure you write a varible a-z?!\n");
+                    this.controller.showAlert("the operation is failed, are you sure you write a variable a-z?!\n");
                 } else {
-                    this.controller.showAlert("the last operand is saved in the writed variable!\n");
+                    this.controller.showAlert("the last operand is saved in the written variable!\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
                 }
@@ -64,7 +64,7 @@ public class StateVariables extends State {
             SaveFromVariableCommand cmd = new SaveFromVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
             if (cmd != null) {
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("the operation is failed, are you sure have set the variable?\n");
+                    this.controller.showAlert("operation failed, set a value to the specified variable");
                 } else {
                     this.controller.showAlert("Value from variable inserted correctly\n");
                     this.controller.refresh();
