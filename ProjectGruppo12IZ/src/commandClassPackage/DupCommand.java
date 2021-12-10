@@ -49,7 +49,6 @@ public class DupCommand implements Command{
     @Override
     public void undo() {
         collector.remove();
-        collector.insert(first);
     }
     
 }

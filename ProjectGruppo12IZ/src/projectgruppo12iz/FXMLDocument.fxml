@@ -142,10 +142,10 @@
                <children>
                   <VBox layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Standards" />
-                        <Button mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Variables" />
-                        <Button mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Operations" />
-                        <Button mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Transcendental" />
+                        <ToggleButton fx:id="standardsToggle" mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" selected="true" styleClass="sideMenuButton" text="Standards" />
+                        <ToggleButton fx:id="variablesToggle" mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Variables" />
+                        <ToggleButton fx:id="operationsToggle" mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Operations" />
+                        <ToggleButton fx:id="transcendentalToggle" mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Trascendental" />
                      </children>
                   </VBox>
                   <Button fx:id="openMenuButton" layoutY="1.0" mnemonicParsing="false" onAction="#closeSideMenu" prefHeight="33.0" prefWidth="191.0" styleClass="menuButton" text="Complex Number Calculator" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
