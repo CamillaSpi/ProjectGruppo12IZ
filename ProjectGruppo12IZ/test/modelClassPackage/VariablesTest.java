@@ -5,14 +5,7 @@
  */
 package modelClassPackage;
 
-import java.util.Map;
-import java.util.Stack;
-import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableMap;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,21 +18,6 @@ public class VariablesTest {
     public VariablesTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of checkRange method, of class Variables, analyzing the case with a String's legth equal to 0.

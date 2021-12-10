@@ -36,6 +36,7 @@ public class MultiplyCommand implements Command{
     /**
      *It execute the operation of multiplication on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
+     * @return 
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

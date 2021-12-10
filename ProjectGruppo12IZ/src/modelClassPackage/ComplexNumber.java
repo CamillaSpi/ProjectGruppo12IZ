@@ -57,13 +57,11 @@ public class ComplexNumber{
 
         Pattern complexNumberPattern;
         if (complexNumber == null) {
-            System.out.println("The string is empty");
             return null;
         }
         //check if the last elements is a j or a number otherwise there is a problem
         if (complexNumber.charAt(complexNumber.length() - 1) != 'j' && (complexNumber.charAt(complexNumber.length() - 1) < '0' && complexNumber.charAt(complexNumber.length() - 1) > '9')) {
-            System.out.println("The last elements is not a j or a number");
-            return null;
+             return null;
         }
         //Check the first value on the 
         if (complexNumber.charAt(0) == '+' || complexNumber.charAt(0) == '-') {

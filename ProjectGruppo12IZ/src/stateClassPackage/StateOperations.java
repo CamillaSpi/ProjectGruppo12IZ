@@ -20,11 +20,11 @@ import projectgruppo12iz.FXMLDocumentController;
  */
 public class StateOperations extends State {
 
-    private HashCommandTable userCommand;
+    private final HashCommandTable userCommand;
 
      /**
      * It create a new object StateStandard calling the constructor method of the super class.
-     * @param collector
+     * @param controller
      * @see FXMLDocumentController
      */
     public StateOperations(FXMLDocumentController controller) {

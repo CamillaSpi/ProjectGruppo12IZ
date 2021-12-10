@@ -7,9 +7,6 @@ package stateClassPackage;
 
 import commandClassPackage.ArgCommand;
 import commandClassPackage.ModCommand;
-import java.util.Optional;
-import java.util.regex.Pattern;
-import javafx.scene.control.TextInputDialog;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import projectgruppo12iz.FXMLDocumentController;

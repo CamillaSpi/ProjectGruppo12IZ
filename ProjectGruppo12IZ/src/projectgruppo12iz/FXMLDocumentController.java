@@ -25,7 +25,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -62,14 +61,18 @@ import stateClassPackage.StateVariables;
  */
 public class FXMLDocumentController implements Initializable {
 
-    MyOperandCollection collector = new MyOperandCollection(12);
-    Variables vars = new Variables();
-    HashCommandTable userCommand = new HashCommandTable(collector, vars);
-    PauseTransition pause = new PauseTransition(Duration.seconds(5));
-    Invoker inv = new Invoker();
-    FadeTransition fadeIn = new FadeTransition(Duration.millis(1000));
-    State state;
-    int last = 0;
+    private final MyOperandCollection collector = new MyOperandCollection(12);
+    private final Variables vars = new Variables();
+    private final HashCommandTable userCommand = new HashCommandTable(collector, vars);
+    private final PauseTransition pause = new PauseTransition(Duration.seconds(5));
+    private final Invoker inv = new Invoker();
+    private final FadeTransition fadeIn = new FadeTransition(Duration.millis(1000));
+    private State state;
+    private final ObservableList<String> varKeys = FXCollections.observableArrayList();
+    private final ObservableList<String> operationKeys = FXCollections.observableArrayList();
+    private ObservableList<ComplexNumber> latestOperands;
+    private final ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
+    
     @FXML
     private AnchorPane baseAnchorPane;
     @FXML
@@ -88,8 +91,6 @@ public class FXMLDocumentController implements Initializable {
     private Button buttonSix;
     @FXML
     private Label errorLabel;
-
-    private ObservableList<ComplexNumber> latestOperands;
     @FXML
     private AnchorPane varAnchorPane;
     @FXML
@@ -128,17 +129,12 @@ public class FXMLDocumentController implements Initializable {
     private TextField nameOperationTextArea;
     @FXML
     private VBox operationVBox;
-
-    ArrayList<ButtonBase> myButtonArray = new ArrayList<>();
     @FXML
     private TableView<String> tableOpVar;
     @FXML
     private TableColumn<String, String> nameClm;
     @FXML
     private TableColumn<String, ComplexNumber> contentClm;
-
-    ObservableList<String> varKeys = FXCollections.observableArrayList();
-    ObservableList<String> operationKeys = FXCollections.observableArrayList();
     @FXML
     private AnchorPane bottomAnchorPane;
     @FXML
@@ -150,15 +146,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button closeButton;
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-
+    
+    @FXML
+    private void closeSideMenu(ActionEvent event) {
+        moveAnchor(false);
     }
-
-    public MyOperandCollection getCollector() {
-        return collector;
-    }
-
+    
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
         if (flag) {
@@ -174,12 +167,8 @@ public class FXMLDocumentController implements Initializable {
             variableButton.setPrefSize(24, 33);
             slide.setRate(1);
             slide.play();
-            slide.setOnFinished(new EventHandler<ActionEvent>() {
-
-                @Override
-                public void handle(ActionEvent event) {
-                    variableButton.setVisible(true);
-                }
+            slide.setOnFinished((ActionEvent event) -> {
+                variableButton.setVisible(true);
             });
 
         }
@@ -246,12 +235,11 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-
+    
     public void showButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
             myBtn = myButtonArray.get(index[i]);
-            System.out.print("forse show " + myBtn + myBtn.isVisible());
             if (!myBtn.isVisible()) {
                 fadeIn.setRate(1);
                 fadeIn.setFromValue(0);
@@ -260,8 +248,6 @@ public class FXMLDocumentController implements Initializable {
                 fadeIn.setNode(myBtn);
                 fadeIn.play();
                 myBtn.setVisible(true);
-            } else {
-                System.out.println("notshow");
             }
         }
 
@@ -271,7 +257,6 @@ public class FXMLDocumentController implements Initializable {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
             myBtn = myButtonArray.get(index[i]);
-            System.out.print("forse hide " + myBtn + myBtn.isVisible());
             if (myBtn.isVisible()) {
                 fadeIn.setRate(1);
                 fadeIn.setFromValue(1);
@@ -279,11 +264,7 @@ public class FXMLDocumentController implements Initializable {
                 fadeIn.setNode(myBtn);
                 fadeIn.play();
                 myBtn.setVisible(false);
-                System.out.println("hide");
-
-            } else {
-                System.out.println("npothide");
-            }
+            } 
         }
     }
 
@@ -299,6 +280,7 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * <!-- --> @param num it's the ComplexNumber to insert in the collection
      *
+     * @param num ComplexNumber to push into stack
      * @return true if the element was add, otherwise false
      * @see MyOperandCollection
      */
@@ -330,7 +312,7 @@ public class FXMLDocumentController implements Initializable {
         ShowBottomAnchorPane.setVisible(false);
         latestOperands = FXCollections.observableList(collector.getL());
         OperandsClm.setCellValueFactory(new PropertyValueFactory<>("complexString"));
-        setOpView(latestOperands);
+        OperandsTable.setItems(latestOperands);
 
         variableButton.setOnMouseClicked(event -> {
 
@@ -342,30 +324,24 @@ public class FXMLDocumentController implements Initializable {
             moveBottomAnchorPane(!ShowBottomAnchorPane.isSelected());
 
         });
-        textArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent ke) {
-                if (ke.getCode().equals(KeyCode.ENTER)) {
-                    //"press" enter button for staetOperations or Standard
-                    if (state instanceof StateOperations) {
-                        ((StateOperations) state).onButtonEnter();
-                    } else if (state instanceof StateStandard) {
-                        ((StateStandard) state).onButtonEnter();
-                    } else {
-                        ((StateTranscendental) state).onButtonEnter();
-                    }
+        
+        textArea.setOnKeyPressed((KeyEvent ke) -> {
+            if (ke.getCode().equals(KeyCode.ENTER)) {
+                //"press" enter button for staetOperations or Standard
+                if (state instanceof StateOperations) {
+                    ((StateOperations) state).onButtonEnter();
+                } else if (state instanceof StateStandard) {
+                    ((StateStandard) state).onButtonEnter();
+                } else {
+                    ((StateTranscendental) state).onButtonEnter();
                 }
-
             }
         });
-        nameOperationTextArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent ke) {
-                if (ke.getCode().equals(KeyCode.ENTER)) {
-                    //"press" execute button only in stateOperations
-                    if (state instanceof StateOperations) {
-                        ((StateOperations) state).onButtonThree();
-                    }
+        nameOperationTextArea.setOnKeyPressed((KeyEvent ke) -> {
+            if (ke.getCode().equals(KeyCode.ENTER)) {
+                //"press" execute button only in stateOperations
+                if (state instanceof StateOperations) {
+                    ((StateOperations) state).onButtonThree();
                 }
             }
         });
@@ -399,11 +375,7 @@ public class FXMLDocumentController implements Initializable {
         operationClm.setCellValueFactory(cd -> Bindings.valueAt(userCommand.getMyCommandHash(), cd.getValue().toString()));
         tableOpVar.getColumns().setAll(nameClm, contentClm, operationClm);
         nameOperationTextArea.setPromptText("Name");
-    }
-
-    public void setOpView(ObservableList<ComplexNumber> latestOperands) {
-        OperandsTable.setItems(latestOperands);
-
+        
     }
 
     /**
@@ -636,9 +608,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void saveVariablesIntoStack(ActionEvent event) {
         if (vars.saveVariablesIntoStack()) {
-            showAlert("Tt appsot");
+            showAlert("Variables saved into stack!");
         } else {
-            showAlert("idk what is success");
+            showAlert("Some problems occours\nDid you save at least one variables?");
         }
     }
 
@@ -656,28 +628,28 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void restoreVariablesFromStack(ActionEvent event) {
         if (vars.restoreVariablesFromStack()) {
-            showAlert("Tt appsot");
+            showAlert("Variables restored from stack!");
             tableOpVar.refresh();
         } else {
-            showAlert("idk what is success");
+            showAlert("Some problems occours\nDid you save somethings in the stack?");
         }
     }
-    
-    
-     /**
-     * It create a new FileChooser and open the Dialog on the base anchor pane. 
-     * From it the user can choose the origin file from which to restore the user's operations 
-     * defined in a previous usage session.
-     * Before it a message is shown to user in ordere to comunicate that the operation defined in the current usage 
-     * remains and that if there are some operations defined in the current usage with same name of some in the file,
-     * these will be replaced.
-     * The chosen file is then passed to a service whose work is to read the operations from the specified file.
-     * If the operation can be performed a confirmation message will be shown to User
+
+    /**
+     * It create a new FileChooser and open the Dialog on the base anchor pane.
+     * From it the user can choose the origin file from which to restore the
+     * user's operations defined in a previous usage session. Before it a
+     * message is shown to user in ordere to comunicate that the operation
+     * defined in the current usage remains and that if there are some
+     * operations defined in the current usage with same name of some in the
+     * file, these will be replaced. The chosen file is then passed to a service
+     * whose work is to read the operations from the specified file. If the
+     * operation can be performed a confirmation message will be shown to User
      * otherwise an error message is shown.
-     * 
+     *
      * <p>
-     * <!-- --> 
-     * @param event it registers the event of the click of the button for restore User Operations
+     * <!-- --> @param event it registers the event of the click of the button
+     * for restore User Operations
      * @see CommandRetrievingService, HashhCommandTable
      */
     @FXML
@@ -695,9 +667,9 @@ public class FXMLDocumentController implements Initializable {
             commandRetr.start();
             commandRetr.setOnSucceeded(event1 -> showAlert("Restore operation done successfully!"));
             commandRetr.setOnFailed(event1 -> showAlert("Restore operation cannot be performed!"));
-        }
-        else
+        } else {
             showAlert("Restore operation will not be performed!");
+        }
     }
 
     @FXML
@@ -826,11 +798,11 @@ public class FXMLDocumentController implements Initializable {
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
     }
-
-    @FXML
-    private void closeSideMenu(ActionEvent event) {
-        moveAnchor(false);
+    public MyOperandCollection getCollector() {
+        return collector;
     }
+
+    
 
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {

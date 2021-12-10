@@ -15,9 +15,9 @@ import modelClassPackage.Variables;
  */
 public class SubtractToVariableCommand implements Command{
 
-    private MyOperandCollection collector;
-    private Variables vars;
-    private String variables;
+    private final MyOperandCollection collector;
+    private final Variables vars;
+    private final String variables;
     private ComplexNumber oldValueVar;
     private ComplexNumber OperandFromStack;
 

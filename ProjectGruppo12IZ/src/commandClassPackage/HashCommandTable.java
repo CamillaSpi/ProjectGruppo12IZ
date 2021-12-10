@@ -6,24 +6,18 @@
 package commandClassPackage;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
@@ -59,6 +53,8 @@ public class HashCommandTable{
         basicCommandHash.put("<x", "SaveFromVariableCommand");
         basicCommandHash.put("+x", "AddToVariableCommand");
         basicCommandHash.put("-x", "SubtractToVariableCommand");
+        basicCommandHash.put("mod", "ModCommand");
+        basicCommandHash.put("arg", "ArgCommand");
         this.collector = collector;
         this.vars = vars;
     }
@@ -203,7 +199,6 @@ public class HashCommandTable{
                 out.print(m.getKey() + "," + m.getValue().getCommands() + ",");
             });
         } catch (IOException ex) {
-            System.out.println("errore nella lettura del file");
             return false;
         }   
         return true;        

@@ -5,10 +5,6 @@
  */
 package modelClassPackage;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,21 +17,6 @@ public class OperandCollectionTest {
     public OperandCollectionTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of insert method, of class OperandCollection.
@@ -148,31 +129,5 @@ public class OperandCollectionTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of stamp method, of class OperandCollection.
-     */
-    @Test
-    public void testStamp() {
-        System.out.println("stamp");
-        OperandCollection instance = new OperandCollection(5);
-        instance.insert(new ComplexNumber("5", "5"));
-        instance.insert(new ComplexNumber("7", "5"));
-        instance.insert(new ComplexNumber("-3", "5"));
-        instance.insert(new ComplexNumber("345", "5"));
-        instance.insert(new ComplexNumber("745", "565"));
-        instance.insert(new ComplexNumber("-398", "775"));
-        instance.stamp();
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println(instance.last());
-        System.out.println(instance.remove());
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        instance.stamp();
-    }
     
 }

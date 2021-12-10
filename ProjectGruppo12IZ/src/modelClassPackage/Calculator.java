@@ -31,7 +31,6 @@ public class Calculator {
      */
     public static ComplexNumber addiction(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
-            System.out.println("Addiction cannot be performed");
             return null;
         }
         BigDecimal realRes = a.getReal().add(b.getReal());
@@ -54,7 +53,6 @@ public class Calculator {
      */
     public static ComplexNumber subtraction(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
-            System.out.println("Subtraction cannot be performed");
             return null;
         }
         BigDecimal real, imaginary;
@@ -81,7 +79,6 @@ public class Calculator {
      */
     public static ComplexNumber multiplication(ComplexNumber first, ComplexNumber second) {
         if (first == null || second == null) {
-            System.out.println("Multiplication cannot be performed");
             return null;
         }
         BigDecimal real, imaginary;
@@ -100,8 +97,8 @@ public class Calculator {
      * return the result of the division, if these are not null and the second
      * is different from zero, otherwise return null.
      * <p>
-     * <!-- --> @param a the dividend of the division
-     *
+     * <!-- --> 
+     * @param a the dividend of the division
      * @param b the divisor of the division
      * @return the result of the operation or null if the divisor is equal to
      * zero or one of the input parameters is null
@@ -109,11 +106,9 @@ public class Calculator {
      */
     public static ComplexNumber division(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
-            System.out.println("Division cannot be performed");
             return null;
         }
         if (new ComplexNumber("0", "0").equals(b)) {
-            System.out.println("Division cannot be performed with divisor equal to 0");
             return null;
         }
 
@@ -131,8 +126,8 @@ public class Calculator {
      * null, otherwise return null.
      * The function convert the complex number in trigonometric but return the number in Cartesian form
      * <p>
-     * <!-- --> @param a its contains the input complex number
-     *
+     * <!-- --> 
+     * @param a its contains the input complex number
      * @return return a ComplexNumber or null
      * @see ComplexNumber
      *
@@ -140,7 +135,6 @@ public class Calculator {
 
     public static ComplexNumber squareRoot(ComplexNumber a) {
         if (a == null) {
-            System.out.println("square Root cannot be performed");
             return null;
         }
         BigDecimal real = a.getReal();
@@ -193,8 +187,8 @@ public class Calculator {
      * calculate and return the invers of a Complex Number, if these is not
      * null, otherwise return null.
      * <p>
-     * <!-- --> @param a its contains the input complex number
-     *
+     * <!-- --> 
+     * @param a its contains the input complex number
      * @return return a ComplexNumber or null
      * @see ComplexNumber
      *
@@ -202,8 +196,6 @@ public class Calculator {
     public static ComplexNumber invertSign(ComplexNumber a) {
         if (a != null) {
             return new ComplexNumber(a.getReal().negate(), a.getImaginary().negate());
-        } else {
-            System.out.println("opretion not possible: the input number is incorrect");
         }
         return null;
     }
@@ -213,8 +205,8 @@ public class Calculator {
      * calculate and return the conjugated of a Complex Numbers, if these is not
      * null, otherwise return null.
      * <p>
-     * <!-- --> @param a its contains the input complex number
-     *
+     * <!-- -->
+     * @param a its contains the input complex number
      * @return return the conjugated ComplexNumber or null
      * @see ComplexNumber
      *
@@ -222,8 +214,6 @@ public class Calculator {
     public static ComplexNumber conjugated(ComplexNumber a) {
         if (a != null) {
             return new ComplexNumber(a.getReal(), a.getImaginary().negate());
-        } else {
-            System.out.println("Operation not possible: the input number is incorrect");
         }
         return null;
     }
@@ -246,8 +236,6 @@ public class Calculator {
             BigDecimal result = num.getReal().pow(2,mc).add(num.getImaginary().pow(2,mc),mc);
             Double mod = sqrt(result.doubleValue());
             return new ComplexNumber(new BigDecimal(mod,mc),new BigDecimal(0));
-        } else {
-            System.out.println("Operation not possible: the input number is incorrect");
         }
         return null;
     }
@@ -286,8 +274,6 @@ public class Calculator {
                         else
                             if (a.doubleValue() < 0 && b.doubleValue() < 0)
                                 return new ComplexNumber(new BigDecimal(atan((b.doubleValue()*(-1))/(a.doubleValue()*(-1))) - PI,mc), new BigDecimal(0));
-        } else {
-            System.out.println("Operation not possible: the input number is incorrect");
         }
         return null;
     }

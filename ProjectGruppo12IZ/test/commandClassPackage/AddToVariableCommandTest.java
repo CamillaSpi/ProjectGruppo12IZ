@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author nando
+ * @author GRUPPO 12 IZ
  */
 public class AddToVariableCommandTest {
 

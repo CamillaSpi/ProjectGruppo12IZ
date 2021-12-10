@@ -22,6 +22,7 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
     /**
      * It creates an object of the ConcreteCommandPersonalized if the collector is not null and 
      * @param commandName is the name of the command, we choose to save this in this class, could be util for the future.
+     * @param operations
      * @param commands is the list of commands that compose this concrete complex command .
      * @see ComplexNumber, MyOperandCollection
      */

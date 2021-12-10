@@ -6,7 +6,6 @@
 
 package modelClassPackage;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,8 +44,7 @@ public class OperandCollection{
             if(l.size()>this.k)
                 l1.add(0, l.remove(this.k));                
         }
-        else
-            System.out.println("I can't insert the complex number.");
+       
     }
     /**
     * It removes and returns (if the collection is not empty) the complexNumber at the top of the collection.
@@ -62,8 +60,7 @@ public class OperandCollection{
             return tmp;
             
         }
-        else
-            System.out.println("The OperandCollection was just empty.");
+        
         return null;
     }
     
@@ -76,9 +73,7 @@ public class OperandCollection{
     public ComplexNumber last(){
         if(!l.isEmpty())
             return l.get(0);
-        else{
-            System.out.println("There are no element inside the OperandCollection.");
-        }
+        
         return null;
     }
     
@@ -91,9 +86,7 @@ public class OperandCollection{
     public ComplexNumber secondLast(){
         if(l.size() > 1)
             return l.get(1);
-        else{
-            System.out.println("There are less than two elements inside the OperandCollection.");
-        }
+        
         return null;
     }
     
@@ -105,14 +98,5 @@ public class OperandCollection{
     public int collectionLength(){
         return l.size() + l1.size();
     }
-
-    public void stamp(){
-        //get an iterator for the stack 
-        System.out.println("Stack elements:"); 
-        //traverse the stack using iterator in a loop and print each element 
-        Iterator iterator = l.iterator(); 
-        while(iterator.hasNext()){ 
-            System.out.println(iterator.next() + " "); 
-        } 
-    } 
+    
 }

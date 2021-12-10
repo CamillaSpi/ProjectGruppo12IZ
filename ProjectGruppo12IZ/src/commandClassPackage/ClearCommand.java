@@ -15,7 +15,7 @@ import modelClassPackage.MyOperandCollection;
  * @author Gruppo 12 IZ
  */
 public class ClearCommand implements Command{
-    private MyOperandCollection collector;
+    private final MyOperandCollection collector;
     private List<ComplexNumber> backup;
     
     /**

@@ -14,9 +14,9 @@ import modelClassPackage.Variables;
  * @author Gruppo 12 IZ
  */
 public class SaveFromVariableCommand implements Command{
-    private MyOperandCollection collector;
-    private Variables vars;
-    private String var;
+    private final MyOperandCollection collector;
+    private final Variables vars;
+    private final String var;
     private ComplexNumber value;
     
     /**

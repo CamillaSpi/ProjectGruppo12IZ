@@ -13,7 +13,7 @@ import modelClassPackage.MyOperandCollection;
  */
 public class SwapCommand implements Command{
 
-    private MyOperandCollection collector;
+    private final MyOperandCollection collector;
 
     /**
      * This method creates an object that represents swap operation in order to execute and undo the command,
@@ -30,6 +30,7 @@ public class SwapCommand implements Command{
     
     /**
      * This method implements execute method for swap operation from Command interface
+     * @return 
      */
     @Override
     public boolean execute() {

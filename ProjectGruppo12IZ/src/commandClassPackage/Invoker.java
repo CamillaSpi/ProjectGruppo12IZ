@@ -12,7 +12,7 @@ import java.util.Deque;
  * @author Gruppo 12 IZ
  */
 public class Invoker{
-    private Deque<Command> stack;
+    private final Deque<Command> stack;
     
     /**
      * It creates an object of the class Invoker.

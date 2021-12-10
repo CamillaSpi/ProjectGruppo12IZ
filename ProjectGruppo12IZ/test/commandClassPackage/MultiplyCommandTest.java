@@ -8,10 +8,6 @@ package commandClassPackage;
 import modelClassPackage.Calculator;
 import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,27 +20,9 @@ public class MultiplyCommandTest {
     
     
     public MultiplyCommandTest() {
-       
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
- 
-
+   
     /**
      * Test of execute method, of class MultiplyCommand, checking is pushed the correct result.
      */

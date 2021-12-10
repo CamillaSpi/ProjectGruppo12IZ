@@ -36,6 +36,7 @@ public class SubtractCommand implements Command{
     /**
      *It executes the operation of subtraction on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
+     * @return 
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

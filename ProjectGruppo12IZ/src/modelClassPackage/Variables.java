@@ -5,24 +5,11 @@
  */
 package modelClassPackage;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
-import static javafx.scene.input.KeyCode.A;
 
 /**
  * This is a class containing a Map as attribute, in order to contain variables
@@ -50,7 +37,8 @@ public class Variables implements Serializable {
      * It checks if the string passed has only one character included in the
      * range from "a" to "z"
      * <p>
-     * <!-- --> @param s the string to be analized
+     * <!-- --> 
+     * @param s the string to be analized
      * @return True if the String has only one character in the range from "a"
      * to "z", false otherwise.
      */
@@ -62,7 +50,8 @@ public class Variables implements Serializable {
      * It returns the value associated with the key passed if exists one,
      * otherwise null.
      * <p>
-     * <!-- --> @param key the key of which returns the associated value
+     * <!-- --> 
+     * @param key the key of which returns the associated value
      * @return the value associated with the key passed if it exists else return
      * null.
      * @see ComplexNumber
@@ -73,7 +62,8 @@ public class Variables implements Serializable {
     /**
      * It returns the attribute myVariables
      * <p>
-     * <!-- --> @return myVariable the map attribute, containing couples
+     * <!-- --> 
+     * @return myVariable the map attribute, containing couples
      * Key-Value
      * @see ComplexNumber
      */
@@ -127,7 +117,8 @@ public class Variables implements Serializable {
      * as parameter, if the operation is concluded succesfully it stores the
      * results as value of the key itself.
      * <p>
-     * <!-- --> @param key the variable associated to the value on which perform
+     * <!-- --> 
+     * @param key the variable associated to the value on which perform
      * the subtraction.
      * @param subtracting the value to subtract from that associated with the
      * key passed.
@@ -183,9 +174,7 @@ public class Variables implements Serializable {
     @Override
     public String toString() {
         String s = "";
-        for (Map.Entry<String, ComplexNumber> entry : myVariables.entrySet()) {
-            s += "(" + entry.getKey() + ", " + entry.getValue() + "), ";
-        }
+        s = myVariables.entrySet().stream().map(entry -> "(" + entry.getKey() + ", " + entry.getValue() + "), ").reduce(s, String::concat);
         return s.substring(0, s.length() - 2);
     }
 
