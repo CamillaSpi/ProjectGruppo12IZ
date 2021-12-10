@@ -14,7 +14,7 @@ import projectgruppo12iz.FXMLDocumentController;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo 12 IZ
  */
 public class StateVariables extends State {
 
