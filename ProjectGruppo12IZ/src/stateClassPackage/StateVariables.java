@@ -35,9 +35,9 @@ public class StateVariables extends State {
             if (!("".equals(variable))) {
                 SaveToVariableCommand cmd = new SaveToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("the operation is failed, are you sure you write a varible a-z?!\n");
+                    this.controller.showAlert("the operation is failed, are you sure you write a variable a-z?!\n");
                 } else {
-                    this.controller.showAlert("the last operand is saved in the writed variable!\n");
+                    this.controller.showAlert("the last operand is saved in the written variable!\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
                 }
@@ -64,7 +64,7 @@ public class StateVariables extends State {
             SaveFromVariableCommand cmd = new SaveFromVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
             if (cmd != null) {
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("the operation is failed, are you sure have set the variable?\n");
+                    this.controller.showAlert("operation failed, set a value to the specified variable");
                 } else {
                     this.controller.showAlert("Value from variable inserted correctly\n");
                     this.controller.refresh();
@@ -90,7 +90,7 @@ public class StateVariables extends State {
                 AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
+                        this.controller.showAlert("operation failed, set a value to the specified variable");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
@@ -119,7 +119,7 @@ public class StateVariables extends State {
                 SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("the operation is failed, are you sure have set the variable?");
+                        this.controller.showAlert("operation failed, set a value to the specified variable");
                     else{
                         this.controller.showAlert("the result will be saved in the variable " + variable);
                         this.controller.refresh();
@@ -141,7 +141,7 @@ public class StateVariables extends State {
      */
     @Override
     public void setStateStandard() {
-        this.controller.showButton(new int[]{1, 4, 6, 7, 8, 9, 10, 11});
+        this.controller.showButton(new int[]{1, 4, 6, 7, 8, 9, 10, 11, 12});
         this.controller.changeButtonText(0, "MOL");
         this.controller.changeButtonText(2, "SWAP");
         this.controller.changeButtonText(3, "DIV");
@@ -162,7 +162,7 @@ public class StateVariables extends State {
      */
     @Override
     public void setStateOperations() {
-        this.controller.showButton(new int[]{1, 13});
+        this.controller.showButton(new int[]{1, 12, 13});
         this.controller.hideButton(new int[]{3, 5});
         this.controller.changeButtonText(0, "DELETE");
         this.controller.changeButtonText(1, "SHOW");
@@ -174,11 +174,10 @@ public class StateVariables extends State {
 
     @Override
     public void setStateTranscendetal() {
+        this.controller.showButton(new int[]{12});
         controller.changeButtonText(0, "MOD");
         controller.changeButtonText(2, "ARG");
-        controller.changeButtonText(3, "POW");
-        controller.changeButtonText(5, "EXP");
-        controller.hideButton(new int[]{13});
+        controller.hideButton(new int[]{3,5,13});
 
         controller.setState(new StateTranscendental(controller));
     }

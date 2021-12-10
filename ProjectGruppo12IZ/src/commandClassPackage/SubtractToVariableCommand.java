@@ -52,8 +52,11 @@ public class SubtractToVariableCommand implements Command{
             return false;
         this.OperandFromStack = value;
         
-        collector.remove();
         this.oldValueVar = vars.getValue(this.variables);
+        
+        if (this.oldValueVar == null)
+            return false;
+        collector.remove();
         
         return vars.subtractToVariable(this.variables, this.OperandFromStack);
         
