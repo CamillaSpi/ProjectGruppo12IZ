@@ -50,7 +50,7 @@ public class StateStandard extends State {
                 MyOperandCollection collector = controller.getCollector();
                 EnterCommand enterComm = new EnterCommand(collector, checkNum);
                 if (enterComm != null && controller.commandExecute(enterComm)) {
-                    controller.showAlert("enterCommand done succesfully!");
+                    controller.showAlert("Number inserted correctly!");
                     controller.refresh();
                     this.controller.clearText();
                 } else {
@@ -98,7 +98,7 @@ public class StateStandard extends State {
             controller.showAlert("Addiction done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("Addiction cannot be performed,\nhave you insert at least two operands?");
+            controller.showAlert("Addiction cannot be performed!\nHave you insert at least two operands?");
         }
 
     }
@@ -119,7 +119,7 @@ public class StateStandard extends State {
             controller.showAlert("Swap Operation done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("Swap operation cannot be performed!\n Have you inserted at least two operands?");
+            controller.showAlert("Swap operation cannot be performed!\nHave you inserted at least two operands?");
         }
 
     }
@@ -139,7 +139,7 @@ public class StateStandard extends State {
             controller.showAlert("Division done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("Division cannot be performed,\nhave you insert at least two operands?");
+            controller.showAlert("Division cannot be performed!\nHave you insert at least two operands?");
         }
 
     }
@@ -159,7 +159,7 @@ public class StateStandard extends State {
             controller.showAlert("Square Root done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("Square Root cannot be performed,\nhave you insert at least one operand?");
+            controller.showAlert("Square Root cannot be performed!\nHave you insert at least one operand?");
         }
 
     }

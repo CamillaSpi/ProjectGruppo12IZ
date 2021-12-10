@@ -35,17 +35,17 @@ public class StateVariables extends State {
             if (!("".equals(variable))) {
                 SaveToVariableCommand cmd = new SaveToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("the operation is failed, are you sure you write a variable a-z?!\n");
+                    this.controller.showAlert("The operation is failed, are you sure you write a variable a-z?!\n");
                 } else {
-                    this.controller.showAlert("the last operand is saved in the written variable!\n");
+                    this.controller.showAlert("The last operand is saved in the written variable!\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
                 }
             } else {
-                this.controller.showAlert("write the variable where save the values!\n");
+                this.controller.showAlert("Write the variable where save the values!\n");
             }
         } else {
-            this.controller.showAlert("insert at least an operand before execute this operation!\n");
+            this.controller.showAlert("Insert at least an operand before execute this operation!\n");
         }
     }
 
@@ -64,14 +64,14 @@ public class StateVariables extends State {
             SaveFromVariableCommand cmd = new SaveFromVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
             if (cmd != null) {
                 if (!controller.commandExecute(cmd)) {
-                    this.controller.showAlert("operation failed, set a value to the specified variable");
+                    this.controller.showAlert("Operation failed, set a value to the specified variable");
                 } else {
                     this.controller.showAlert("Value from variable inserted correctly\n");
                     this.controller.refresh();
                     this.controller.refreshVarsOp();
                 }
             } else {
-                this.controller.showAlert("the operation is failed\n");
+                this.controller.showAlert("The operation is failed\n");
             }
         }
     }
@@ -90,14 +90,14 @@ public class StateVariables extends State {
                 AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("operation failed, set a value to the specified variable");
+                        this.controller.showAlert("Operation failed, set a value to the specified variable");
                     else{
-                        this.controller.showAlert("the result will be saved in the variable " + variable);
+                        this.controller.showAlert("The result will be saved in the variable " + variable);
                         this.controller.refresh();
                         this.controller.refreshVarsOp();
                     }
                 }else
-                    this.controller.showAlert("the operation is failed\n");
+                    this.controller.showAlert("The operation is failed\n");
             }else
                 this.controller.showAlert("Specify a variable before click this button!");
         }
@@ -119,14 +119,14 @@ public class StateVariables extends State {
                 SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
                 if(cmd != null){
                     if(!controller.commandExecute(cmd))
-                        this.controller.showAlert("operation failed, set a value to the specified variable");
+                        this.controller.showAlert("Operation failed, set a value to the specified variable");
                     else{
-                        this.controller.showAlert("the result will be saved in the variable " + variable);
+                        this.controller.showAlert("The result will be saved in the variable " + variable);
                         this.controller.refresh();
                         this.controller.refreshVarsOp();
                     }
                 }else
-                    this.controller.showAlert("the operation is failed\n");
+                    this.controller.showAlert("The operation is failed\n");
             }else
                 this.controller.showAlert("Specify a variable before click this button!");
         }else

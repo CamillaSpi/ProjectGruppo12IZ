@@ -64,10 +64,10 @@ public class StateTranscendental extends State {
         //MOD
         ModCommand ModComm = new ModCommand(collector);
         if (ModComm != null && controller.commandExecute(ModComm)) {
-            controller.showAlert("ModOperation done succesfully!");
+            controller.showAlert("Module done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("ModOperation cannot be performed!\nHave you inserted at least one operand?");
+            controller.showAlert("Module cannot be performed!\nHave you inserted at least one operand?");
         }
     }
 
@@ -85,10 +85,10 @@ public class StateTranscendental extends State {
         //MOD
         ArgCommand ArgComm = new ArgCommand(collector);
         if (ArgComm != null && controller.commandExecute(ArgComm)) {
-            controller.showAlert("ArgOperation done succesfully!");
+            controller.showAlert("Argument done succesfully!");
             controller.refresh();
         } else {
-            controller.showAlert("ArgOperation cannot be performed!\nHave you inserted at least one operand?");
+            controller.showAlert("Argument cannot be performed!\nHave you inserted at least one operand?");
         }
     }
 

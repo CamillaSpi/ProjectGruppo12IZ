@@ -436,7 +436,7 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Subtract done succesfully!");
             refresh();
         } else {
-            showAlert("Subtract cannot be performed,\nhave you insert at least two operands?");
+            showAlert("Subtract cannot be performed!\nHave you insert at least two operands?");
         }
     }
 
@@ -510,7 +510,7 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Square Root done succesfully!");
             refresh();
         } else {
-            showAlert("Square Root cannot be performed,\nhave you insert at least one operands?");
+            showAlert("Square Root cannot be performed!\nHave you insert at least one operands?");
         }
     }
 
@@ -530,7 +530,7 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Clear Operation done succesfully!");
             refresh();
         } else {
-            showAlert("Clear operation cannot be performed!\n Have you inserted any operand?");
+            showAlert("Clear operation cannot be performed!\nHave you inserted any operand?");
         }
     }
 
@@ -550,7 +550,7 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Over Operation done succesfully!");
             refresh();
         } else {
-            showAlert("Over operation cannot be performed!\n Have you inserted at least two operands?");
+            showAlert("Over operation cannot be performed!\nHave you inserted at least two operands?");
         }
     }
 
@@ -577,7 +577,7 @@ public class FXMLDocumentController implements Initializable {
                 showAlert("Drop Operation done succesfully!");
                 refresh();
             } else {
-                showAlert("Drop operation cannot be performed!\n Have you inserted any operand?");
+                showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
             }
         }
 
@@ -599,7 +599,7 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Dup Operation done succesfully!");
             refresh();
         } else {
-            showAlert("Dup operation cannot be performed!\n Have you inserted any operand?");
+            showAlert("Dup operation cannot be performed!\nHave you inserted any operand?");
         }
     }
 
@@ -636,8 +636,8 @@ public class FXMLDocumentController implements Initializable {
         fc.setTitle("Open ");
         File file = fc.showSaveDialog(this.baseAnchorPane.getScene().getWindow());
         SaveService thread = new SaveService(file, this.userCommand);
-        thread.setOnSucceeded(e -> this.showAlert("operations saved successfully"));
-        thread.setOnFailed(e -> this.showAlert("operations not saved"));
+        thread.setOnSucceeded(e -> this.showAlert("Operations saved successfully"));
+        thread.setOnFailed(e -> this.showAlert("Operations not saved"));
         thread.start();
     }
 
