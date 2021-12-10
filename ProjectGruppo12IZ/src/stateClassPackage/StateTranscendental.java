@@ -93,30 +93,6 @@ public class StateTranscendental extends State {
     }
 
     /**
-     * It create a new AddToVariable and calls the method execute on it if it is
-     * possible. If the operation could not be performed, because there are not
-     * at least two operands for example, an error message will be shown and the
-     * operation will not be performed.
-     *
-     * @see FXMLDocumentController, AddToVariable
-     */
-    public void onButtonFour() {
-       this.controller.showAlert("not Implemented yet");
-    }
-
-    /**
-     * It create a new SubtractToVariable and calls the method execute on it if
-     * it is possible. If the operation could not be performed, because there
-     * are not at least two operands for example, an error message will be shown
-     * and the operation will not be performed.
-     *
-     * @see FXMLDocumentController, SubtractToVariable
-     */
-    public void onButtonSix() {
-        this.controller.showAlert("not Implemented yet");
-    }
-
-    /**
      * This method do not perform operation because it only leaves the context
      * in the same state where it already is.
      *
@@ -145,7 +121,7 @@ public class StateTranscendental extends State {
         controller.changeButtonText(2, "<x");
         controller.changeButtonText(3, "+x");
         controller.changeButtonText(5, "-x");
-        controller.showButton(new int[]{13});
+        controller.showButton(new int[]{3,5,13});
         controller.hideButton(new int[]{12});
         controller.setState(new StateVariables(controller));
     }

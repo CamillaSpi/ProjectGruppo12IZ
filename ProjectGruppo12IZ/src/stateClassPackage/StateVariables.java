@@ -177,9 +177,7 @@ public class StateVariables extends State {
         this.controller.showButton(new int[]{12});
         controller.changeButtonText(0, "MOD");
         controller.changeButtonText(2, "ARG");
-        controller.changeButtonText(3, "POW");
-        controller.changeButtonText(5, "EXP");
-        controller.hideButton(new int[]{13});
+        controller.hideButton(new int[]{3,5,13});
 
         controller.setState(new StateTranscendental(controller));
     }

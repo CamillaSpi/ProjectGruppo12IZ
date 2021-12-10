@@ -204,9 +204,7 @@ public class StateStandard extends State{
     public void setStateTranscendetal() {
         controller.changeButtonText(0, "MOD");
         controller.changeButtonText(2, "ARG");
-        controller.changeButtonText(3, "POW");
-        controller.changeButtonText(5, "EXP");
-        controller.hideButton(new int[] {1, 4, 6, 7, 8, 9, 10, 11});
+        controller.hideButton(new int[] {1,3, 4,5, 6, 7, 8, 9, 10, 11});
         controller.showButton(new int[] {12});
         
         controller.setState(new StateTranscendental(controller)); 
