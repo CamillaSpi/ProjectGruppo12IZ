@@ -1,3 +1,15 @@
+.root{
+    -fx-color1: #001219;
+    -fx-color2: #005F73;
+    -fx-color3: #0A9396;
+    -fx-color4: #94D2BD;
+    -fx-color5: #EE9B00;
+    -fx-color6: #AE2012;
+    -fx-color7: #CA6702;
+}
+.bottomAnchorPane{
+-fx-background-color: -fx-color1;
+}
 .table-view .table-cell {
     -fx-border-color: transparent;
     -fx-padding: 2 0 2 10px;
@@ -36,25 +48,25 @@
     -fx-background-radius: 12em;
 }
 .button:hover {
-    -fx-background-color: gray;
+    -fx-background-color: -fx-color5;
     -fx-shadow: 5px 5px 5px 5px;
     -fx-background-radius: 12em;
 }
 .externalButton{
-    -fx-background-color: #0CC0AB;
+    -fx-background-color: -fx-color3;
 }
 .externalButton:hover{
-    -fx-background-color: #86d1be;
+    -fx-background-color: -fx-color4;
 }
 .enterButton{
-    -fx-background-color: #9b9b9b;
+    -fx-background-color: -fx-color7;
 }
 .serviceMenu{
-    -fx-background-color: #9b9b9b;
+    -fx-background-color: -fx-color3;
     -fx-cursor: hand;
 }
 .servicesButton{
-    -fx-background-color: #9b9b9b;
+    -fx-background-color: -fx-color3;
     -fx-cursor: hand;
 }
 
@@ -64,7 +76,7 @@
     -fx-background-radius: 12em;
 }
 .BoxState{
-    -fx-background-color: #121723;
+    -fx-background-color: -fx-color2;
 }
 
 .text-field{
@@ -76,7 +88,7 @@
     
 }
 .openMenuButton{
-    -fx-background-color: #0CC0AB;
+    -fx-background-color: -fx-color4;
     -fx-cursor: hand;
 }
 .openMenuButton:hover{
@@ -85,13 +97,13 @@
 .menuButton{
     -fx-max-width:191;
     -fx-max-heigth:33;
-    -fx-background-color: #0CC0AB;
+    -fx-background-color: -fx-color4;
     -fx-cursor: hand;
 }
 
 .bottomMenuButton{
      -fx-min-width:30;
-    -fx-background-color: #0CC0AB;
+    -fx-background-color: -fx-color4;
     -fx-cursor: hand;
     -fx-graphic: url('https://icons.iconarchive.com/icons/iconsmind/outline/24/Clock-Forward-icon.png');
 }
@@ -111,7 +123,17 @@
     -fx-background-radius: 12em;
 }
 .sideMenuButton:selected {
-     -fx-background-color: #303847;
+     -fx-background-color: -fx-color7;
     -fx-shadow: 5px 5px 5px 5px;
     -fx-background-radius: 12em;
+}
+.tableView{
+    -fx-background-color:-fx-color2;
+    -fx-background-radius: 1em;
+}
+.quitButton{
+    -fx-background-color:-fx-color6;
+}
+.undoButton{
+     -fx-background-color: -fx-color7;
 }

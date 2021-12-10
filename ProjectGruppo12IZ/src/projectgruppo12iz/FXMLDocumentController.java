@@ -634,7 +634,7 @@ public class FXMLDocumentController implements Initializable {
     private void saveUserOperationToFile(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Open ");
-        File file = fc.showOpenDialog(this.baseAnchorPane.getScene().getWindow());
+        File file = fc.showSaveDialog(this.baseAnchorPane.getScene().getWindow());
         SaveService thread = new SaveService(file, this.userCommand);
         thread.setOnSucceeded(e -> this.showAlert("operations saved successfully"));
         thread.setOnFailed(e -> this.showAlert("operations not saved"));
@@ -716,6 +716,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showStandard(ActionEvent event) {
+         clearText();
         changeToggleButton(standardsToggle);
         moveAnchor(false);
         moveAnchorOperation(false);

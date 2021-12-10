@@ -19,18 +19,18 @@
 
 <AnchorPane id="AnchorPane" fx:id="baseAnchorPane" prefHeight="440.0" prefWidth="483.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectgruppo12iz.FXMLDocumentController">
     <children>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-color: black; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-radius: 1em;" styleClass="bottomAnchorPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="operationVBox" layoutY="-43.0" prefHeight="38.0" prefWidth="310.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox fx:id="operationVBox" layoutY="-47.0" prefHeight="42.0" prefWidth="279.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0">
                <children>
-                  <TextField fx:id="nameOperationTextArea" prefHeight="38.0" prefWidth="227.0" style="-fx-text-fill: white; -fx-background-radius: 3em;">
+                  <TextField fx:id="nameOperationTextArea" prefHeight="42.0" prefWidth="151.0" style="-fx-text-fill: white;">
                      <VBox.margin>
                         <Insets left="20.0" right="100.0" />
                      </VBox.margin>
                   </TextField>
                </children>
             </VBox>
-            <MenuBar layoutX="142.0" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="0.0">
+            <MenuBar layoutX="87.5" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.leftAnchor="87.5" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="0.0">
               <menus>
                 <Menu mnemonicParsing="false" styleClass="servicesButton" text="Save">
                   <items>
@@ -51,9 +51,9 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Button fx:id="closeButton" layoutX="90.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="35.0" prefWidth="39.0" styleClass="openMenuButton" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="closeButton" layoutX="90.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="35.0" prefWidth="39.0" styleClass="quitButton" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="openMenuButton">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="quitButton">
                      <image>
                         <Image url="@../images/close%20logo.png" />
                      </image>
@@ -117,7 +117,7 @@
                            <children>
                               <Button fx:id="buttonTen" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonTen" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DUP" />
                               <Button fx:id="buttonEleven" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonEleven" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="CLEAR" />
-                              <Button fx:id="buttonTwelve" mnemonicParsing="false" onAction="#onButtonTwelve" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="UNDO" />
+                              <Button fx:id="buttonTwelve" mnemonicParsing="false" onAction="#onButtonTwelve" prefHeight="75.0" prefWidth="75.0" styleClass="undoButton" text="UNDO" />
                            </children>
                         </HBox>
                      </children>
@@ -126,7 +126,7 @@
             </VBox>
             <AnchorPane fx:id="bottomAnchorPane" layoutY="166.0" prefHeight="275.0" prefWidth="349.0" AnchorPane.topAnchor="166.0">
                <children>
-                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" styleClass="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameClm" editable="false" prefWidth="98.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Name" />
                       <TableColumn fx:id="contentClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Values" />
@@ -142,10 +142,24 @@
                <children>
                   <VBox layoutX="20.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
                      <children>
-                        <ToggleButton fx:id="standardsToggle" mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" selected="true" styleClass="sideMenuButton" text="Standards" />
-                        <ToggleButton fx:id="variablesToggle" mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Variables" />
-                        <ToggleButton fx:id="operationsToggle" mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Operations" />
-                        <ToggleButton fx:id="transcendentalToggle" mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Trascendental" />
+                        <ToggleButton fx:id="standardsToggle" mnemonicParsing="false" onAction="#showStandard" prefHeight="50.0" prefWidth="184.0" selected="true" styleClass="sideMenuButton" text="Standards">
+                           <font>
+                              <Font name="Nexa Text-Trial Extra Light" size="13.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="variablesToggle" mnemonicParsing="false" onAction="#showVariables" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Variables">
+                           <font>
+                              <Font name="Nexa Text-Trial Extra Light" size="13.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="operationsToggle" mnemonicParsing="false" onAction="#showOperations" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Operations">
+                           <font>
+                              <Font name="Nexa Text-Trial Extra Light" size="13.0" />
+                           </font></ToggleButton>
+                        <ToggleButton fx:id="transcendentalToggle" mnemonicParsing="false" onAction="#showTranscendental" prefHeight="50.0" prefWidth="184.0" styleClass="sideMenuButton" text="Trascendental">
+                           <font>
+                              <Font name="Nexa Text-Trial Extra Light" size="13.0" />
+                           </font></ToggleButton>
                      </children>
                   </VBox>
                   <Button fx:id="openMenuButton" layoutY="1.0" mnemonicParsing="false" onAction="#closeSideMenu" prefHeight="33.0" prefWidth="191.0" styleClass="menuButton" text="Complex Number Calculator" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -179,9 +193,9 @@
                </graphic></Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="operationAnchorPane" layoutX="340.0" prefHeight="439.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-background-radius: 1em;" AnchorPane.leftAnchor="349.0">
+      <AnchorPane fx:id="operationAnchorPane" layoutX="340.0" prefHeight="439.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-background-radius: 1em;" AnchorPane.leftAnchor="349.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <TableView fx:id="OperandsTable" layoutX="91.0" layoutY="210.0" prefHeight="84.0" prefWidth="157.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+            <TableView fx:id="OperandsTable" layoutX="91.0" layoutY="210.0" prefHeight="84.0" prefWidth="157.0" styleClass="tableView" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>

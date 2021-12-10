@@ -19,6 +19,7 @@ public class SaveToVariableCommand implements Command{
     private final Variables vars;
     private final String var;
     private ComplexNumber varValue;
+    private ComplexNumber removedOperand;
 
     /**
      * This method create an object that rappresent SaveToVariable operation in order to execute and undo the command.
@@ -45,10 +46,12 @@ public class SaveToVariableCommand implements Command{
     @Override
     public boolean execute() {       
         varValue = vars.getValue(var);
-        ComplexNumber number = collector.last();
-        if(number == null)
+        removedOperand = collector.last();
+        if(removedOperand == null)
             return false;
-        vars.saveToVariable(var, number);
+        if(vars.saveToVariable(var, removedOperand) == false)
+            return false;
+        collector.remove();
         return true;
     }
 
@@ -58,5 +61,6 @@ public class SaveToVariableCommand implements Command{
     @Override
     public void undo() {
         vars.saveToVariable(var, varValue);
+        collector.insert(removedOperand);
     }
 }

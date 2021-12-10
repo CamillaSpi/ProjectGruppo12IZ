@@ -179,8 +179,6 @@ public class Variables implements Serializable {
     }
 
     public boolean saveVariablesIntoStack() {
-        if(myVariables.isEmpty())
-            return false;
         int length = myVariablesStack.size();
         ObservableMap<String, ComplexNumber> myVariablesCopy =  FXCollections.observableHashMap();
         myVariablesCopy.putAll(myVariables);
@@ -191,7 +189,8 @@ public class Variables implements Serializable {
         if(myVariablesStack.isEmpty())
             return false;
         int length = myVariablesStack.size();
-        myVariables = myVariablesStack.pop();
+        myVariables.clear();
+        myVariables.putAll(myVariablesStack.pop());
         return myVariablesStack.size() < length;
     }
     

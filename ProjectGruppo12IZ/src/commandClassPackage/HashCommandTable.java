@@ -21,6 +21,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
+import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 import modelClassPackage.Variables;
 
@@ -28,10 +29,10 @@ import modelClassPackage.Variables;
  *
  * @author Gruppo 12 IZ
  */
-public class HashCommandTable{
-    
-    private final ObservableMap<String,ConcreteCommandPersonalized> concreteCommandHash;
-    private final HashMap<String,String> basicCommandHash;
+public class HashCommandTable {
+
+    private final ObservableMap<String, ConcreteCommandPersonalized> concreteCommandHash;
+    private final HashMap<String, String> basicCommandHash;
     private MyOperandCollection collector;
     private final Variables vars;
 
@@ -55,70 +56,93 @@ public class HashCommandTable{
         basicCommandHash.put("-x", "SubtractToVariableCommand");
         basicCommandHash.put("mod", "ModCommand");
         basicCommandHash.put("arg", "ArgCommand");
+        basicCommandHash.put("save", "SaveVariablesCommand");
+        basicCommandHash.put("restore", "RestoreVariablesCommand");
         this.collector = collector;
         this.vars = vars;
     }
-    
-    public void setCollector(MyOperandCollection collector){
+
+    public void setCollector(MyOperandCollection collector) {
         this.collector = collector;
     }
-    
+
     /**
-     * It create a personalized Command starting from the string passed as the sequence of operations composing the definition.
-     * The ConcreteCommandPersonalized Object is than added to the concreteCommandHash with the name passed.
-     * If the passed name corresponding to an already existing user defined operation, the corresponding command will be updated.
-     * @param sequenceDefinition the string containing the operation's name, defining the new User defined operation.
+     * It create a personalized Command starting from the string passed as the
+     * sequence of operations composing the definition. The
+     * ConcreteCommandPersonalized Object is than added to the
+     * concreteCommandHash with the name passed. If the passed name
+     * corresponding to an already existing user defined operation, the
+     * corresponding command will be updated.
+     *
+     * @param sequenceDefinition the string containing the operation's name,
+     * defining the new User defined operation.
      * @param operationName the name for the user defined operation.
-     * @return true if the personalizedCommand is correctly created otherwise false.
+     * @return true if the personalizedCommand is correctly created otherwise
+     * false.
      * @see MyOperandCollection, ConcreteCommandPersonalized
      */
     public boolean createPersonalizedCommand(String sequenceDefinition, String operationName) {
         //if the name passed is equal to that of a basic operation, the operation personalized cannot be created.
-        if(basicCommandHash.containsKey(operationName))
+        if (basicCommandHash.containsKey(operationName)) {
             return false;
+        }
         //Starting from the string passed all the operation's name are identified
         String[] stringOfCommands = sequenceDefinition.split(" ");
         Class<?> operation;
         Constructor<?> commandConstructor;
         Command newCommand;
         List<Command> commandList = new LinkedList<>();
-        for(String stringCommand: stringOfCommands){
+        for (String stringCommand : stringOfCommands) {
+            System.out.println("dopo fro");
             //check if the string is one corrisponding to the basic operation
-            if(stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))){
+            if (stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))) {
                 String substitute = stringCommand.substring(0, 1).concat("x");
-                if(basicCommandHash.containsKey(substitute)){  
+                if (basicCommandHash.containsKey(substitute)) {
                     try {
-                    operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(substitute));
-                    commandConstructor = operation.getConstructor(MyOperandCollection.class, Variables.class, String.class);
-                    //create a new command corresponding to the operation
-                    newCommand = (Command) commandConstructor.newInstance(collector, vars, stringCommand.substring(1));
-                    //add this new command to the list of command
-                    commandList.add(newCommand);
-                    }catch (Exception ex){
+                        operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(substitute));
+                        commandConstructor = operation.getConstructor(MyOperandCollection.class, Variables.class, String.class);
+                        //create a new command corresponding to the operation
+                        newCommand = (Command) commandConstructor.newInstance(collector, vars, stringCommand.substring(1));
+                        //add this new command to the list of command
+                        commandList.add(newCommand);
+                    } catch (Exception ex) {
                         return false;
                     }
                 }
-            }
-            else if(basicCommandHash.containsKey(stringCommand)){
+            } else if (basicCommandHash.containsKey(stringCommand)) {
+                System.out.println("containskey");
                 try {
-                operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
-                commandConstructor = operation.getConstructor(MyOperandCollection.class);
-                //create a new command corresponding to the operation
-                newCommand = (Command) commandConstructor.newInstance(collector);
-                //add this new command to the list of command
-                commandList.add(newCommand);
-                }catch (Exception ex){
+                    operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
+                    //create a new command corresponding to the operation
+                    if (stringCommand.equals("save") || stringCommand.equals("restore")){
+                        System.out.println("nel nostro");
+                        commandConstructor = operation.getConstructor(Variables.class);
+                        newCommand = (Command) commandConstructor.newInstance(vars);
+                    }else{
+                        System.out.println("in quellaltro");
+                        commandConstructor = operation.getConstructor(MyOperandCollection.class);
+                        newCommand = (Command) commandConstructor.newInstance(collector);
+                    }
+                    //add this new command to the list of command
+                    commandList.add(newCommand);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    return false;
+                }
+            } //check if the string is one corresponding to the user defined operation
+            else if (concreteCommandHash.containsKey(stringCommand)) {
+                //add this command to the list of command
+                commandList.add(concreteCommandHash.get(stringCommand));
+            } else {
+                ComplexNumber maybe = ComplexNumber.create(stringCommand);
+                if (maybe != null) {
+                    //maybe a complexNumber
+                    commandList.add(new EnterCommand(collector, maybe));
+                } else {
+                    System.out.println("in culo adio");
                     return false;
                 }
             }
-            
-            //check if the string is one corresponding to the user defined operation
-            else if(concreteCommandHash.containsKey(stringCommand)){
-                //add this command to the list of command
-                commandList.add(concreteCommandHash.get(stringCommand));
-            }
-            else 
-                return false;
         }
         //starting from the list creadet, create a new commandPersonalized object
         ConcreteCommandPersonalized personalizedCommand = new ConcreteCommandPersonalized(operationName, sequenceDefinition, commandList);
@@ -126,73 +150,84 @@ public class HashCommandTable{
         concreteCommandHash.put(operationName, personalizedCommand);
         return true;
     }
-    
+
     /**
-    * It delete a personalized Command starting from the name.If the remove operation
-    * return null, the elements is not contained in the hashmap, then false was returned, otherwise
-    * the personalized command exists.Now we check if this command is inserted in other personalized commands
-    * and if yes the personalized command is removed.
-    * 
+     * It delete a personalized Command starting from the name.If the remove
+     * operation return null, the elements is not contained in the hashmap, then
+     * false was returned, otherwise the personalized command exists.Now we
+     * check if this command is inserted in other personalized commands and if
+     * yes the personalized command is removed.
+     *
      * @param name
-     * @return If the elements doesn't exist then false was returned otherwise true. 
-    */
-    
-    public boolean delete(String name){
-        if (name == null )
+     * @return If the elements doesn't exist then false was returned otherwise
+     * true.
+     */
+    public boolean delete(String name) {
+        if (name == null) {
             return false;
+        }
         ConcreteCommandPersonalized toDelete = (ConcreteCommandPersonalized) concreteCommandHash.remove(name);
-        if(toDelete == null)
+        if (toDelete == null) {
             return false;
+        }
         // If i'm there the ConcreteCommandPersonalized exists, so maybe its was inserted in other list
         concreteCommandHash.entrySet().stream().filter(maybeToDelete -> (maybeToDelete.getValue().contains(name))).forEachOrdered(maybeToDelete -> {
             concreteCommandHash.remove(maybeToDelete.getKey());
         });
         return true;
     }
-    
+
     /**
-     * it returns the user defined command corresponding to the name passed, if it exists, otehrwise null
-     * @param commandName the name of which obtain the corresponding user defined command.
+     * it returns the user defined command corresponding to the name passed, if
+     * it exists, otehrwise null
+     *
+     * @param commandName the name of which obtain the corresponding user
+     * defined command.
      * @return the command if exists otherwise null.
      * @see ConcreteCommandPersonalized
      */
-    public Command getUserCommand(String commandName){
-        if(concreteCommandHash.containsKey(commandName))
+    public Command getUserCommand(String commandName) {
+        if (concreteCommandHash.containsKey(commandName)) {
             return concreteCommandHash.get(commandName);
-        else 
+        } else {
             return null;
+        }
     }
-    public ObservableMap<String,ConcreteCommandPersonalized> getMyCommandHash() {
+
+    public ObservableMap<String, ConcreteCommandPersonalized> getMyCommandHash() {
         return this.concreteCommandHash;
     }
-     
-    
+
     /**
-     * It reads from a file the name and the definition of user operations defined by user in previous usage session
-     * if it is possible. Otherwise, if the name of the File is not correct or the content is not right the operation will not be performed.
-     * If the reading went well the operations contained in the task will be added to that defined in the current usage session.
+     * It reads from a file the name and the definition of user operations
+     * defined by user in previous usage session if it is possible. Otherwise,
+     * if the name of the File is not correct or the content is not right the
+     * operation will not be performed. If the reading went well the operations
+     * contained in the task will be added to that defined in the current usage
+     * session.
+     *
      * @param fileName the file from which to read the contents
      * @return true if the reading operation went well otherwise false.
      * @see ConcreteCommandPersonalized
      */
-     public boolean readCommandFromFile(File fileName) {
+    public boolean readCommandFromFile(File fileName) {
         String opName;
         String userCommandDefinition;
-        
-        try(Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)))){
+
+        try (Scanner in = new Scanner(new BufferedReader(new FileReader(fileName)))) {
             in.useLocale(Locale.US);
             in.useDelimiter(",");
-            while(in.hasNext()){
+            while (in.hasNext()) {
                 opName = in.next();
                 userCommandDefinition = in.next();
                 createPersonalizedCommand(userCommandDefinition, opName);
             }
-        }catch(FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             return false;
         }
         return true;
     }
-    
+
     public boolean printCommandToFile(File file) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
             concreteCommandHash.entrySet().forEach(m -> {
@@ -200,7 +235,7 @@ public class HashCommandTable{
             });
         } catch (IOException ex) {
             return false;
-        }   
-        return true;        
+        }
+        return true;
     }
 }
