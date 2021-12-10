@@ -240,7 +240,9 @@ public class FXMLDocumentController implements Initializable {
             slide.setToX(0);
             slide.setRate(1);
             slide.play();
-
+             slide.setOnFinished((ActionEvent event) -> {
+                enterButton.setVisible(true);
+            });
         }
     }
 
@@ -725,7 +727,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showVariables(ActionEvent event) {
-
+        clearText();
         changeToggleButton(variablesToggle);
         moveAnchor(false);
         moveTextArea(true);
@@ -741,7 +743,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showOperations(ActionEvent event) {
-
+        clearText();
         changeToggleButton(operationsToggle);
         moveAnchor(false);
         moveAnchorOperation(true);
@@ -758,6 +760,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showTranscendental(ActionEvent event) {
+        clearText();
         changeToggleButton(transcendentalToggle);
         moveAnchor(false);
         moveAnchorOperation(false);

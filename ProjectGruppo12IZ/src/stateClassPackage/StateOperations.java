@@ -177,7 +177,7 @@ public class StateOperations extends State {
      */
     @Override
     public void setStateVariables() {
-        this.controller.showButton(new int[]{3, 5,13});
+        this.controller.showButton(new int[]{3, 5});
         this.controller.changeButtonText(0, ">x");
         this.controller.changeButtonText(2, "<x");
         this.controller.changeButtonText(1, "SUM");
