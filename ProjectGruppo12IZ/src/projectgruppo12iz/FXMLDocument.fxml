@@ -94,30 +94,30 @@
                      <children>
                         <HBox fx:id="firstHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
-                              <Button fx:id="buttonOne" mnemonicParsing="false" onAction="#multiply" prefHeight="75.0" prefWidth="75.0" text="MOL" />
-                              <Button fx:id="buttonTwo" alignment="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="60.0" prefWidth="75.0" text="SUM" />
-                              <Button fx:id="buttonThree" alignment="CENTER" mnemonicParsing="false" onAction="#swap" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="SWAP" />
+                              <Button fx:id="buttonOne" mnemonicParsing="false" onAction="#onButtonOne" prefHeight="75.0" prefWidth="75.0" text="MOL" />
+                              <Button fx:id="buttonTwo" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonTwo" prefHeight="60.0" prefWidth="75.0" text="SUM" />
+                              <Button fx:id="buttonThree" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonThree" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="SWAP" />
                            </children>
                         </HBox>
                         <HBox fx:id="secondHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
-                              <Button fx:id="buttonFour" alignment="CENTER" mnemonicParsing="false" onAction="#division" prefHeight="75.0" prefWidth="75.0" text="DIV" />
-                              <Button fx:id="buttonFive" alignment="CENTER" mnemonicParsing="false" onAction="#sqrt" prefHeight="75.0" prefWidth="75.0" text="SQRT" />
-                              <Button fx:id="buttonSix" alignment="CENTER" mnemonicParsing="false" onAction="#drop" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DROP" />
+                              <Button fx:id="buttonFour" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonFour" prefHeight="75.0" prefWidth="75.0" text="DIV" />
+                              <Button fx:id="buttonFive" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonFive" prefHeight="75.0" prefWidth="75.0" text="SQRT" />
+                              <Button fx:id="buttonSix" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonSix" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DROP" />
                            </children>
                         </HBox>
                         <HBox fx:id="thirdHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
-                              <Button fx:id="buttonSeven" mnemonicParsing="false" onAction="#sub" prefHeight="75.0" prefWidth="75.0" text="SUB" />
-                              <Button fx:id="buttonEight" mnemonicParsing="false" onAction="#invertSign" prefHeight="75.0" prefWidth="75.0" text="+/-" />
-                              <Button fx:id="buttonNine" mnemonicParsing="false" onAction="#over" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="OVER" />
+                              <Button fx:id="buttonSeven" mnemonicParsing="false" onAction="#onButtonSeven" prefHeight="75.0" prefWidth="75.0" text="SUB" />
+                              <Button fx:id="buttonEight" mnemonicParsing="false" onAction="#onButtonEight" prefHeight="75.0" prefWidth="75.0" text="+/-" />
+                              <Button fx:id="buttonNine" mnemonicParsing="false" onAction="#onButtonNine" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="OVER" />
                            </children>
                         </HBox>
                         <HBox fx:id="fourthHBox" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                            <children>
-                              <Button fx:id="buttonTen" alignment="CENTER" mnemonicParsing="false" onAction="#dup" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DUP" />
-                              <Button fx:id="buttonEleven" alignment="CENTER" mnemonicParsing="false" onAction="#clear" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="CLEAR" />
-                              <Button fx:id="buttonTwelve" mnemonicParsing="false" onAction="#undo" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="UNDO" />
+                              <Button fx:id="buttonTen" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonTen" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="DUP" />
+                              <Button fx:id="buttonEleven" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonEleven" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="CLEAR" />
+                              <Button fx:id="buttonTwelve" mnemonicParsing="false" onAction="#onButtonTwelve" prefHeight="75.0" prefWidth="75.0" styleClass="externalButton" text="UNDO" />
                            </children>
                         </HBox>
                      </children>
@@ -126,7 +126,7 @@
             </VBox>
             <AnchorPane fx:id="bottomAnchorPane" layoutY="166.0" prefHeight="275.0" prefWidth="349.0" AnchorPane.topAnchor="166.0">
                <children>
-                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableOpVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121723; -fx-background-radius: 1em;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameClm" editable="false" prefWidth="98.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Name" />
                       <TableColumn fx:id="contentClm" editable="false" prefWidth="195.0" resizable="false" sortable="false" style="-fx-background-color: transparent;" text="Values" />

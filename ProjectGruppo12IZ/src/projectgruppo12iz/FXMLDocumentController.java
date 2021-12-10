@@ -416,7 +416,7 @@ public class FXMLDocumentController implements Initializable {
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void add(ActionEvent event) throws InterruptedException {
+    private void onButtonTwo(ActionEvent event) throws InterruptedException {
         if (this.state instanceof StateOperations) {
             ((StateOperations) this.state).onButtonTwo();
         } else {
@@ -434,7 +434,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see SubCommand
      */
     @FXML
-    private void sub(ActionEvent event) {
+    private void onButtonSeven(ActionEvent event) {
         SubtractCommand subComm = new SubtractCommand(collector);
         if (subComm != null && commandExecute(subComm)) {
             showAlert("Subtract done succesfully!");
@@ -458,7 +458,7 @@ public class FXMLDocumentController implements Initializable {
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void multiply(ActionEvent event) {
+    private void onButtonOne(ActionEvent event) {
         this.state.onButtonOne();
     }
 
@@ -476,7 +476,7 @@ public class FXMLDocumentController implements Initializable {
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void division(ActionEvent event) {
+    private void onButtonFour(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonFour();
         } else if (this.state instanceof StateTranscendental) {
@@ -496,7 +496,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see DropCommand
      */
     @FXML
-    private void sqrt(ActionEvent event) {
+    private void onButtonFive(ActionEvent event) {
         ((StateStandard) this.state).onButtonFive();
     }
 
@@ -510,7 +510,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see InvertSignCommand
      */
     @FXML
-    private void invertSign(ActionEvent event) {
+    private void onButtonEight(ActionEvent event) {
         InvertSignCommand invsignComm = new InvertSignCommand(collector);
         if (invsignComm != null && commandExecute(invsignComm)) {
             showAlert("Square Root done succesfully!");
@@ -530,7 +530,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see ClearCommand
      */
     @FXML
-    private void clear(ActionEvent event) {
+    private void onButtonEleven(ActionEvent event) {
         ClearCommand clearComm = new ClearCommand(this.collector);
         if (clearComm != null && commandExecute(clearComm)) {
             showAlert("Clear Operation done succesfully!");
@@ -550,7 +550,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see OverCommand
      */
     @FXML
-    private void over(ActionEvent event) {
+    private void onButtonNine(ActionEvent event) {
         OverCommand overComm = new OverCommand(this.collector);
         if (overComm != null && commandExecute(overComm)) {
             showAlert("Over Operation done succesfully!");
@@ -574,7 +574,7 @@ public class FXMLDocumentController implements Initializable {
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void drop(ActionEvent event) {
+    private void onButtonSix(ActionEvent event) {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
         } else if (this.state instanceof StateTranscendental) {
@@ -601,7 +601,7 @@ public class FXMLDocumentController implements Initializable {
      * <!-- --> @see DupCommand
      */
     @FXML
-    private void dup(ActionEvent event) {
+    private void onButtonTen(ActionEvent event) {
         DupCommand dupComm = new DupCommand(this.collector);
         if (dupComm != null && commandExecute(dupComm)) {
             showAlert("Dup Operation done succesfully!");
@@ -625,7 +625,7 @@ public class FXMLDocumentController implements Initializable {
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void swap(ActionEvent event) {
+    private void onButtonThree(ActionEvent event) {
         this.state.onButtonThree();
     }
 
@@ -683,7 +683,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void undo(ActionEvent event) {
+    private void onButtonTwelve(ActionEvent event) {
         inv.undoLast();
         refresh();
     }
