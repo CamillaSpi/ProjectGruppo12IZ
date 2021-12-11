@@ -789,9 +789,10 @@ public class FXMLDocumentController implements Initializable {
     /**
      * When the button is pressed change the state in Standard state.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <!-- --> 
+     * @param event registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see CommandRetrievingService, HashCommandTable
      */
     @FXML
     private void showStandard(ActionEvent event) {
@@ -808,9 +809,10 @@ public class FXMLDocumentController implements Initializable {
     /**
      * When the button is pressed change the state in Variables state.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <!-- --> 
+     * @param event registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see CommandRetrievingService, HashCommandTable
      */
     @FXML
     private void showVariables(ActionEvent event) {
@@ -829,11 +831,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed change the state in Operations state.
+     * When the button is pressed changes the state in Operations state.
      * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <!-- --> 
+     * @param event registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see CommandRetrievingService, HashCommandTable
      */
     @FXML
     private void showOperations(ActionEvent event) {
@@ -853,12 +856,12 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed change the state in transcendental state.
+     * When the button is pressed changes the state in transcendental state.
      * <p>
      * <!-- --> 
      * @param event it registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see CommandRetrievingService, HashCommandTable
      */
     @FXML
     private void showTranscendental(ActionEvent event) {
@@ -873,7 +876,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This methods refresh the OperandsTable
+     * This method refresh the OperandsTable
      * <p>
      * <!-- -->
      * @see ComplexNumber
@@ -883,7 +886,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This methods return the text in textArea
+     * This method returns the text in textArea
      * <p>
      * <!-- --> 
      * @return strings contained in textArea
@@ -893,7 +896,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This methods set the text in textArea
+     * This method sets the text in textArea
      * <p>
      * <!-- --> 
      * @param value the text to set in textArea
@@ -902,26 +905,26 @@ public class FXMLDocumentController implements Initializable {
         this.textArea.setText(value);
     }
 /**
-     * This methods set the text in nameOperationTextArea
+     * This method takes the text in nameOperationTextArea
      * <p>
      * <!-- --> 
-     * @return strings contained in nameOperationTextArea
+     * @return string contained in nameOperationTextArea
      */
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
     }
 /**
-     * This methods return the userCommand
+     * This method returns the userCommands
      * <p>
      * <!-- --> 
      * 
-     * @return an HashCommandTable
+     * @return HashCommandTable object
      */
     public HashCommandTable getuserCommand() {
         return this.userCommand;
     }
 /**
-     * Clear the textArea
+     * Clear the textArea to enter numbers.
      * <p>
      * <!-- --> 
      */
@@ -937,10 +940,10 @@ public class FXMLDocumentController implements Initializable {
         nameOperationTextArea.clear();
     }
 /**
-     * return the Variables value 
+     * returns the Variables value 
      * <p>
      * <!-- --> 
-     * @return an Variables class
+     * @return Variables object
      */
     public Variables getVariables() {
         return this.vars;
@@ -959,7 +962,7 @@ public class FXMLDocumentController implements Initializable {
      * Return the Invoker
      * <p>
      * <!-- --> 
-     * @return return an Invoker class
+     * @return the invoker object
      */
     public Invoker getInvoker() {
         return this.inv;
@@ -974,11 +977,11 @@ public class FXMLDocumentController implements Initializable {
         this.state = state;
     }
     /**
-     * Call execute method in invoker class
+     * Calls execute method in invoker class
      * <p>
      * <!-- --> 
      * @param command the command to execute
-     * @return true if the command was execute successful otherwise false
+     * @return true if the command is executed successfully otherwise false
      */
     public boolean commandExecute(Command command) {
         return inv.execute(command);
@@ -995,7 +998,7 @@ public class FXMLDocumentController implements Initializable {
      * Return the value of MyOperandCollection
      * <p>
      * <!-- -->
-     * @return an MyOperandCollection class
+     * @return MyOperandCollection object
      */
     public MyOperandCollection getCollector() {
         return collector;
