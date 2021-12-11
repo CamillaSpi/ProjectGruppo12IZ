@@ -240,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
             slide.setToX(0);
             slide.setRate(1);
             slide.play();
-             slide.setOnFinished((ActionEvent event) -> {
+            slide.setOnFinished((ActionEvent event) -> {
                 enterButton.setVisible(true);
             });
         }
@@ -578,7 +578,7 @@ public class FXMLDocumentController implements Initializable {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
         } else {
-                ((StateStandard) this.state).onButtonSix();
+            ((StateStandard) this.state).onButtonSix();
         }
     }
 
@@ -688,6 +688,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Open the github's project link
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void about(ActionEvent event) {
         try {
@@ -696,6 +703,15 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * When the button is pressed call onButtonEnter methods depending on the
+     * state. The button can be pressed only in state operations, standard and
+     * transcendental
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void handleEnterAction(ActionEvent event) {
         if (state instanceof StateOperations) {
@@ -707,15 +723,29 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * When the button is pressed the last command will be undo
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void onButtonTwelve(ActionEvent event) {
         inv.undoLast();
         refresh();
     }
 
+    /**
+     * When the button is pressed change the state in Standard state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showStandard(ActionEvent event) {
-         clearText();
+        clearText();
         changeToggleButton(standardsToggle);
         moveAnchor(false);
         moveAnchorOperation(false);
@@ -725,6 +755,13 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateStandard();
     }
 
+    /**
+     * When the button is pressed change the state in Variables state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showVariables(ActionEvent event) {
         clearText();
@@ -741,6 +778,13 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateVariables();
     }
 
+    /**
+     * When the button is pressed change the state in Operations state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showOperations(ActionEvent event) {
         clearText();
@@ -758,6 +802,14 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateOperations();
     }
 
+    /**
+     * When the button is pressed change the state in transcendental state.
+     * <p>
+     * <!-- --> 
+     * @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showTranscendental(ActionEvent event) {
         clearText();
@@ -770,62 +822,140 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateTranscendetal();
     }
 
+    /**
+     * This methods refresh the OperandsTable
+     * <p>
+     * <!-- -->
+     * @see ComplexNumber
+     */
     public void refresh() {
         OperandsTable.refresh();
     }
 
+    /**
+     * This methods return the text in textArea
+     * <p>
+     * <!-- --> 
+     * @return strings contained in textArea
+     */
     public String getText() {
         return this.textArea.getText();
     }
 
+    /**
+     * This methods set the text in textArea
+     * <p>
+     * <!-- --> 
+     * @param value the text to set in textArea
+     */
     public void setText(String value) {
         this.textArea.setText(value);
     }
-
+/**
+     * This methods set the text in nameOperationTextArea
+     * <p>
+     * <!-- --> 
+     * @return strings contained in nameOperationTextArea
+     */
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
     }
-
+/**
+     * This methods return the userCommand
+     * <p>
+     * <!-- --> 
+     * 
+     * @return an HashCommandTable
+     */
     public HashCommandTable getuserCommand() {
         return this.userCommand;
     }
-
+/**
+     * Clear the textArea
+     * <p>
+     * <!-- --> 
+     */
     public void clearText() {
         textArea.clear();
     }
-
+/**
+     * Clear the nameOperationTextArea
+     * <p>
+     * <!-- --> 
+     */
     public void clearNameText() {
         nameOperationTextArea.clear();
     }
-
+/**
+     * return the Variables value 
+     * <p>
+     * <!-- --> 
+     * @return an Variables class
+     */
     public Variables getVariables() {
         return this.vars;
     }
-
+/**
+     * Change the text in a button 
+     * <p>
+     * <!-- --> 
+     * @param index the index of button to change
+     * @param value the text to set 
+     */
     public void changeButtonText(int index, String value) {
         myButtonArray.get(index).setText(value);
     }
-
+/**
+     * Return the Invoker
+     * <p>
+     * <!-- --> 
+     * @return return an Invoker class
+     */
     public Invoker getInvoker() {
         return this.inv;
     }
-
+/**
+     * Set the state 
+     * <p>
+     * <!-- --> 
+     * @param state the state that need to be setted.
+     */
     public void setState(State state) {
         this.state = state;
     }
-
+    /**
+     * Call execute method in invoker class
+     * <p>
+     * <!-- --> 
+     * @param command the command to execute
+     * @return true if the command was execute successful otherwise false
+     */
     public boolean commandExecute(Command command) {
         return inv.execute(command);
     }
-
+/**
+     * This methods refresh the tableOpVar
+     * <p>
+     * <!-- -->
+     */
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
     }
-
+/**
+     * Return the value of MyOperandCollection
+     * <p>
+     * <!-- -->
+     * @return an MyOperandCollection class
+     */
     public MyOperandCollection getCollector() {
         return collector;
     }
-
+/**
+     * When the button is pressed, the application will close
+     * <p>
+     * <!-- -->
+     * @param event it registers the event of the click of the button
+     */
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
