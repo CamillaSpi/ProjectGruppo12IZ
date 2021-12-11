@@ -21,6 +21,15 @@
     <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-radius: 20px;" styleClass="bottomAnchorPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="0.0">
          <children>
+            <VBox fx:id="operationVBox" layoutY="-47.0" prefHeight="42.0" prefWidth="279.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0">
+               <children>
+                  <TextField fx:id="nameOperationTextArea" prefHeight="42.0" prefWidth="151.0" style="-fx-text-fill: white;">
+                     <VBox.margin>
+                        <Insets left="20.0" right="100.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
             <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="349.0" AnchorPane.bottomAnchor="398.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -78,15 +87,6 @@
                      </children>
                   </HBox>
                </children></HBox>
-            <VBox fx:id="operationVBox" layoutY="-47.0" prefHeight="42.0" prefWidth="279.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0">
-               <children>
-                  <TextField fx:id="nameOperationTextArea" prefHeight="42.0" prefWidth="151.0" style="-fx-text-fill: white;">
-                     <VBox.margin>
-                        <Insets left="20.0" right="100.0" />
-                     </VBox.margin>
-                  </TextField>
-               </children>
-            </VBox>
             <VBox fx:id="externalVBox" layoutX="92.0" layoutY="86.0" prefHeight="200.0" prefWidth="320.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <HBox prefHeight="42.0" prefWidth="276.0" spacing="9.0">
