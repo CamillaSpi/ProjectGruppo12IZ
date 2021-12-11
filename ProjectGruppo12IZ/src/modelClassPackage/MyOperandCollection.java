@@ -35,7 +35,7 @@ public class MyOperandCollection extends OperandCollection {
     
  
     /**
-    * It returns the last number inserted inside the collection.
+    * It remove the last number inserted inside the collection.
     * <p> <!-- -->
     * @return true if the element was remove, otherwise false
     * @see OperandCollection
@@ -80,7 +80,7 @@ public class MyOperandCollection extends OperandCollection {
     }
 
     /**
-    * It returns a boolean.
+    * It remove all elements inside the collection.
     * <p> <!-- -->
     * @return true if all the elements in the stack have been deleted, false if the stack was already empty.
     */
