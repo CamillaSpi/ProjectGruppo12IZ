@@ -21,8 +21,7 @@ public class ComplexNumber{
     private final BigDecimal imaginary;
 
     /**
-     *
-     * Initialies a new istance of the ComplexNumber class.
+     * Initialize a new instance of the ComplexNumber class.
      *
      * @param real its contains the real part of the complex number
      * @param imaginary its contains the imaginary part of the complex number
@@ -34,7 +33,7 @@ public class ComplexNumber{
     }
 
     /**
-     * Initialies a new istance of the ComplexNumber class.
+     * Initialize a new instance of the ComplexNumber class.
      *
      * @param real this string contains the real part of the complex number
      * @param imaginary this string contains the imaginary part of the complex
@@ -46,7 +45,6 @@ public class ComplexNumber{
     }
 
     /**
-     *
      * This is a static class that analyze the string and if the strings is in
      * Cartesian form return an ComplexNumber object
      *
@@ -122,7 +120,7 @@ public class ComplexNumber{
     }
 
     /**
-     *
+     * Return the real part of the ComplexNumber
      * @return the real part of the complex number
      */
     public BigDecimal getReal() {
@@ -130,8 +128,8 @@ public class ComplexNumber{
     }
 
     /**
-     *
-     * @return the real part of the complex number
+     * Return the imaginary part of the ComplexNumber
+     * @return the imaginary part of the complex number
      */
     public BigDecimal getImaginary() {
         return imaginary;
