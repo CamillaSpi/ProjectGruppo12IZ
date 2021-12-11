@@ -11,7 +11,7 @@ import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 
 /**
- * This is the costructor method for InvertSignCommand, this class implemenets
+ * This is the costructor method for InvertSignCommand, this class implements
  * the Command interface with the override of the methods
  * @author Gruppo 12 IZ
  * 
@@ -21,20 +21,20 @@ public class InvertSignCommand implements Command {
     private ComplexNumber value;
 
     /**
-     * It create an object of the Invert sign if the collector is not null 
-     * and the last element is not null
+     * It creates an object of the Invert Sign Command if the collector is not null.
      * @param collector
+     * @see MyOperandCollection
      */
     public InvertSignCommand(MyOperandCollection collector) {
        assert collector != null;
        this.collector = collector;
-       
     }
 
     /**
-     * It execute the operation of invert sign on the last element and, if its not null,
-     * pushes the result of the operation as last operand
-     * @return 
+     * It executes the operation of invert sign on the last element if it is not null calling calculator's method,
+     * removes the old value and pushes the new value into the stack.
+     * @return false if the last stack element is null, true otherwise
+     * @see Calculator,ComplexNumber,MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -48,8 +48,9 @@ public class InvertSignCommand implements Command {
         return true;
     }
     /**
-     * It undo the operation of invert sign, so take the last element and push 
-     * the previously saved value
+     * It does the undo of the invert sign operation, so it removes the last element from the stack 
+     * and pushes the previously value saved before the execute.
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

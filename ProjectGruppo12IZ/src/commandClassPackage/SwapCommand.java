@@ -9,7 +9,7 @@ import modelClassPackage.MyOperandCollection;
 
 /**
  *
- * @author Gruppo12
+ * @author Gruppo 12 IZ
  */
 public class SwapCommand implements Command{
 
@@ -17,7 +17,7 @@ public class SwapCommand implements Command{
 
     /**
      * This method creates an object that represents swap operation in order to execute and undo the command,
-     * assert if collection is null or if not have enough operand
+     * assert if collection is null.
      * <p> <!-- -->
      * @param collector is the collection were call swap method
      * @see MyOperandCollection
@@ -25,12 +25,12 @@ public class SwapCommand implements Command{
     public SwapCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        
     }
     
     /**
-     * This method implements execute method for swap operation from Command interface
-     * @return 
+     * This method implements execute method for swap operation from Command interface.
+     * @return false if the collection doesn't contain at least 2 elements, true otherwise.
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -41,7 +41,9 @@ public class SwapCommand implements Command{
     }
 
     /**
-     * This method implements undo method for swap operation from Command interface
+     * This method implements undo method for swap operation from Command interface, doing another 
+     * swap to restore the old order of operands. 
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

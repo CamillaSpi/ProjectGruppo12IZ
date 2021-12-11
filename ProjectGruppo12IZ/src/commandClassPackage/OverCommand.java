@@ -9,28 +9,28 @@ import modelClassPackage.MyOperandCollection;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo 12 IZ
  */
 public class OverCommand implements Command{
 
     private final MyOperandCollection collector;
 
     /**
-     * This method create an object that rappresent OverCommand operation in order to execute and undo the command,
-     * assert if collection is null or if not have enough operand
+     * This method creates an object that represent OverCommand operation in order to execute and undo the command,
+     * assert if collection is null.
      * <p> <!-- -->
-     * @param collector is the collection were call swap method
+     * @param collector is the collection were call over command
      * @see MyOperandCollection
      */
     public OverCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
-        
     }
     
     /**
-     * This method implements execute method for over operation from Command interface
-     * @return 
+     * This method implements execute method for over operation from Command interface, calling method over of the collection.
+     * @return false if the collection doesn't have at least 2 elements, true otherwise.
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -41,7 +41,8 @@ public class OverCommand implements Command{
     }
 
     /**
-     * This method implements undo method for over operation from Command interface
+     * This method implements undo method for over operation from Command interface, removing the last inserted elements.
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

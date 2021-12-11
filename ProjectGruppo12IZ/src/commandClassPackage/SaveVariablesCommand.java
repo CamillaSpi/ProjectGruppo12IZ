@@ -11,36 +11,36 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author nando
+ * @author Gruppo 12 IZ
  */
 public class SaveVariablesCommand implements Command{
 
     private final Variables vars;
 
     /**
-     * This method create an object that represent saveVariablesIntoStack operation in order to execute and undo the command.
+     * This method creates an object that represents saveVariablesIntoStack operation in order to execute and undo the command.
      * <p> <!-- -->
-     * @param vars is the name of the variable were call SaveToVariable.
-     * @see MyOperandCollection
+     * @param vars is the collection of the variables were call Save Variables operation.
+     * @see Variables
      */
     public SaveVariablesCommand(Variables vars) {
         assert vars != null;
         this.vars = vars;
-
     }
     
     /**
      * This method implements execute method for saveVariablesIntoStack operation from Command interface.
      * @return true or false if operation executed.
+     * @see Variables
      */
     @Override
     public boolean execute() {       
-        vars.saveVariablesIntoStack();
-        return true;
+        return vars.saveVariablesIntoStack();
     }
 
     /**
-     * This method implements undo method for saveVariablesIntoStack operation from Command interface
+     * This method implements undo method for saveVariablesIntoStack operation from Command interface.
+     * @see Variables
      */
     @Override
     public void undo() {

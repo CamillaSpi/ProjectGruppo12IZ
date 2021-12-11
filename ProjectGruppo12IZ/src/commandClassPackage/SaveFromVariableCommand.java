@@ -36,8 +36,9 @@ public class SaveFromVariableCommand implements Command{
     }
     
     /**
-     * This method implements execute method for save from variable operation from Command interface
+     * This method implements execute method for save from variable operation from Command interface.
      * @return true if the var has a value and the operation is performed, false otherwise
+     * @see Variables,MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -49,7 +50,12 @@ public class SaveFromVariableCommand implements Command{
         else
             return false;
     }
-
+    
+    /**
+     * This method implements undo method for save from variable operation from Command interface, removing the 
+     * element inserted into the stack and saving it into its old variable. 
+     * @see MyOperandCollection, Variables
+     */
     @Override
     public void undo() {
         value = collector.remove();
