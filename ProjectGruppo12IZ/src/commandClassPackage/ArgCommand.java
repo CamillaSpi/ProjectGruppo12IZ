@@ -28,8 +28,8 @@ public class ArgCommand implements Command{
     }
     
     /**
-     *It executes the operation of argument on the last inserted operand in the collector removing it
-     * and pushes the result of the operation as last operand.
+     * It executes the operation of argument on the last inserted operand in the 
+     * collector removing it and pushes the result of the operation as last operand.
      * @return true if the collection contains at least 1 element, false otherwise
      * @see ComplexNumber, MyOperandCollection
      */
@@ -44,8 +44,9 @@ public class ArgCommand implements Command{
     }
 
     /**
-     *It executes the undo of the argument operation removing the last inserted element that is the result of the operation,
-     * and pushes the operand that has been involved in the argument operation.
+     *It executes the undo of the argument operation removing the last inserted 
+     * element that is the result of the operation, and pushes the operand that 
+     * has been involved in the argument operation.
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

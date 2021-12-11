@@ -19,8 +19,8 @@ public class ClearCommand implements Command{
     private List<ComplexNumber> backup;
     
     /**
-     * This method creates an object that represents clear operation in order to execute and undo the command,
-     * assert if collection is null or if it is empty.
+     * This method creates an object that represents clear operation in order to
+     * execute and undo the command, assert if collection is null or if it is empty.
      * <p> <!-- -->
      * @param collector is the collection were call clear method
      * @see MyOperandCollection
@@ -32,6 +32,7 @@ public class ClearCommand implements Command{
     
     /**
      * This method implements execute method for clear operation from Command interface
+     * if it can be performed.
      * @return true if the collection is not empty and the operation is performed, false otherwise
      */
     @Override

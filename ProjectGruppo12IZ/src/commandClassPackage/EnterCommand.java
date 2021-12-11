@@ -13,11 +13,11 @@ public class EnterCommand implements Command {
     private final ComplexNumber toPush;
 
     /**
-     * It create an object of the EnterCommand if the collector is not null and
+     * It create an object of the Enter Command if the collector is not null and
      * the ComplexNumber to push is not null
      *
-     * @param collector
-     * @param toPush
+     * @param collector is the data structur were take the operand.
+     * @param toPush represent the number to push.
      * @see ComplexNumber, MyOperandCollection
      */
     public EnterCommand(MyOperandCollection collector, ComplexNumber toPush) {
@@ -29,9 +29,9 @@ public class EnterCommand implements Command {
     }
 
     /**
-     * It execute the operation of insert of a ComplexNumber in the collector
-     *
-     * @return
+     * It execute the operation of insert a ComplexNumber in the collection 
+     * passed as param
+     * @return true because the complexnumber is secure saved when this function is called.
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
@@ -43,7 +43,6 @@ public class EnterCommand implements Command {
     /**
      * It execute the undo of the insert operation removing the last inserted
      * element.
-     *
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

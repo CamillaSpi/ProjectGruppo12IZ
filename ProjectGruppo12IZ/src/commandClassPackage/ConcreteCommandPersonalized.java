@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo 12 IZ
  */
 public class ConcreteCommandPersonalized implements Command, Serializable{
  
@@ -22,8 +22,8 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
     /**
      * It creates an object of the ConcreteCommandPersonalized if the collector is not null and 
      * @param commandName is the name of the command, we choose to save this in this class, could be util for the future.
-     * @param operations
-     * @param commands is the list of commands that compose this concrete complex command .
+     * @param operations is the string that the user write to create the specific concrete command
+     * @param commands is the list of commands that compose this concrete complex command.
      * @see ComplexNumber, MyOperandCollection
      */
     public ConcreteCommandPersonalized(String commandName,String operations, List<Command> commands) {
@@ -34,8 +34,9 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
     }
     
     /**
-     * It creates an object of the ConcreteCommandPersonalized if the param is not null and 
-     * @param comm 
+     * It creates an object of the ConcreteCommandPersonalized if the param is 
+     * not null from another concrete command 
+     * @param comm is the command from which to create a copy
      * @see ComplexNumber, MyOperandCollection
      */
     public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
@@ -58,6 +59,33 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
      * @return String rappresent operations
      */
     public String getCommands() {
+        return operations;
+    }
+    
+    
+    /**
+     * It search in the list of basic operation if there is which is passed as parameter.
+     * @param name is the name of the command to search in the complex command.
+     * @return boolean, true if this method find the command, false otherwise.
+     * @see ComplexNumber, MyOperandCollection
+     */
+    public boolean contains(String name) {
+        for (Command myCommand : commands) {
+            if (myCommand instanceof ConcreteCommandPersonalized) {
+                if (name.equals(((ConcreteCommandPersonalized) myCommand).commandName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * it create a string explanatory of the concrete personalized command.
+     * @return the string create
+     */
+    @Override
+    public String toString() {
         return operations;
     }
     
@@ -98,27 +126,4 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
         for(int i = length-1; i >= 0; i--)
             commands.get(i).undo();
     }
-
-    /**
-     * It search in the list of basic operation if there is which is passed as parameter.
-     * @param name is the name of the command to search in the complex command.
-     * @return boolean, true if this method find the command, false otherwise.
-     * @see ComplexNumber, MyOperandCollection
-     */
-    public boolean contains(String name) {
-        for (Command myCommand : commands) {
-            if (myCommand instanceof ConcreteCommandPersonalized) {
-                if (name.equals(((ConcreteCommandPersonalized) myCommand).commandName)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return operations;
-    }
-
 }

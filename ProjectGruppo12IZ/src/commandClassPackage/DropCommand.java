@@ -10,7 +10,7 @@ import modelClassPackage.MyOperandCollection;
 
 /**
  *
- * @author Gruppo12
+ * @author Gruppo 12 IZ
  */
 public class DropCommand implements Command{
 
@@ -18,8 +18,9 @@ public class DropCommand implements Command{
     private ComplexNumber first;
 
     /**
-     * This method create an object that rappresent drop operation in order to execute and undo the command,
-     * assert if collection is null or if not have enough operand
+     * This method create an object that rappresent drop operation in order to 
+     * execute and undo the command, assert if collection is null or if not 
+     * have enough operand.
      * <p> <!-- -->
      * @param collector is the collection were call drop method
      * @see MyOperandCollection
