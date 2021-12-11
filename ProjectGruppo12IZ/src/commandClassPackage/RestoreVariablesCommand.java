@@ -9,42 +9,40 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author nando
+ * @author Gruppo 12 IZ
  */
 public class RestoreVariablesCommand implements Command {
 
     private final Variables vars;
 
     /**
-     * This method create an object that represent RestoreVariablesFromStack operation in
-     * order to execute and undo the command.
+     * This method creates an object that represents restore variables from stack operation in
+     * order to execute and undo the command, assert if the variables are null.
      * <p>
      * <!-- --> 
-     * @param vars is the name of the variable were call
-     * SaveToVariable.
-     * @see MyOperandCollection
+     * @param vars the object that contains the variables
+     * @see Variables
      */
     public RestoreVariablesCommand(Variables vars) {
         assert vars != null;
         this.vars = vars;
-
     }
 
     /**
-     * This method implements execute method for RestoreVariablesFromStack operation from
+     * This method implements execute method for Restore variables command from
      * Command interface.
-     *
-     * @return true or false if operation executed.
+     * @return true if the operation of restoring is executed, false otherwise.
+     * @see Variables
      */
     @Override
     public boolean execute() {
-        vars.restoreVariablesFromStack();
-        return true;
+        return vars.restoreVariablesFromStack();
     }
 
     /**
-     * This method implements undo method for RestoreVariablesFromStack operation from
-     * Command interface
+     * This method implements undo method for Restore variables command operation from
+     * Command interface; it does a save of the variables into the stack, calling the variables' method.
+     * @see Variables
      */
     @Override
     public void undo() {

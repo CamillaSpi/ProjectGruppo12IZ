@@ -251,7 +251,7 @@ public class HashCommandTable {
     }
 
     /**
-     * It print to a file the name and the definition of user operations
+     * It prints to a file the name and the definition of user operations
      * defined by user in current usage session if it is possible.Otherwise,
      * if the name of the File is not correct or the content is not right the
      * operation will not be performed.If the printing went well the operations

@@ -14,18 +14,26 @@ import projectgruppo12iz.FXMLDocumentController;
 
 /**
  *
- * @author Mattia
+ * @author GRUPPO 12 IZ
  */
 public class StateVariables extends State {
 
+    /**
+     * It create a new object StateVariables calling the constructor method of
+     * the super class.
+     *
+     * @param controller The DocumentController object
+     * @see FXMLDocumentController
+     */
     public StateVariables(FXMLDocumentController controller) {
         super(controller);
     }
 
     /**
-     * It create a new SaveToVariable and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not at least two operands for example,
-     * an error message will be shown and the operation will not be performed. 
+     * It create a new SaveToVariable and calls the method execute on it if it
+     * is possible. If the operation could not be performed an error message
+     * will be shown and the operation will not be performed.
+     *
      * @see FXMLDocumentController, SaveToVariable
      */
     @Override
@@ -50,9 +58,10 @@ public class StateVariables extends State {
     }
 
     /**
-     * It create a new SaveFromVariable and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not at least two operands for example,
-     * an error message will be shown and the operation will not be performed. 
+     * It create a new SaveFromVariable and calls the method execute on it if it
+     * is possible. If the operation could not be performed an error message
+     * will be shown and the operation will not be performed.
+     *
      * @see FXMLDocumentController, SaveFromVariable
      */
     @Override
@@ -75,68 +84,76 @@ public class StateVariables extends State {
             }
         }
     }
-    
+
     /**
-     * It create a new AddToVariable and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not at least two operands for example,
-     * an error message will be shown and the operation will not be performed. 
+     * It create a new AddToVariable and calls the method execute on it if it is
+     * possible. If the operation could not be performed an error message will
+     * be shown and the operation will not be performed.
+     *
      * @see FXMLDocumentController, AddToVariable
      */
     public void onButtonFour() {
-         ComplexNumber adding = this.controller.getCollector().last();
-        if(adding != null){
+        ComplexNumber adding = this.controller.getCollector().last();
+        if (adding != null) {
             String variable = this.controller.getText();
-            if(!("".equals(variable))){
+            if (!("".equals(variable))) {
                 AddToVariableCommand cmd = new AddToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if(cmd != null){
-                    if(!controller.commandExecute(cmd))
+                if (cmd != null) {
+                    if (!controller.commandExecute(cmd)) {
                         this.controller.showAlert("Operation failed, set a value to the specified variable");
-                    else{
+                    } else {
                         this.controller.showAlert("The result will be saved in the variable " + variable);
                         this.controller.refresh();
                         this.controller.refreshVarsOp();
                     }
-                }else
+                } else {
                     this.controller.showAlert("The operation is failed\n");
-            }else
+                }
+            } else {
                 this.controller.showAlert("Specify a variable before click this button!");
-        }
-        else
+            }
+        } else {
             this.controller.showAlert("Insert at least an operand to execute this operation!");
+        }
     }
-    
+
     /**
-     * It create a new SubtractToVariable and calls the method execute on it if it is possible.
-     * If the operation could not be performed, because there are not at least two operands for example,
-     * an error message will be shown and the operation will not be performed. 
+     * It create a new SubtractToVariable and calls the method execute on it if
+     * it is possible. If the operation could not be performed an error message
+     * will be shown and the operation will not be performed.
+     *
      * @see FXMLDocumentController, SubtractToVariable
      */
     public void onButtonSix() {
         ComplexNumber subtracting = this.controller.getCollector().last();
-        if(subtracting != null){
+        if (subtracting != null) {
             String variable = this.controller.getText();
-            if(!("".equals(variable))){
+            if (!("".equals(variable))) {
                 SubtractToVariableCommand cmd = new SubtractToVariableCommand(this.controller.getCollector(), this.controller.getVariables(), variable);
-                if(cmd != null){
-                    if(!controller.commandExecute(cmd))
+                if (cmd != null) {
+                    if (!controller.commandExecute(cmd)) {
                         this.controller.showAlert("Operation failed, set a value to the specified variable");
-                    else{
+                    } else {
                         this.controller.showAlert("The result will be saved in the variable " + variable);
                         this.controller.refresh();
                         this.controller.refreshVarsOp();
                     }
-                }else
+                } else {
                     this.controller.showAlert("The operation is failed\n");
-            }else
+                }
+            } else {
                 this.controller.showAlert("Specify a variable before click this button!");
-        }else
+            }
+        } else {
             this.controller.showAlert("Insert at least an operand to execute this operation!");
+        }
     }
 
     /**
-     * It changes the State of the controller to that of StateStandard,
-     * sets this state into the controller and make visible only the buttons 
-     * necessary to perform operations on variables, .
+     * It changes the State of the controller to StateStandard, setting its into
+     * the controller and makes visible only the buttons necessary in this
+     * state.
+     *
      * @see FXMLDocumentController
      */
     @Override
@@ -150,14 +167,19 @@ public class StateVariables extends State {
         this.controller.setState(new StateStandard(controller));
     }
 
+    /**
+     * This method do not perform operation because it only leaves the context
+     * in the same state where it already is.
+     */
     @Override
     public void setStateVariables() {
     }
 
     /**
-     * It changes the State of the controller to that of StateOperations,
-     * sets this state into the controller and make visible only the buttons 
-     * necessary to perform operations on variables, .
+     * It changes the State of the controller to StateOperations, setting its
+     * into the controller and makes visible only the buttons necessary in this
+     * state.
+     *
      * @see FXMLDocumentController
      */
     @Override
@@ -169,17 +191,23 @@ public class StateVariables extends State {
         this.controller.changeButtonText(2, "EXECUTE");
         this.controller.changeButtonText(3, "DIV");
         this.controller.changeButtonText(5, "DROP");
-        this.controller.setState(new StateOperations(controller)); 
+        this.controller.setState(new StateOperations(controller));
     }
 
+    /**
+     * It changes the State of the controller to StateTranscendetal, setting its
+     * into the controller and makes visible only the buttons necessary in this
+     * state.
+     *
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateTranscendetal() {
         controller.changeButtonText(0, "MOD");
         controller.changeButtonText(2, "ARG");
-        controller.hideButton(new int[]{3,5,13});
+        controller.hideButton(new int[]{3, 5, 13});
 
         controller.setState(new StateTranscendental(controller));
     }
 
 }
-        

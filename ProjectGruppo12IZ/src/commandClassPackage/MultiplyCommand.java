@@ -18,26 +18,21 @@ public class MultiplyCommand implements Command{
     private ComplexNumber firstOperand;
     private ComplexNumber secondOperand;
     
-    
-    
     /**
-     * It create an object of the MultiplyCommand if the collector is not null and 
-     * contains enough element to perform the multiplication operation.
+     * It creates an object of the MultiplyCommand if the collector is not null.
      * @param collector
-     * @see ComplexNumber, MyOperandCollection
+     * @see MyOperandCollection
      */
     public MultiplyCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
-        
     }
     
-    
     /**
-     *It execute the operation of multiplication on the last two inserted operand in the collector removing them,
-     * and pushes the result of the operation as last operand.
-     * @return 
-     * @see ComplexNumber, MyOperandCollection
+     *It executes the operation of multiplication on the last inserted operands in the collector, calling calculator's method and removing them
+     * from the collection, and pushes the result of the operation as last operand.
+     * @return true if the collection contains at least 2 element, false otherwise
+     * @see ComplexNumber, Calculator, MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -58,9 +53,9 @@ public class MultiplyCommand implements Command{
     }
     
     /**
-     * It execute the undo of the multiplication operation removing the last inserted element that is the result of the operation,
-     * and pushes the two operands that have been involved in the multiplication operation.
-     * @see ComplexNumber, MyOperandCollection
+     *It executes the undo of the multiplication operation removing the last inserted element that is the result of the operation,
+     * and pushes the operands that have been involved in the operation.
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

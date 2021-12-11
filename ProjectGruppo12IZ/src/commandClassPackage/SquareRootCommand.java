@@ -11,8 +11,6 @@ import modelClassPackage.ComplexNumber;
 import modelClassPackage.MyOperandCollection;
 
 /**
- * This is the costructor method for SquareRootCommand, this class implemenets
- * the Command interface with the override of the methods
  * @author Gruppo 12 IZ
  * 
  */
@@ -21,20 +19,20 @@ public class SquareRootCommand implements Command {
     private ComplexNumber value;
 
     /**
-     * It create an object of the SquareRootCommand if the collector is not null 
-     * and the last element is not null
-     * @param collector
+     * It creates an object of the SquareRootCommand if the collector is not null.
+     * @param collector the collection on which the command will be executed.
+     * @see MyOperandCollection
      */
     public SquareRootCommand(MyOperandCollection collector) {
        assert collector != null;
        this.collector = collector;
-       
     }
 
     /**
-     * It execute the operation of square root on the last element and, if its not null,
+     * It executes the operation of square root on the last element it is not null, and
      * pushes the result of the operation as last operand
-     * @return 
+     * @return true if the operation is executed and the collector is not empty, false otherwise
+     * @see MyOperandCollection, ComplexNumber, Calculator
      */
     @Override
     public boolean execute() {
@@ -48,8 +46,9 @@ public class SquareRootCommand implements Command {
         return true;
     }
     /**
-     * It undo the operation of square root, so take the last element and push 
-     * the previously saved value
+     * It undo the operation of square root, so it removes the last element and push 
+     * the previously saved one.
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {
