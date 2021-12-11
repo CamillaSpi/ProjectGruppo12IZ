@@ -7,7 +7,7 @@ package modelClassPackage;
 
 /**
  *
- * @author nando
+  * @author Gruppo 12 IZ
  */
 public class MyOperandCollection extends OperandCollection {
 
@@ -16,7 +16,7 @@ public class MyOperandCollection extends OperandCollection {
     }   
     
     /**
-    * It swap (if there are more than two elements in the collection) the last two element inserted 
+    * It swap (if there are at least two elements in the collection) the last two element inserted 
     * <p> <!-- -->
     * @return a boolean true if the operation is executed correctly, false otherwise
     * @see OperandCollection
@@ -35,7 +35,7 @@ public class MyOperandCollection extends OperandCollection {
     
  
     /**
-    * It returns the last number inserted inside the collection.
+    * It remove the last number inserted inside the collection.
     * <p> <!-- -->
     * @return true if the element was remove, otherwise false
     * @see OperandCollection
@@ -80,7 +80,7 @@ public class MyOperandCollection extends OperandCollection {
     }
 
     /**
-    * It returns a boolean.
+    * It remove all elements inside the collection.
     * <p> <!-- -->
     * @return true if all the elements in the stack have been deleted, false if the stack was already empty.
     */

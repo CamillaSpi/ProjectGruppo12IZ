@@ -154,12 +154,15 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton operationsToggle;
     @FXML
     private ToggleButton transcendentalToggle;
-
-    @FXML
-    private void closeSideMenu(ActionEvent event) {
-        moveAnchor(false);
-    }
-
+    /**
+     * This function create a TranslateTransition that move the "varAnchorPane" 
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param flag if true move the anchor pane in the screen, else it take it outside.
+     */
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
         if (flag) {
@@ -182,7 +185,16 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+ /**
+     * This function create a TranslateTransition that move the "externalVBox" and a 
+     * TranslateTransition to move "operationVBox"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the two VBox in the screen, else it takes it outside.
+     */
     private void moveAnchorOperation(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), externalVBox);
         TranslateTransition slide2 = new TranslateTransition(Duration.seconds(0.4), operationVBox);
@@ -209,7 +221,15 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+/**
+     * This function create a TranslateTransition that move the "bottomAnchorPane"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the "bottomAnchorPane" in the screen, else it takes it outside.
+     */
     private void moveBottomAnchorPane(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), bottomAnchorPane);
         if (anchorFlag) {
@@ -226,7 +246,15 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-
+/**
+     * This function create a TranslateTransition that move the "textArea"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the "textArea" down, else in original place.
+     */
     private void moveTextArea(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), textArea);
         if (anchorFlag) {
@@ -240,12 +268,20 @@ public class FXMLDocumentController implements Initializable {
             slide.setToX(0);
             slide.setRate(1);
             slide.play();
-             slide.setOnFinished((ActionEvent event) -> {
+            slide.setOnFinished((ActionEvent event) -> {
                 enterButton.setVisible(true);
             });
         }
     }
-
+/**
+     * This function create an animation to show the buttons. All the buttons are contained 
+     * in an array. Hide the buttons which indexes is contained in the array passed
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param index An array that contain the indexes of buttons that need to hide
+     */
     public void showButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
@@ -262,7 +298,15 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+/**
+     * This function create an animation to hide the buttons. All the buttons are contained 
+     * in an array. Show the button which index is contained in the array passed
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param index An array that contain the indexes of buttons that need to show
+     */
     public void hideButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
@@ -277,7 +321,13 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
-
+    /**
+     * change the text of errorLabel for 5 seconds and after set it to null
+     * <p>
+     * <!-- --> 
+     * 
+     * @param error the strings that need to be displayed in errorLabel
+     */
     public void showAlert(String error) {
         errorLabel.setText(error);
         pause.stop();
@@ -487,11 +537,17 @@ public class FXMLDocumentController implements Initializable {
      *
      * @param event the event of the presses of the button sqrt.
      * <p>
-     * <!-- --> @see DropCommand
+     * <!-- --> @see SquareRootCommand
      */
     @FXML
     private void onButtonFive(ActionEvent event) {
-        ((StateStandard) this.state).onButtonFive();
+        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
+        if (sqrtComm != null && commandExecute(sqrtComm)) {
+            showAlert("Square Root done succesfully!");
+            refresh();
+        } else {
+            showAlert("Square Root cannot be performed!\nHave you insert at least one operand?");
+        }
     }
 
     /**
@@ -572,15 +628,8 @@ public class FXMLDocumentController implements Initializable {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
         } else {
-            DropCommand dropComm = new DropCommand(this.collector);
-            if (dropComm != null && commandExecute(dropComm)) {
-                showAlert("Drop Operation done succesfully!");
-                refresh();
-            } else {
-                showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
-            }
+            ((StateStandard) this.state).onButtonSix();
         }
-
     }
 
     /**
@@ -689,6 +738,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Open the github's project link
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void about(ActionEvent event) {
         try {
@@ -697,6 +753,15 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * When the button is pressed call onButtonEnter methods depending on the
+     * state. The button can be pressed only in state operations, standard and
+     * transcendental
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void handleEnterAction(ActionEvent event) {
         if (state instanceof StateOperations) {
@@ -708,15 +773,29 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * When the button is pressed the last command will be undo
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void onButtonTwelve(ActionEvent event) {
         inv.undoLast();
         refresh();
     }
 
+    /**
+     * When the button is pressed change the state in Standard state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showStandard(ActionEvent event) {
-         clearText();
+        clearText();
         changeToggleButton(standardsToggle);
         moveAnchor(false);
         moveAnchorOperation(false);
@@ -726,6 +805,13 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateStandard();
     }
 
+    /**
+     * When the button is pressed change the state in Variables state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showVariables(ActionEvent event) {
         clearText();
@@ -742,6 +828,13 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateVariables();
     }
 
+    /**
+     * When the button is pressed change the state in Operations state.
+     * <p>
+     * <!-- --> @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showOperations(ActionEvent event) {
         clearText();
@@ -759,6 +852,14 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateOperations();
     }
 
+    /**
+     * When the button is pressed change the state in transcendental state.
+     * <p>
+     * <!-- --> 
+     * @param event it registers the event of the click of the button
+     *
+     * @see CommandRetrievingService, HashhCommandTable
+     */
     @FXML
     private void showTranscendental(ActionEvent event) {
         clearText();
@@ -771,62 +872,140 @@ public class FXMLDocumentController implements Initializable {
         this.state.setStateTranscendetal();
     }
 
+    /**
+     * This methods refresh the OperandsTable
+     * <p>
+     * <!-- -->
+     * @see ComplexNumber
+     */
     public void refresh() {
         OperandsTable.refresh();
     }
 
+    /**
+     * This methods return the text in textArea
+     * <p>
+     * <!-- --> 
+     * @return strings contained in textArea
+     */
     public String getText() {
         return this.textArea.getText();
     }
 
+    /**
+     * This methods set the text in textArea
+     * <p>
+     * <!-- --> 
+     * @param value the text to set in textArea
+     */
     public void setText(String value) {
         this.textArea.setText(value);
     }
-
+/**
+     * This methods set the text in nameOperationTextArea
+     * <p>
+     * <!-- --> 
+     * @return strings contained in nameOperationTextArea
+     */
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
     }
-
+/**
+     * This methods return the userCommand
+     * <p>
+     * <!-- --> 
+     * 
+     * @return an HashCommandTable
+     */
     public HashCommandTable getuserCommand() {
         return this.userCommand;
     }
-
+/**
+     * Clear the textArea
+     * <p>
+     * <!-- --> 
+     */
     public void clearText() {
         textArea.clear();
     }
-
+/**
+     * Clear the nameOperationTextArea
+     * <p>
+     * <!-- --> 
+     */
     public void clearNameText() {
         nameOperationTextArea.clear();
     }
-
+/**
+     * return the Variables value 
+     * <p>
+     * <!-- --> 
+     * @return an Variables class
+     */
     public Variables getVariables() {
         return this.vars;
     }
-
+/**
+     * Change the text in a button 
+     * <p>
+     * <!-- --> 
+     * @param index the index of button to change
+     * @param value the text to set 
+     */
     public void changeButtonText(int index, String value) {
         myButtonArray.get(index).setText(value);
     }
-
+/**
+     * Return the Invoker
+     * <p>
+     * <!-- --> 
+     * @return return an Invoker class
+     */
     public Invoker getInvoker() {
         return this.inv;
     }
-
+/**
+     * Set the state 
+     * <p>
+     * <!-- --> 
+     * @param state the state that need to be setted.
+     */
     public void setState(State state) {
         this.state = state;
     }
-
+    /**
+     * Call execute method in invoker class
+     * <p>
+     * <!-- --> 
+     * @param command the command to execute
+     * @return true if the command was execute successful otherwise false
+     */
     public boolean commandExecute(Command command) {
         return inv.execute(command);
     }
-
+/**
+     * This methods refresh the tableOpVar
+     * <p>
+     * <!-- -->
+     */
     public void refreshVarsOp() {
         this.tableOpVar.refresh();
     }
-
+/**
+     * Return the value of MyOperandCollection
+     * <p>
+     * <!-- -->
+     * @return an MyOperandCollection class
+     */
     public MyOperandCollection getCollector() {
         return collector;
     }
-
+/**
+     * When the button is pressed, the application will close
+     * <p>
+     * <!-- -->
+     * @param event it registers the event of the click of the button
+     */
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();

@@ -11,7 +11,7 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author Mattia
+ * @author Gruppo 12 IZ
  */
 public class SaveToVariableCommand implements Command{
 
@@ -22,12 +22,12 @@ public class SaveToVariableCommand implements Command{
     private ComplexNumber removedOperand;
 
     /**
-     * This method create an object that rappresent SaveToVariable operation in order to execute and undo the command.
+     * This method creates an object that represents SaveToVariable operation in order to execute and undo the command.
      * <p> <!-- -->
      * @param collector is the collection were take last operand.
      * @param vars is the collection were call SaveToVariable method.
      * @param var is the name of the variable were call SaveToVariable.
-     * @see MyOperandCollection
+     * @see MyOperandCollection, Variables
      */
     public SaveToVariableCommand(MyOperandCollection collector, Variables vars, String var) {
         assert collector != null;
@@ -41,7 +41,8 @@ public class SaveToVariableCommand implements Command{
     
     /**
      * This method implements execute method for SaveToVariable operation from Command interface.
-     * @return true or false if operation executed.
+     * @return false if the stack is empty or the operation is not performed, true otherwise.
+     * @see Variables, MyOperandCollection
      */
     @Override
     public boolean execute() {       
@@ -56,7 +57,9 @@ public class SaveToVariableCommand implements Command{
     }
 
     /**
-     * This method implements undo method for SaveToVariable operation from Command interface
+     * This method implements undo method for SaveToVariable operation from Command interface, 
+     * setting the old value to the variable and inserting the old stack value saved into the variable.
+     * @see Variables, MyOperandCollection
      */
     @Override
     public void undo() {

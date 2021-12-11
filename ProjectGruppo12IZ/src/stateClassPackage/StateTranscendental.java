@@ -13,21 +13,25 @@ import projectgruppo12iz.FXMLDocumentController;
 
 /**
  *
- * @author nando
- * @time Dec 9, 2021 4:12:02 PM
+ * @author GRUPPO 12 IZ
  */
 public class StateTranscendental extends State {
 
+     /**
+     * It create a new object StateTranscendental calling the constructor method of
+     * the super class.
+     *
+     * @param controller The DocumentController object
+     * @see FXMLDocumentController
+     */
     public StateTranscendental(FXMLDocumentController controller) {
         super(controller);
     }
 
-    /**
-     * It insert a new Complex Operand on which to perfrom operations, if it is
-     * write in the correct form in the corresponding text area the operand will
-     * be stored, otherwise an error message will be shown and anithing new is
-     * inserted.
-     *
+     /**
+     * It try to insert a new Complex Operand on which to perform operations.
+     * If the text written in the specific textArea correspond to a ComplexNumber it will
+     * be stored, otherwise an error message will be shown.
      * @see FXMLDocumentController, ComplexNumber
      */
     public void onButtonEnter() {
@@ -51,9 +55,8 @@ public class StateTranscendental extends State {
     }
 
     /**
-     * It create a new MultiplyCommand and calls the method execute on it if it
-     * is possible. If the operation could not be performed, because there are
-     * not at least two operands for example, an error message will be shown and
+     * It create a new ModCommand and calls the method execute on it if it
+     * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
      *
      * @see FXMLDocumentController, MultiplyCommand
@@ -72,9 +75,8 @@ public class StateTranscendental extends State {
     }
 
     /**
-     * It create a new SaveFromVariable and calls the method execute on it if it
-     * is possible. If the operation could not be performed, because there are
-     * not at least two operands for example, an error message will be shown and
+     * It create a new ArgCommand and calls the method execute on it if it
+     * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
      *
      * @see FXMLDocumentController, SaveFromVariable
@@ -92,10 +94,11 @@ public class StateTranscendental extends State {
         }
     }
 
-    /**
-     * This method do not perform operation because it only leaves the context
-     * in the same state where it already is.
-     *
+   /**
+     * It changes the State of the controller to StateStandard,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
+     * @see FXMLDocumentController
      */
     @Override
     public void setStateStandard() {
@@ -108,11 +111,10 @@ public class StateTranscendental extends State {
         this.controller.setState(new StateStandard(controller));
     }
 
-    /**
-     * It changes the State of the controller to that of StateVariables, sets
-     * this state into the controller and make visible only the buttons
-     * necessary to perform operations on variables, .
-     *
+  /**
+     * It changes the State of the controller to StateVariables,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
      * @see FXMLDocumentController
      */
     @Override
@@ -126,11 +128,10 @@ public class StateTranscendental extends State {
         controller.setState(new StateVariables(controller));
     }
 
-    /**
-     * It changes the State of the controller to that of StateOperations, sets
-     * this state into the controller and make visible only the buttons
-     * necessary to perform on user defined operations.
-     *
+  /**
+     * It changes the State of the controller to StateOperations,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
      * @see FXMLDocumentController
      */
     @Override
@@ -143,7 +144,11 @@ public class StateTranscendental extends State {
         this.controller.changeButtonText(3, "DIV");
         this.controller.setState(new StateOperations(controller));
     }
-
+    
+     /**
+     * This method do not perform operation because it only leaves the context
+     * in the same state where it already is.
+     */
     @Override
     public void setStateTranscendetal() {
     }

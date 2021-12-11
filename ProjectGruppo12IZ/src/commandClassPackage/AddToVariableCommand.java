@@ -11,7 +11,7 @@ import modelClassPackage.Variables;
 
 /**
  *
- * @author Gruppo12
+ * @author Gruppo 12 IZ
  */
 public class AddToVariableCommand implements Command{
 
@@ -22,13 +22,14 @@ public class AddToVariableCommand implements Command{
     private ComplexNumber OperandFromStack;
 
     /**
-      * This method creates an object that represents add to variable operation in order to execute and undo the command,
-     * assert if collection is null or if vars is null or if variables is null
+     * This method creates an object that represents add to variable operation 
+     * in order to execute and undo the command, assert if collection is null or 
+     * if vars is null or if variables is null
      * <p> <!-- -->
      * @param collector is the collection were addend is taken
-     * @param vars is the collection were addend is taken
+     * @param vars is the collection were addend has to be insert
      * @param variables is the var were execute the operation
-     * @see MyOperandCollection
+     * @see MyOperandCollection, Variables, ComplexNumber
      */
     public AddToVariableCommand(MyOperandCollection collector, Variables vars, String variables) {
         assert collector != null;
@@ -42,8 +43,9 @@ public class AddToVariableCommand implements Command{
     }
     
     /**
-      * This method implements execute method for add to variable operation from Command interface
-     * @return 
+     * This method implements execute method for add to variable operation from 
+     * Command interface, return false if it can't be performed.
+     * @return boolean that check if the operation is performed or not.
      */
     @Override
     public boolean execute() {
@@ -62,7 +64,8 @@ public class AddToVariableCommand implements Command{
     }
 
     /**
-      * This method implements undo method for add to variable operation from Command interface
+     * This method implements undo method for add to variable operation 
+     * from Command interface.
      */
     @Override
     public void undo() {

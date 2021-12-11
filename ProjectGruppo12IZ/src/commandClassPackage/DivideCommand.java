@@ -30,9 +30,10 @@ public class DivideCommand implements Command{
     }
     
     /**
-     *It executes the operation of division on the last two inserted operands in the collector removing them,
-     * and pushes the result of the operation as last operand.
-     * @return 
+     *It executes the operation of division on the last two inserted operands 
+     * in the collector removing them, and pushes the result of the operation as 
+     * last operand.
+     * @return true if the operation is performed, false otherwise.
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
@@ -58,8 +59,9 @@ public class DivideCommand implements Command{
     }
     
     /**
-     * It executes the undo of the division operation removing the last inserted element that is the result of the operation,
-     * and pushes the two operands that have been involved in the division operation.
+     * It executes the undo of the division operation removing the last inserted 
+     * element that is the result of the operation, and pushes the two operands 
+     * that have been involved in the division operation.
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

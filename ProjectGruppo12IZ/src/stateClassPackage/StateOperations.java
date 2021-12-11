@@ -32,8 +32,8 @@ public class StateOperations extends State {
         this.userCommand = this.controller.getuserCommand();
 
     }
-     /**
-    * This function is associated with the button enter operation in order to avoid the user to store
+    /**
+    * This function is associated with the button enter operation in order to achieves the user to store
     * a personalized operation defining its name and its definition.
     * If the operation name already exists it will be asked to user if he is sure to update the operation 
     * and all the operation that uses it.
@@ -69,7 +69,7 @@ public class StateOperations extends State {
     }
 
     /**
-    * This function allows to delete an previously defined user operation and all the
+    * This function allows to delete a previously defined user operation and all the
     * other user operation that contains this one.
     * <p> <!-- -->
     */
@@ -108,8 +108,8 @@ public class StateOperations extends State {
 
     }
     /**
-    * This function allows to show in the apposit text area the operations that compose 
-    * the operation writes in relative text area so you can view modify that(if exists).
+    * This function allows to show in the specific text area the operations that compose 
+    * the operation writes in relative text area in order to simplify the modify operations if exists).
     * <p> <!-- -->
     * @see HashCommandTable
     */
@@ -154,9 +154,9 @@ public class StateOperations extends State {
    }
     
     /**
-     * It changes the State of the controller to that of StateStandard,
-     * sets this state into the controller and make visible only the buttons 
-     * necessary to perform operations on variables, .
+     * It changes the State of the controller to StateStandard,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
      * @see FXMLDocumentController
      */
     @Override
@@ -169,10 +169,10 @@ public class StateOperations extends State {
         controller.setState(new StateStandard(controller)); 
     }
     
-    /**
-     * It changes the State of the controller to that of StateVariables,
-     * sets this state into the controller and make visible only the buttons 
-     * necessary to perform on user defined operations.
+     /**
+     * It changes the State of the controller to StateVariables,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
      * @see FXMLDocumentController
      */
     @Override
@@ -186,12 +186,19 @@ public class StateOperations extends State {
         this.controller.hideButton(new int[]{1,12});
         controller.setState(new StateVariables(controller)); 
     }
-
+    /**
+     * In this state this methods change nothings.
+     */
     @Override
     public void setStateOperations() {
 
     }
-
+    /**
+     * It changes the State of the controller to StateTrascendental,
+     * setting its into the controller and makes visible only the buttons 
+     * necessary in this state.
+     * @see FXMLDocumentController
+     */
     @Override
     public void setStateTranscendetal() {
     this.controller.showButton(new int[]{12});

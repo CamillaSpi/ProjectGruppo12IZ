@@ -21,23 +21,20 @@ public class SubtractCommand implements Command{
     
     
     /**
-     * It create an object of the SubtractCommand if the collector is not null and 
-     * contains enough element to perform the subtraction operation.
-     * @param collector
-     * @see ComplexNumber, MyOperandCollection
+     * It creates an object of the SubtractCommand if the collector is not null.
+     * @param collector the collection on which the subtract command is executed.
+     * @see MyOperandCollection
      */
     public SubtractCommand(MyOperandCollection collector){
         assert collector != null;
         this.collector = collector;
-        
-    }
-    
-    
+    }   
+ 
     /**
      *It executes the operation of subtraction on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
-     * @return 
-     * @see ComplexNumber, MyOperandCollection
+     * @return false if the collection doesn't contain at least two elements, true otherwise
+     * @see ComplexNumber, MyOperandCollection, Calculator
      */
     @Override
     public boolean execute() {
@@ -60,7 +57,7 @@ public class SubtractCommand implements Command{
     /**
      * It executes the undo of the subtraction operation removing the last inserted element that is the result of the operation,
      * and pushes the two operands that have been involved in the subtraction operation.
-     * @see ComplexNumber, MyOperandCollection
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

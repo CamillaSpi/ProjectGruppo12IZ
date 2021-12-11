@@ -36,6 +36,16 @@ public class HashCommandTable {
     private MyOperandCollection collector;
     private final Variables vars;
 
+    /**
+     * it create an object of this class, inizialize a basic hash structure for 
+     * associate simbol of operation with the name of the class that allows the 
+     * relative basic command, create an observable HashMap to store effective 
+     * concrete command created by the user with the relative name, the collection
+     * that contain operand and the vars structure that contain the variable. 
+     * @param collector is the structure were are saved operand, is passed to every concretecommand created.
+     * @param vars is the structure were are saved the variable, is passed to every concretecommand created.
+     * @see MyOperandCollection, Variables, HashMap
+     */
     public HashCommandTable(MyOperandCollection collector, Variables vars) {
         this.concreteCommandHash = FXCollections.observableHashMap();
         this.basicCommandHash = new HashMap<>();
@@ -62,6 +72,12 @@ public class HashCommandTable {
         this.vars = vars;
     }
 
+    /**
+     * it allows to set the attribute collector if it change.
+     *
+     * @param collector is the new operand collector to set.
+     * @see MyOperandCollection, ConcreteCommandPersonalized
+     */
     public void setCollector(MyOperandCollection collector) {
         this.collector = collector;
     }
@@ -194,6 +210,12 @@ public class HashCommandTable {
         }
     }
 
+    /**
+     * it returns the observable map create at this moment for user commands.
+     *
+     * @return the structure if exists otherwise null.
+     * @see ConcreteCommandPersonalized, ObservableMap
+     */
     public ObservableMap<String, ConcreteCommandPersonalized> getMyCommandHash() {
         return this.concreteCommandHash;
     }
@@ -208,7 +230,7 @@ public class HashCommandTable {
      *
      * @param fileName the file from which to read the contents
      * @return true if the reading operation went well otherwise false.
-     * @see ConcreteCommandPersonalized
+     * @see ConcreteCommandPersonalized, File
      */
     public boolean readCommandFromFile(File fileName) {
         String opName;
@@ -228,6 +250,17 @@ public class HashCommandTable {
         return true;
     }
 
+    /**
+     * It prints to a file the name and the definition of user operations
+     * defined by user in current usage session if it is possible.Otherwise,
+     * if the name of the File is not correct or the content is not right the
+     * operation will not be performed.If the printing went well the operations
+     * contained in the task will be printed on the file passed.
+     *
+     * @param file is the file were save all the current user defined operations.
+     * @return true if the reading operation went well otherwise false.
+     * @see ConcreteCommandPersonalized, File
+     */
     public boolean printCommandToFile(File file) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
             concreteCommandHash.entrySet().forEach(m -> {
