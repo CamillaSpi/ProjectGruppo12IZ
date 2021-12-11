@@ -37,8 +37,11 @@ public class ArgCommand implements Command{
     public boolean execute() {
         if (collector.collectionLength() <= 0)
             return false;                 
-        val = collector.remove();
+        val = collector.last();
         ComplexNumber res = Calculator.arg(val);
+        if (res == null)
+            return false;
+        collector.remove();
         collector.insert(res);
         return true;
     }

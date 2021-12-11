@@ -223,7 +223,7 @@ public class Calculator {
      * <!-- --> 
      *
      * @param num it contains the input complex number
-     * @return the module of a ComplexNumber or null if the parameter is null or it's
+     * @return the module of a ComplexNumber or null if the parameter is null or its parts are null
      * @see ComplexNumber
      *
      */
@@ -244,7 +244,7 @@ public class Calculator {
      * <!-- --> 
      *
      * @param num it contains the input complex number
-     * @return return the argument of a ComplexNumber or null
+     * @return the argument of a ComplexNumber or null if it is null or its parts are null or both zero.
      * @see ComplexNumber
      *
      */
