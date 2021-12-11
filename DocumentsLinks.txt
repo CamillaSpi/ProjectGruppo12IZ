@@ -57,3 +57,6 @@ https://docs.google.com/document/d/1UM-GP2aQVa0BcJ6z8E5aborayW9eb-hcvMG_nxNhlK0/
 
 FOURTH PRODUCT BACKLOG:
 https://docs.google.com/document/d/1HLgXz1QVAQAu-nVeQDHJT4oUrERTYjjxCNqg58MqqSw/edit?usp=sharing
+
+FINAL ARCHITECTURE:
+https://docs.google.com/document/d/1zTYHnlUdhmYl-y6mN70ASGUth2Af4c5tzQAt00EpwvY/edit?usp=sharing
