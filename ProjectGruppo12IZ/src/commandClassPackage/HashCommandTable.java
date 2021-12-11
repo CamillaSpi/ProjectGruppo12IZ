@@ -109,8 +109,7 @@ public class HashCommandTable {
         Command newCommand;
         List<Command> commandList = new LinkedList<>();
         for (String stringCommand : stringOfCommands) {
-            System.out.println("dopo fro");
-            //check if the string is one corrisponding to the basic operation
+            //check if the string is one corrisponding to the basic operation involving variables
             if (stringCommand.length() == 2 && vars.checkRange(stringCommand.substring(1))) {
                 String substitute = stringCommand.substring(0, 1).concat("x");
                 if (basicCommandHash.containsKey(substitute)) {
@@ -125,17 +124,16 @@ public class HashCommandTable {
                         return false;
                     }
                 }
-            } else if (basicCommandHash.containsKey(stringCommand)) {
-                System.out.println("containskey");
+            } //check if the string is one corrisponding to the basic operation not involving variables
+            else if (basicCommandHash.containsKey(stringCommand)) {
                 try {
                     operation = Class.forName("commandClassPackage." + this.basicCommandHash.get(stringCommand));
-                    //create a new command corresponding to the operation
+                    //check if the string is one corrisponding to save or restore operations on variables
                     if (stringCommand.equals("save") || stringCommand.equals("restore")){
-                        System.out.println("nel nostro");
                         commandConstructor = operation.getConstructor(Variables.class);
+                        //create a new command corresponding to the operation
                         newCommand = (Command) commandConstructor.newInstance(vars);
                     }else{
-                        System.out.println("in quellaltro");
                         commandConstructor = operation.getConstructor(MyOperandCollection.class);
                         newCommand = (Command) commandConstructor.newInstance(collector);
                     }
@@ -149,18 +147,17 @@ public class HashCommandTable {
             else if (concreteCommandHash.containsKey(stringCommand)) {
                 //add this command to the list of command
                 commandList.add(concreteCommandHash.get(stringCommand));
-            } else {
+            } //check if the string is one corresponding to a complex number to be pushed into the stack
+            else {
                 ComplexNumber maybe = ComplexNumber.create(stringCommand);
                 if (maybe != null) {
-                    //maybe a complexNumber
                     commandList.add(new EnterCommand(collector, maybe));
                 } else {
-                    System.out.println("in culo adio");
                     return false;
                 }
             }
         }
-        //starting from the list creadet, create a new commandPersonalized object
+        //starting from the list created, create a new commandPersonalized object
         ConcreteCommandPersonalized personalizedCommand = new ConcreteCommandPersonalized(operationName, sequenceDefinition, commandList);
         //add this new personalizedCommand to the hashMap containing all the user defined command
         concreteCommandHash.put(operationName, personalizedCommand);

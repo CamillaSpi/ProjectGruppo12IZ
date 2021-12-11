@@ -23,8 +23,8 @@ public class ComplexNumber{
     /**
      * Initialize a new instance of the ComplexNumber class.
      *
-     * @param real its contains the real part of the complex number
-     * @param imaginary its contains the imaginary part of the complex number
+     * @param real it contains the real part of the complex number
+     * @param imaginary it contains the imaginary part of the complex number
      * (without j)
      */
     public ComplexNumber(BigDecimal real, BigDecimal imaginary) {
@@ -46,7 +46,7 @@ public class ComplexNumber{
 
     /**
      * This is a static class that analyze the string and if the strings is in
-     * Cartesian form return an ComplexNumber object
+     * Cartesian form returns a ComplexNumber object
      *
      * @param complexNumber the string to analyze
      * @return a ComplexNumber if the string is in Cartesian form otherwise null
@@ -120,8 +120,8 @@ public class ComplexNumber{
     }
 
     /**
-     * Return the real part of the ComplexNumber
-     * @return the real part of the complex number
+     * Returns the real part of the ComplexNumber
+     * @return BigDecimal representing real part of the complex number.
      */
     public BigDecimal getReal() {
         return real;
@@ -129,18 +129,26 @@ public class ComplexNumber{
 
     /**
      * Return the imaginary part of the ComplexNumber
-     * @return the imaginary part of the complex number
+     * @return BigDecimal representing imaginary part of the complex number.
      */
     public BigDecimal getImaginary() {
         return imaginary;
     }
     
+    /**
+     * Hash Function.
+     * @return hash number.
+     */
     @Override
     public int hashCode() {
         int hash = 7;
         return hash;
     }
 
+    /**
+     * Equals method to compare two ComplexNumber.
+     * @return boolean that tells if the objects are equal
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -158,7 +166,7 @@ public class ComplexNumber{
     }
 
     /**
-     *
+     * Function to obtain the SimpleStringProperty of a complex number.
      * @return the StringProperty of the Complex Number
      */
     public StringProperty complexStringProperty(){
@@ -170,6 +178,10 @@ public class ComplexNumber{
         return sp;
     }
     
+    /**
+     * toString method of a complex number. 
+     * @return String representation of a complex number.
+     */
     @Override
     public String toString() {
         String toReturn;
