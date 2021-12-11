@@ -158,8 +158,7 @@ public class FXMLDocumentController implements Initializable {
      * This function create a TranslateTransition that move the "varAnchorPane" 
      * in base of value flag.
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param flag if true move the anchor pane in the screen, else it take it outside.
      */
@@ -190,8 +189,7 @@ public class FXMLDocumentController implements Initializable {
      * TranslateTransition to move "operationVBox"
      * in base of value flag.
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param anchorFlag if true move the two VBox in the screen, else it takes it outside.
      */
@@ -225,8 +223,7 @@ public class FXMLDocumentController implements Initializable {
      * This function create a TranslateTransition that move the "bottomAnchorPane"
      * in base of value flag.
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param anchorFlag if true move the "bottomAnchorPane" in the screen, else it takes it outside.
      */
@@ -250,8 +247,7 @@ public class FXMLDocumentController implements Initializable {
      * This function create a TranslateTransition that move the "textArea"
      * in base of value flag.
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param anchorFlag if true move the "textArea" down, else in original place.
      */
@@ -277,8 +273,7 @@ public class FXMLDocumentController implements Initializable {
      * This function create an animation to show the buttons. All the buttons are contained 
      * in an array. Hide the buttons which indexes is contained in the array passed
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param index An array that contain the indexes of buttons that need to hide
      */
@@ -302,8 +297,7 @@ public class FXMLDocumentController implements Initializable {
      * This function create an animation to hide the buttons. All the buttons are contained 
      * in an array. Show the button which index is contained in the array passed
      * 
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param index An array that contain the indexes of buttons that need to show
      */
@@ -323,8 +317,7 @@ public class FXMLDocumentController implements Initializable {
     }
     /**
      * change the text of errorLabel for 5 seconds and after set it to null
-     * <p>
-     * <!-- --> 
+     * <p> <!-- --> 
      * 
      * @param error the strings that need to be displayed in errorLabel
      */
@@ -342,9 +335,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It insert the element passed as param in the collection.
-     * <p>
-     * <!-- --> @param num it's the ComplexNumber to insert in the collection
+     * It insert the element passed as param in the collection if is possible.
+     * <p> <!-- --> 
      *
      * @param num ComplexNumber to push into stack
      * @return true if the element was add, otherwise false
@@ -357,6 +349,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         bottomAnchorPane.setTranslateY(350);
@@ -447,6 +440,25 @@ public class FXMLDocumentController implements Initializable {
         nameOperationTextArea.setPromptText("Name");
 
     }
+    
+    
+    /**
+     * It calls the method implemented in the classes State named onButtonOne(),
+     * the execution of this method depends on the current state. So for the
+     * StateStandard the MultiplyCommand will be executed if possible, for the
+     * StateVariables the SaveToVariableCommand will be executed if possible for
+     * the StateOperations the Delete of the specified operation will be
+     * performed if possible.
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
+     * in first position.
+     *
+     * @see StateOperations, StateStandard, StateVariables
+     */
+    @FXML
+    private void onButtonOne(ActionEvent event) {
+        this.state.onButtonOne();
+    }
 
     /**
      * It calls the method implemented in the classes State named onButtonTwo(),
@@ -455,8 +467,8 @@ public class FXMLDocumentController implements Initializable {
      * StateVariables this button is not shown so it could not be pressed for
      * the StateOperations the UserDefined operation specified will be executed
      * if possible.
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
      * in fourth position
      *
      * @see StateOperations, StateStandard, StateVariables
@@ -469,45 +481,25 @@ public class FXMLDocumentController implements Initializable {
             ((StateStandard) this.state).onButtonTwo();
         }
     }
-
+    
     /**
-     * It create a new SubtractCommand and calls the execute method on it if it
-     * is possible. If the Operation could not be performed because there are
-     * not at least two operands an error message will be shown.
-     *
-     * @param event the event of the presses of the button sub.
-     * <p>
-     * <!-- --> @see SubCommand
-     */
-    @FXML
-    private void onButtonSeven(ActionEvent event) {
-        SubtractCommand subComm = new SubtractCommand(collector);
-        if (subComm != null && commandExecute(subComm)) {
-            showAlert("Subtract done succesfully!");
-            refresh();
-        } else {
-            showAlert("Subtract cannot be performed!\nHave you insert at least two operands?");
-        }
-    }
-
-    /**
-     * It calls the method implemented in the classes State named onButtonOne(),
-     * the execution of this method depends on the current state. So for the
-     * StateStandard the MultiplyCommand will be executed if possible, for the
-     * StateVariables the SaveToVariableCommand will be executed if possible for
-     * the StateOperations the Delete of the specified operation will be
-     * performed if possible.
+     * It calls the method implemented in the classes State named
+     * onButtonThree(), the execution of this method depends on the current
+     * state. So for the StateStandard the SwapCommand will be executed if
+     * possible, for the StateVariables the SaveFromVariableCommand will be
+     * executed if possible for the StateOperations the Show of the operation
+     * will be performed if possible.
      * <p>
      * <!-- --> @param event it registers the event of the click of the button
-     * in first position
+     * in Third position
      *
      * @see StateOperations, StateStandard, StateVariables
      */
     @FXML
-    private void onButtonOne(ActionEvent event) {
-        this.state.onButtonOne();
+    private void onButtonThree(ActionEvent event) {
+        this.state.onButtonThree();
     }
-
+    
     /**
      * It calls the method implemented in the classes State named
      * onButtonFour(), the execution of this method depends on the current
@@ -515,8 +507,8 @@ public class FXMLDocumentController implements Initializable {
      * possible, for the StateVariables the AddToVariableCommand will be
      * executed if possible for the StateOperations this button is not shown so
      * it could not be pressed.
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <p> <!-- -->
+     * @param event it registers the event of the click of the button
      * in fourth position
      *
      * @see StateOperations, StateStandard, StateVariables
@@ -529,15 +521,15 @@ public class FXMLDocumentController implements Initializable {
             ((StateStandard) this.state).onButtonFour();
         }
     }
-
+    
     /**
      * It create a new sqrtCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there aren't
      * any operands an error message will be shown.
      *
      * @param event the event of the presses of the button sqrt.
-     * <p>
-     * <!-- --> @see SquareRootCommand
+     * <p> <!-- --> 
+     * @see SquareRootCommand
      */
     @FXML
     private void onButtonFive(ActionEvent event) {
@@ -549,76 +541,17 @@ public class FXMLDocumentController implements Initializable {
             showAlert("Square Root cannot be performed!\nHave you insert at least one operand?");
         }
     }
-
-    /**
-     * It create a new InvertSignCommand and calls the execute method on it if
-     * it is possible. If the Operation could not be performed because there are
-     * no operand inserted an error message will be shown.
-     *
-     * @param event the event of the presses of the button invertSign.
-     * <p>
-     * <!-- --> @see InvertSignCommand
-     */
-    @FXML
-    private void onButtonEight(ActionEvent event) {
-        InvertSignCommand invsignComm = new InvertSignCommand(collector);
-        if (invsignComm != null && commandExecute(invsignComm)) {
-            showAlert("Square Root done succesfully!");
-            refresh();
-        } else {
-            showAlert("Square Root cannot be performed!\nHave you insert at least one operands?");
-        }
-    }
-
-    /**
-     * It create a new ClearCommand and calls the execute method on it if it is
-     * possible. If the Operation could not be performed because there are no
-     * operands an error message will be shown.
-     *
-     * @param event the event of the presses of the button clear.
-     * <p>
-     * <!-- --> @see ClearCommand
-     */
-    @FXML
-    private void onButtonEleven(ActionEvent event) {
-        ClearCommand clearComm = new ClearCommand(this.collector);
-        if (clearComm != null && commandExecute(clearComm)) {
-            showAlert("Clear Operation done succesfully!");
-            refresh();
-        } else {
-            showAlert("Clear operation cannot be performed!\nHave you inserted any operand?");
-        }
-    }
-
-    /**
-     * It create a new OverCommand and calls the execute method on it if it is
-     * possible. If the Operation could not be performed because there not at
-     * least two operands an error message will be shown.
-     *
-     * @param event the event of the presses of the button over.
-     * <p>
-     * <!-- --> @see OverCommand
-     */
-    @FXML
-    private void onButtonNine(ActionEvent event) {
-        OverCommand overComm = new OverCommand(this.collector);
-        if (overComm != null && commandExecute(overComm)) {
-            showAlert("Over Operation done succesfully!");
-            refresh();
-        } else {
-            showAlert("Over operation cannot be performed!\nHave you inserted at least two operands?");
-        }
-    }
-
+    
+    
     /**
      * It calls the method implemented in the classes State named onButtonSix(),
      * the execution of this method depends on the current state. So for the
-     * StateStandard the SquareRootCommand will be executed if possible, for the
+     * StateStandard the DropCommand will be executed if possible, for the
      * StateVariables the SubtractToVariableCommand will be executed if possible
      * for the StateOperations this button is not shown so it could not be
      * pressed.
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
      * in sixth position
      *
      * @see StateOperations, StateStandard, StateVariables
@@ -633,13 +566,76 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * It create a new SubtractCommand and calls the execute method on it if it
+     * is possible. If the Operation could not be performed because there are
+     * not at least two operands an error message will be shown.
+     *
+     * @param event the event of the presses of the button sub.
+     * <p> <!-- --> 
+     * @see SubCommand
+     */
+    @FXML
+    private void onButtonSeven(ActionEvent event) {
+        SubtractCommand subComm = new SubtractCommand(collector);
+        if (subComm != null && commandExecute(subComm)) {
+            showAlert("Subtract done succesfully!");
+            refresh();
+        } else {
+            showAlert("Subtract cannot be performed!\nHave you insert at least two operands?");
+        }
+    }
+
+
+
+
+    /**
+     * It create a new InvertSignCommand and calls the execute method on it if
+     * it is possible. If the Operation could not be performed because there are
+     * no operand inserted an error message will be shown.
+     *
+     * @param event the event of the presses of the button invertSign.
+     * <p> <!-- --> 
+     * @see InvertSignCommand
+     */
+    @FXML
+    private void onButtonEight(ActionEvent event) {
+        InvertSignCommand invsignComm = new InvertSignCommand(collector);
+        if (invsignComm != null && commandExecute(invsignComm)) {
+            showAlert("Square Root done succesfully!");
+            refresh();
+        } else {
+            showAlert("Square Root cannot be performed!\nHave you insert at least one operands?");
+        }
+    }
+    
+    /**
+     * It create a new OverCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there not at
+     * least two operands an error message will be shown.
+     *
+     * @param event the event of the presses of the button over.
+     * <p> <!-- --> 
+     * @see OverCommand
+     */
+    @FXML
+    private void onButtonNine(ActionEvent event) {
+        OverCommand overComm = new OverCommand(this.collector);
+        if (overComm != null && commandExecute(overComm)) {
+            showAlert("Over Operation done succesfully!");
+            refresh();
+        } else {
+            showAlert("Over operation cannot be performed!\nHave you inserted at least two operands?");
+        }
+    }
+    
+        /**
      * It create a new DupCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there not at
      * least one operand an error message will be shown.
      *
      * @param event the event of the presses of the button dup.
-     * <p>
-     * <!-- --> @see DupCommand
+     * <p> <!-- -->
+     * @see DupCommand
      */
     @FXML
     private void onButtonTen(ActionEvent event) {
@@ -652,24 +648,47 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    
     /**
-     * It calls the method implemented in the classes State named
-     * onButtonThree(), the execution of this method depends on the current
-     * state. So for the StateStandard the AddCommand will be executed if
-     * possible, for the StateVariables the SaveFromVariableCommand will be
-     * executed if possible for the StateOperations the Show of the operation
-     * will be performed if possible.
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
-     * in Third position
+     * It create a new ClearCommand and calls the execute method on it if it is
+     * possible. If the Operation could not be performed because there are no
+     * operands an error message will be shown.
      *
-     * @see StateOperations, StateStandard, StateVariables
+     * @param event the event of the presses of the button clear.
+     * <p> <!-- --> 
+     * @see ClearCommand
      */
     @FXML
-    private void onButtonThree(ActionEvent event) {
-        this.state.onButtonThree();
+    private void onButtonEleven(ActionEvent event) {
+        ClearCommand clearComm = new ClearCommand(this.collector);
+        if (clearComm != null && commandExecute(clearComm)) {
+            showAlert("Clear Operation done succesfully!");
+            refresh();
+        } else {
+            showAlert("Clear operation cannot be performed!\nHave you inserted any operand?");
+        }
+    }
+    
+    /** When the button is pressed the last command will be undo
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
+     *
+     * @see Command
+     */
+    @FXML
+    private void onButtonTwelve(ActionEvent event) {
+        inv.undoLast();
+        refresh();
     }
 
+    /**
+     * It calls the method for save the variables save at that moment into the variableStack, if it is
+     * possible. If the Operation could not be performed an error message will be shown.
+     *
+     * @param event the event of the presses of the button clear.
+     * <p> <!-- --> 
+     * @see Variables
+     */
     @FXML
     private void saveVariablesIntoStack(ActionEvent event) {
         if (vars.saveVariablesIntoStack()) {
@@ -679,6 +698,15 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * It calls the method for save the user defined operation memoraized in the current session
+     * into a file passed in FileChooser mode, if it is possible with a different thread.
+     * If the Operation could not be performed an error message will be shown.
+     *
+     * @param event the event of the presses of the button clear.
+     * <p> <!-- --> 
+     * @see HashCommandTable,SaveService
+     */
     @FXML
     private void saveUserOperationToFile(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -690,6 +718,14 @@ public class FXMLDocumentController implements Initializable {
         thread.start();
     }
 
+    /**
+     * It calls the method for restore the last variables saved into the variableStack, if it is
+     * possible. If the Operation could not be performed an error message will be shown.
+     *
+     * @param event the event of the presses of the button clear.
+     * <p> <!-- --> 
+     * @see Variables
+     */
     @FXML
     private void restoreVariablesFromStack(ActionEvent event) {
         if (vars.restoreVariablesFromStack()) {
@@ -712,8 +748,8 @@ public class FXMLDocumentController implements Initializable {
      * operation can be performed a confirmation message will be shown to User
      * otherwise an error message is shown.
      *
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
      * for restore User Operations
      *
      * @see CommandRetrievingService, HashhCommandTable
@@ -739,11 +775,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Open the github's project link
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * Open the github's project link, if it is possible.
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see URISyntaxException
      */
     @FXML
     private void about(ActionEvent event) {
@@ -755,12 +791,13 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * When the button is pressed call onButtonEnter methods depending on the
-     * state. The button can be pressed only in state operations, standard and
+     * state but catch what was written in the apposit text area. The button 
+     * can be pressed only in state operations, standard and
      * transcendental
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <p> <!-- --> 
+     * @param event it registers the event of the click of the button
      *
-     * @see CommandRetrievingService, HashhCommandTable
+     * @see StateOperations, StateStandard, StateTranscendental
      */
     @FXML
     private void handleEnterAction(ActionEvent event) {
@@ -773,18 +810,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    /**
-     * When the button is pressed the last command will be undo
-     * <p>
-     * <!-- --> @param event it registers the event of the click of the button
-     *
-     * @see CommandRetrievingService, HashhCommandTable
-     */
-    @FXML
-    private void onButtonTwelve(ActionEvent event) {
-        inv.undoLast();
-        refresh();
-    }
+
 
     /**
      * When the button is pressed change the state in Standard state.
