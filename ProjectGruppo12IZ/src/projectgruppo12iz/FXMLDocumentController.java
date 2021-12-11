@@ -1011,4 +1011,8 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void closeSideMenu(ActionEvent event) {
+    }
 }
