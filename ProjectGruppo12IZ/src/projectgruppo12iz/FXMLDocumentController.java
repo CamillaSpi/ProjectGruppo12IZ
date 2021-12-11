@@ -154,12 +154,15 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton operationsToggle;
     @FXML
     private ToggleButton transcendentalToggle;
-
-    @FXML
-    private void closeSideMenu(ActionEvent event) {
-        moveAnchor(false);
-    }
-
+    /**
+     * This function create a TranslateTransition that move the "varAnchorPane" 
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param flag if true move the anchor pane in the screen, else it take it outside.
+     */
     private void moveAnchor(boolean flag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), varAnchorPane);
         if (flag) {
@@ -182,7 +185,16 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+ /**
+     * This function create a TranslateTransition that move the "externalVBox" and a 
+     * TranslateTransition to move "operationVBox"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the two VBox in the screen, else it takes it outside.
+     */
     private void moveAnchorOperation(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), externalVBox);
         TranslateTransition slide2 = new TranslateTransition(Duration.seconds(0.4), operationVBox);
@@ -209,7 +221,15 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+/**
+     * This function create a TranslateTransition that move the "bottomAnchorPane"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the "bottomAnchorPane" in the screen, else it takes it outside.
+     */
     private void moveBottomAnchorPane(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), bottomAnchorPane);
         if (anchorFlag) {
@@ -226,7 +246,15 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-
+/**
+     * This function create a TranslateTransition that move the "textArea"
+     * in base of value flag.
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param anchorFlag if true move the "textArea" down, else in original place.
+     */
     private void moveTextArea(boolean anchorFlag) {
         TranslateTransition slide = new TranslateTransition(Duration.seconds(0.4), textArea);
         if (anchorFlag) {
@@ -245,7 +273,15 @@ public class FXMLDocumentController implements Initializable {
             });
         }
     }
-
+/**
+     * This function create an animation to show the buttons. All the buttons are contained 
+     * in an array. Hide the buttons which indexes is contained in the array passed
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param index An array that contain the indexes of buttons that need to hide
+     */
     public void showButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
@@ -262,7 +298,15 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+/**
+     * This function create an animation to hide the buttons. All the buttons are contained 
+     * in an array. Show the button which index is contained in the array passed
+     * 
+     * <p>
+     * <!-- --> 
+     * 
+     * @param index An array that contain the indexes of buttons that need to show
+     */
     public void hideButton(int[] index) {
         ButtonBase myBtn;
         for (int i = 0; i < index.length; i++) {
@@ -277,7 +321,13 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
-
+    /**
+     * change the text of errorLabel for 5 seconds and after set it to null
+     * <p>
+     * <!-- --> 
+     * 
+     * @param error the strings that need to be displayed in errorLabel
+     */
     public void showAlert(String error) {
         errorLabel.setText(error);
         pause.stop();
