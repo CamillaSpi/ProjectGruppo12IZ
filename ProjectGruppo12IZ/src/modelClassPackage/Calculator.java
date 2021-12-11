@@ -41,7 +41,7 @@ public class Calculator {
 
     /**
      *
-     * executes the subtraction of two Complex Numbers and returns the result,
+     * Executes the subtraction of two Complex Numbers and returns the result,
      * if these are not null, otherwise returns null.
      *
      * @param a its contains the minuend complex number
@@ -64,7 +64,7 @@ public class Calculator {
 
     /**
      *
-     * executes the multiplication of two Complex Numbers and returns the
+     * Executes the multiplication of two Complex Numbers and returns the
      * result, if these are not null, otherwise returns null; the result is
      * calculated following the math formula: first = (a + ib) second = (c + id)
      * result = (ac - bd) + i(ad + bc).
@@ -122,9 +122,9 @@ public class Calculator {
     }
      /**
      *
-     * calculate and return the square root of a Complex Number, if these is not
+     * Calculate and return the square root of a Complex Number, if these is not
      * null, otherwise return null.
-     * The function convert the complex number in trigonometric but return the number in Cartesian form
+     * The function convert the complex number in trigonometric from but return the number in Cartesian form
      * <p>
      * <!-- --> 
      * @param a its contains the input complex number
@@ -183,8 +183,7 @@ public class Calculator {
     }
 
     /**
-     *
-     * calculate and return the invers of a Complex Number, if these is not
+     * Calculate and return the reverse of a Complex Number, if these is not
      * null, otherwise return null.
      * <p>
      * <!-- --> 
@@ -201,8 +200,7 @@ public class Calculator {
     }
 
     /**
-     *
-     * calculate and return the conjugated of a Complex Numbers, if these is not
+     * Calculate and return the conjugated of a Complex Numbers, if these is not
      * null, otherwise return null.
      * <p>
      * <!-- -->
@@ -219,8 +217,7 @@ public class Calculator {
     }
     
     /**
-     *
-     * calculates and returns the module of a Complex Number, if it is not
+     * Calculates and returns the module of a Complex Number, if it is not
      * null in its parts, otherwise returns null.
      * <p>
      * <!-- --> 
@@ -241,8 +238,7 @@ public class Calculator {
     }
 
     /**
-     *
-     * calculates and returns the argument of a Complex Number, if it is not
+     * Calculates and returns the argument of a Complex Number, if it is not
      * null in its part or its parts are zero (in this case the arg is not defined), otherwise returns null.
      * <p>
      * <!-- --> 

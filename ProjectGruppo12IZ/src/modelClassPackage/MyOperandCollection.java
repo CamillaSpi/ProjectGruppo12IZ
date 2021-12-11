@@ -7,7 +7,7 @@ package modelClassPackage;
 
 /**
  *
- * @author nando
+  * @author Gruppo 12 IZ
  */
 public class MyOperandCollection extends OperandCollection {
 
@@ -16,7 +16,7 @@ public class MyOperandCollection extends OperandCollection {
     }   
     
     /**
-    * It swap (if there are more than two elements in the collection) the last two element inserted 
+    * It swap (if there are at least two elements in the collection) the last two element inserted 
     * <p> <!-- -->
     * @return a boolean true if the operation is executed correctly, false otherwise
     * @see OperandCollection
