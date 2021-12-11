@@ -7,6 +7,7 @@ package stateClassPackage;
 
 import commandClassPackage.AddCommand;
 import commandClassPackage.DivideCommand;
+import commandClassPackage.DropCommand;
 import commandClassPackage.EnterCommand;
 import commandClassPackage.MultiplyCommand;
 import commandClassPackage.SquareRootCommand;
@@ -145,25 +146,24 @@ public class StateStandard extends State {
     }
 
     /**
-     * It create a new SquareRootCommand and calls the method execute on it if
+     * It create a new DropCommand and calls the method execute on it if
      * it is possible. If the operation could not be performed, because there
      * are not at least one operand for example, an error message will be shown
      * and the operation will not be performed.
      *
-     * @see FXMLDocumentController, SqyareRootCommand
+     * @see FXMLDocumentController, DropCommand
      */
-    public void onButtonFive() {
+    public void onButtonSix() {
         MyOperandCollection collector = controller.getCollector();
-        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
-        if (sqrtComm != null && controller.commandExecute(sqrtComm)) {
-            controller.showAlert("Square Root done succesfully!");
-            controller.refresh();
-        } else {
-            controller.showAlert("Square Root cannot be performed!\nHave you insert at least one operand?");
-        }
-
+        DropCommand dropComm = new DropCommand(collector);
+            if (dropComm != null && controller.commandExecute(dropComm)) {
+                controller.showAlert("Drop Operation done succesfully!");
+                controller.refresh();
+            } else {
+                controller.showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
+            }
     }
-
+    
     /**
      * This method do not perform operation because it only leaves the context
      * in the same state where it already is.

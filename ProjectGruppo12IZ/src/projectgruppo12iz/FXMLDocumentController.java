@@ -487,11 +487,17 @@ public class FXMLDocumentController implements Initializable {
      *
      * @param event the event of the presses of the button sqrt.
      * <p>
-     * <!-- --> @see DropCommand
+     * <!-- --> @see SquareRootCommand
      */
     @FXML
     private void onButtonFive(ActionEvent event) {
-        ((StateStandard) this.state).onButtonFive();
+        SquareRootCommand sqrtComm = new SquareRootCommand(collector);
+        if (sqrtComm != null && commandExecute(sqrtComm)) {
+            showAlert("Square Root done succesfully!");
+            refresh();
+        } else {
+            showAlert("Square Root cannot be performed!\nHave you insert at least one operand?");
+        }
     }
 
     /**
@@ -572,15 +578,8 @@ public class FXMLDocumentController implements Initializable {
         if (this.state instanceof StateVariables) {
             ((StateVariables) this.state).onButtonSix();
         } else {
-            DropCommand dropComm = new DropCommand(this.collector);
-            if (dropComm != null && commandExecute(dropComm)) {
-                showAlert("Drop Operation done succesfully!");
-                refresh();
-            } else {
-                showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
-            }
+                ((StateStandard) this.state).onButtonSix();
         }
-
     }
 
     /**
