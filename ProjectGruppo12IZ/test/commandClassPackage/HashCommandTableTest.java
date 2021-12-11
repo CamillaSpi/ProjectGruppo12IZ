@@ -230,6 +230,35 @@ public class HashCommandTableTest {
         assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
     }
 
+    /**
+     * Test of createPersonalizedCommand method, including the pushing of a number into stack in the definition of new User Defined Operation
+     */
+    @Test
+    public void testCreatePersonalizedCommandPushing() {
+        System.out.println("createPersonalizedCommand pushing a value into the stack");
+        String sequenceDefinition1 = "+ 12 *";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
+    }
+    
+     /**
+     * Test of createPersonalizedCommand method, including the saving and the restoring of the current variables's value.
+     */
+    @Test
+    public void testCreatePersonalizedCommandSavingRetrieving() {
+        System.out.println("createPersonalizedCommand with save and restore operations of the variable's value");
+        String sequenceDefinition1 = "save + * restore";
+        String operationName1 = "myOp";
+        HashCommandTable instance = new HashCommandTable(collector, vars);
+        boolean result = instance.createPersonalizedCommand(sequenceDefinition1, operationName1);
+        Command command1 = instance.getUserCommand("myOp");
+        assertEquals(true, result); 
+        assertEquals(command1.getClass(),ConcreteCommandPersonalized.class);
+    }
 
     /**
      * Test of delete method, of class HashCommandTable.
