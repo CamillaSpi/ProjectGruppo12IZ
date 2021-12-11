@@ -1,3 +1,4 @@
+
 .root{
     -fx-color1: #001219;
     -fx-color2: #005F73;
@@ -81,7 +82,7 @@
 
 .text-field{
     -fx-background-color: #2D2D2D;
-    -fx-background-radius: 1em;
+    -fx-background-radius: 10px;
 }
 .toggle-button:hover{
     -fx-background-color: #86d1be;

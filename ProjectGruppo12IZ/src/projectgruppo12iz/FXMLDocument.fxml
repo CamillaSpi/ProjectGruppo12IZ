@@ -21,6 +21,51 @@
     <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0" style="-fx-background-radius: 1em;" styleClass="bottomAnchorPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="134.0" AnchorPane.topAnchor="0.0">
          <children>
+            <HBox alignment="TOP_CENTER" prefHeight="42.0" spacing="49.0">
+               <children>
+                  <Button fx:id="variableButton" maxHeight="33.0" maxWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" styleClass="openMenuButton">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../images/complexNumbersLogo.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <MenuBar style="-fx-background-radius: 1em;" styleClass="serviceMenu">
+                    <menus>
+                      <Menu mnemonicParsing="false" styleClass="servicesButton" text="Save">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#saveVariablesIntoStack" text="Save Variables" />
+                              <MenuItem mnemonicParsing="false" onAction="#saveUserOperationToFile" text="Save User defined operation" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" styleClass="servicesButton" text="Restore">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#restoreVariablesFromStack" text="Restore Variables" />
+                              <MenuItem mnemonicParsing="false" onAction="#restoreUserOperationFromFile" text="Restore User defined operation" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" styleClass="servicesButton" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <Button fx:id="closeButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="30.0" prefWidth="30.0" styleClass="quitButton">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="quitButton">
+                           <image>
+                              <Image url="@../images/close%20logo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></HBox>
             <VBox fx:id="operationVBox" layoutY="-47.0" prefHeight="42.0" prefWidth="279.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0">
                <children>
                   <TextField fx:id="nameOperationTextArea" prefHeight="42.0" prefWidth="151.0" style="-fx-text-fill: white;">
@@ -30,37 +75,6 @@
                   </TextField>
                </children>
             </VBox>
-            <MenuBar layoutX="87.5" layoutY="-1.0" style="-fx-background-radius: 1em;" styleClass="serviceMenu" AnchorPane.leftAnchor="87.5" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="0.0">
-              <menus>
-                <Menu mnemonicParsing="false" styleClass="servicesButton" text="Save">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#saveVariablesIntoStack" text="Save Variables" />
-                        <MenuItem mnemonicParsing="false" onAction="#saveUserOperationToFile" text="Save User defined operation" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" styleClass="servicesButton" text="Restore">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#restoreVariablesFromStack" text="Restore Variables" />
-                        <MenuItem mnemonicParsing="false" onAction="#restoreUserOperationFromFile" text="Restore User defined operation" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" styleClass="servicesButton" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <Button fx:id="closeButton" layoutX="90.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="35.0" prefWidth="39.0" styleClass="quitButton" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" styleClass="quitButton">
-                     <image>
-                        <Image url="@../images/close%20logo.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <HBox alignment="TOP_CENTER" layoutX="235.0" layoutY="50.0" prefHeight="42.0" prefWidth="73.0" spacing="120.0" />
             <VBox fx:id="externalVBox" layoutX="92.0" layoutY="86.0" prefHeight="200.0" prefWidth="320.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <HBox prefHeight="42.0" prefWidth="276.0" spacing="9.0">
@@ -180,17 +194,6 @@
                   <Font size="12.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="variableButton" layoutX="40.0" layoutY="16.0" maxHeight="33.0" maxWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" styleClass="openMenuButton" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0">
-                     <image>
-                        <Image url="@../images/complexNumbersLogo.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="operationAnchorPane" layoutX="340.0" prefHeight="439.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-background-radius: 1em;" AnchorPane.leftAnchor="349.0" AnchorPane.rightAnchor="0.0">
