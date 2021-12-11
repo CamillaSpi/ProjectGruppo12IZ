@@ -27,7 +27,8 @@ public class Calculator {
      *
      * @param a the first complex number to add
      * @param b the second complex number to add
-     * @return
+     * @return null if one of the parameters is null, otherwise the result of the addiction
+     * @see ComplexNumber
      */
     public static ComplexNumber addiction(ComplexNumber a, ComplexNumber b) {
         if (a == null || b == null) {
@@ -44,11 +45,10 @@ public class Calculator {
      * Executes the subtraction of two Complex Numbers and returns the result,
      * if these are not null, otherwise returns null.
      *
-     * @param a its contains the minuend complex number
-     * @param b its contains the subtrahend complex number
-     * @return the result of the subtraction a - b
+     * @param a it contains the minuend complex number
+     * @param b it contains the subtrahend complex number
+     * @return the result of the subtraction a - b or null if one of the parameters is null
      * @see ComplexNumber
-     *
      *
      */
     public static ComplexNumber subtraction(ComplexNumber a, ComplexNumber b) {
@@ -69,11 +69,11 @@ public class Calculator {
      * calculated following the math formula: first = (a + ib) second = (c + id)
      * result = (ac - bd) + i(ad + bc).
      *
-     * @param first its contains the first factor complex number of the
+     * @param first it contains the first factor complex number of the
      * multiplication
-     * @param second its contains the second factor complex number of the
+     * @param second it contains the second factor complex number of the
      * multiplication
-     * @return the result of the multiplication first*second
+     * @return the result of the multiplication first*second or null if one of the parameters is null
      * @see ComplexNumber
      *
      */
@@ -122,13 +122,13 @@ public class Calculator {
     }
      /**
      *
-     * Calculate and return the square root of a Complex Number, if these is not
-     * null, otherwise return null.
-     * The function convert the complex number in trigonometric from but return the number in Cartesian form
+     * Calculates and returns the square root of a Complex Number passed as parameter if it is not
+     * null, otherwise returns null;
+     * the function converts the complex number in trigonometric form but returns the number in Cartesian form
      * <p>
      * <!-- --> 
-     * @param a its contains the input complex number
-     * @return return a ComplexNumber or null
+     * @param a it contains the input complex number
+     * @return the square root's complex number or null if the parameter is null
      * @see ComplexNumber
      *
      */
@@ -183,12 +183,12 @@ public class Calculator {
     }
 
     /**
-     * Calculate and return the reverse of a Complex Number, if these is not
-     * null, otherwise return null.
+     * Calculates and returns the reverse of a Complex Number if it is not
+     * null, otherwise returns null.
      * <p>
      * <!-- --> 
-     * @param a its contains the input complex number
-     * @return return a ComplexNumber or null
+     * @param a it contains the input complex number
+     * @return the reverse ComplexNumber or null if the parameter is null
      * @see ComplexNumber
      *
      */
@@ -200,12 +200,12 @@ public class Calculator {
     }
 
     /**
-     * Calculate and return the conjugated of a Complex Numbers, if these is not
-     * null, otherwise return null.
+     * Calculates and returns the conjugated of a Complex Number if it is not
+     * null, otherwise returns null.
      * <p>
      * <!-- -->
-     * @param a its contains the input complex number
-     * @return return the conjugated ComplexNumber or null
+     * @param a it contains the input complex number
+     * @return the conjugated ComplexNumber or null if the parameter is null
      * @see ComplexNumber
      *
      */
@@ -218,12 +218,12 @@ public class Calculator {
     
     /**
      * Calculates and returns the module of a Complex Number, if it is not
-     * null in its parts, otherwise returns null.
+     * null in its parts or himself, otherwise returns null.
      * <p>
      * <!-- --> 
      *
      * @param num it contains the input complex number
-     * @return return the module of a ComplexNumber or null
+     * @return the module of a ComplexNumber or null if the parameter is null or it's
      * @see ComplexNumber
      *
      */

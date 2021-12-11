@@ -23,10 +23,11 @@ public class Variables implements Serializable {
     private final Stack<ObservableMap<String, ComplexNumber>> myVariablesStack;
 
     /**
-     * It inizialize the attribute myVariables, as an HashMap with String as
+     * It inizializes the attribute myVariables, as an HashMap with String as
      * Keys and ComplexNumber as Values.
      * <p>
-     * <!-- --> @see ComplexNumber
+     * <!-- --> 
+     * @see ComplexNumber
      */
     public Variables() {
         this.myVariables = FXCollections.observableHashMap();
@@ -35,7 +36,7 @@ public class Variables implements Serializable {
 
     /**
      * It checks if the string passed has only one character included in the
-     * range from "a" to "z"
+     * range from "a" to "z".
      * <p>
      * <!-- --> 
      * @param s the string to be analized
@@ -79,11 +80,11 @@ public class Variables implements Serializable {
      * <p>
      * <!-- -->
      *
-     * @param key its contains the real part of the complex number
-     * @param value its contains the imaginary part of the complex number
-     * @return a bolean value that represent if the number is correctly saved or
+     * @param key it contains the variable (key) on which save a value
+     * @param value it contains the value of the key (ComplexNumber)
+     * @return a bolean value that represents if the number is correctly saved or
      * not.
-     *
+     * @see ComplexNumber
      */
     public boolean saveToVariable(String key, ComplexNumber value) {
         if (checkRange(key)) {
@@ -102,7 +103,7 @@ public class Variables implements Serializable {
      * @param key it contains the name of the variable written in the UI.
      * @return The complexNumber if the value associated with the key exists,
      * otherwise null, also if the key is not correct.
-     *
+     * @see ComplexNumber
      */
     public ComplexNumber saveFromVariable(String key) {
         ComplexNumber val = this.getValue(key);
@@ -113,15 +114,14 @@ public class Variables implements Serializable {
     }
 
     /**
-     * It subtract the value passed from the value associated to the key passed
-     * as parameter, if the operation is concluded succesfully it stores the
+     * It subtracts the value passed as second parameter from the value associated to the key passed
+     * as first parameter, if the operation is concluded succesfully it stores the
      * results as value of the key itself.
      * <p>
      * <!-- --> 
      * @param key the variable associated to the value on which perform
      * the subtraction.
-     * @param subtracting the value to subtract from that associated with the
-     * key passed.
+     * @param subtracting the value to subtract from.
      * @return true if the operation is executed, false otherwise.
      * @see ComplexNumber, Calculator
      */
@@ -137,18 +137,18 @@ public class Variables implements Serializable {
     }
 
     /**
-     * It add the ComplexNumber passed as value with the ComplexNumber
-     * associated with the Strings passed as key. If didn't exists a value
-     * associated with the specified key, return false.
+     * It adds the ComplexNumber passed as value with the ComplexNumber
+     * associated with the Strings passed as key. If doesn't exist a value
+     * associated with the specified key, returns false.
      * <p>
      * <!-- -->
      *
      * @param key the variable associated with the value on which perform the
      * addiction
-     * @param value its contains the imaginary part of the complex number
-     * @return a bolean value that represent if the number is correctly added or
+     * @param value the value to add.
+     * @return a boolean value that represents if the number is correctly added or
      * not.
-     *
+     * @see ComplexNumber, Calculator
      */
     public boolean addToVariable(String key, ComplexNumber value) {
         if (checkRange(key) && value != null) {
@@ -161,15 +161,24 @@ public class Variables implements Serializable {
         return false;
     }
 
+    /**
+     * Puts into the variables' map the key and the value passed as parameters. If there
+     * is already a value, it will be replaced. 
+     * <p>
+     * <!-- --> 
+     * @see ComplexNumber
+     *
+     */
     public void put(String key, ComplexNumber value) {
         this.myVariables.put(key, value);
     }
 
     /**
-     * It returns the attribute myVariables
+     * Method toSring of the variables' stack
      * <p>
-     * <!-- --> @return a string definition for the current object
-     *
+     * <!-- --> 
+     * @return a string definition for the current object
+     * @see ComplexNumber
      */
     @Override
     public String toString() {
@@ -178,6 +187,13 @@ public class Variables implements Serializable {
         return s.substring(0, s.length() - 2);
     }
 
+    /**
+     * It saves a copy of the current collection of variables into a stack, that can be re-used doing a restore.
+     * <p>
+     * <!-- --> 
+     * @return true if the stack of variables has a length greater than the old before a save operation, false otherwise
+     * @see ComplexNumber
+     */
     public boolean saveVariablesIntoStack() {
         int length = myVariablesStack.size();
         ObservableMap<String, ComplexNumber> myVariablesCopy =  FXCollections.observableHashMap();
@@ -185,6 +201,16 @@ public class Variables implements Serializable {
         myVariablesStack.add(myVariablesCopy);
         return myVariablesStack.size() > length;
     }
+    
+    /**
+     * It restores a copy of the collection of variables into the current collection, overwriting the value on the variables or
+     * adding new ones. 
+     * <p>
+     * <!-- --> 
+     * @return false if the stack of variables is empty, so it can't be restored, otherwise
+     * it returns true if the new stack of variables length is smaller than the previous before the restoring. 
+     * @see ComplexNumber
+     */
      public boolean restoreVariablesFromStack() {
         if(myVariablesStack.isEmpty())
             return false;
