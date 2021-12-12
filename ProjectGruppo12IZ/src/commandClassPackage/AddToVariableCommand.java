@@ -13,7 +13,7 @@ import modelClassPackage.Variables;
  *
  * @author Gruppo 12 IZ
  */
-public class AddToVariableCommand implements Command{
+public class AddToVariableCommand implements Command {
 
     private final MyOperandCollection collector;
     private final Variables vars;
@@ -23,14 +23,17 @@ public class AddToVariableCommand implements Command{
 
     /**
      * <p>
-     * This method creates an object that represents add to variable operation 
-     * in order to execute and undo the command, assert if collection is null or 
+     * This method creates an object that represents add to variable operation
+     * in order to execute and undo the command, assert if collection is null or
      * if vars is null or if variables is null
      * </p> <!-- -->
+     *
      * @param collector is the collection were addend is taken
      * @param vars is the collection were addend has to be insert
      * @param variables is the var were execute the operation
-     * @see MyOperandCollection, Variables, ComplexNumber
+     * @see MyOperandCollection
+     * @see Variables
+     * @see ComplexNumber
      */
     public AddToVariableCommand(MyOperandCollection collector, Variables vars, String variables) {
         assert collector != null;
@@ -39,44 +42,53 @@ public class AddToVariableCommand implements Command{
         this.vars = vars;
         assert variables != null;
         this.variables = variables;
-        
-        
-    }
-    
-    /**
-     * <p>
-     * This method implements execute method for add to variable operation from 
-     * Command interface, return false if it can't be performed.
-     * </p> <!-- -->
-     * @return boolean that check if the operation is performed or not.
-     */
-    @Override
-    public boolean execute() {
-        ComplexNumber value = collector.last();
-        if(value == null)
-            return false;
-        this.OperandFromStack = value;
-        
-        this.oldValueVar = vars.getValue(this.variables);
-        
-        if (this.oldValueVar == null)
-            return false;
-        collector.remove();
-        return vars.addToVariable(this.variables, this.OperandFromStack);
-        
+
     }
 
     /**
      * <p>
-     * This method implements undo method for add to variable operation 
-     * from Command interface.
+     * This method implements execute method for add to variable operation from
+     * Command interface, return false if it can't be performed.
      * </p> <!-- -->
+     *
+     * @return boolean that check if the operation is performed or not.
+     * @see MyOperandCollection
+     * @see Variables
+     * @see ComplexNumber
+     */
+    @Override
+    public boolean execute() {
+        ComplexNumber value = collector.last();
+        if (value == null) {
+            return false;
+        }
+        this.OperandFromStack = value;
+
+        this.oldValueVar = vars.getValue(this.variables);
+
+        if (this.oldValueVar == null) {
+            return false;
+        }
+        collector.remove();
+        return vars.addToVariable(this.variables, this.OperandFromStack);
+
+    }
+
+    /**
+     * <p>
+     * This method implements undo method for add to variable operation from
+     * Command interface.
+     * </p> <!-- -->
+     *
+     * @see MyOperandCollection
+     * @see Variables
+     * @see ComplexNumber
      */
     @Override
     public void undo() {
         vars.saveToVariable(this.variables, this.oldValueVar);
         collector.insert(this.OperandFromStack);
-        
+
     }
-    
+
 }

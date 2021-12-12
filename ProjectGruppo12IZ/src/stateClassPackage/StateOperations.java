@@ -28,7 +28,7 @@ public class StateOperations extends State {
      * the super class.
      * </p> <!-- -->
      *
-     * @param controller
+     * @param controller controller
      * @see FXMLDocumentController
      */
     public StateOperations(FXMLDocumentController controller) {
@@ -144,7 +144,7 @@ public class StateOperations extends State {
      * writing its name in the nameOperationTextArea.
      * </p> <!-- -->
      *
-     * @see HashCommandTable,ConcreteCommandPersonalized,Invoker,Command
+     * @see HashCommandTable ConcreteCommandPersonalized Invoker Command
      */
     @Override
     public void onButtonThree() {
@@ -170,8 +170,7 @@ public class StateOperations extends State {
     }
 
     /**
-     * <
-     * p>
+     * <p>
      * It changes the State of the controller to StateStandard, setting its into
      * the controller and makes visible only the buttons necessary in this
      * state.

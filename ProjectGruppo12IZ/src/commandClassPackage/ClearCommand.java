@@ -24,6 +24,7 @@ public class ClearCommand implements Command{
      * execute and undo the command, assert if collection is null or if it is empty.
      * </p> <!-- -->
      * @param collector is the collection were call clear method
+     * @see ComplexNumber 
      * @see MyOperandCollection
      */
     public ClearCommand(MyOperandCollection collector) {
@@ -37,6 +38,7 @@ public class ClearCommand implements Command{
      * if it can be performed.
      * </p> <!-- -->
      * @return true if the collection is not empty and the operation is performed, false otherwise
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -51,6 +53,7 @@ public class ClearCommand implements Command{
      * <p>
      * This method implements undo method for clear operation from Command interface
      * </p> <!-- -->
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

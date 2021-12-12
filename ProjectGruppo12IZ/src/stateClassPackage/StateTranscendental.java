@@ -33,7 +33,7 @@ public class StateTranscendental extends State {
      * If the text written in the specific textArea correspond to a ComplexNumber it will
      * be stored, otherwise an error message will be shown.
      * </p> <!-- -->
-     * @see FXMLDocumentController, ComplexNumber
+     * @see FXMLDocumentController ComplexNumber
      */
     public void onButtonEnter() {
         String text = controller.getText();
@@ -55,12 +55,12 @@ public class StateTranscendental extends State {
 
     }
 
-    /**
+    /**<p>
      * It create a new ModCommand and calls the method execute on it if it
      * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, MultiplyCommand
+     * @see FXMLDocumentController MultiplyCommand
      */
     @Override
     public void onButtonOne() {
@@ -80,7 +80,7 @@ public class StateTranscendental extends State {
      * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, SaveFromVariable
+     * @see FXMLDocumentController SaveFromVariable
      */
     @Override
     public void onButtonThree() {

@@ -35,7 +35,7 @@ public class StateVariables extends State {
      * is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, SaveToVariable
+     * @see FXMLDocumentController SaveToVariable
      */
     @Override
     public void onButtonOne() {
@@ -63,7 +63,7 @@ public class StateVariables extends State {
      * is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, SaveFromVariable
+     * @see FXMLDocumentController SaveFromVariable
      */
     @Override
     public void onButtonThree() {
@@ -91,7 +91,7 @@ public class StateVariables extends State {
      * possible. If the operation could not be performed an error message will
      * be shown and the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, AddToVariable
+     * @see FXMLDocumentController AddToVariable
      */
     public void onButtonFour() {
         ComplexNumber adding = this.controller.getCollector().last();
@@ -123,7 +123,7 @@ public class StateVariables extends State {
      * it is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
      *</p> <!-- -->
-     * @see FXMLDocumentController, SubtractToVariable
+     * @see FXMLDocumentController SubtractToVariable
      */
     public void onButtonSix() {
         ComplexNumber subtracting = this.controller.getCollector().last();

@@ -21,7 +21,7 @@ public class ModCommand implements Command{
      * <p>
      * It creates an object of the ModCommand if the collector is not null.
      * </p> <!-- -->
-     * @param collector
+     * @param collector collector
      * @see MyOperandCollection
      */
     public ModCommand(MyOperandCollection collector) {
@@ -35,7 +35,9 @@ public class ModCommand implements Command{
      * from the collection, and pushes the result of the operation as last operand.
      * </p> <!-- -->
      * @return true if the collection contains at least 1 element, false otherwise
-     * @see ComplexNumber, Calculator, MyOperandCollection
+     * @see ComplexNumber 
+     * @see Calculator 
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {

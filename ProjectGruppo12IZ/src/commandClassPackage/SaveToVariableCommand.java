@@ -28,7 +28,8 @@ public class SaveToVariableCommand implements Command{
      * @param collector is the collection were take last operand.
      * @param vars is the collection were call SaveToVariable method.
      * @param var is the name of the variable were call SaveToVariable.
-     * @see MyOperandCollection, Variables
+     * @see MyOperandCollection 
+     * @see Variables
      */
     public SaveToVariableCommand(MyOperandCollection collector, Variables vars, String var) {
         assert collector != null;
@@ -45,7 +46,8 @@ public class SaveToVariableCommand implements Command{
      * This method implements execute method for SaveToVariable operation from Command interface.
      * </p> <!-- -->
      * @return false if the stack is empty or the operation is not performed, true otherwise.
-     * @see Variables, MyOperandCollection
+     * @see Variables
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {       
@@ -64,7 +66,8 @@ public class SaveToVariableCommand implements Command{
      * This method implements undo method for SaveToVariable operation from Command interface, 
      * setting the old value to the variable and inserting the old stack value saved into the variable.
      * </p> <!-- -->
-     * @see Variables, MyOperandCollection
+     * @see Variables
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

@@ -24,7 +24,8 @@ public class DupCommand implements Command{
      * have enough operand.
      * </p> <!-- -->
      * @param collector is the collection were call drop method
-     * @see MyOperandCollection
+     * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     public DupCommand(MyOperandCollection collector) {
         assert collector != null;
@@ -38,6 +39,8 @@ public class DupCommand implements Command{
      * Command interface if it is possible to perform.
      * </p> <!-- -->
      * @return true it is execute, false otherwise.
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public boolean execute() {
@@ -52,6 +55,8 @@ public class DupCommand implements Command{
      * <p>
      * This method implements undo method for Dup Command operation from Command interface
      * </p> <!-- -->
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public void undo() {

@@ -13,45 +13,50 @@ import modelClassPackage.MyOperandCollection;
  *
  * @author Gruppo 12 IZ
  */
-public class DivideCommand implements Command{
+public class DivideCommand implements Command {
+
     private final MyOperandCollection collector;
     private ComplexNumber dividend;
     private ComplexNumber divider;
-    
+
     /**
      * <p>
-     * It creates an object of the DivideCommand if the collector is not null and 
-     * contains enough element to perform the division operation.
+     * It creates an object of the DivideCommand if the collector is not null
+     * and contains enough element to perform the division operation.
      * </p> <!-- -->
-     * @param collector
-     * @see ComplexNumber, MyOperandCollection
+     *
+     * @param collector collector
+     * @see ComplexNumber
+     * @see MyOperandCollection
      */
-    public DivideCommand(MyOperandCollection collector){
+    public DivideCommand(MyOperandCollection collector) {
         assert collector != null;
         this.collector = collector;
     }
-    
+
     /**
      * <p>
-     * It executes the operation of division on the last two inserted operands 
-     * in the collector removing them, and pushes the result of the operation as 
+     * It executes the operation of division on the last two inserted operands
+     * in the collector removing them, and pushes the result of the operation as
      * last operand.
      * </p> <!-- -->
+     *
      * @return true if the operation is performed, false otherwise.
-     * @see ComplexNumber, MyOperandCollection
+     * @see ComplexNumber
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
         ComplexNumber first = collector.last();
         ComplexNumber second = collector.secondLast();
-        if(first == null || second == null){
+        if (first == null || second == null) {
             return false;
         }
         this.dividend = second;
-        this.divider = first; 
+        this.divider = first;
         //executes the division of the two removed operands
         ComplexNumber result = Calculator.division(dividend, divider);
-        if(result == null){
+        if (result == null) {
             return false;
         }
         //removes the last two inserted operands
@@ -61,14 +66,16 @@ public class DivideCommand implements Command{
         collector.insert(result);
         return true;
     }
-    
+
     /**
      * <p>
-     * It executes the undo of the division operation removing the last inserted 
-     * element that is the result of the operation, and pushes the two operands 
+     * It executes the undo of the division operation removing the last inserted
+     * element that is the result of the operation, and pushes the two operands
      * that have been involved in the division operation.
      * </p> <!-- -->
-     * @see ComplexNumber, MyOperandCollection
+     *
+     * @see ComplexNumber
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {
@@ -78,5 +85,5 @@ public class DivideCommand implements Command{
         collector.insert(dividend);
         collector.insert(divider);
     }
-    
+
 }

@@ -23,8 +23,9 @@ public class AddCommand implements Command{
      * It create an object of the AddCommand if the collector is not null and 
      * contains enough element to perform the addiction operation.
      * </p> <!-- -->
-     * @param collector
-     * @see ComplexNumber, MyOperandCollection
+     * @param collector collector
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     public AddCommand(MyOperandCollection collector){
         assert collector != null;
@@ -36,7 +37,8 @@ public class AddCommand implements Command{
      * </p><!-- -->
      * 
      * @return a ComplexNumber
-     * @see ComplexNumber
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     public ComplexNumber getFirstOperand() {
         return firstOperand;
@@ -47,7 +49,8 @@ public class AddCommand implements Command{
      * </p><!-- -->
      * 
      * @return a ComplexNumber
-     * @see ComplexNumber
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     public ComplexNumber getSecondOperand() {
         return secondOperand;
@@ -61,7 +64,8 @@ public class AddCommand implements Command{
      * last operand, if it is possible otherwise retur false and not complete the operation.
      * </p><!-- -->
      * @return boolean that check if the operation is completed.
-     * @see ComplexNumber, MyOperandCollection
+      * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -88,7 +92,8 @@ public class AddCommand implements Command{
      * element that is the result of the operation, and pushes the two operands 
      * that have been involved in the addiction operation.
      * </p><!-- -->
-     * @see ComplexNumber, MyOperandCollection
+       * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

@@ -21,8 +21,9 @@ public class ArgCommand implements Command{
      * <p>
      * It creates an object of the ArgCommand if the collector is not null.
      * </p> <!-- -->
-     * @param collector
-     * @see ComplexNumber, MyOperandCollection
+     * @param collector collector
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     public ArgCommand(MyOperandCollection collector) {
         assert collector != null;
@@ -35,7 +36,8 @@ public class ArgCommand implements Command{
      * collector removing it and pushes the result of the operation as last operand.
      * </p> <!-- -->
      * @return true if the collection contains at least 1 element, false otherwise
-     * @see ComplexNumber, MyOperandCollection
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -56,7 +58,8 @@ public class ArgCommand implements Command{
      * element that is the result of the operation, and pushes the operand that 
      * has been involved in the argument operation.
      * </p> <!-- -->
-     * @see ComplexNumber, MyOperandCollection
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

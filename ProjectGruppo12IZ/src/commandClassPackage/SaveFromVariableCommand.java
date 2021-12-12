@@ -27,7 +27,8 @@ public class SaveFromVariableCommand implements Command{
      * @param collector is the collection were SaveFromVariable pushes.
      * @param vars is the collection of variables.
      * @param var is the specified value on which the function operates.
-     * @see MyOperandCollection,Variables
+     * @see MyOperandCollection 
+     * @see Variables
      */
     public SaveFromVariableCommand(MyOperandCollection collector,Variables vars, String var) {
         assert (collector != null && vars != null && var != null);
@@ -41,7 +42,8 @@ public class SaveFromVariableCommand implements Command{
      * This method implements execute method for save from variable operation from Command interface.
      * </p> <!-- -->
      * @return true if the var has a value and the operation is performed, false otherwise
-     * @see Variables,MyOperandCollection
+     * @see Variables
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {
@@ -59,7 +61,8 @@ public class SaveFromVariableCommand implements Command{
      * This method implements undo method for save from variable operation from Command interface, removing the 
      * element inserted into the stack and saving it into its old variable. 
      * </p> <!-- -->
-     * @see MyOperandCollection, Variables
+     * @see MyOperandCollection 
+     * @see Variables
      */
     @Override
     public void undo() {

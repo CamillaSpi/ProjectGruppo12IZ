@@ -933,7 +933,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * This method returns the text in textArea
      * </p>
-     * <!-- --> @return strings contained in textArea
+     * <!-- --> 
+     * @return strings contained in textArea
      */
     public String getText() {
         return this.textArea.getText();
@@ -943,7 +944,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * This method sets the text in textArea
      * </p>
-     * <!-- --> @param value the text to set in textArea
+     * <!-- --> 
+     * @param value the text to set in textArea
      */
     public void setText(String value) {
         this.textArea.setText(value);
@@ -953,7 +955,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * This method takes the text in nameOperationTextArea
      * </p>
-     * <!-- --> @return string contained in nameOperationTextArea
+     * <!-- --> 
+     * @return string contained in nameOperationTextArea
      */
     public String getOperationName() {
         return this.nameOperationTextArea.getText();
@@ -995,7 +998,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * returns the Variables value
      * </p>
-     * <!-- --> @return Variables object
+     * <!-- --> 
+     * @return Variables object
      */
     public Variables getVariables() {
         return this.vars;
@@ -1005,7 +1009,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Change the text in a button
      * </p>
-     * <!-- --> @param index the index of button to change
+     * <!-- --> 
+     * @param index the index of button to change
      *
      * @param value the text to set
      */
@@ -1017,7 +1022,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Return the Invoker
      * </p>
-     * <!-- --> @return the invoker object
+     * <!-- --> 
+     * @return the invoker object
      */
     public Invoker getInvoker() {
         return this.inv;
@@ -1027,7 +1033,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Set the state
      * </p>
-     * <!-- --> @param state the state that need to be setted.
+     * <!-- --> 
+     * @param state the state that need to be setted.
      */
     public void setState(State state) {
         this.state = state;
@@ -1037,7 +1044,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Calls execute method in invoker class
      * </p>
-     * <!-- --> @param command the command to execute
+     * <!-- -->
+     * @param command the command to execute
      *
      * @return true if the command is executed successfully otherwise false
      */
@@ -1059,7 +1067,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * Return the value of MyOperandCollection
      * </p>
-     * <!-- --> @return MyOperandCollection object
+     * <!-- --> 
+     * @return MyOperandCollection object
      */
     public MyOperandCollection getCollector() {
         return collector;
@@ -1069,7 +1078,8 @@ public class FXMLDocumentController implements Initializable {
      * <p>
      * When the button is pressed, the application will close
      * </p>
-     * <!-- --> @param event it registers the event of the click of the button
+     * <!-- --> 
+     * @param event it registers the event of the click of the button
      */
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {

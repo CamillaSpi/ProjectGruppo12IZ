@@ -24,7 +24,7 @@ public class InvertSignCommand implements Command {
      * <p>
      * It creates an object of the Invert Sign Command if the collector is not null.
      * </p> <!-- -->
-     * @param collector
+     * @param collector collector
      * @see MyOperandCollection
      */
     public InvertSignCommand(MyOperandCollection collector) {
@@ -38,7 +38,9 @@ public class InvertSignCommand implements Command {
      * removes the old value and pushes the new value into the stack.
      * </p> <!-- -->
      * @return false if the last stack element is null, true otherwise
-     * @see Calculator,ComplexNumber,MyOperandCollection
+     * @see Calculator 
+     * @see ComplexNumber 
+     * @see MyOperandCollection
      */
     @Override
     public boolean execute() {

@@ -24,7 +24,8 @@ public class DropCommand implements Command{
      * have enough operand.
      * </p> <!-- -->
      * @param collector is the collection were call drop method
-     * @see MyOperandCollection
+     * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     public DropCommand(MyOperandCollection collector) {
         assert collector != null;
@@ -36,7 +37,9 @@ public class DropCommand implements Command{
      * <p>
      * This method implements execute method for drop operation from Command interface
      * </p> <!-- -->
-     * @return 
+     * @return true if the last elements is dropped, otherwise false
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public boolean execute() {       
@@ -52,6 +55,8 @@ public class DropCommand implements Command{
      * <p>
      * This method implements undo method for drop operation from Command interface
      * </p> <!-- -->
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public void undo() {

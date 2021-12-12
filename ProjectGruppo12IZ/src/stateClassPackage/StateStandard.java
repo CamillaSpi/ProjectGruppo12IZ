@@ -41,7 +41,7 @@ public class StateStandard extends State {
      * it will be stored, otherwise an error message will be shown.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, ComplexNumber
+     * @see FXMLDocumentController ComplexNumber
      */
     public void onButtonEnter() {
         String text = controller.getText();
@@ -73,7 +73,7 @@ public class StateStandard extends State {
      * will be shown and the operation will not be performed.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, MultiplyCommand
+     * @see FXMLDocumentController MultiplyCommand
      */
     @Override
     public void onButtonOne() {
@@ -94,7 +94,7 @@ public class StateStandard extends State {
      * be shown and the operation will not be performed.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, AddCommand
+     * @see FXMLDocumentController AddCommand
      */
     public void onButtonTwo() {
         MyOperandCollection collector = controller.getCollector();
@@ -115,7 +115,7 @@ public class StateStandard extends State {
      * be shown and the operation will not be performed.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, SwapCommand
+     * @see FXMLDocumentController SwapCommand
      */
     @Override
     public void onButtonThree() {
@@ -137,7 +137,7 @@ public class StateStandard extends State {
      * be shown and the operation will not be performed.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, DivideCommand
+     * @see FXMLDocumentController DivideCommand
      */
     public void onButtonFour() {
         MyOperandCollection collector = controller.getCollector();
@@ -158,7 +158,7 @@ public class StateStandard extends State {
      * be shown and the operation will not be performed.
      * </p> <!-- -->
      *
-     * @see FXMLDocumentController, DropCommand
+     * @see FXMLDocumentController DropCommand
      */
     public void onButtonSix() {
         MyOperandCollection collector = controller.getCollector();

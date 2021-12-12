@@ -25,7 +25,7 @@ public class SaveService extends Service<HashCommandTable>{
      * operations to a file passed as param in this constructor.
      * </p> <!-- -->
      * @param file is the file where save user operations.
-     * @param commands is the object of the HashCommandTable from take saved user operations.
+     * @param userCommand is the object of the HashCommandTable from take saved user operations.
      */
     public SaveService(File file, HashCommandTable userCommand) {
         this.file = file;

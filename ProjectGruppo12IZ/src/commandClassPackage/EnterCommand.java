@@ -19,7 +19,8 @@ public class EnterCommand implements Command {
      *</p> <!-- -->
      * @param collector is the data structur were take the operand.
      * @param toPush represent the number to push.
-     * @see ComplexNumber, MyOperandCollection
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     public EnterCommand(MyOperandCollection collector, ComplexNumber toPush) {
         assert collector != null;
@@ -35,7 +36,8 @@ public class EnterCommand implements Command {
      * passed as param
      * </p> <!-- -->
      * @return true because the complexnumber is secure saved when this function is called.
-     * @see ComplexNumber, MyOperandCollection
+      * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public boolean execute() {
@@ -48,7 +50,8 @@ public class EnterCommand implements Command {
      * It execute the undo of the insert operation removing the last inserted
      * element.
      * </p> <!-- -->
-     * @see ComplexNumber, MyOperandCollection
+     * @see ComplexNumber 
+     * @see MyOperandCollection 
      */
     @Override
     public void undo() {

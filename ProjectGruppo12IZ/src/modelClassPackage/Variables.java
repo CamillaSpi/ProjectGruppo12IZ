@@ -163,9 +163,10 @@ public class Variables implements Serializable {
 
     /**
      * <p>
-     * Puts into the variables' map the key and the value passed as parameters. If there
-     * is already a value, it will be replaced. 
-     * </p><!-- -->
+     * Puts into the variables' map the key and the value passed as parameters.If there
+ is already a value, it will be replaced.</p><!-- -->
+   * @param key the variable associated with the value on which perform the action
+     * @param value the value to add.
      * @see ComplexNumber
      *
      */
