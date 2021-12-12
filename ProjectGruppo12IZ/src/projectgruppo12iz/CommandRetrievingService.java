@@ -20,8 +20,10 @@ public class CommandRetrievingService extends Service<HashCommandTable>{
     private final HashCommandTable commands;
     
     /**
+     * <p>
      * it create an object of this service that can call a task to restore user 
      * operations from an adeguate file passed.
+     * </p> <!-- -->
      * @param file is the file where take saved user operations.
      * @param commands is the object of the HashCommandTable where save the 
      * restored user operations.
@@ -32,9 +34,11 @@ public class CommandRetrievingService extends Service<HashCommandTable>{
     }
     
     /**
+     * <p>
      * it call a task function to restore the user operations from an adeguate 
      * saved as attribute. It override Task method that return the structure 
      * updated or null if it isn't possible for any motiv.
+     * </p> <!-- -->
      */
     @Override
     protected Task<HashCommandTable> createTask() {

@@ -22,8 +22,10 @@ import projectgruppo12iz.FXMLDocumentController;
 public class StateStandard extends State {
 
     /**
+     * <p>
      * It create a new object StateStandard calling the constructor method of
      * the super class.
+     * </p> <!-- -->
      *
      * @param controller The DocumentController object
      * @see FXMLDocumentController
@@ -33,9 +35,11 @@ public class StateStandard extends State {
     }
 
     /**
-     * It try to insert a new Complex Operand on which to perform operations.
-     * If the text written in the specific textArea correspond to a ComplexNumber it will
-     * be stored, otherwise an error message will be shown.
+     * <p>
+     * It try to insert a new Complex Operand on which to perform operations. If
+     * the text written in the specific textArea correspond to a ComplexNumber
+     * it will be stored, otherwise an error message will be shown.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, ComplexNumber
      */
@@ -63,9 +67,11 @@ public class StateStandard extends State {
     }
 
     /**
+     * <p>
      * It create a new MultiplyCommand and calls the method execute on it if it
-     * is possible. If the operation could not be performed an error message will be shown and
-     * the operation will not be performed.
+     * is possible. If the operation could not be performed an error message
+     * will be shown and the operation will not be performed.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, MultiplyCommand
      */
@@ -82,9 +88,11 @@ public class StateStandard extends State {
     }
 
     /**
+     * <p>
      * It create a new AddCommand and calls the method execute on it if it is
-     * possible. If the operation could not be performed an error message will be shown and the
-     * operation will not be performed.
+     * possible. If the operation could not be performed an error message will
+     * be shown and the operation will not be performed.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, AddCommand
      */
@@ -101,9 +109,11 @@ public class StateStandard extends State {
     }
 
     /**
+     * <p>
      * It create a new SwapCommand and calls the method execute on it if it is
-     * possible. If the operation could not be performed an error message will be shown and the
-     * operation will not be performed.
+     * possible. If the operation could not be performed an error message will
+     * be shown and the operation will not be performed.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, SwapCommand
      */
@@ -121,9 +131,11 @@ public class StateStandard extends State {
     }
 
     /**
+     * <p>
      * It create a new DivideCommand and calls the method execute on it if it is
-     * possible. If the operation could not be performed an error message will be shown and the
-     * operation will not be performed.
+     * possible. If the operation could not be performed an error message will
+     * be shown and the operation will not be performed.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, DivideCommand
      */
@@ -140,35 +152,42 @@ public class StateStandard extends State {
     }
 
     /**
-     * It create a new DropCommand and calls the method execute on it if
-     * it is possible. If the operation could not be performed an error message will be shown
-     * and the operation will not be performed.
+     * <p>
+     * It create a new DropCommand and calls the method execute on it if it is
+     * possible. If the operation could not be performed an error message will
+     * be shown and the operation will not be performed.
+     * </p> <!-- -->
      *
      * @see FXMLDocumentController, DropCommand
      */
     public void onButtonSix() {
         MyOperandCollection collector = controller.getCollector();
         DropCommand dropComm = new DropCommand(collector);
-            if (dropComm != null && controller.commandExecute(dropComm)) {
-                controller.showAlert("Drop Operation done succesfully!");
-                controller.refresh();
-            } else {
-                controller.showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
-            }
+        if (dropComm != null && controller.commandExecute(dropComm)) {
+            controller.showAlert("Drop Operation done succesfully!");
+            controller.refresh();
+        } else {
+            controller.showAlert("Drop operation cannot be performed!\nHave you inserted any operand?");
+        }
     }
-    
+
     /**
+     * <p>
      * This method do not perform operation because it only leaves the context
      * in the same state where it already is.
+     * </p> <!-- -->
      */
     @Override
     public void setStateStandard() {
     }
 
     /**
-     * It changes the State of the controller to StateVariables,
-     * setting its into the controller and makes visible only the buttons 
-     * necessary in this state.
+     * <p>
+     * It changes the State of the controller to StateVariables, setting its
+     * into the controller and makes visible only the buttons necessary in this
+     * state.
+     * </p> <!-- -->
+     *
      * @see FXMLDocumentController
      */
     @Override
@@ -183,10 +202,13 @@ public class StateStandard extends State {
         controller.setState(new StateVariables(controller));
     }
 
-     /**
-     * It changes the State of the controller to StateOperations,
-     * setting its into the controller and makes visible only the buttons 
-     * necessary in this state.
+    /**
+     * <p>
+     * It changes the State of the controller to StateOperations, setting its
+     * into the controller and makes visible only the buttons necessary in this
+     * state.
+     * </p> <!-- -->
+     *
      * @see FXMLDocumentController
      */
     @Override
@@ -198,10 +220,14 @@ public class StateStandard extends State {
         controller.showButton(new int[]{13});
         controller.setState(new StateOperations(controller));
     }
- /**
-     * It changes the State of the controller to StateTranscendetal,
-     * setting its into the controller and makes visible only the buttons 
-     * necessary in this state.
+
+    /**
+     * <p>
+     * It changes the State of the controller to StateTranscendetal, setting its
+     * into the controller and makes visible only the buttons necessary in this
+     * state.
+     * </p> <!-- -->
+     *
      * @see FXMLDocumentController
      */
     @Override
