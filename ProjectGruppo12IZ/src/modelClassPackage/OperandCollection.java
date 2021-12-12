@@ -136,4 +136,14 @@ public class OperandCollection{
         return l.size() + l1.size();
     }
     
+    public boolean addAllCollector(OperandCollection mop){
+        if(mop != null && mop.k == this.k){
+            this.l.addAll(mop.l);
+            this.l1.addAll(mop.l1);
+        }else{
+            return false;
+        }
+        return true;
+    }
+    
 }

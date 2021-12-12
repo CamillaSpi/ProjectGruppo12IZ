@@ -690,6 +690,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void onButtonTwelve(ActionEvent event) {
         inv.undoLast();
+        System.out.println(this.collector.getL().toString());
         refresh();
     }
 

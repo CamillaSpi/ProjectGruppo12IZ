@@ -16,7 +16,7 @@ import modelClassPackage.MyOperandCollection;
  */
 public class ClearCommand implements Command{
     private final MyOperandCollection collector;
-    private List<ComplexNumber> backup;
+    private MyOperandCollection backup;
     
     /**
      * <p>
@@ -42,7 +42,8 @@ public class ClearCommand implements Command{
      */
     @Override
     public boolean execute() {
-        this.backup = new LinkedList(this.collector.getL());
+        this.backup = new MyOperandCollection(12);
+        this.backup.addAllCollector(collector);
         if(this.collector.collectionLength() == 0)
             return false;
         collector.clear();
@@ -57,9 +58,7 @@ public class ClearCommand implements Command{
      */
     @Override
     public void undo() {
-        for(int i = backup.size() - 1; i >= 0; i--){
-            collector.insert(backup.get(i));
-        }
+        collector.addAllCollector(backup);
     }
     
 }
