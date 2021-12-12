@@ -21,8 +21,9 @@ public class ComplexNumber{
     private final BigDecimal imaginary;
 
     /**
+     * <p>
      * Initialize a new instance of the ComplexNumber class.
-     *
+     *</p><!-- -->
      * @param real it contains the real part of the complex number
      * @param imaginary it contains the imaginary part of the complex number
      * (without j)
@@ -33,8 +34,9 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * Initialize a new instance of the ComplexNumber class.
-     *
+     *</p><!-- -->
      * @param real this string contains the real part of the complex number
      * @param imaginary this string contains the imaginary part of the complex
      * number (without j)
@@ -45,9 +47,10 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * This is a static class that analyze the string and if the strings is in
      * Cartesian form returns a ComplexNumber object
-     *
+     *</p><!-- -->
      * @param complexNumber the string to analyze
      * @return a ComplexNumber if the string is in Cartesian form otherwise null
      */
@@ -120,7 +123,9 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * Returns the real part of the ComplexNumber
+     * </p><!-- -->
      * @return BigDecimal representing real part of the complex number.
      */
     public BigDecimal getReal() {
@@ -128,7 +133,9 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * Return the imaginary part of the ComplexNumber
+     * </p><!-- -->
      * @return BigDecimal representing imaginary part of the complex number.
      */
     public BigDecimal getImaginary() {
@@ -136,7 +143,9 @@ public class ComplexNumber{
     }
     
     /**
+     * <p>
      * Hash Function.
+     * </p><!-- -->
      * @return hash number.
      */
     @Override
@@ -146,7 +155,9 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * Equals method to compare two ComplexNumber.
+     * </p><!-- -->
      * @return boolean that tells if the objects are equal
      */
     @Override
@@ -166,7 +177,9 @@ public class ComplexNumber{
     }
 
     /**
+     * <p>
      * Function to obtain the SimpleStringProperty of a complex number.
+     * </p><!-- -->
      * @return the StringProperty of the Complex Number
      */
     public StringProperty complexStringProperty(){
@@ -179,7 +192,9 @@ public class ComplexNumber{
     }
     
     /**
+     * <p>
      * toString method of a complex number. 
+     * </p><!-- -->
      * @return String representation of a complex number.
      */
     @Override

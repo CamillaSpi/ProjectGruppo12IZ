@@ -21,10 +21,10 @@ import java.math.MathContext;
 public class Calculator {
 
     /**
-     *
+     *<p>
      * Executes the addiction of two Complex Numbers and return the sum, if
      * these are not null, otherwise return null.
-     *
+     *</p><!-- -->
      * @param a the first complex number to add
      * @param b the second complex number to add
      * @return null if one of the parameters is null, otherwise the result of the addiction
@@ -41,10 +41,10 @@ public class Calculator {
     }
 
     /**
-     *
+     *<p>
      * Executes the subtraction of two Complex Numbers and returns the result,
      * if these are not null, otherwise returns null.
-     *
+     *</p><!-- -->
      * @param a it contains the minuend complex number
      * @param b it contains the subtrahend complex number
      * @return the result of the subtraction a - b or null if one of the parameters is null
@@ -63,12 +63,12 @@ public class Calculator {
     }
 
     /**
-     *
+     *<p>
      * Executes the multiplication of two Complex Numbers and returns the
      * result, if these are not null, otherwise returns null; the result is
      * calculated following the math formula: first = (a + ib) second = (c + id)
      * result = (ac - bd) + i(ad + bc).
-     *
+     *</p><!-- -->
      * @param first it contains the first factor complex number of the
      * multiplication
      * @param second it contains the second factor complex number of the
@@ -93,11 +93,11 @@ public class Calculator {
     }
 
     /**
+     * <p>
      * Executes the division of two complex number passed as parameters and
      * return the result of the division, if these are not null and the second
      * is different from zero, otherwise return null.
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @param a the dividend of the division
      * @param b the divisor of the division
      * @return the result of the operation or null if the divisor is equal to
@@ -120,13 +120,13 @@ public class Calculator {
         ComplexNumber res = new ComplexNumber(realRes, imagRes);
         return res;
     }
-     /**
-     *
+    
+    /**
+     *<p>
      * Calculates and returns the square root of a Complex Number passed as parameter if it is not
      * null, otherwise returns null;
      * the function converts the complex number in trigonometric form but returns the number in Cartesian form
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @param a it contains the input complex number
      * @return the square root's complex number or null if the parameter is null
      * @see ComplexNumber
@@ -183,10 +183,10 @@ public class Calculator {
     }
 
     /**
+     * <p>
      * Calculates and returns the reverse of a Complex Number if it is not
      * null, otherwise returns null.
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @param a it contains the input complex number
      * @return the reverse ComplexNumber or null if the parameter is null
      * @see ComplexNumber
@@ -200,10 +200,10 @@ public class Calculator {
     }
 
     /**
+     * <p>
      * Calculates and returns the conjugated of a Complex Number if it is not
      * null, otherwise returns null.
-     * <p>
-     * <!-- -->
+     * </p><!-- -->
      * @param a it contains the input complex number
      * @return the conjugated ComplexNumber or null if the parameter is null
      * @see ComplexNumber
@@ -217,11 +217,10 @@ public class Calculator {
     }
     
     /**
+     * <p>
      * Calculates and returns the module of a Complex Number, if it is not
      * null in its parts or himself, otherwise returns null.
-     * <p>
-     * <!-- --> 
-     *
+     * </p><!-- -->
      * @param num it contains the input complex number
      * @return the module of a ComplexNumber or null if the parameter is null or its parts are null
      * @see ComplexNumber
@@ -238,11 +237,10 @@ public class Calculator {
     }
 
     /**
+     * <p>
      * Calculates and returns the argument of a Complex Number, if it is not
      * null in its part or its parts are zero (in this case the arg is not defined), otherwise returns null.
-     * <p>
-     * <!-- --> 
-     *
+     *</p><!-- -->
      * @param num it contains the input complex number
      * @return the argument of a ComplexNumber or null if it is null or its parts are null or both zero.
      * @see ComplexNumber

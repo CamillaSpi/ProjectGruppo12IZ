@@ -24,10 +24,11 @@ public class OperandCollection{
     private final int k;
 
     /**
+    * <p>
     * It creates an object of this class, so inizialize the two data structure,
     * and the number of element that must be visible to the outside, so the element
     * stored in the first data structure.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * a parameter within the collection.
     * @param k is an integer number that represent the number of element visible 
     * in the class concurrently.
@@ -40,8 +41,9 @@ public class OperandCollection{
     }
 
     /**
+    * <p>
     * return the vissible list.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * a parameter within the collection.
     * @return the list ov visible element.
     * @see ComplexNumber, LinkedList
@@ -51,12 +53,13 @@ public class OperandCollection{
     }
     
     /**
+    *<p> 
     * It inserts (if the param is not null) at the top of the collection an 
     * object complexNumber  passed as a parameter within the function. it also 
     * could pass the last operand of the visible list as the first of the invisible, 
     * if the number of element of the first list after the insertion is major 
     * that the visible number established.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * 
     * @param a complex number to enter in the structure.
     * @see ComplexNumber
@@ -69,12 +72,14 @@ public class OperandCollection{
         }
        
     }
+    
     /**
+    *<p> 
     * It remouves at the top of the collection the first object complexNumber. 
     * it also could take the first operand of the invisible structure as last 
     * of the visible structure, if the number  of element of the first list after
     * the remove is minor that the visible number established.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return the complexNumber removed or null
     * @see ComplexNumber
     */
@@ -91,9 +96,10 @@ public class OperandCollection{
     }
     
     /**
+    * <p>
     * It returns without remove (if the collection is not empty) the complexNumber 
     * at the top of the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return the top complexNumber or null
     * @see ComplexNumber
     */
@@ -105,9 +111,10 @@ public class OperandCollection{
     }
     
     /**
+    * <p>
     * It returns without remove (if the collection has at least two element) the
     * second complexNumber from the top of the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return the second element complexNumber or null
     * @see ComplexNumber
     */
@@ -119,9 +126,10 @@ public class OperandCollection{
     }
     
     /**
+    * <p>
     * It returns the number of elements inside the collection as the sum of 
     * visible and invisible.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return the int length.
     */
     public int collectionLength(){

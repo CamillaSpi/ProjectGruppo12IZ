@@ -23,10 +23,10 @@ public class Variables implements Serializable {
     private final Stack<ObservableMap<String, ComplexNumber>> myVariablesStack;
 
     /**
+     * <p>
      * It inizializes the attribute myVariables, as an HashMap with String as
      * Keys and ComplexNumber as Values.
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @see ComplexNumber
      */
     public Variables() {
@@ -35,10 +35,10 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * It checks if the string passed has only one character included in the
      * range from "a" to "z".
-     * <p>
-     * <!-- --> 
+     * </p><!-- --> 
      * @param s the string to be analized
      * @return True if the String has only one character in the range from "a"
      * to "z", false otherwise.
@@ -48,10 +48,10 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * It returns the value associated with the key passed if exists one,
      * otherwise null.
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @param key the key of which returns the associated value
      * @return the value associated with the key passed if it exists else return
      * null.
@@ -60,10 +60,11 @@ public class Variables implements Serializable {
     public ComplexNumber getValue(String key) {
         return myVariables.get(key);
     }
+    
     /**
-     * It returns the attribute myVariables
      * <p>
-     * <!-- --> 
+     * It returns the attribute myVariables
+     * </p><!-- -->
      * @return myVariable the map attribute, containing couples
      * Key-Value
      * @see ComplexNumber
@@ -73,13 +74,12 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * It associates the ComplexNumber passed as value with the String passed as
      * key and put this couple as item in the myVariable map. If already exists
      * a value associated with the specified key, this value will be replaced by
      * the new one.
-     * <p>
-     * <!-- -->
-     *
+     * </p><!-- -->
      * @param key it contains the variable (key) on which save a value
      * @param value it contains the value of the key (ComplexNumber)
      * @return a bolean value that represents if the number is correctly saved or
@@ -95,11 +95,10 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * The method checks if the key is written in the correct form and returns
      * the complexnumber associated if it exists.
-     * <p>
-     * <!-- -->
-     *
+     * </p><!-- -->
      * @param key it contains the name of the variable written in the UI.
      * @return The complexNumber if the value associated with the key exists,
      * otherwise null, also if the key is not correct.
@@ -114,11 +113,11 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * It subtracts the value passed as second parameter from the value associated to the key passed
      * as first parameter, if the operation is concluded succesfully it stores the
      * results as value of the key itself.
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @param key the variable associated to the value on which perform
      * the subtraction.
      * @param subtracting the value to subtract from.
@@ -137,12 +136,11 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * It adds the ComplexNumber passed as value with the ComplexNumber
      * associated with the Strings passed as key. If doesn't exist a value
      * associated with the specified key, returns false.
-     * <p>
-     * <!-- -->
-     *
+     * </p><!-- -->
      * @param key the variable associated with the value on which perform the
      * addiction
      * @param value the value to add.
@@ -162,10 +160,10 @@ public class Variables implements Serializable {
     }
 
     /**
+     * <p>
      * Puts into the variables' map the key and the value passed as parameters. If there
      * is already a value, it will be replaced. 
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @see ComplexNumber
      *
      */
@@ -174,9 +172,9 @@ public class Variables implements Serializable {
     }
 
     /**
-     * Method toSring of the variables' stack
      * <p>
-     * <!-- --> 
+     * Method toSring of the variables' stack
+     * </p><!-- -->
      * @return a string definition for the current object
      * @see ComplexNumber
      */
@@ -188,9 +186,9 @@ public class Variables implements Serializable {
     }
 
     /**
-     * It saves a copy of the current collection of variables into a stack, that can be re-used doing a restore.
      * <p>
-     * <!-- --> 
+     * It saves a copy of the current collection of variables into a stack, that can be re-used doing a restore.
+     * </p><!-- -->
      * @return true if the stack of variables has a length greater than the old before a save operation, false otherwise
      * @see ComplexNumber
      */
@@ -203,10 +201,10 @@ public class Variables implements Serializable {
     }
     
     /**
+     * <p>
      * It restores a copy of the collection of variables into the current collection, overwriting the value on the variables or
      * adding new ones. 
-     * <p>
-     * <!-- --> 
+     * </p><!-- -->
      * @return false if the stack of variables is empty, so it can't be restored, otherwise
      * it returns true if the new stack of variables length is smaller than the previous before the restoring. 
      * @see ComplexNumber

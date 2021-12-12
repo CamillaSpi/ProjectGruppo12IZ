@@ -16,8 +16,9 @@ public class MyOperandCollection extends OperandCollection {
     }   
     
     /**
+     * <p>
     * It swap (if there are at least two elements in the collection) the last two element inserted 
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return a boolean true if the operation is executed correctly, false otherwise
     * @see OperandCollection
     */
@@ -35,8 +36,9 @@ public class MyOperandCollection extends OperandCollection {
     
  
     /**
+    * <p>
     * It remove the last number inserted inside the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return true if the element was remove, otherwise false
     * @see OperandCollection
     */
@@ -50,8 +52,9 @@ public class MyOperandCollection extends OperandCollection {
     }
 
     /**
+    * <p>
     * It duplicate the last number inserted inside the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return true if the element was add, otherwise false
     */
     public boolean dup() {
@@ -63,8 +66,9 @@ public class MyOperandCollection extends OperandCollection {
     
     
     /**
+    * <p>
     * It duplicate the seconds last number and inserted inside the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return true if the seconds last element was duplicate and inserted, otherwise false
     */
     public boolean over() {
@@ -80,8 +84,9 @@ public class MyOperandCollection extends OperandCollection {
     }
 
     /**
+    * <p>
     * It remove all elements inside the collection.
-    * <p> <!-- -->
+    * </p> <!-- -->
     * @return true if all the elements in the stack have been deleted, false if the stack was already empty.
     */
     public boolean clear(){
