@@ -32,7 +32,7 @@ public class OperandCollection{
     * a parameter within the collection.
     * @param k is an integer number that represent the number of element visible 
     * in the class concurrently.
-    * @see ComplexNumber, LinkedList
+    * @see ComplexNumber
     */
     public OperandCollection(int k) {
         this.l = new LinkedList();
@@ -46,7 +46,7 @@ public class OperandCollection{
     * </p> <!-- -->
     * a parameter within the collection.
     * @return the list ov visible element.
-    * @see ComplexNumber, LinkedList
+    * @see ComplexNumber
     */
     public List<ComplexNumber> getL() {
         return l;

@@ -29,7 +29,8 @@ public class SubtractToVariableCommand implements Command{
      * @param collector is the collection were subtracting is taken
      * @param vars is the collection were minuend is taken
      * @param variables is the var were execute the operation
-     * @see MyOperandCollection, Variables
+     * @see MyOperandCollection
+     * @see Variables
      */
     public SubtractToVariableCommand(MyOperandCollection collector, Variables vars, String variables) {
         assert collector != null;
@@ -48,7 +49,9 @@ public class SubtractToVariableCommand implements Command{
      * </p> <!-- -->
      * @return false if the variable value is null or the operand's stack is empty, otherwise
      * returns true if the subtract to variable is performed or false if not. 
-     * @see ComplexNumber, MyOperandCollection, Variables
+     * @see ComplexNumber
+     * @see MyOperandCollection
+     * @see Variables
      */
     @Override
     public boolean execute() {
@@ -69,7 +72,8 @@ public class SubtractToVariableCommand implements Command{
      * This method implements undo method for subtract to variable operation from Command interface, 
      * saving the old value into the variable and inserting in operand's stack the old value.
      * </p> <!-- -->
-     * @see Variables, MyOperandCollection
+     * @see Variables
+     * @see MyOperandCollection
      */
     @Override
     public void undo() {

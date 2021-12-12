@@ -38,7 +38,9 @@ public class SubtractCommand implements Command{
      * and pushes the result of the operation as last operand.
      * </p> <!-- -->
      * @return false if the collection doesn't contain at least two elements, true otherwise
-     * @see ComplexNumber, MyOperandCollection, Calculator
+     * @see ComplexNumber
+     * @see MyOperandCollection
+     * @see Calculator
      */
     @Override
     public boolean execute() {

@@ -36,7 +36,9 @@ public class SquareRootCommand implements Command {
      * pushes the result of the operation as last operand
      * </p> <!-- -->
      * @return true if the operation is executed and the collector is not empty, false otherwise
-     * @see MyOperandCollection, ComplexNumber, Calculator
+     * @see MyOperandCollection
+     * @see ComplexNumber
+     * @see Calculator
      */
     @Override
     public boolean execute() {

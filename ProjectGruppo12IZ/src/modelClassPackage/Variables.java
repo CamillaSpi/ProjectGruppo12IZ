@@ -122,7 +122,8 @@ public class Variables implements Serializable {
      * the subtraction.
      * @param subtracting the value to subtract from.
      * @return true if the operation is executed, false otherwise.
-     * @see ComplexNumber, Calculator
+     * @see ComplexNumber
+     * @see Calculator
      */
     public boolean subtractToVariable(String key, ComplexNumber subtracting) {
         if (checkRange(key) && subtracting != null) {
@@ -146,7 +147,8 @@ public class Variables implements Serializable {
      * @param value the value to add.
      * @return a boolean value that represents if the number is correctly added or
      * not.
-     * @see ComplexNumber, Calculator
+     * @see ComplexNumber
+     * @see Calculator
      */
     public boolean addToVariable(String key, ComplexNumber value) {
         if (checkRange(key) && value != null) {
