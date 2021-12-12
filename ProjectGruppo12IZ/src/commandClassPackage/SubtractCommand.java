@@ -21,7 +21,9 @@ public class SubtractCommand implements Command{
     
     
     /**
+     * <p>
      * It creates an object of the SubtractCommand if the collector is not null.
+     * </p> <!-- -->
      * @param collector the collection on which the subtract command is executed.
      * @see MyOperandCollection
      */
@@ -31,8 +33,10 @@ public class SubtractCommand implements Command{
     }   
  
     /**
-     *It executes the operation of subtraction on the last two inserted operand in the collector removing them,
+     * <p>
+     * It executes the operation of subtraction on the last two inserted operand in the collector removing them,
      * and pushes the result of the operation as last operand.
+     * </p> <!-- -->
      * @return false if the collection doesn't contain at least two elements, true otherwise
      * @see ComplexNumber, MyOperandCollection, Calculator
      */
@@ -55,8 +59,10 @@ public class SubtractCommand implements Command{
     }
     
     /**
+     * <p>
      * It executes the undo of the subtraction operation removing the last inserted element that is the result of the operation,
      * and pushes the two operands that have been involved in the subtraction operation.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

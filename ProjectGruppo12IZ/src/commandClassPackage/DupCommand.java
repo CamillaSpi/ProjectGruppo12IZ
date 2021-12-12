@@ -18,10 +18,11 @@ public class DupCommand implements Command{
     private ComplexNumber first;
 
     /**
+     * <p>
      * This method create an object that rappresent Dup operation in order to
      * execute and undo the command, assert if collection is null or if not 
      * have enough operand.
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were call drop method
      * @see MyOperandCollection
      */
@@ -32,8 +33,10 @@ public class DupCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for Dup Command operation from
      * Command interface if it is possible to perform.
+     * </p> <!-- -->
      * @return true it is execute, false otherwise.
      */
     @Override
@@ -46,7 +49,9 @@ public class DupCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for Dup Command operation from Command interface
+     * </p> <!-- -->
      */
     @Override
     public void undo() {

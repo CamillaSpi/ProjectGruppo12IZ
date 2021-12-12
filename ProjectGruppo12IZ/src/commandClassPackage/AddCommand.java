@@ -19,8 +19,10 @@ public class AddCommand implements Command{
     private ComplexNumber secondOperand;
         
     /**
+     * <p>
      * It create an object of the AddCommand if the collector is not null and 
      * contains enough element to perform the addiction operation.
+     * </p> <!-- -->
      * @param collector
      * @see ComplexNumber, MyOperandCollection
      */
@@ -28,18 +30,22 @@ public class AddCommand implements Command{
         assert collector != null;
         this.collector = collector;
     }
-    /**
+    /**<p>
      * It return the first operand of the AddCommand, it could return null, 
      * if it is call before execute this command null.
+     * </p><!-- -->
+     * 
      * @return a ComplexNumber
      * @see ComplexNumber
      */
     public ComplexNumber getFirstOperand() {
         return firstOperand;
     }
-    /**
+    /**<p>
      * It return the second operand of the AddCommand, it could return null, 
      * if it is call before execute this command null.
+     * </p><!-- -->
+     * 
      * @return a ComplexNumber
      * @see ComplexNumber
      */
@@ -49,9 +55,11 @@ public class AddCommand implements Command{
     
     
     /**
+     * <p>
      * It execute the operation of addiction on the last two inserted operand in 
      * the collector removing them, and pushes the result of the operation as 
      * last operand, if it is possible otherwise retur false and not complete the operation.
+     * </p><!-- -->
      * @return boolean that check if the operation is completed.
      * @see ComplexNumber, MyOperandCollection
      */
@@ -75,9 +83,11 @@ public class AddCommand implements Command{
     }
     
     /**
+     * <p>
      * It execute the undo of the addiction operation removing the last inserted 
      * element that is the result of the operation, and pushes the two operands 
      * that have been involved in the addiction operation.
+     * </p><!-- -->
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

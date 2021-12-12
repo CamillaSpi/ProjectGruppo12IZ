@@ -17,10 +17,10 @@ import projectgruppo12iz.FXMLDocumentController;
  */
 public class StateTranscendental extends State {
 
-     /**
+     /**<p>
      * It create a new object StateTranscendental calling the constructor method of
      * the super class.
-     *
+     *</p> <!-- -->
      * @param controller The DocumentController object
      * @see FXMLDocumentController
      */
@@ -28,10 +28,11 @@ public class StateTranscendental extends State {
         super(controller);
     }
 
-     /**
+     /**<p>
      * It try to insert a new Complex Operand on which to perform operations.
      * If the text written in the specific textArea correspond to a ComplexNumber it will
      * be stored, otherwise an error message will be shown.
+     * </p> <!-- -->
      * @see FXMLDocumentController, ComplexNumber
      */
     public void onButtonEnter() {
@@ -58,7 +59,7 @@ public class StateTranscendental extends State {
      * It create a new ModCommand and calls the method execute on it if it
      * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, MultiplyCommand
      */
     @Override
@@ -74,11 +75,11 @@ public class StateTranscendental extends State {
         }
     }
 
-    /**
+    /**<p>
      * It create a new ArgCommand and calls the method execute on it if it
      * is possible. If the operation could not be performed an error message will be shown and
      * the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, SaveFromVariable
      */
     @Override
@@ -94,10 +95,12 @@ public class StateTranscendental extends State {
         }
     }
 
-   /**
+   /**<p>
      * It changes the State of the controller to StateStandard,
      * setting its into the controller and makes visible only the buttons 
      * necessary in this state.
+     * 
+     * </p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
@@ -111,10 +114,11 @@ public class StateTranscendental extends State {
         this.controller.setState(new StateStandard(controller));
     }
 
-  /**
+  /**<p>
      * It changes the State of the controller to StateVariables,
      * setting its into the controller and makes visible only the buttons 
      * necessary in this state.
+     * </p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
@@ -128,10 +132,11 @@ public class StateTranscendental extends State {
         controller.setState(new StateVariables(controller));
     }
 
-  /**
+  /**<p>
      * It changes the State of the controller to StateOperations,
      * setting its into the controller and makes visible only the buttons 
      * necessary in this state.
+     * </p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
@@ -146,8 +151,10 @@ public class StateTranscendental extends State {
     }
     
      /**
+      * <p>
      * This method do not perform operation because it only leaves the context
      * in the same state where it already is.
+     * </p> <!-- -->
      */
     @Override
     public void setStateTranscendetal() {

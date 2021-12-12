@@ -16,9 +16,10 @@ public class SwapCommand implements Command{
     private final MyOperandCollection collector;
 
     /**
+     * <p>
      * This method creates an object that represents swap operation in order to execute and undo the command,
      * assert if collection is null.
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were call swap method
      * @see MyOperandCollection
      */
@@ -28,7 +29,9 @@ public class SwapCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for swap operation from Command interface.
+     * </p> <!-- -->
      * @return false if the collection doesn't contain at least 2 elements, true otherwise.
      * @see MyOperandCollection
      */
@@ -41,8 +44,10 @@ public class SwapCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for swap operation from Command interface, doing another 
      * swap to restore the old order of operands. 
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

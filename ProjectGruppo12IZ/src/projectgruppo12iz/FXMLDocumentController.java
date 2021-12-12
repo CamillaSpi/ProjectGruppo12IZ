@@ -156,10 +156,11 @@ public class FXMLDocumentController implements Initializable {
     private ToggleButton transcendentalToggle;
 
     /**
+     * <p>
      * This function create a TranslateTransition that move the "varAnchorPane"
      * in base of value flag.
      *
-     * <p>
+     * </p>
      * <!-- -->
      *
      * @param flag if true move the anchor pane in the screen, else it take it
@@ -187,10 +188,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * This function create a TranslateTransition that move the "externalVBox"
      * and a TranslateTransition to move "operationVBox" in base of value flag.
      *
-     * <p>
+     * </p>
      * <!-- -->
      *
      * @param anchorFlag if true move the two VBox in the screen, else it takes
@@ -224,10 +226,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * This function create a TranslateTransition that move the
      * "bottomAnchorPane" in base of value flag.
      *
-     * <p>
+     * </p>
      * <!-- -->
      *
      * @param anchorFlag if true move the "bottomAnchorPane" in the screen, else
@@ -251,10 +254,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * This function create a TranslateTransition that move the "textArea" in
      * base of value flag.
      *
-     * <p>
+     * </p>
      * <!-- -->
      *
      * @param anchorFlag if true move the "textArea" down, else in original
@@ -280,11 +284,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This function show the buttons. All the buttons
-     * are contained in an array. Hide the buttons which indexes is contained in
-     * the array passed
-     *
      * <p>
+     * This function show the buttons. All the buttons are contained in an
+     * array. Hide the buttons which indexes is contained in the array passed
+     *
+     * </p>
      * <!-- -->
      *
      * @param index An array that contain the indexes of buttons that need to
@@ -297,11 +301,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This function hide the buttons. All the buttons
-     * are contained in an array. Show the button which index is contained in
-     * the array passed
-     *
      * <p>
+     * This function hide the buttons. All the buttons are contained in an
+     * array. Show the button which index is contained in the array passed
+     *
+     * </p>
      * <!-- -->
      *
      * @param index An array that contain the indexes of buttons that need to
@@ -314,8 +318,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * change the text of errorLabel for 5 seconds and after set it to null
      * <p>
+     * change the text of errorLabel for 5 seconds and after set it to null
+     * </p>
      * <!-- -->
      *
      * @param error the strings that need to be displayed in errorLabel
@@ -334,8 +339,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * It insert the element passed as param in the collection if is possible.
      * <p>
+     * It insert the element passed as param in the collection if is possible.
+     * </p>
      * <!-- -->
      *
      * @param num ComplexNumber to push into stack
@@ -441,13 +447,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method implemented in the classes State named onButtonOne(),
      * the execution of this method depends on the current state. So for the
      * StateStandard the MultiplyCommand will be executed if possible, for the
      * StateVariables the SaveToVariableCommand will be executed if possible for
      * the StateOperations the Delete of the specified operation will be
      * performed if possible.
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * in first position.
      *
@@ -459,13 +466,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method implemented in the classes State named onButtonTwo(),
      * the execution of this method depends on the current state. So for the
      * StateStandard the AddCommand will be executed if possible, for the
      * StateVariables this button is not shown so it could not be pressed for
      * the StateOperations the UserDefined operation specified will be executed
      * if possible.
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * in fourth position
      *
@@ -481,13 +489,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method implemented in the classes State named
      * onButtonThree(), the execution of this method depends on the current
      * state. So for the StateStandard the SwapCommand will be executed if
      * possible, for the StateVariables the SaveFromVariableCommand will be
      * executed if possible for the StateOperations the Show of the operation
      * will be performed if possible.
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * in Third position
      *
@@ -499,13 +508,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method implemented in the classes State named
      * onButtonFour(), the execution of this method depends on the current
      * state. So for the StateStandard the DivisionCommand will be executed if
      * possible, for the StateVariables the AddToVariableCommand will be
      * executed if possible for the StateOperations this button is not shown so
      * it could not be pressed.
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * in fourth position
      *
@@ -521,12 +531,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new sqrtCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there aren't
      * any operands an error message will be shown.
      *
      * @param event the event of the presses of the button sqrt.
-     * <p>
+     * </p>
      * <!-- --> @see SquareRootCommand
      */
     @FXML
@@ -541,13 +552,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method implemented in the classes State named onButtonSix(),
      * the execution of this method depends on the current state. So for the
      * StateStandard the DropCommand will be executed if possible, for the
      * StateVariables the SubtractToVariableCommand will be executed if possible
      * for the StateOperations this button is not shown so it could not be
      * pressed.
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * in sixth position
      *
@@ -563,12 +575,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new SubtractCommand and calls the execute method on it if it
      * is possible. If the Operation could not be performed because there are
      * not at least two operands an error message will be shown.
      *
      * @param event the event of the presses of the button sub.
-     * <p>
+     * </p>
      * <!-- --> @see SubCommand
      */
     @FXML
@@ -583,12 +596,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new InvertSignCommand and calls the execute method on it if
      * it is possible. If the Operation could not be performed because there are
      * no operand inserted an error message will be shown.
      *
      * @param event the event of the presses of the button invertSign.
-     * <p>
+     * </p>
      * <!-- --> @see InvertSignCommand
      */
     @FXML
@@ -603,12 +617,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new OverCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there not at
      * least two operands an error message will be shown.
      *
      * @param event the event of the presses of the button over.
-     * <p>
+     * </p>
      * <!-- --> @see OverCommand
      */
     @FXML
@@ -623,12 +638,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new DupCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there not at
      * least one operand an error message will be shown.
      *
      * @param event the event of the presses of the button dup.
-     * <p>
+     * </p>
      * <!-- --> @see DupCommand
      */
     @FXML
@@ -643,12 +659,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new ClearCommand and calls the execute method on it if it is
      * possible. If the Operation could not be performed because there are no
      * operands an error message will be shown.
      *
      * @param event the event of the presses of the button clear.
-     * <p>
+     * </p>
      * <!-- --> @see ClearCommand
      */
     @FXML
@@ -663,8 +680,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed the last command will be undo
      * <p>
+     * When the button is pressed the last command will be undo
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      *
      * @see Command
@@ -676,12 +694,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method for save the variables save at that moment into the
      * variableStack, if it is possible. If the Operation could not be performed
      * an error message will be shown.
      *
      * @param event the event of the presses of the button clear.
-     * <p>
+     * </p>
      * <!-- --> @see Variables
      */
     @FXML
@@ -694,13 +713,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method for save the user defined operation memoraized in the
      * current session into a file passed in FileChooser mode, if it is possible
      * with a different thread. If the Operation could not be performed an error
      * message will be shown.
      *
      * @param event the event of the presses of the button clear.
-     * <p>
+     * </p>
      * <!-- --> @see HashCommandTable,SaveService
      */
     @FXML
@@ -715,12 +735,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It calls the method for restore the last variables saved into the
      * variableStack, if it is possible. If the Operation could not be performed
      * an error message will be shown.
      *
      * @param event the event of the presses of the button clear.
-     * <p>
+     * </p>
      * <!-- --> @see Variables
      */
     @FXML
@@ -734,6 +755,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * It create a new FileChooser and open the Dialog on the base anchor pane.
      * From it the user can choose the origin file from which to restore the
      * user's operations defined in a previous usage session. Before it a
@@ -745,7 +767,7 @@ public class FXMLDocumentController implements Initializable {
      * operation can be performed a confirmation message will be shown to User
      * otherwise an error message is shown.
      *
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      * for restore User Operations
      *
@@ -772,8 +794,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Open the github's project link, if it is possible.
      * <p>
+     * Open the github's project link, if it is possible.
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      *
      * @see URISyntaxException
@@ -787,10 +810,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * <p>
      * When the button is pressed call onButtonEnter methods depending on the
      * state but catch what was written in the apposit text area. The button can
      * be pressed only in state operations, standard and transcendental
-     * <p>
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      *
      * @see StateOperations, StateStandard, StateTranscendental
@@ -807,8 +831,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed change the state in Standard state.
      * <p>
+     * When the button is pressed change the state in Standard state.
+     * </p>
      * <!-- --> @param event registers the event of the click of the button
      *
      * @see CommandRetrievingService, HashCommandTable
@@ -826,8 +851,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed change the state in Variables state.
      * <p>
+     * When the button is pressed change the state in Variables state.
+     * </p>
      * <!-- --> @param event registers the event of the click of the button
      *
      * @see CommandRetrievingService, HashCommandTable
@@ -849,8 +875,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed changes the state in Operations state.
      * <p>
+     * When the button is pressed changes the state in Operations state.
+     * </p>
      * <!-- --> @param event registers the event of the click of the button
      *
      * @see CommandRetrievingService, HashCommandTable
@@ -873,8 +900,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed changes the state in transcendental state.
      * <p>
+     * When the button is pressed changes the state in transcendental state.
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      *
      * @see CommandRetrievingService, HashCommandTable
@@ -892,8 +920,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This method refresh the OperandsTable
      * <p>
+     * This method refresh the OperandsTable
+     * </p>
      * <!-- --> @see ComplexNumber
      */
     public void refresh() {
@@ -901,8 +930,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This method returns the text in textArea
      * <p>
+     * This method returns the text in textArea
+     * </p>
      * <!-- --> @return strings contained in textArea
      */
     public String getText() {
@@ -910,8 +940,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This method sets the text in textArea
      * <p>
+     * This method sets the text in textArea
+     * </p>
      * <!-- --> @param value the text to set in textArea
      */
     public void setText(String value) {
@@ -919,8 +950,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This method takes the text in nameOperationTextArea
      * <p>
+     * This method takes the text in nameOperationTextArea
+     * </p>
      * <!-- --> @return string contained in nameOperationTextArea
      */
     public String getOperationName() {
@@ -928,8 +960,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This method returns the userCommands
      * <p>
+     * This method returns the userCommands
+     * </p>
      * <!-- -->
      *
      * @return HashCommandTable object
@@ -939,8 +972,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Clear the textArea to enter numbers.
      * <p>
+     * Clear the textArea to enter numbers.
+     * </p>
      * <!-- -->
      */
     public void clearText() {
@@ -948,8 +982,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Clear the nameOperationTextArea
      * <p>
+     * Clear the nameOperationTextArea
+     * </p>
      * <!-- -->
      */
     public void clearNameText() {
@@ -957,8 +992,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * returns the Variables value
      * <p>
+     * returns the Variables value
+     * </p>
      * <!-- --> @return Variables object
      */
     public Variables getVariables() {
@@ -966,8 +1002,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Change the text in a button
      * <p>
+     * Change the text in a button
+     * </p>
      * <!-- --> @param index the index of button to change
      *
      * @param value the text to set
@@ -977,8 +1014,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Return the Invoker
      * <p>
+     * Return the Invoker
+     * </p>
      * <!-- --> @return the invoker object
      */
     public Invoker getInvoker() {
@@ -986,8 +1024,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Set the state
      * <p>
+     * Set the state
+     * </p>
      * <!-- --> @param state the state that need to be setted.
      */
     public void setState(State state) {
@@ -995,8 +1034,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Calls execute method in invoker class
      * <p>
+     * Calls execute method in invoker class
+     * </p>
      * <!-- --> @param command the command to execute
      *
      * @return true if the command is executed successfully otherwise false
@@ -1006,8 +1046,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This methods refresh the tableOpVar
      * <p>
+     * This methods refresh the tableOpVar
+     * </p>
      * <!-- -->
      */
     public void refreshVarsOp() {
@@ -1015,8 +1056,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Return the value of MyOperandCollection
      * <p>
+     * Return the value of MyOperandCollection
+     * </p>
      * <!-- --> @return MyOperandCollection object
      */
     public MyOperandCollection getCollector() {
@@ -1024,8 +1066,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * When the button is pressed, the application will close
      * <p>
+     * When the button is pressed, the application will close
+     * </p>
      * <!-- --> @param event it registers the event of the click of the button
      */
     @FXML
@@ -1033,10 +1076,13 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
     /**
-     * When the button is pressed, the side menu will close
      * <p>
-     * <!-- --> 
+     * When the button is pressed, the side menu will close
+     * </p>
+     * <!-- -->
+     *
      * @param event it registers the event of the click of the button
      */
     @FXML

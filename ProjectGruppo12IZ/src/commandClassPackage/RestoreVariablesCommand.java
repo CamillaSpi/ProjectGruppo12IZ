@@ -16,10 +16,10 @@ public class RestoreVariablesCommand implements Command {
     private final Variables vars;
 
     /**
+     * <p>
      * This method creates an object that represents restore variables from stack operation in
      * order to execute and undo the command, assert if the variables are null.
-     * <p>
-     * <!-- --> 
+     * </p> <!-- --> 
      * @param vars the object that contains the variables
      * @see Variables
      */
@@ -29,8 +29,10 @@ public class RestoreVariablesCommand implements Command {
     }
 
     /**
+     * <p>
      * This method implements execute method for Restore variables command from
      * Command interface.
+     * </p> <!-- -->
      * @return true if the operation of restoring is executed, false otherwise.
      * @see Variables
      */
@@ -40,8 +42,10 @@ public class RestoreVariablesCommand implements Command {
     }
 
     /**
+     * <p>
      * This method implements undo method for Restore variables command operation from
      * Command interface; it does a save of the variables into the stack, calling the variables' method.
+     * </p> <!-- -->
      * @see Variables
      */
     @Override

@@ -18,7 +18,9 @@ public class ModCommand implements Command{
     private ComplexNumber val;
 
     /**
+     * <p>
      * It creates an object of the ModCommand if the collector is not null.
+     * </p> <!-- -->
      * @param collector
      * @see MyOperandCollection
      */
@@ -28,8 +30,10 @@ public class ModCommand implements Command{
     }    
     
     /**
-     *It executes the operation of module on the last inserted operand in the collector, calling calculator's method and removing it
+     * <p>
+     * It executes the operation of module on the last inserted operand in the collector, calling calculator's method and removing it
      * from the collection, and pushes the result of the operation as last operand.
+     * </p> <!-- -->
      * @return true if the collection contains at least 1 element, false otherwise
      * @see ComplexNumber, Calculator, MyOperandCollection
      */
@@ -44,8 +48,10 @@ public class ModCommand implements Command{
     }
 
     /**
-     *It executes the undo of the module operation removing the last inserted element that is the result of the operation,
+     * <p>
+     * It executes the undo of the module operation removing the last inserted element that is the result of the operation,
      * and pushes the operand that has been involved in the module operation.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

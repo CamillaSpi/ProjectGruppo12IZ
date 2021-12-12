@@ -16,9 +16,10 @@ public class OverCommand implements Command{
     private final MyOperandCollection collector;
 
     /**
+     * <p>
      * This method creates an object that represent OverCommand operation in order to execute and undo the command,
      * assert if collection is null.
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were call over command
      * @see MyOperandCollection
      */
@@ -28,7 +29,9 @@ public class OverCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for over operation from Command interface, calling method over of the collection.
+     * </p> <!-- -->
      * @return false if the collection doesn't have at least 2 elements, true otherwise.
      * @see MyOperandCollection
      */
@@ -41,7 +44,9 @@ public class OverCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for over operation from Command interface, removing the last inserted elements.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

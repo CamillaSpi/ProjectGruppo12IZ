@@ -18,10 +18,11 @@ public class DropCommand implements Command{
     private ComplexNumber first;
 
     /**
+     * <p>
      * This method create an object that rappresent drop operation in order to 
      * execute and undo the command, assert if collection is null or if not 
      * have enough operand.
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were call drop method
      * @see MyOperandCollection
      */
@@ -32,7 +33,9 @@ public class DropCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for drop operation from Command interface
+     * </p> <!-- -->
      * @return 
      */
     @Override
@@ -46,7 +49,9 @@ public class DropCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for drop operation from Command interface
+     * </p> <!-- -->
      */
     @Override
     public void undo() {

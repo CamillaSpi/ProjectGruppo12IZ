@@ -18,7 +18,9 @@ public class ArgCommand implements Command{
     private ComplexNumber val;
 
     /**
+     * <p>
      * It creates an object of the ArgCommand if the collector is not null.
+     * </p> <!-- -->
      * @param collector
      * @see ComplexNumber, MyOperandCollection
      */
@@ -28,8 +30,10 @@ public class ArgCommand implements Command{
     }
     
     /**
+     * <p>
      * It executes the operation of argument on the last inserted operand in the 
      * collector removing it and pushes the result of the operation as last operand.
+     * </p> <!-- -->
      * @return true if the collection contains at least 1 element, false otherwise
      * @see ComplexNumber, MyOperandCollection
      */
@@ -47,9 +51,11 @@ public class ArgCommand implements Command{
     }
 
     /**
+     * <p>
      *It executes the undo of the argument operation removing the last inserted 
      * element that is the result of the operation, and pushes the operand that 
      * has been involved in the argument operation.
+     * </p> <!-- -->
      * @see ComplexNumber, MyOperandCollection
      */
     @Override
