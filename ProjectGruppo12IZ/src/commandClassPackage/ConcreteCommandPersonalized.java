@@ -6,6 +6,7 @@
 package commandClassPackage;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,7 +29,8 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
      */
     public ConcreteCommandPersonalized(String commandName,String operations, List<Command> commands) {
         assert commands != null;
-        this.commands = commands;
+        this.commands = new LinkedList<>();
+        this.commands.addAll(commands);
         this.operations= operations;
         this.commandName = commandName;
     }
@@ -41,7 +43,8 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
      */
     public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
         assert comm != null;
-        this.commands = comm.commands;
+        this.commands = new LinkedList<>();
+        this.commands.addAll(commands);
         this.operations = comm.operations;
         this.commandName = comm.commandName;
     }
