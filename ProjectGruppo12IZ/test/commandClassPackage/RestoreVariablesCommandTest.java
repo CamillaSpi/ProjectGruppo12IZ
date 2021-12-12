@@ -28,7 +28,7 @@ public class RestoreVariablesCommandTest {
         System.out.println("execute");
         Variables vars = new Variables();
         RestoreVariablesCommand instance = new RestoreVariablesCommand(vars);
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = instance.execute();
         assertEquals(expResult, result);
     }

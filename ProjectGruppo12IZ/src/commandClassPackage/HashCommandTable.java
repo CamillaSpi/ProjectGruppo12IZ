@@ -160,6 +160,8 @@ public class HashCommandTable {
                 }
             }
         }
+        if (commandList.size() < 1)
+            return false;
         //starting from the list created, create a new commandPersonalized object
         ConcreteCommandPersonalized personalizedCommand = new ConcreteCommandPersonalized(operationName, sequenceDefinition, commandList);
         //add this new personalizedCommand to the hashMap containing all the user defined command

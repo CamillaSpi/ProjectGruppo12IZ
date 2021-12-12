@@ -19,9 +19,10 @@ import projectgruppo12iz.FXMLDocumentController;
 public class StateVariables extends State {
 
     /**
+     * <p>
      * It create a new object StateVariables calling the constructor method of
      * the super class.
-     *
+     *</p> <!-- -->
      * @param controller The DocumentController object
      * @see FXMLDocumentController
      */
@@ -29,11 +30,11 @@ public class StateVariables extends State {
         super(controller);
     }
 
-    /**
+    /**<p>
      * It create a new SaveToVariable and calls the method execute on it if it
      * is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, SaveToVariable
      */
     @Override
@@ -57,11 +58,11 @@ public class StateVariables extends State {
         }
     }
 
-    /**
+    /**<p>
      * It create a new SaveFromVariable and calls the method execute on it if it
      * is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, SaveFromVariable
      */
     @Override
@@ -85,11 +86,11 @@ public class StateVariables extends State {
         }
     }
 
-    /**
+    /**<p>
      * It create a new AddToVariable and calls the method execute on it if it is
      * possible. If the operation could not be performed an error message will
      * be shown and the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, AddToVariable
      */
     public void onButtonFour() {
@@ -117,11 +118,11 @@ public class StateVariables extends State {
         }
     }
 
-    /**
+    /**<p>
      * It create a new SubtractToVariable and calls the method execute on it if
      * it is possible. If the operation could not be performed an error message
      * will be shown and the operation will not be performed.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController, SubtractToVariable
      */
     public void onButtonSix() {
@@ -149,11 +150,11 @@ public class StateVariables extends State {
         }
     }
 
-    /**
+    /**<p>
      * It changes the State of the controller to StateStandard, setting its into
      * the controller and makes visible only the buttons necessary in this
      * state.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
@@ -167,19 +168,20 @@ public class StateVariables extends State {
         this.controller.setState(new StateStandard(controller));
     }
 
-    /**
+    /**<p>
      * This method do not perform operation because it only leaves the context
      * in the same state where it already is.
+     * </p> <!-- -->
      */
     @Override
     public void setStateVariables() {
     }
 
-    /**
+    /**<p>
      * It changes the State of the controller to StateOperations, setting its
      * into the controller and makes visible only the buttons necessary in this
      * state.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
@@ -194,11 +196,11 @@ public class StateVariables extends State {
         this.controller.setState(new StateOperations(controller));
     }
 
-    /**
+    /**<p>
      * It changes the State of the controller to StateTranscendetal, setting its
      * into the controller and makes visible only the buttons necessary in this
      * state.
-     *
+     *</p> <!-- -->
      * @see FXMLDocumentController
      */
     @Override
