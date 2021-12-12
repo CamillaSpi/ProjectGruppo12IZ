@@ -140,7 +140,7 @@ public class StateOperations extends State {
                  this.controller.showAlert("Operation not exists");
             else{
                 ConcreteCommandPersonalized concrete = new ConcreteCommandPersonalized((ConcreteCommandPersonalized) getcomm);
-                boolean res = this.controller.getInvoker().execute(concrete);
+                boolean res = this.controller.commandExecute(concrete);
                 if(!res){
                      this.controller.showAlert("Operation can't be performed");
                 }

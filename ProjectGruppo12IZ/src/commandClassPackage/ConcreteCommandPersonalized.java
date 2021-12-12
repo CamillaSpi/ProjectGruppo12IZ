@@ -38,15 +38,15 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
     /**
      * It creates an object of the ConcreteCommandPersonalized if the param is 
      * not null from another concrete command 
-     * @param comm is the command from which to create a copy
+     * @param commands is the command from which to create a copy
      * @see ComplexNumber, MyOperandCollection
      */
-    public ConcreteCommandPersonalized(ConcreteCommandPersonalized comm) {
-        assert comm != null;
+    public ConcreteCommandPersonalized(ConcreteCommandPersonalized commands) {
+        assert commands != null;
         this.commands = new LinkedList<>();
-        this.commands.addAll(commands);
-        this.operations = comm.operations;
-        this.commandName = comm.commandName;
+        this.commands.addAll(commands.commands);
+        this.operations = commands.operations;
+        this.commandName = commands.commandName;
     }
 
     /**
@@ -101,7 +101,7 @@ public class ConcreteCommandPersonalized implements Command, Serializable{
     @Override
     public boolean execute() {
         int count=0;
-        boolean flag = true;
+        boolean flag = true; 
         for (Command command : commands){
             if(command.execute()){
                 count++;

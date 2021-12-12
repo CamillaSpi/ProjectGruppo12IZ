@@ -14,13 +14,13 @@ import static org.junit.Assert.*;
  * @author Gruppo 12 IZ
  */
 public class VariablesTest {
-    
+
     public VariablesTest() {
     }
-    
 
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String's legth equal to 0.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String's legth equal to 0.
      */
     @Test
     public void testCheckRangeLowerLength() {
@@ -31,10 +31,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String's legth greater than one.
      */
     @Test
     public void testCheckRangeHigherLength() {
@@ -45,10 +45,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String's legth greater than one.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String's legth greater than one.
      */
     @Test
     public void testCheckRange() {
@@ -59,10 +59,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length but out of range.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String of the correct length but out of range.
      */
     @Test
     public void testCheckRangeOut1() {
@@ -73,10 +73,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length but out of range.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String of the correct length but out of range.
      */
     @Test
     public void testCheckRangeOut2() {
@@ -87,10 +87,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length and in the correct range.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String of the correct length and in the correct range.
      */
     @Test
     public void testCheckRangeCorrect1() {
@@ -101,10 +101,10 @@ public class VariablesTest {
         boolean result = instance.checkRange(s);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of checkRange method, of class Variables, analyzing the case with a String of the correct length and in the correct range.
+     * Test of checkRange method, of class Variables, analyzing the case with a
+     * String of the correct length and in the correct range.
      */
     @Test
     public void testCheckRangeCorrect2() {
@@ -116,7 +116,6 @@ public class VariablesTest {
         assertEquals(expResult, result);
     }
 
-    
     /**
      * Test of toString method, of class Variables.
      */
@@ -128,14 +127,14 @@ public class VariablesTest {
         ComplexNumber b = new ComplexNumber("5.3", "-9.8");
         instance.saveToVariable("a", a);
         instance.saveToVariable("b", b);
-        String expResult = "(a, " + a.toString() + "), (b, " + b.toString() + ")" ;
+        String expResult = "(a, " + a.toString() + "), (b, " + b.toString() + ")";
         String result = instance.toString();
         assertEquals(expResult, result);
     }
 
-
     /**
-     * Test of getValue method, of class Variables, analyzing the case with a key not contained in the Map.
+     * Test of getValue method, of class Variables, analyzing the case with a
+     * key not contained in the Map.
      */
     @Test
     public void testGetValueNotContainedKey() {
@@ -146,23 +145,23 @@ public class VariablesTest {
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
     }
-    
-    
+
     /**
-     * Test of getValue method, of class Variables, analyzing the case with a contained key in the Map.
+     * Test of getValue method, of class Variables, analyzing the case with a
+     * contained key in the Map.
      */
     @Test
     public void testGetValue() {
         System.out.println("getValue with a contained key");
         String key = "a";
         Variables instance = new Variables();
-        ComplexNumber value = new ComplexNumber("-4","3");
+        ComplexNumber value = new ComplexNumber("-4", "3");
         instance.put(key, value);
         ComplexNumber expResult = value;
         ComplexNumber result = instance.getValue(key);
         assertEquals(expResult, result);
     }
-  
+
     /**
      * Test of SaveToVariables method, of class Variables, with correct entry.
      */
@@ -175,9 +174,10 @@ public class VariablesTest {
         System.out.println(instance.toString());
         assertEquals(a, instance.getValue("a"));
     }
-    
+
     /**
-     * Test of SaveToVariables method, of class Variables, with wrong null CompplexNumber as entry.
+     * Test of SaveToVariables method, of class Variables, with wrong null
+     * CompplexNumber as entry.
      */
     @Test
     public void testSaveToVariablesNullNumber() {
@@ -187,11 +187,11 @@ public class VariablesTest {
         instance.saveToVariable("a", a);
         assertEquals(null, instance.getValue("a"));
     }
-    
+
     /**
-     * Test of SaveToVariables method, of class Variables, with wrong key as entry.
+     * Test of SaveToVariables method, of class Variables, with wrong key as
+     * entry.
      */
-    
     @Test
     public void testSaveToVariablesWrongKey() {
         System.out.println("insert a complex Number correctly created");
@@ -200,11 +200,11 @@ public class VariablesTest {
         instance.saveToVariable("8", a);
         assertEquals(null, instance.getValue("8"));
     }
-    
+
     /**
-     * Test of SaveToVariables method, of class Variables, with replace the value in a setted variable.
+     * Test of SaveToVariables method, of class Variables, with replace the
+     * value in a setted variable.
      */
-    
     @Test
     public void testSaveToVariablesReplace() {
         System.out.println("setValue with the replacement of the value");
@@ -215,11 +215,12 @@ public class VariablesTest {
         instance.saveToVariable(key, oldValue);
         instance.saveToVariable(key, newValue);
         ComplexNumber retValue = instance.getValue(key);
-        assertEquals(retValue, newValue); 
+        assertEquals(retValue, newValue);
     }
-    
+
     /**
-     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable correctly written and initialized.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case
+     * with a variable correctly written and initialized.
      */
     @Test
     public void testSaveFromVariable() {
@@ -229,9 +230,10 @@ public class VariablesTest {
         instance.saveToVariable("c", a);
         assertEquals(a, instance.saveFromVariable("c"));
     }
-    
+
     /**
-     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly written.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case
+     * with a variable not correctly written.
      */
     @Test
     public void testSaveFromVariableNotCorrectlyWrittenVariable() {
@@ -241,9 +243,10 @@ public class VariablesTest {
         instance.saveToVariable("8", a);
         assertEquals(null, instance.saveFromVariable("8"));
     }
-    
+
     /**
-     * Test of SaveFromVariable method, of class Variables, analyzing the case with a variable not correctly initialized.
+     * Test of SaveFromVariable method, of class Variables, analyzing the case
+     * with a variable not correctly initialized.
      */
     @Test
     public void testSaveFromVariableNotInitializedVariable() {
@@ -251,10 +254,10 @@ public class VariablesTest {
         Variables instance = new Variables();
         assertEquals(null, instance.saveFromVariable("c"));
     }
-    
-    
+
     /**
-     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     * Test of subtractToVariable method, of class Variables, analyzing the case
+     * in which the key is not in the correct range.
      */
     @Test
     public void testSubtractToVariableOutCondition() {
@@ -264,11 +267,12 @@ public class VariablesTest {
         Variables instance = new Variables();
         boolean ret = instance.subtractToVariable(key, subtracting);
         boolean expRet = false;
-        assertEquals(ret, expRet); 
+        assertEquals(ret, expRet);
     }
-    
+
     /**
-     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     * Test of subtractToVariable method, of class Variables, analyzing the case
+     * in which the key is not in the correct range.
      */
     @Test
     public void testSubtractToVariableOutRage() {
@@ -278,10 +282,12 @@ public class VariablesTest {
         Variables instance = new Variables();
         boolean ret = instance.subtractToVariable(key, subtracting);
         boolean expRet = false;
-        assertEquals(ret, expRet); 
+        assertEquals(ret, expRet);
     }
+
     /**
-     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key is not in the correct range.
+     * Test of subtractToVariable method, of class Variables, analyzing the case
+     * in which the key is not in the correct range.
      */
     @Test
     public void testSubtractToVariableInvalidSubtracting() {
@@ -293,11 +299,12 @@ public class VariablesTest {
         instance.saveToVariable(key, value);
         boolean ret = instance.subtractToVariable(key, subtracting);
         boolean expRet = false;
-        assertEquals(ret, expRet); 
+        assertEquals(ret, expRet);
     }
-    
+
     /**
-     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key has not an already associated value.
+     * Test of subtractToVariable method, of class Variables, analyzing the case
+     * in which the key has not an already associated value.
      */
     @Test
     public void testSubtractToVariableNoSavedValue() {
@@ -312,11 +319,13 @@ public class VariablesTest {
         ComplexNumber subtracting = new ComplexNumber("-4", "9");
         boolean ret = instance.subtractToVariable("c", subtracting);
         boolean expRet = false;
-        assertEquals(ret, expRet); 
+        assertEquals(ret, expRet);
     }
-    
+
     /**
-     * Test of subtractToVariable method, of class Variables, analyzing the case in which the key as an already value associated and the subtracting is not null.
+     * Test of subtractToVariable method, of class Variables, analyzing the case
+     * in which the key as an already value associated and the subtracting is
+     * not null.
      */
     @Test
     public void testSubtractToVariable() {
@@ -331,12 +340,11 @@ public class VariablesTest {
         ComplexNumber subtracting = new ComplexNumber("-4", "9");
         boolean ret = instance.subtractToVariable("b", subtracting);
         boolean expRet = true;
-        assertEquals(ret, expRet); 
+        assertEquals(ret, expRet);
     }
-    
- /**
-     * Test of addToVariable method, of class Variables.
-     * Correct test case.
+
+    /**
+     * Test of addToVariable method, of class Variables. Correct test case.
      */
     @Test
     public void testAddToVariable() {
@@ -350,9 +358,9 @@ public class VariablesTest {
         ComplexNumber result = instance.getValue("a");
         assertEquals(expResult, result);
     }
+
     /**
-     * Test of addToVariable method, of class Variables.
-     * Value to add is null
+     * Test of addToVariable method, of class Variables. Value to add is null
      */
     @Test
     public void testAddToVariableAddNull() {
@@ -365,9 +373,10 @@ public class VariablesTest {
         Boolean result = instance.addToVariable("a", toAdd);
         assertEquals(expResult, result);
     }
-     /**
-     * Test of addToVariable method, of class Variables.
-     * Var value is never setted. (is null) 
+
+    /**
+     * Test of addToVariable method, of class Variables. Var value is never
+     * setted. (is null)
      */
     @Test
     public void testAddToVariableVarNull() {
@@ -378,9 +387,9 @@ public class VariablesTest {
         Boolean result = instance.addToVariable("a", toAdd);
         assertEquals(expResult, result);
     }
-     /**
-     * Test of addToVariable method, of class Variables.
-     * Both value are null
+
+    /**
+     * Test of addToVariable method, of class Variables. Both value are null
      */
     @Test
     public void testAddToVariableBothNull() {
@@ -391,6 +400,7 @@ public class VariablesTest {
         Boolean result = instance.addToVariable("a", toAdd);
         assertEquals(expResult, result);
     }
+
     /**
      * Test of getMyVariables method, of class Variables.
      */
@@ -415,7 +425,7 @@ public class VariablesTest {
         Variables instance = new Variables();
         int length = instance.getMyVariables().size();
         instance.put(key, value);
-        assertEquals(length +1 , instance.getMyVariables().size());
+        assertEquals(length + 1, instance.getMyVariables().size());
     }
 
     /**
@@ -428,7 +438,7 @@ public class VariablesTest {
         instance.put("a", new ComplexNumber("3", "2"));
         instance.put("b", new ComplexNumber("0", "2"));
         instance.saveVariablesIntoStack();
-        
+
         ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
         instance.restoreVariablesFromStack();
         ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
@@ -446,11 +456,12 @@ public class VariablesTest {
         instance.put("b", new ComplexNumber("0", "2"));
         instance.saveVariablesIntoStack();
         instance.put("c", new ComplexNumber("0", "2"));
-        ObservableMap<String, ComplexNumber> expResult = instance.getMyVariables();
+        int expResult = instance.getMyVariables().size();
         instance.restoreVariablesFromStack();
-        ObservableMap<String, ComplexNumber> result = instance.getMyVariables();
+        int result = instance.getMyVariables().size();
         assertNotEquals(expResult, result);
     }
+
     /**
      * Test of restoreVariablesFromStack method, of class Variables.
      */
@@ -465,17 +476,17 @@ public class VariablesTest {
         boolean result = instance.restoreVariablesFromStack();
         assertEquals(expResult, result);
     }
-     /**
+
+    /**
      * Test of restoreVariablesFromStack method, of class Variables.
      */
     @Test
     public void testSaveNullIntoStack() {
         System.out.println("SaveNullIntoStack");
         Variables instance = new Variables();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.saveVariablesIntoStack();
         assertEquals(expResult, result);
     }
 
-    
 }
