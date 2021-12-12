@@ -22,10 +22,11 @@ public class AddToVariableCommand implements Command{
     private ComplexNumber OperandFromStack;
 
     /**
+     * <p>
      * This method creates an object that represents add to variable operation 
      * in order to execute and undo the command, assert if collection is null or 
      * if vars is null or if variables is null
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were addend is taken
      * @param vars is the collection were addend has to be insert
      * @param variables is the var were execute the operation
@@ -43,8 +44,10 @@ public class AddToVariableCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for add to variable operation from 
      * Command interface, return false if it can't be performed.
+     * </p> <!-- -->
      * @return boolean that check if the operation is performed or not.
      */
     @Override
@@ -64,8 +67,10 @@ public class AddToVariableCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for add to variable operation 
      * from Command interface.
+     * </p> <!-- -->
      */
     @Override
     public void undo() {

@@ -6,7 +6,9 @@
 package commandClassPackage;
 
 /**
- *Command interface with method execute and undo that will be implemented by the class that implement this interface.
+ * <p>
+ * Command interface with method execute and undo that will be implemented by the class that implement this interface.
+ * </p> <!-- -->
  * @author Gruppo 12 IZ
  */
 public interface Command{  

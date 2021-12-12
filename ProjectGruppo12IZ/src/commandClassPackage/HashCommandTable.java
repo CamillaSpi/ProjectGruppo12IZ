@@ -37,11 +37,13 @@ public class HashCommandTable {
     private final Variables vars;
 
     /**
+     * <p>
      * it create an object of this class, inizialize a basic hash structure for 
      * associate simbol of operation with the name of the class that allows the 
      * relative basic command, create an observable HashMap to store effective 
      * concrete command created by the user with the relative name, the collection
      * that contain operand and the vars structure that contain the variable. 
+     * </p> <!-- -->
      * @param collector is the structure were are saved operand, is passed to every concretecommand created.
      * @param vars is the structure were are saved the variable, is passed to every concretecommand created.
      * @see MyOperandCollection, Variables, HashMap
@@ -83,13 +85,14 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * It create a personalized Command starting from the string passed as the
      * sequence of operations composing the definition. The
      * ConcreteCommandPersonalized Object is than added to the
      * concreteCommandHash with the name passed. If the passed name
      * corresponding to an already existing user defined operation, the
      * corresponding command will be updated.
-     *
+     *</p> <!-- -->
      * @param sequenceDefinition the string containing the operation's name,
      * defining the new User defined operation.
      * @param operationName the name for the user defined operation.
@@ -165,12 +168,13 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * It delete a personalized Command starting from the name.If the remove
      * operation return null, the elements is not contained in the hashmap, then
      * false was returned, otherwise the personalized command exists.Now we
      * check if this command is inserted in other personalized commands and if
      * yes the personalized command is removed.
-     *
+     *</p> <!-- -->
      * @param name
      * @return If the elements doesn't exist then false was returned otherwise
      * true.
@@ -191,9 +195,10 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * it returns the user defined command corresponding to the name passed, if
      * it exists, otehrwise null
-     *
+     *</p> <!-- -->
      * @param commandName the name of which obtain the corresponding user
      * defined command.
      * @return the command if exists otherwise null.
@@ -208,8 +213,9 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * it returns the observable map create at this moment for user commands.
-     *
+     *</p> <!-- -->
      * @return the structure if exists otherwise null.
      * @see ConcreteCommandPersonalized, ObservableMap
      */
@@ -218,13 +224,14 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * It reads from a file the name and the definition of user operations
      * defined by user in previous usage session if it is possible. Otherwise,
      * if the name of the File is not correct or the content is not right the
      * operation will not be performed. If the reading went well the operations
      * contained in the task will be added to that defined in the current usage
      * session.
-     *
+     *</p> <!-- -->
      * @param fileName the file from which to read the contents
      * @return true if the reading operation went well otherwise false.
      * @see ConcreteCommandPersonalized, File
@@ -248,12 +255,13 @@ public class HashCommandTable {
     }
 
     /**
+     * <p>
      * It prints to a file the name and the definition of user operations
      * defined by user in current usage session if it is possible.Otherwise,
      * if the name of the File is not correct or the content is not right the
      * operation will not be performed.If the printing went well the operations
      * contained in the task will be printed on the file passed.
-     *
+     *</p> <!-- -->
      * @param file is the file were save all the current user defined operations.
      * @return true if the reading operation went well otherwise false.
      * @see ConcreteCommandPersonalized, File

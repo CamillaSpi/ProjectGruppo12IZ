@@ -22,9 +22,10 @@ public class SubtractToVariableCommand implements Command{
     private ComplexNumber OperandFromStack;
 
     /**
+     * <p>
      * This method creates an object that represents subtract to variable operation in order to execute and undo the command,
      * assert if collection is null or if vars is null or if variables is null
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were subtracting is taken
      * @param vars is the collection were minuend is taken
      * @param variables is the var were execute the operation
@@ -42,7 +43,9 @@ public class SubtractToVariableCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for subtract to variable operation from Command interface
+     * </p> <!-- -->
      * @return false if the variable value is null or the operand's stack is empty, otherwise
      * returns true if the subtract to variable is performed or false if not. 
      * @see ComplexNumber, MyOperandCollection, Variables
@@ -62,8 +65,10 @@ public class SubtractToVariableCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for subtract to variable operation from Command interface, 
      * saving the old value into the variable and inserting in operand's stack the old value.
+     * </p> <!-- -->
      * @see Variables, MyOperandCollection
      */
     @Override

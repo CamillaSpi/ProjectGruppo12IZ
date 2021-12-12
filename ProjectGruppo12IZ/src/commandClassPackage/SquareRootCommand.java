@@ -19,7 +19,9 @@ public class SquareRootCommand implements Command {
     private ComplexNumber value;
 
     /**
+     * <p>
      * It creates an object of the SquareRootCommand if the collector is not null.
+     * </p> <!-- -->
      * @param collector the collection on which the command will be executed.
      * @see MyOperandCollection
      */
@@ -29,8 +31,10 @@ public class SquareRootCommand implements Command {
     }
 
     /**
+     * <p>
      * It executes the operation of square root on the last element it is not null, and
      * pushes the result of the operation as last operand
+     * </p> <!-- -->
      * @return true if the operation is executed and the collector is not empty, false otherwise
      * @see MyOperandCollection, ComplexNumber, Calculator
      */
@@ -46,8 +50,10 @@ public class SquareRootCommand implements Command {
         return true;
     }
     /**
+     * <p>
      * It undo the operation of square root, so it removes the last element and push 
      * the previously saved one.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

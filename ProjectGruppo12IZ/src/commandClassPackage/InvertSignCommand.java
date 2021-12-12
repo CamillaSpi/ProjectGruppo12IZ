@@ -21,7 +21,9 @@ public class InvertSignCommand implements Command {
     private ComplexNumber value;
 
     /**
+     * <p>
      * It creates an object of the Invert Sign Command if the collector is not null.
+     * </p> <!-- -->
      * @param collector
      * @see MyOperandCollection
      */
@@ -31,8 +33,10 @@ public class InvertSignCommand implements Command {
     }
 
     /**
+     * <p>
      * It executes the operation of invert sign on the last element if it is not null calling calculator's method,
      * removes the old value and pushes the new value into the stack.
+     * </p> <!-- -->
      * @return false if the last stack element is null, true otherwise
      * @see Calculator,ComplexNumber,MyOperandCollection
      */
@@ -48,8 +52,10 @@ public class InvertSignCommand implements Command {
         return true;
     }
     /**
+     * <p>
      * It does the undo of the invert sign operation, so it removes the last element from the stack 
      * and pushes the previously value saved before the execute.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

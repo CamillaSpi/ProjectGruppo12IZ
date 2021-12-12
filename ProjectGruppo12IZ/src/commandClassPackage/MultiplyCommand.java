@@ -19,7 +19,9 @@ public class MultiplyCommand implements Command{
     private ComplexNumber secondOperand;
     
     /**
+     * <p>
      * It creates an object of the MultiplyCommand if the collector is not null.
+     * </p> <!-- -->
      * @param collector
      * @see MyOperandCollection
      */
@@ -29,8 +31,10 @@ public class MultiplyCommand implements Command{
     }
     
     /**
+     * <p>
      *It executes the operation of multiplication on the last inserted operands in the collector, calling calculator's method and removing them
      * from the collection, and pushes the result of the operation as last operand.
+     * </p> <!-- -->
      * @return true if the collection contains at least 2 element, false otherwise
      * @see ComplexNumber, Calculator, MyOperandCollection
      */
@@ -53,8 +57,10 @@ public class MultiplyCommand implements Command{
     }
     
     /**
-     *It executes the undo of the multiplication operation removing the last inserted element that is the result of the operation,
+     * <p>
+     * It executes the undo of the multiplication operation removing the last inserted element that is the result of the operation,
      * and pushes the operands that have been involved in the operation.
+     * </p> <!-- -->
      * @see MyOperandCollection
      */
     @Override

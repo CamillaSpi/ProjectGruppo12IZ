@@ -20,9 +20,10 @@ public class SaveFromVariableCommand implements Command{
     private ComplexNumber value;
     
     /**
+     * <p>
      * This method creates an object that represents Save From Variable operation in order to execute and undo the command,
      * assert if one between collection, variables, var are null .
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were SaveFromVariable pushes.
      * @param vars is the collection of variables.
      * @param var is the specified value on which the function operates.
@@ -36,7 +37,9 @@ public class SaveFromVariableCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for save from variable operation from Command interface.
+     * </p> <!-- -->
      * @return true if the var has a value and the operation is performed, false otherwise
      * @see Variables,MyOperandCollection
      */
@@ -52,8 +55,10 @@ public class SaveFromVariableCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements undo method for save from variable operation from Command interface, removing the 
      * element inserted into the stack and saving it into its old variable. 
+     * </p> <!-- -->
      * @see MyOperandCollection, Variables
      */
     @Override

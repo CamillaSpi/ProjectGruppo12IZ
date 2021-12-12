@@ -19,8 +19,10 @@ public class DivideCommand implements Command{
     private ComplexNumber divider;
     
     /**
+     * <p>
      * It creates an object of the DivideCommand if the collector is not null and 
      * contains enough element to perform the division operation.
+     * </p> <!-- -->
      * @param collector
      * @see ComplexNumber, MyOperandCollection
      */
@@ -30,9 +32,11 @@ public class DivideCommand implements Command{
     }
     
     /**
-     *It executes the operation of division on the last two inserted operands 
+     * <p>
+     * It executes the operation of division on the last two inserted operands 
      * in the collector removing them, and pushes the result of the operation as 
      * last operand.
+     * </p> <!-- -->
      * @return true if the operation is performed, false otherwise.
      * @see ComplexNumber, MyOperandCollection
      */
@@ -59,9 +63,11 @@ public class DivideCommand implements Command{
     }
     
     /**
+     * <p>
      * It executes the undo of the division operation removing the last inserted 
      * element that is the result of the operation, and pushes the two operands 
      * that have been involved in the division operation.
+     * </p> <!-- -->
      * @see ComplexNumber, MyOperandCollection
      */
     @Override

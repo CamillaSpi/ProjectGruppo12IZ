@@ -22,8 +22,9 @@ public class SaveToVariableCommand implements Command{
     private ComplexNumber removedOperand;
 
     /**
+     * <p>
      * This method creates an object that represents SaveToVariable operation in order to execute and undo the command.
-     * <p> <!-- -->
+     * </p> <!-- -->
      * @param collector is the collection were take last operand.
      * @param vars is the collection were call SaveToVariable method.
      * @param var is the name of the variable were call SaveToVariable.
@@ -40,7 +41,9 @@ public class SaveToVariableCommand implements Command{
     }
     
     /**
+     * <p>
      * This method implements execute method for SaveToVariable operation from Command interface.
+     * </p> <!-- -->
      * @return false if the stack is empty or the operation is not performed, true otherwise.
      * @see Variables, MyOperandCollection
      */
@@ -57,8 +60,10 @@ public class SaveToVariableCommand implements Command{
     }
 
     /**
+     * <p>
      * This method implements undo method for SaveToVariable operation from Command interface, 
      * setting the old value to the variable and inserting the old stack value saved into the variable.
+     * </p> <!-- -->
      * @see Variables, MyOperandCollection
      */
     @Override
