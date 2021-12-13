@@ -609,10 +609,10 @@ public class FXMLDocumentController implements Initializable {
     private void onButtonEight(ActionEvent event) {
         InvertSignCommand invsignComm = new InvertSignCommand(collector);
         if (invsignComm != null && commandExecute(invsignComm)) {
-            showAlert("Square Root done succesfully!");
+            showAlert("Invert Sign done succesfully!");
             refresh();
         } else {
-            showAlert("Square Root cannot be performed!\nHave you insert at least one operands?");
+            showAlert("Invert Sign cannot be performed!\nHave you insert at least one operands?");
         }
     }
 
