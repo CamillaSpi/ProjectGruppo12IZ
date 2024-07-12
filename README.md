@@ -1,6 +1,4 @@
-# ProjectGruppo12IZ
-Project work for SE
-This is the project work developing for Software Engigneering's exam.
+# About Project
 The target of this project is to develop an application implementing a Scientific Programmable Calculator supporting complex numbers.
 The calculator developed support basic operations on complex numbers like addiction, subtraction, moltiplication, division, square root and invert sign;
 Operations on the stack containing the operands inserted like dup, drop, clear...;
