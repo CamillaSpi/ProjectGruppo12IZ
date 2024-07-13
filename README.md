@@ -64,7 +64,7 @@ Both `a` and `b` can be real numbers (use `.` to separate the decimal and intege
 - `manifest.mf` - Manifest file for the project. 
 
 ## Demo
-[Here](https://www.youtube.com/watch?v=Uzu7N8bdBuM) there is a demo of the developed system.
+[Here](https://youtu.be/ItiDlo7dSGo) there is a demo of the developed system.
 
 ## Feedback
 For any feedback, questions or inquiries, please contact the project maintainers listed in the Contributors section.
