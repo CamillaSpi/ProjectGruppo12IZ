@@ -1,7 +1,7 @@
 
 # Scientific Programmable Complex Calculator
 <div align="center">
-  <img src="Complex_Calculator.png" alt="Complex Calculator" style="width:50%; max-width:400px;>
+  <img src="Complex_Calculator.png" alt="Complex Calculator" style="width:50%; max-width:400px;">
 </div>
 
 The target of this project is to develop an application implementing a Scientific Programmable Calculator supporting complex numbers. The calculator supports basic operations on complex numbers such as addition, subtraction, multiplication, division, square root, and sign inversion. It also includes operations on the stack containing the operands such as dup, drop, and clear. 
